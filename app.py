@@ -16,7 +16,7 @@ django_WSGI = WSGIHandler()
 from queryhandler import handle_weixin_request
 
 def app(environ, start_response):
-    """if environ['PATH_INFO'] == LUCKY_URL:
+    if environ['PATH_INFO'] == LUCKY_URL:
         result = handle_weixin_request(environ)
         status = '200 OK'
         headers = [('Content-type', 'text/html')]
@@ -27,9 +27,5 @@ def app(environ, start_response):
         #headers = [('Content-type', 'text/html')]
         #start_response(status, headers)
         #return [environ['PATH_INFO']]
-        return django_WSGI.__call__(environ, start_response)"""
-    status = '200 OK'
-    headers = [('Content-type', 'text/html')]
-    start_response(status, headers)
-    return [environ['PATH_INFO']]
+        return django_WSGI.__call__(environ, start_response)
 
