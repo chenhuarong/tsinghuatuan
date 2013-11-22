@@ -1,7 +1,5 @@
 #-*- coding:utf-8 -*-
 
-LUCKY_URL = "/weixin"
-
 import os
 import sys
 
@@ -14,6 +12,7 @@ from django.core.handlers.wsgi import WSGIHandler
 django_WSGI = WSGIHandler()
 
 from queryhandler import handle_weixin_request
+from settings import LUCKY_URL
 
 def app(environ, start_response):
     if environ['PATH_INFO'] == LUCKY_URL:

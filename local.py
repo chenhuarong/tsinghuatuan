@@ -5,8 +5,10 @@
 
 from wsgiref.simple_server import make_server
 from app import app
+from settings import LOCAL_PORT
 
-LOCAL_PORT = 8000
 
+# here will do nothing of exception catch
+# be careful:)
 httpd = make_server('', LOCAL_PORT, app)
 httpd.serve_forever()

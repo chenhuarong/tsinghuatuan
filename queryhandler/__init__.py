@@ -8,6 +8,7 @@ import xml.etree.ElementTree as ET
 from django.utils.encoding import smart_str
 from queryhandler.settings import WEIXIN_TOKEN
 
+# convert string 'a=1&b=2&c=3' to dict {'a':1,'b':2,'c':3}
 def urldecode(query):
     d = {}
     a = query.split('&')
@@ -17,7 +18,7 @@ def urldecode(query):
             d[k] = v
     return d
 
-
+# convert XML List object to Python dict object
 def parse_msg_xml(root_elem):
     msg = {}
     if root_elem.tag == 'xml':
@@ -25,13 +26,13 @@ def parse_msg_xml(root_elem):
             msg[child.tag] = smart_str(child.text)
     return msg
 
-
-def get_reply_xml(msg, reply_content):
+# get reply xml(reply text), using msg(source dict object) and reply_content(text, string)
+def get_reply_text_xml(msg, reply_content):
     ext_tpl = '<xml><ToUserName><![CDATA[%s]]></ToUserName><FromUserName><![CDATA[%s]]></FromUserName><CreateTime>%s</CreateTime><MsgType><![CDATA[%s]]></MsgType><Content><![CDATA[%s]]></Content><FuncFlag>0</FuncFlag></xml>'
     ext_tpl = ext_tpl % (msg['FromUserName'], msg['ToUserName'], str(int(time.time())), 'text', reply_content)
     return ext_tpl
 
-
+# entry of weixin handler
 def handle_weixin_request(environ):
     if environ['REQUEST_METHOD'] == 'GET':
         data = urldecode(environ['QUERY_STRING'])
@@ -44,9 +45,10 @@ def handle_weixin_request(environ):
             request_body = None
         raw_str = smart_str(request_body)
         msg = parse_msg_xml(ET.fromstring(raw_str))
+        # here should handle all types of msg['MsgType']
         return default_weixin_response(msg)
 
-
+# check signature as the weixin API document provided
 def check_weixin_signature(data):
     signature = data['signature']
     timestamp = data['timestamp']
@@ -63,10 +65,10 @@ def check_weixin_signature(data):
     else:
         return None
 
-
+# just a demo:)
 def default_weixin_response(data):
     rnd = random.randint(0, 1)
     if rnd == 0:
-        return get_reply_xml(data, u'女神sb')
+        return get_reply_text_xml(data, u'女神sb')
     else:
-        return get_reply_xml(data, u'福哥sb')
+        return get_reply_text_xml(data, u'福哥sb')
