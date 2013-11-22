@@ -16,6 +16,7 @@ django_WSGI = WSGIHandler()
 from queryhandler import handle_weixin_request
 
 def app(environ, start_response):
+    print environ['PATH_INFO']
     if environ['PATH_INFO'] == LUCKY_URL:
         result = handle_weixin_request(environ)
         status = '200 OK'
