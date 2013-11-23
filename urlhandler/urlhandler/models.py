@@ -28,5 +28,5 @@ class Ticket(models.Model):
 class Order(models.Model):
     user = models.ForeignKey(User)
     activity = models.ForeignKey(Activity)
-    isCancelled = models.BooleanField()
+    status  = models.IntegerField()
     tickets = models.IntegerField()
