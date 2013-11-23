@@ -7,6 +7,8 @@ https://docs.djangoproject.com/en/1.6/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
+#import bae.core.const
+from bae.core import const
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
@@ -60,10 +62,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'NYenZfWMVWuqtUGNuQsI',
-        'USER': '6jIVijhGUVreXBNI6jYzZGlt',
-        'PASSWORD': 'AxB1w67ddB4cwkCLw3gQSoBjGUcICUL3',
-        'HOST': 'sqld.duapp.com',
-        'PORT': '4050',
+        'USER': const.MYSQL_USER,
+        'PASSWORD': const.MYSQL_PASS,
+        'HOST': const.MYSQL_HOST,
+        'PORT': const.MYSQL_PORT,
         }
 }
 
