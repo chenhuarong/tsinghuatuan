@@ -8,7 +8,6 @@ import time
 from settings import LOCAL_PORT
 from settings import LUCKY_URL
 import xml.etree.ElementTree as ET
-from queryhandler import parse_msg_xml
 
 url = 'http://localhost:' + str(LOCAL_PORT) + LUCKY_URL
 FROM_USER_NAME = 'WeixinSimulator'

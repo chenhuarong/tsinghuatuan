@@ -1,4 +1,7 @@
 #-*- coding:utf-8 -*-
+#add ../urlhandler/ to lib path
+import sys
+sys.path.append("urlhandler")
 
 import urllib
 import hashlib
@@ -7,6 +10,7 @@ import random
 import xml.etree.ElementTree as ET
 from django.utils.encoding import smart_str
 from queryhandler.settings import WEIXIN_TOKEN
+from urlhandler.models import *
 
 # convert string 'a=1&b=2&c=3' to dict {'a':1,'b':2,'c':3}
 def urldecode(query):
@@ -69,6 +73,7 @@ def check_weixin_signature(data):
 def default_weixin_response(data):
     rnd = random.randint(0, 1)
     if rnd == 0:
-        return get_reply_text_xml(data, u'女神sb')
+        user =  User.objects.get(id=1)
+        return get_reply_text_xml(data, user.weixin_id+u'sb')
     else:
         return get_reply_text_xml(data, u'福哥sb')
