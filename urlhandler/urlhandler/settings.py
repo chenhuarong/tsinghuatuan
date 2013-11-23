@@ -59,11 +59,11 @@ WSGI_APPLICATION = 'urlhandler.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tsinghuatuan',
-        'USER': 'root',
-        'PASSWORD': 'vince123',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'NAME': 'NYenZfWMVWuqtUGNuQsI',
+        'USER': '6jIVijhGUVreXBNI6jYzZGlt',
+        'PASSWORD': 'AxB1w67ddB4cwkCLw3gQSoBjGUcICUL3',
+        'HOST': 'sqld.duapp.com',
+        'PORT': '4050',
         }
 }
 
