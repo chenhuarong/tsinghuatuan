@@ -5,6 +5,7 @@ from django.db import models
 class User(models.Model):
     weixin_id = models.CharField(max_length=255)
     stu_id = models.CharField(max_length=255)
+    status = models.IntegerField()
 
 class  Activity(models.Model):
     name = models.CharField(max_length=255)
@@ -15,6 +16,7 @@ class  Activity(models.Model):
     place = models.CharField(max_length=255)
     book_start = models.DateTimeField()
     book_end = models.DateTimeField()
+    max_tickets_per_order  = models.IntegerField(default=2)
     total_tickets = models.IntegerField()
     remain_tickets = models.IntegerField()
 
