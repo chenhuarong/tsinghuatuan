@@ -9,7 +9,7 @@ import random
 import xml.etree.ElementTree as ET
 from django.utils.encoding import smart_str
 from queryhandler.settings import WEIXIN_TOKEN
-from urlhandler.models import *
+from urlhandler.urlhandler.models import *
 
 # convert string 'a=1&b=2&c=3' to dict {'a':1,'b':2,'c':3}
 def urldecode(query):
