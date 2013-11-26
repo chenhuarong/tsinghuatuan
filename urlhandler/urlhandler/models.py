@@ -6,8 +6,9 @@ class User(models.Model):
     weixin_id = models.CharField(max_length=255)
     stu_id = models.CharField(max_length=255)
     status = models.IntegerField()
+    seed = models.FloatField(default=1024)
 
-class  Activity(models.Model):
+class Activity(models.Model):
     name = models.CharField(max_length=255)
     key = models.CharField(max_length=255)
     description = models.TextField()
@@ -16,9 +17,9 @@ class  Activity(models.Model):
     place = models.CharField(max_length=255)
     book_start = models.DateTimeField()
     book_end = models.DateTimeField()
-    max_tickets_per_order  = models.IntegerField(default=2)
+    max_tickets_per_order = models.IntegerField(default=2)
     total_tickets = models.IntegerField()
-    remain_tickets = models.IntegerField()
+    status = models.IntegerField()
 
 class Ticket(models.Model):
     user = models.ForeignKey(User)

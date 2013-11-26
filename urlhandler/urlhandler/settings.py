@@ -55,17 +55,28 @@ WSGI_APPLICATION = 'urlhandler.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'NYenZfWMVWuqtUGNuQsI',
-        'USER': '6jIVijhGUVreXBNI6jYzZGlt',
-        'PASSWORD': 'AxB1w67ddB4cwkCLw3gQSoBjGUcICUL3',
-        'HOST': 'sqld.duapp.com',
-        'PORT': '4050',
+if 'SERVER_SOFTWARE' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'NYenZfWMVWuqtUGNuQsI',
+            'USER': '6jIVijhGUVreXBNI6jYzZGlt',
+            'PASSWORD': 'AxB1w67ddB4cwkCLw3gQSoBjGUcICUL3',
+            'HOST': 'sqld.duapp.com',
+            'PORT': '4050',
+            }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'tsinghuatuan',
+            'USER': 'root',
+            'PASSWORD': 'root',
+            'HOST': '',
+            'PORT': '',
         }
-}
+    }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
