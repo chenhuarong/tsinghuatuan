@@ -10,15 +10,15 @@ from settings import LUCKY_URL
 import xml.etree.ElementTree as ET
 
 url = 'http://localhost:' + str(LOCAL_PORT) + LUCKY_URL
-FROM_USER_NAME = 'haha'
+FROM_USER_NAME = 'WeixinSimulator'
 while True:
     line = raw_input()
     ext_tpl = '<xml><ToUserName><![CDATA[%s]]></ToUserName><FromUserName><![CDATA[%s]]></FromUserName><CreateTime>%s</CreateTime>' \
               '<MsgType><![CDATA[%s]]></MsgType><Content><![CDATA[%s]]></Content><FuncFlag>0</FuncFlag></xml>'
     evt_tpl ='<xml><ToUserName><![CDATA[%s]]></ToUserName><FromUserName><![CDATA[%s]]></FromUserName><CreateTime>%s</CreateTime>' \
              '<MsgType><![CDATA[event]]></MsgType><Event><![CDATA[%s]]></Event></xml>'
-    ext_tpl = ext_tpl % (FROM_USER_NAME, FROM_USER_NAME, str(int(time.time())), 'text', '订票')
-   # evt_tpl = evt_tpl % (FROM_USER_NAME, FROM_USER_NAME, str(int(time.time())), 'subscribe')
+    ext_tpl = ext_tpl % (FROM_USER_NAME, FROM_USER_NAME, str(int(time.time())), 'text', line)
+    #evt_tpl = evt_tpl % (FROM_USER_NAME, FROM_USER_NAME, str(int(time.time())), 'scan')
     req = urllib2.Request(url = url, data = ext_tpl)
     resdata = urllib2.urlopen(req)
     res = resdata.read()
