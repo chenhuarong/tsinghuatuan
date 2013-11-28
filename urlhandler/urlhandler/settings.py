@@ -96,3 +96,26 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static').replace('\\', '/')
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'userpage/static').replace('\\', '/'),
+    os.path.join(BASE_DIR, 'adminpage/static').replace('\\', '/'),
+)
+
+TEMPLATE_DIRS = (
+    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+    os.path.join(BASE_DIR, 'userpage/templates').replace('\\', '/'),
+    os.path.join(BASE_DIR, 'adminpage/templates').replace('\\', '/'),
+)
+
+# List of callables that know how to import templates from various sources.
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+#     'django.template.loaders.eggs.Loader',
+)
+

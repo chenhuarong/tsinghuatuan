@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+{% load staticfiles %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    {% block css %}{% endblock %}
+    <title>{% block title %}清小团——最优秀的校园服务助手{% endblock %}</title>
+</head>
+<body>
+    <header>{% block header %}{% endblock %}</header>
+    {% block content %}{% endblock %}
+    <footer>{% block footer %}{% endblock %}</footer>
+    {% block js %}{% endblock %}
+</body>
+</html>
