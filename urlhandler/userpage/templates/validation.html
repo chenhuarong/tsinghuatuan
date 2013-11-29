@@ -1,0 +1,57 @@
+{% extends "mobile_base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+清小团 - 绑定学号
+{% endblock %}
+
+{% block css %}
+<link href="{% static "css/validation.css" %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block js %}
+    <script src="{% static "js/validation.js" %}"></script>
+{% endblock %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block content %}
+    <div id="validationHolder">
+        <form class="form-horizontal" role="form" action="{% url "userpage.views.validate_post" %}" method="post" id="validationForm" onsubmit="return submitValidation({{ openid }})">
+            {% csrf_token %}
+          <div class="form-group" id="usernameGroup">
+            <label for="inputUsername" class="col-xs-3 control-label">学号</label>
+            <div class="col-xs-9">
+              <input type="text" class="form-control" id="inputUsername" placeholder="请输入您的学号" name="username" value="{{ studentid }}">
+              <span class="help-block" id="helpUsername"></span>
+            </div>
+          </div>
+          <div class="form-group" id="passwordGroup">
+            <label for="inputPassword" class="col-xs-3 control-label">密码</label>
+            <div class="col-xs-9">
+              <input type="password" class="form-control" id="inputPassword" placeholder="使用info密码进行登录" name="password">
+              <span class="help-block" id="helpPassword"></span>
+            </div>
+          </div>
+          <div class="form-group" id="submitGroup">
+            <div class="col-xs-offset-3 col-xs-9">
+              <button onclick="submitValidation({{ openid }});" class="btn btn-default">认证</button>
+              <p class="help-block" id="helpSubmit"></p>
+            </div>
+          </div>
+        </form>
+    </div>
+    <div id="successHolder" hidden>
+        <img src="{% static "img/success.png" %}" />
+        <p>认证成功！</p>
+        <p>您已经可以使用清小团的全部功能了！</p>
+    </div>
+{% endblock %}
+
+{% block footer %}
+<hr />
+清小团 &copy; 2013
+{% endblock %}
