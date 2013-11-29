@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="519d02f1-9909-43c4-95c4-b95f242a05f2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlhandler/userpage/static/css/validation.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlhandler/userpage/templates/validation.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlhandler/userpage/static/js/validation.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlhandler/userpage/static/js/weixin_lib.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/urlhandler/userpage/templates/validation/fail.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/urlhandler/userpage/templates/validation/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/urlhandler/userpage/templates/validation/success.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/userpage/templates/mobile_base.html" afterPath="$PROJECT_DIR$/urlhandler/userpage/templates/mobile_base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/userpage/urls.py" afterPath="$PROJECT_DIR$/urlhandler/userpage/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/userpage/views.py" afterPath="$PROJECT_DIR$/urlhandler/userpage/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="519d02f1-9909-43c4-95c4-b95f242a05f2" name="Default" comment="" />
     <ignored path="src.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385684509973" ignored="false" />
@@ -60,18 +48,8 @@
       <file leaf-file-name="validation.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/validation.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="52" selection-start="1820" selection-end="1820" vertical-scroll-proportion="-5.875">
-              <folding>
-                <marker date="1385730868000" expanded="true" signature="395:1730" placeholder="..." />
-                <marker date="1385730868000" expanded="true" signature="579:1719" placeholder="..." />
-                <marker date="1385730868000" expanded="true" signature="662:1015" placeholder="..." />
-                <marker date="1385730868000" expanded="true" signature="778:998" placeholder="..." />
-                <marker date="1385730868000" expanded="true" signature="1069:1407" placeholder="..." />
-                <marker date="1385730868000" expanded="true" signature="1185:1390" placeholder="..." />
-                <marker date="1385730868000" expanded="true" signature="1459:1703" placeholder="..." />
-                <marker date="1385730868000" expanded="true" signature="1510:1686" placeholder="..." />
-                <marker date="1385730868000" expanded="true" signature="1766:1884" placeholder="..." />
-              </folding>
+            <state line="43" column="8" selection-start="1696" selection-end="1696" vertical-scroll-proportion="-4.3333335">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -94,10 +72,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlhandler/userpage/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="29" selection-start="1492" selection-end="1492" vertical-scroll-proportion="0.7746479">
+            <state line="53" column="17" selection-start="2097" selection-end="2097" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#23#68#0" expanded="true" />
               </folding>
@@ -105,30 +83,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="urls.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/urlhandler/userpage/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="78" selection-start="292" selection-end="292" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="weixin_lib.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/js/weixin_lib.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="1" selection-start="1558" selection-end="1558" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mobile_base.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/mobile_base.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="7" selection-start="285" selection-end="285" vertical-scroll-proportion="-4.375">
+            <state line="6" column="24" selection-start="317" selection-end="317" vertical-scroll-proportion="0.2112676">
               <folding />
             </state>
           </provider>
@@ -815,13 +773,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/mobile_base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="7" selection-start="285" selection-end="285" vertical-scroll-proportion="-4.375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/weixin_simulator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="0" selection-start="1270" selection-end="1270" vertical-scroll-proportion="0.7820823">
@@ -852,22 +803,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="78" selection-start="292" selection-end="292" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/js/weixin_lib.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="1" selection-start="1558" selection-end="1558" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Library/Python/2.7/site-packages/django/core/handlers/base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="118" column="0" selection-start="4900" selection-end="4900" vertical-scroll-proportion="0.2897436">
@@ -882,23 +817,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/validation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="52" selection-start="1820" selection-end="1820" vertical-scroll-proportion="-5.875">
-          <folding>
-            <marker date="1385730868000" expanded="true" signature="395:1730" placeholder="..." />
-            <marker date="1385730868000" expanded="true" signature="579:1719" placeholder="..." />
-            <marker date="1385730868000" expanded="true" signature="662:1015" placeholder="..." />
-            <marker date="1385730868000" expanded="true" signature="778:998" placeholder="..." />
-            <marker date="1385730868000" expanded="true" signature="1069:1407" placeholder="..." />
-            <marker date="1385730868000" expanded="true" signature="1185:1390" placeholder="..." />
-            <marker date="1385730868000" expanded="true" signature="1459:1703" placeholder="..." />
-            <marker date="1385730868000" expanded="true" signature="1510:1686" placeholder="..." />
-            <marker date="1385730868000" expanded="true" signature="1766:1884" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/urlhandler/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="42" selection-start="370" selection-end="370" vertical-scroll-proportion="0.44665012">
@@ -908,10 +826,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="29" selection-start="1492" selection-end="1492" vertical-scroll-proportion="0.7746479">
+        <state line="53" column="17" selection-start="2097" selection-end="2097" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#23#68#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/validation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="8" selection-start="1696" selection-end="1696" vertical-scroll-proportion="-4.3333335">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/mobile_base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="7" selection-start="547" selection-end="547" vertical-scroll-proportion="0.5597015">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/js/weixin_lib.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="3" selection-start="224" selection-end="224" vertical-scroll-proportion="0.39951575">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="24" selection-start="317" selection-end="317" vertical-scroll-proportion="0.2112676">
+          <folding />
         </state>
       </provider>
     </entry>
