@@ -25,20 +25,21 @@
           <div class="form-group" id="usernameGroup">
             <label for="inputUsername" class="col-xs-3 control-label">学号</label>
             <div class="col-xs-9">
-              <input type="tel" class="form-control" id="inputUsername" placeholder="请输入您的学号" name="username" value="{{ studentid }}">
+              <input type="tel" class="form-control" id="inputUsername" placeholder="请输入您的学号" name="username" value="{{ studentid }}" onblur="checkUsername();">
               <span class="help-block" id="helpUsername"></span>
             </div>
           </div>
           <div class="form-group" id="passwordGroup">
             <label for="inputPassword" class="col-xs-3 control-label">密码</label>
             <div class="col-xs-9">
-              <input type="password" class="form-control" id="inputPassword" placeholder="使用info密码进行登录" name="password">
+              <input type="password" class="form-control" id="inputPassword" placeholder="使用info密码进行登录" name="password" onblur="checkPassword();">
               <span class="help-block" id="helpPassword"></span>
             </div>
           </div>
           <div class="form-group" id="submitGroup">
             <div class="col-xs-offset-3 col-xs-9">
-              <button onclick="submitValidation({{ openid }});" class="btn btn-default">认证</button>
+              <button onclick="submitValidation({{ openid }});" class="btn btn-default" id="submitBtn">认证</button>
+              <p class="help-block" id="helpLoading" hidden><img src="{% static "img/loading.gif" %}">正在认证，请稍候...</p>
               <p class="help-block" id="helpSubmit"></p>
             </div>
           </div>

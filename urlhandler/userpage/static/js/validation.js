@@ -30,22 +30,45 @@ function showError(groupid, helpid, text) {
     document.getElementById(groupid).setAttribute('class', 'form-group has-error');
 }
 
+function disableOne(id, flag) {
+    var dom = document.getElementById(id);
+    if (flag) {
+        dom.setAttribute('disabled', 'disabled');
+    } else {
+        dom.removeAttribute('disabled');
+    }
+}
+
+function disableAll(flag) {
+    disableOne('inputUsername', flag);
+    disableOne('inputPassword', flag);
+    disableOne('submitBtn', flag);
+}
+
+function showLoading(flag) {
+    var dom = document.getElementById('helpLoading');
+    if (flag) {
+        dom.removeAttribute('hidden');
+    } else {
+        dom.setAttribute('hidden', 'hidden');
+    }
+}
+
 function readyStateChanged() {
     if (xmlhttp.readyState==4)
     {// 4 = "loaded"
         if (xmlhttp.status==200)
         {// 200 = OK
             var result = xmlhttp.responseText;
-            clearAllHelps();
             switch (result)
             {
                 case 'Accepted':
                     document.getElementById('validationHolder').setAttribute('hidden', 'hidden');
                     document.getElementById('successHolder').removeAttribute('hidden');
-                    break;
+                    return;
 
                 case 'Rejected':
-                    showError('passwordGroup', 'helpPassword', '密码错误！请输入info登录密码。');
+                    showError('passwordGroup', 'helpPassword', '密码错误！请输入info登录密码');
                     break;
 
                 case 'Error':
@@ -57,26 +80,71 @@ function readyStateChanged() {
         {
             showError('submitGroup', 'helpSubmit', '服务器连接异常，请稍后重试。')
         }
+        showLoading(false);
+        disableAll(false);
     }
 }
 
 function submitValidation(openid) {
-    var form = document.getElementById('validationForm'),
-        elems = form.elements,
-        url = form.action,
-        params = "openid=" + encodeURIComponent(openid),
-        i, len;
-    for (i = 0, len = elems.length; i < len; ++i) {
-        params += '&' + elems[i].name + '=' + encodeURIComponent(elems[i].value);
+    if (checkUsername() & checkPassword()) {
+        disableAll(true);
+        showLoading(true);
+        var form = document.getElementById('validationForm'),
+            elems = form.elements,
+            url = form.action,
+            params = "openid=" + encodeURIComponent(openid),
+            i, len;
+        for (i = 0, len = elems.length; i < len; ++i) {
+            params += '&' + elems[i].name + '=' + encodeURIComponent(elems[i].value);
+        }
+        xmlhttp = new XMLHttpRequest();
+        xmlhttp.open('POST', url, true);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.onreadystatechange = readyStateChanged;
+        xmlhttp.send(params);
     }
-    xmlhttp = new XMLHttpRequest();
-    xmlhttp.open('POST', url, true);
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.onreadystatechange = readyStateChanged;
-    xmlhttp.send(params);
     return false;
+}
+
+function checkNotEmpty(groupid, helpid, inputid, hintName) {
+    if (document.getElementById(inputid).value.trim().length == 0) {
+        document.getElementById(groupid).setAttribute('class', 'form-group has-error');
+        var dom = document.getElementById(helpid);
+        dom.innerText = '请输入' + hintName + '！';
+        dom.removeAttribute('hidden');
+        return false;
+    } else {
+        showSuccess(groupid, helpid);
+        return true;
+    }
+}
+
+function checkIsDigit(groupid, helpid, inputid, hintName) {
+    if (isNaN(document.getElementById(inputid).value)) {
+        document.getElementById(groupid).setAttribute('class', 'form-group has-error');
+        var dom = document.getElementById(helpid);
+        dom.innerText = hintName + '必须为数字！';
+        dom.removeAttribute('hidden');
+        return false;
+    } else {
+        showSuccess(groupid, helpid);
+        return true;
+    }
+}
+
+function checkUsername() {
+    if (checkNotEmpty('usernameGroup', 'helpUsername', 'inputUsername', '学号')) {
+        return checkIsDigit('usernameGroup', 'helpUsername', 'inputUsername', '学号');
+    }
+    return false;
+}
+
+function checkPassword() {
+    return checkNotEmpty('passwordGroup', 'helpPassword', 'inputPassword', '密码');
 }
 
 window.setupWeixin({'optionMenu':false, 'toolbar':false});
 
 clearAllHelps();
+
+document.getElementById('inputUsername').focus();
