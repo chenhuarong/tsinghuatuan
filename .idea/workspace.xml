@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="519d02f1-9909-43c4-95c4-b95f242a05f2" name="Default" comment="" />
+    <list default="true" id="519d02f1-9909-43c4-95c4-b95f242a05f2" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/userpage/templates/validation.html" afterPath="$PROJECT_DIR$/urlhandler/userpage/templates/validation.html" />
+    </list>
     <ignored path="src.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385684509973" ignored="false" />
@@ -26,6 +28,7 @@
     <file path="/Python Console" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385712195335" ignored="false" />
     <file path="/test_validation.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385712145993" ignored="false" />
     <file path="/validation.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385730434781" ignored="false" />
+    <file path="/validation.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385732979395" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,10 +48,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="validation.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="validation.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/validation.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="8" selection-start="1696" selection-end="1696" vertical-scroll-proportion="-4.3333335">
+            <state line="27" column="30" selection-start="810" selection-end="810" vertical-scroll-proportion="0.2673522">
               <folding />
             </state>
           </provider>
@@ -75,19 +78,10 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlhandler/userpage/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="17" selection-start="2097" selection-end="2097" vertical-scroll-proportion="0.0">
+            <state line="73" column="44" selection-start="2880" selection-end="2880" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#23#68#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/urlhandler/userpage/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="24" selection-start="317" selection-end="317" vertical-scroll-proportion="0.2112676">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -110,7 +104,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/queryhandler/__init__.py" />
         <option value="$PROJECT_DIR$/urlhandler/__init__.py" />
         <option value="$PROJECT_DIR$/urlhandler/urlhandler/urls.py" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/validation/success.html" />
@@ -126,6 +119,7 @@
         <option value="$PROJECT_DIR$/urlhandler/userpage/static/css/validation.css" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/validation/index.html" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/views.py" />
+        <option value="$PROJECT_DIR$/urlhandler/userpage/templates/validation.html" />
       </list>
     </option>
   </component>
@@ -295,88 +289,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="urlhandler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TsinghuaTuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="urlhandler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="adminpage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TsinghuaTuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="urlhandler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="adminpage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TsinghuaTuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="urlhandler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="adminpage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -796,13 +708,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/js/validation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="16" selection-start="2523" selection-end="2523" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Library/Python/2.7/site-packages/django/core/handlers/base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="118" column="0" selection-start="4900" selection-end="4900" vertical-scroll-proportion="0.2897436">
@@ -820,22 +725,6 @@
     <entry file="file://$PROJECT_DIR$/urlhandler/urlhandler/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="42" selection-start="370" selection-end="370" vertical-scroll-proportion="0.44665012">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="17" selection-start="2097" selection-end="2097" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#23#68#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/validation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="8" selection-start="1696" selection-end="1696" vertical-scroll-proportion="-4.3333335">
           <folding />
         </state>
       </provider>
@@ -859,6 +748,29 @@
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="24" selection-start="317" selection-end="317" vertical-scroll-proportion="0.2112676">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="44" selection-start="2880" selection-end="2880" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#23#68#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/js/validation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="81" column="16" selection-start="2523" selection-end="2523" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/validation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="30" selection-start="810" selection-end="810" vertical-scroll-proportion="0.2673522">
           <folding />
         </state>
       </provider>
