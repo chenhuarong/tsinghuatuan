@@ -184,9 +184,10 @@ def get_order_result(msg, receive_msg):
                     return get_reply_text_xml(msg, u'订票数量不能小于1')
                 elif(tickets_num > activity.max_tickets_per_order):
                     return get_reply_text_xml(msg, u'订票数量不能大于%s'% activity.max_tickets_per_order)
-                orders[0].tickets = tickets_num
-                orders[0].status = 1
-                orders[0].save()
+                order = orders[0]
+                order.tickets = tickets_num
+                order.status = 1
+                order.save()
                 reply_content = u'修改成功，预订%s的票%s张，订票时间结束后，系统会自动抽签，请及时查询'%(activity.name, str(tickets_num))
             else:
                 reply_content = u'您已经预订%s的票%s张，请不要重复订票。如需修改订票信息，请先回复%s qx来取消订票，' \
@@ -250,7 +251,7 @@ def get_book_key(msg):
     now = string.atof(msg['CreateTime'])
     activitys = Activity.objects.filter(book_end__gte = datetime.datetime.fromtimestamp(now)).filter(book_start__lte = datetime.datetime.fromtimestamp(now))
     reply_content = ''
-    if(activitys.exists()):
+    if(activitys.exists() ==  True):
         for activity in activitys:
             content = u'%s将于%s在%s举行,%s至%s为开放订票时间，订票请回复%s,回复%s 2表示您要订2张票'
             content = content %(activity.name, activity.start_time.strftime('%Y-%m-%d %H:%M'),
