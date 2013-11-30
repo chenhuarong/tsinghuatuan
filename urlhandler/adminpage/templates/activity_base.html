@@ -1,0 +1,34 @@
+{% extends "base_with_nav.html" %}
+
+{% block title %}
+    {% block activity-title %}{% endblock %} - 清小团票务管理系统
+{% endblock %}
+
+{% block nav-title %}
+“清小团”票务管理系统
+{% endblock %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}
+
+{% block nav-li %}
+    <li class="{% block activity-list-active %}{% endblock %}"><a class="btn-link">活动列表</a></li>
+    {% block nav-li-ext %}{% endblock %}
+{% endblock %}
+
+{% block nav-li-right %}
+    <li><a class="btn-link">{% block username %}用户名{% endblock %}</a></li>
+{% endblock %}
+
+{% block footer %}
+    <p>清小团 &copy; 2013</p>
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends "activity_base.html" %}
+
+{% block activity-title %}活动列表{% endblock %}
+
+{% block activity-list-active %}active{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="pageheader">
+        <h1 class="lead"> Activity Information</h1>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+
+            <div class="col-xs-4">
+                <div class="input-group">
+                    <input type="text" class="form-control">
+                    <span class="input-group-addon">@</span>
+                    <!--
+                    <input type="text" class="form-control">
+                    <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Search</button>
+                    -->
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        all
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu pull-right">
+                        <li><a href="#">Name</a></li>
+                        <li><a href="#">Description</a></li>
+                        <li><a href="#">Showtime</a></li>
+                        <li><a href="#">Booktime</a></li>
+                        <li class="divider"></li>
+
+                    </ul>
+                    </span>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-default">New</button>
+                <button type="button" class="btn btn-default">Remove</button>
+
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        SortBy
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li> ShowTime </li>
+                        <li> Name </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>State</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Showtime</th>
+                <th>Venue</th>
+                <th>Booktime</th>
+                <th>More</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in activities %}
+            <tr>
+                <td>{{ item.status }}</td>
+                <td>{{ item.name }}</td>
+                <td><{{ item.description }}/td>
+                <td>{{ item.start_time }} - {{ item.end_time }} </td>
+                <td>{{ item.place }}</td>
+                <td>{{ item.book_start }} - {{ item.book_end }}</td>
+                <td>
+                    <span class=".glyphicon .glyphicon-arrow-right"><a href="#">Click</a></span>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+{% endblock %}
