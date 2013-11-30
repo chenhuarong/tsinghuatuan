@@ -151,9 +151,9 @@ def get_event_response(msg):
 #handle order message, like 'mlhk 2' means order 2 tickets of Malanhuakai
 def get_order_result(msg, receive_msg):
     if(is_authenticated(msg['FromUserName'])):
-        user = User.objects.get(id=1)
+        user = User.objects.get(weixin_id = msg['FromUserName'])
     else:
-        return get_reply_text_xml(msg, u'尚未绑定账号，<a href="http://sailon.duapp.com">点此绑定信息门户账号</a>')
+        return get_reply_text_xml(msg, u'<a href="http://tsinghuatuan.duapp.com/userpage/validate/?openid=%s">点此绑定信息门户账号</a>\r\n' %  msg['FromUserName'])
 
     activitys = Activity.objects.filter(book_end__gt = datetime.datetime.now()).filter(key = receive_msg[0])
     if(len(activitys) > 0):                 #book command is correct and the activity is at booking stage
@@ -203,18 +203,18 @@ def get_order_result(msg, receive_msg):
         return get_reply_text_xml(msg, u'您输入的命令不存在，请重新输入')
 
 def is_authenticated(username):
-#    user = User.objects.filter(weixin_id = username)
-#    if(len(user) == 0):
-#        return 0
-#    else:
-#        return 1
+    user = User.objects.filter(weixin_id = username)
+    if(len(user) == 0):
+        return 0
+    else:
+        return 1
     return 1
 
 #get help information
 def get_help_response(msg):
     user = User.objects.get(weixin_id = msg['FromUserName'])
     if(user.status == 1):
-       reply_content = u'<a href="http://sailon.duapp.com">点此绑定信息门户账号</a>\r\n'
+       reply_content = u'<a href="http://tsinghuatuan.duapp.com/userpage/validate/?openid=%s">点此绑定信息门户账号</a>\r\n' %  msg['FromUserName']
     else:
         reply_content = ''
     reply_content = reply_content + u'您好，回复以下关键字可以得到相应结果:\r\n活动 订票 订单 帮助'
@@ -259,7 +259,7 @@ def get_order(msg):
     if(is_authenticated(msg['FromUserName'])):
         user = User.objects.get(weixin_id = msg['FromUserName'])
     else:
-        return get_reply_text_xml(msg, u'尚未绑定账号，<a href="http://sailon.duapp.com">点此绑定信息门户账号</a>')
+        return get_reply_text_xml(msg, u'<a href="http://tsinghuatuan.duapp.com/userpage/validate/?openid=%s">点此绑定信息门户账号</a>\r\n' %  msg['FromUserName'])
     activitys = Activity.objects.filter(end_time__gte = datetime.datetime.now())
     reply_content = u''
     for activity in activitys:
