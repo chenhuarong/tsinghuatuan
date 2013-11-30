@@ -97,56 +97,11 @@ def check_weixin_signature(data):
 #handle text message and response
 def get_text_response(msg):
     if(msg['Content'] == '活动'):
-        activitys = Activity.objects.filter(end_time__gt = datetime.datetime.now()).order_by('book_start')
-        items = ''
-        num = 0
-        for activity in activitys:
-            item = '<item><Title><![CDATA[%s]]></Title><Description><![CDATA[%s]]></Description>' \
-                   '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
-            item = item % (activity.name, activity.description, 'http://student.tsinghua.edu.cn/upload/20131030/43571383148723104.png',
-                           'http://student.tsinghua.edu.cn/topic/mlhk/mlhk/index.html')
-            items  = items + item
-            num = num + 1
-            if(num == 10):
-                break
-        if(num != 0):
-            return get_reply_news_xml(msg, items, num)
-        else:
-            return get_reply_text_xml(msg, u'您好，目前没有活动:D')
+        return get_activities(msg)
     elif(msg['Content'] == '订票'):
-        activitys = Activity.objects.filter(book_end__gte = datetime.datetime.now()).filter(book_start__lte = datetime.datetime.now())
-        reply_content = ''
-        if(len(activitys) != 0):
-            for activity in activitys:
-                content = u'%s将于%s在%s举行,%s至%s为开放订票时间，订票请回复%s,回复%s 2表示您要订2张票'
-                content = content %(activity.name, activity.start_time.strftime('%Y-%m-%d %H:%M'),
-                                                activity.end_time.strftime('%Y-%m-%d %H:%M'), activity.book_start.strftime('%Y-%m-%d %H:%M'),
-                                                activity.book_end.strftime('%Y-%m-%d %H:%M'), activity.key, activity.key)
-                reply_content = reply_content + '\r\n' + content
-        else:
-            reply_content =  u'对不起，目前没有活动开放订票'
-        return get_reply_text_xml(msg, reply_content)
+        return get_book_key(msg)
     elif(msg['Content'] == '订单'):
-        if(is_authenticated(msg['FromUserName'])):
-            user = User.objects.get(weixin_id = msg['FromUserName'])
-        else:
-            return get_reply_text_xml(msg, u'尚未绑定账号，<a href="http://sailon.duapp.com">点此绑定信息门户账号</a>')
-        activitys = Activity.objects.filter(end_time__gte = datetime.datetime.now())
-        reply_content = u''
-        for activity in activitys:
-            orders = Order.objects.filter(user = user, activity = activity)
-            if(len(orders) != 0):
-                order = orders[0]
-                if(order.status == 1):
-                    item = u'预订%s%s张，抽签未开始\r\n' %(activity.name, order.tickets)
-                elif(order.status == 2):
-                    item = u'%s%s张，订票失败\r\n'%(activity.name, order.tickets)
-                elif(order.status == 3):
-                    item = u'%s%s张，订票成功!<a href="http://sailon.duappp.com">点此查看电子票</a>\r\n'%(activity.name, order.tickets)
-                reply_content = reply_content + item
-        if(reply_content == u''):
-            reply_content = u'您目前没有订单'
-        return get_reply_text_xml(msg, reply_content)
+        return get_order(msg)
     elif(msg['Content'] == '帮助'):
         return get_help_response(msg)
     else:
@@ -174,6 +129,7 @@ def get_event_response(msg):
             user.save()
         else:
             user = users[0]
+            user.status = 1
             user.save()
         return get_help_response(msg)
     elif(msg['Event'] == 'unsubscribe'):
@@ -182,6 +138,12 @@ def get_event_response(msg):
         user.save()
     elif(msg['Event'] == 'scan'):
         return get_help_response(msg)
+    elif(msg['Event'] == 'CLICK' and msg['EventKey'] == 'TSINGHUATUAN_ALL'):
+        return get_activities(msg)
+    elif(msg['Event'] == 'CLICK' and msg['EventKey'] == 'TSINGHUATUAN_BOOK'):
+        return get_book_key(msg)
+    elif(msg['Event'] == 'CLICK' and msg['EventKey'] == 'TSINGHUATUAN_ORDER'):
+        return get_order(msg)
     return get_help_response(msg)
 
 
@@ -256,4 +218,61 @@ def get_help_response(msg):
     else:
         reply_content = ''
     reply_content = reply_content + u'您好，回复以下关键字可以得到相应结果:\r\n活动 订票 订单 帮助'
+    return get_reply_text_xml(msg, reply_content)
+
+
+#get activities
+def get_activities(msg):
+    activitys = Activity.objects.filter(end_time__gt = datetime.datetime.now()).order_by('book_start')
+    items = ''
+    num = 0
+    for activity in activitys:
+        item = '<item><Title><![CDATA[%s]]></Title><Description><![CDATA[%s]]></Description>' \
+               '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
+        item = item % (activity.name, activity.description, 'http://student.tsinghua.edu.cn/upload/20131030/43571383148723104.png',
+                       'http://student.tsinghua.edu.cn/topic/mlhk/mlhk/index.html')
+        items  = items + item
+        num = num + 1
+        if(num == 10):
+            break
+    if(num != 0):
+        return get_reply_news_xml(msg, items, num)
+    else:
+        return get_reply_text_xml(msg, u'您好，目前没有活动:D')
+    return get_reply_text_xml(msg, u'您好，目前没有活动:D')
+
+def get_book_key(msg):
+    activitys = Activity.objects.filter(book_end__gte = datetime.datetime.now()).filter(book_start__lte = datetime.datetime.now())
+    reply_content = ''
+    if(len(activitys) != 0):
+        for activity in activitys:
+            content = u'%s将于%s在%s举行,%s至%s为开放订票时间，订票请回复%s,回复%s 2表示您要订2张票'
+            content = content %(activity.name, activity.start_time.strftime('%Y-%m-%d %H:%M'),
+                                activity.end_time.strftime('%Y-%m-%d %H:%M'), activity.book_start.strftime('%Y-%m-%d %H:%M'),
+                                activity.book_end.strftime('%Y-%m-%d %H:%M'), activity.key, activity.key)
+            reply_content = reply_content + '\r\n' + content
+    else:
+        reply_content =  u'对不起，目前没有活动开放订票'
+    return get_reply_text_xml(msg, reply_content)
+
+def get_order(msg):
+    if(is_authenticated(msg['FromUserName'])):
+        user = User.objects.get(weixin_id = msg['FromUserName'])
+    else:
+        return get_reply_text_xml(msg, u'尚未绑定账号，<a href="http://sailon.duapp.com">点此绑定信息门户账号</a>')
+    activitys = Activity.objects.filter(end_time__gte = datetime.datetime.now())
+    reply_content = u''
+    for activity in activitys:
+        orders = Order.objects.filter(user = user, activity = activity)
+        if(len(orders) != 0):
+            order = orders[0]
+            if(order.status == 1):
+                item = u'预订%s%s张，抽签未开始\r\n' %(activity.name, order.tickets)
+            elif(order.status == 2):
+                item = u'%s%s张，订票失败\r\n'%(activity.name, order.tickets)
+            elif(order.status == 3):
+                item = u'%s%s张，订票成功!<a href="http://sailon.duappp.com">点此查看电子票</a>\r\n'%(activity.name, order.tickets)
+            reply_content = reply_content + item
+    if(reply_content == u''):
+        reply_content = u'您目前没有订单'
     return get_reply_text_xml(msg, reply_content)
