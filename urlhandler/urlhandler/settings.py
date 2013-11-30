@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import MySQLdb
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -66,6 +67,13 @@ if 'SERVER_SOFTWARE' in os.environ:
             'PORT': '4050',
             }
     }
+    con = MySQLdb.Connect(host = "sqld.duapp.com",
+                          port = 4050,
+                          user = "6jIVijhGUVreXBNI6jYzZGlt",
+                          passwd = "AxB1w67ddB4cwkCLw3gQSoBjGUcICUL3",
+                          db = "NYenZfWMVWuqtUGNuQsI")
+    con.ping(True)
+    cur = con.cursor()
 else:
     DATABASES = {
         'default': {
