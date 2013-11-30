@@ -3,6 +3,7 @@
 import urllib
 import hashlib
 import time, datetime
+import string
 import random
 import xml.etree.ElementTree as ET
 from django.utils.encoding import smart_str
@@ -120,7 +121,7 @@ def get_text_response(msg):
 def get_event_response(msg):
     if(msg['Event'] == 'subscribe'):
         users = User.objects.filter(weixin_id = msg['FromUserName'])
-        if(len(users) == 0):
+        if(users.exists() == 0):
             user = User(
                 weixin_id = msg['FromUserName'],
                 stu_id = 0,
@@ -155,12 +156,14 @@ def get_order_result(msg, receive_msg):
     else:
         return get_reply_text_xml(msg, u'<a href="http://tsinghuatuan.duapp.com/userpage/validate/?openid=%s">点此绑定信息门户账号</a>\r\n' %  msg['FromUserName'])
 
-    activitys = Activity.objects.filter(book_end__gt = datetime.datetime.now()).filter(key = receive_msg[0])
-    if(len(activitys) > 0):                 #book command is correct and the activity is at booking stage
+    now = string.atof(msg['CreateTime'])
+    activitys = Activity.objects.filter(book_end__gt = datetime.datetime.fromtimestamp(now)).filter(key = receive_msg[0])
+
+    if(activitys.exists()):                 #book command is correct and the activity is at booking stage
         activity = activitys[0]
         if(receive_msg[1].isdigit()):
             orders = Order.objects.filter(user = user, activity = activity)
-            if(len(orders) == 0):   #user has not booked this activity before  or the order is cancelled
+            if(orders.exists() == 0):   #user has not booked this activity before  or the order is cancelled
                 tickets_num = int(receive_msg[1])            #chang number in book command into integer
                 if(tickets_num < 1):
                     return get_reply_text_xml(msg, u'订票数量不能小于1')
@@ -188,11 +191,12 @@ def get_order_result(msg, receive_msg):
             else:
                 reply_content = u'您已经预订%s的票%s张，请不要重复订票。如需修改订票信息，请先回复%s qx来取消订票，' \
                                 u'然后再重新订票'% (activity.name, str(orders[0].tickets), activity.key)
-        elif(receive_msg[1] == 'qx'):
+        elif(receive_msg[1] == 'qx' or receive_msg[1] == 'QX'):
             orders = Order.objects.filter(user = user, activity = activity)
-            if(len(orders) != 0):   #user has already booked the activity
-                orders[0].status = 0
-                orders[0].save()
+            if(orders.exists()):   #user has already booked the activity
+                order = orders[0]
+                order.status = 0
+                order.save()
                 reply_content = u'您的订票记录已取消，可以重新订票了:D'
             else:
                 reply_content = u'未找到您的订票记录，取消订票失败'
@@ -203,11 +207,11 @@ def get_order_result(msg, receive_msg):
         return get_reply_text_xml(msg, u'您输入的命令不存在，请重新输入')
 
 def is_authenticated(username):
-    user = User.objects.filter(weixin_id = username)
-    if(len(user) == 0):
-        return 0
-    else:
+    users = User.objects.filter(weixin_id = username)
+    if(users.exists()):
         return 1
+    else:
+        return 0
     return 1
 
 #get help information
@@ -223,7 +227,8 @@ def get_help_response(msg):
 
 #get activities
 def get_activities(msg):
-    activitys = Activity.objects.filter(end_time__gt = datetime.datetime.now()).order_by('book_start')
+    now = string.atof(msg['CreateTime'])
+    activitys = Activity.objects.filter(end_time__gt = datetime.datetime.fromtimestamp(now)).order_by('book_start')
     items = ''
     num = 0
     for activity in activitys:
@@ -242,9 +247,10 @@ def get_activities(msg):
     return get_reply_text_xml(msg, u'您好，目前没有活动:D')
 
 def get_book_key(msg):
-    activitys = Activity.objects.filter(book_end__gte = datetime.datetime.now()).filter(book_start__lte = datetime.datetime.now())
+    now = string.atof(msg['CreateTime'])
+    activitys = Activity.objects.filter(book_end__gte = datetime.datetime.fromtimestamp(now)).filter(book_start__lte = datetime.datetime.fromtimestamp(now))
     reply_content = ''
-    if(len(activitys) != 0):
+    if(activitys.exists()):
         for activity in activitys:
             content = u'%s将于%s在%s举行,%s至%s为开放订票时间，订票请回复%s,回复%s 2表示您要订2张票'
             content = content %(activity.name, activity.start_time.strftime('%Y-%m-%d %H:%M'),
@@ -260,19 +266,23 @@ def get_order(msg):
         user = User.objects.get(weixin_id = msg['FromUserName'])
     else:
         return get_reply_text_xml(msg, u'<a href="http://tsinghuatuan.duapp.com/userpage/validate/?openid=%s">点此绑定信息门户账号</a>\r\n' %  msg['FromUserName'])
-    activitys = Activity.objects.filter(end_time__gte = datetime.datetime.now())
+
+    now = string.atof(msg['CreateTime'])
+    activitys = Activity.objects.filter(end_time__gte = datetime.datetime.fromtimestamp(now))
     reply_content = u''
     for activity in activitys:
         orders = Order.objects.filter(user = user, activity = activity)
-        if(len(orders) != 0):
+        if(orders.exists()):
             order = orders[0]
             if(order.status == 1):
                 item = u'预订%s%s张，抽签未开始\r\n' %(activity.name, order.tickets)
+                reply_content = reply_content + item
             elif(order.status == 2):
                 item = u'%s%s张，订票失败\r\n'%(activity.name, order.tickets)
+                reply_content = reply_content + item
             elif(order.status == 3):
                 item = u'%s%s张，订票成功!<a href="http://sailon.duappp.com">点此查看电子票</a>\r\n'%(activity.name, order.tickets)
-            reply_content = reply_content + item
+                reply_content = reply_content + item
     if(reply_content == u''):
         reply_content = u'您目前没有订单'
     return get_reply_text_xml(msg, reply_content)
