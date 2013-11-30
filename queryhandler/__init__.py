@@ -209,7 +209,7 @@ def get_order_result(msg, receive_msg):
 
 def is_authenticated(username):
     users = User.objects.filter(weixin_id = username)
-    if(users.exists()):
+    if(users.count() != 0):
         return 1
     else:
         return 0

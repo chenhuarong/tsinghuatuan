@@ -13,7 +13,7 @@
     <file path="/views.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385741936445" ignored="false" />
     <file path="/fragment.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385791860927" ignored="false" />
     <file path="/weixin_simulator.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385819276079" ignored="false" />
-    <file path="/__init__.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385819417091" ignored="false" />
+    <file path="/__init__.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385826197664" ignored="false" />
     <file path="/settings.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385657146956" ignored="false" />
     <file path="/app.conf" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385134430791" ignored="false" />
     <file path="/models.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385714433588" ignored="false" />
@@ -50,10 +50,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="__init__.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="166" column="57" selection-start="6411" selection-end="6411" vertical-scroll-proportion="-5.6">
+            <state line="210" column="53" selection-start="8671" selection-end="8671" vertical-scroll-proportion="0.27575758">
               <folding>
                 <element signature="e#54#67#0" expanded="true" />
               </folding>
@@ -103,10 +103,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlhandler/urlhandler/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="70" selection-start="2160" selection-end="2160" vertical-scroll-proportion="0.65217394">
+            <state line="72" column="70" selection-start="2160" selection-end="2160" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#321#330#0" expanded="true" />
               </folding>
@@ -510,7 +510,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985073" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -682,20 +682,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
+    <entry file="file://$PROJECT_DIR$/urlhandler/urlhandler/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="166" column="57" selection-start="6411" selection-end="6411" vertical-scroll-proportion="-5.6">
+        <state line="72" column="70" selection-start="2160" selection-end="2160" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#54#67#0" expanded="true" />
+            <element signature="e#321#330#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/urlhandler/settings.py">
+    <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="70" selection-start="2160" selection-end="2160" vertical-scroll-proportion="0.65217394">
+        <state line="210" column="53" selection-start="8671" selection-end="8671" vertical-scroll-proportion="0.27575758">
           <folding>
-            <element signature="e#321#330#0" expanded="true" />
+            <element signature="e#54#67#0" expanded="true" />
           </folding>
         </state>
       </provider>
