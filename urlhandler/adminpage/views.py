@@ -17,19 +17,45 @@ from django.shortcuts import render_to_response
 
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login,logout as auth_logout
+from django.views.decorators.csrf import csrf_protect
+
+from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 
 #import database
 from urlhandler.models import Activity, Order, Ticket
 
+@csrf_protect
 def home(request):
-    return HttpResponse('Hi')
+    #return HttpResponse('login.html')
+    return render_to_response('login.html',context_instance=RequestContext(request))
 
 
 def activity_list(request):
     activities = Activity.objects.all()
     return render_to_response('activity_list.html', locals())
 
+def avtivity_new(request):
+    pass
+
+@csrf_protect
+def login(request):
+    username = request.POST['username']
+    password = request.POST['password']
+
+    user = auth.authenticate(username = username, password = password)
+    if user is not None:
+        auth.login(request, user)
+
+        activities = Activity.objects.all()
+        return render_to_response('activity_list.html',locals())
+    else:
+        message = "用户名或密码不正确，请重新输入"
+        return render_to_response('login.html', locals())
+
+def logout(request):
+    auth.logout(request)
+    return render_to_response('/',context_instance=RequestContext(request))
 
 def str_to_datetime(str):
     return datetime.strptime(str, '%Y-%m-%d %H:%M:%S')
