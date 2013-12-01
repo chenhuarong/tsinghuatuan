@@ -1,0 +1,75 @@
+{% extends "activity_base.html" %}
+
+{% load staticfiles %}
+
+{% block activity-title %}活动列表{% endblock %}
+
+{% block activity-list-active %}active{% endblock %}
+
+{% block css %}
+    <link href="{% static "lib/bs/css/bootstrap-select.css" %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block js %}
+    <script src="{% static "lib/bs/js/bootstrap-select.js" %}"></script>
+    <script>
+        $('.selectpicker').selectpicker();
+    </script>
+{% endblock %}
+
+{% block username %}
+    <a href={% url "adminpage.views.logout" %} >登出</a>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container" xmlns="http://www.w3.org/1999/html">
+
+    <div class="pageheader">
+        <h1 class="lead"> 活动信息 </h1>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+
+            <form action="." method="GET" >{% csrf_token %}
+
+                <a class="btn btn-default" href={% url "adminpage.views.activity_detail" actid=0 %}>新增活动</a>
+            </form>
+        </div>
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>状态</th>
+                <th>名称</th>
+                <th>简介</th>
+                <th>上映时间</th>
+                <th>地点</th>
+                <th>订票时间</th>
+                <th>编辑</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in activities %}
+            <tr>
+                <td>{{ item.status }}</td>
+                <td>{{ item.name }}</td>
+                <td><{{ item.description }}/td>
+                <td>{{ item.start_time }} - {{ item.end_time }} </td>
+                <td>{{ item.place }}</td>
+                <td>{{ item.book_start }} - {{ item.book_end }}</td>
+                <td>
+                    <span class=".glyphicon .glyphicon-arrow-right">
+                        <a href={% url "adminpage.views.activity_detail" actid=item.id %}>Click</a>
+                    </span>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+{% endblock %}

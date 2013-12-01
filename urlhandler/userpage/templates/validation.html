@@ -3,7 +3,7 @@
 {% load staticfiles %}
 
 {% block title %}
-清小团 - 绑定学号
+绑定学号 - 清小团
 {% endblock %}
 
 {% block css %}
@@ -12,6 +12,11 @@
 
 {% block js %}
     <script src="{% static "js/validation.js" %}"></script>
+    <script>
+    function ajaxForm() {
+        submitValidation('{{ openid }}');
+    }
+    </script>
 {% endblock %}
 
 {% block header %}
@@ -24,7 +29,7 @@
 
 {% block content %}
     <div id="validationHolder">
-        <form class="form-horizontal" role="form" action="{% url "userpage.views.validate_post" %}" method="post" id="validationForm" onsubmit="return submitValidation({{ openid }})">
+        <form class="form-horizontal" role="form" action="{% url userpage.views.validate_post %}" method="post" id="validationForm" onsubmit="return false;">
             {% csrf_token %}
           <div class="form-group" id="usernameGroup">
             <label for="inputUsername" class="col-xs-3 control-label">学号</label>
@@ -42,7 +47,7 @@
           </div>
           <div class="form-group" id="submitGroup">
             <div class="col-xs-offset-3 col-xs-9">
-              <button onclick="submitValidation({{ openid }});" class="btn btn-default" id="submitBtn">认证</button>
+              <button onclick="ajaxForm();" class="btn btn-default" id="submitBtn">认证</button>
               <p class="help-block" id="helpLoading" hidden><img src="{% static "img/loading.gif" %}">正在认证，请稍候...</p>
               <p class="help-block" id="helpSubmit"></p>
             </div>
