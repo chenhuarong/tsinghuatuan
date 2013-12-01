@@ -9,6 +9,7 @@ import xml.etree.ElementTree as ET
 from django.utils.encoding import smart_str
 from queryhandler.settings import WEIXIN_TOKEN
 from urlhandler.models import *
+from urlhandler.settings import STATIC_URL
 
 # convert string 'a=1&b=2&c=3' to dict {'a':1,'b':2,'c':3}
 def urldecode(query):
@@ -233,7 +234,7 @@ def get_activities(msg):
         item = '<item><Title><![CDATA[%s]]></Title><Description><![CDATA[%s]]></Description>' \
                '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
         item = item % (activity.name, activity.description, 'http://student.tsinghua.edu.cn/upload/20131030/43571383148723104.png',
-                       'http://student.tsinghua.edu.cn/topic/mlhk/mlhk/index.html')
+                       'http://tsinghuatuan.duapp.com/userpage/activity/?activityid='+str(activity.id))
         items  = items + item
         num = num + 1
         if(num == 10):
