@@ -20,6 +20,11 @@ class Activity(models.Model):
     max_tickets_per_order = models.IntegerField(default=2)
     total_tickets = models.IntegerField()
     status = models.IntegerField()
+    # Something about status:
+    # 0: saved but not published
+    # 1: published but not determined
+    # 2: is determining
+    # 3: determined
 
 class Ticket(models.Model):
     user = models.ForeignKey(User)
@@ -27,9 +32,15 @@ class Ticket(models.Model):
     activity = models.ForeignKey(Activity)
     isUsed = models.IntegerField()
     seat = models.CharField(max_length=255)
+    # Something about isUsed
+    # 0: ordered but not checked
+    # 1: checked
 
 class Order(models.Model):
     user = models.ForeignKey(User)
     activity = models.ForeignKey(Activity)
-    status  = models.IntegerField()
+    status = models.IntegerField()
     tickets = models.IntegerField()
+    # Something about status
+    # 0: canceled
+    # 1: valid
