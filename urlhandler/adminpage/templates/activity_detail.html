@@ -1,94 +1,183 @@
-{% extends "activity_base.html" %}
+{% extends "activity_list.html" %}
+
+{% block activity-title %}
+{{ activity.name }}
+{% endblock %}
+
+{% load staticfiles %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "lib/bs/datetimepicker/css/bootstrap-datetimepicker.min.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/activity_detail.css" %}"/>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static "lib/jq/form/jquery.form.min.js" %}"></script>
+    <script src="{% static "lib/bs/datetimepicker/js/bootstrap-datetimepicker.js" %}"></script>
+    <script src="{% static "lib/bs/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" %}"></script>
+    <script>
+        var activity = {
+            'name': '{{ activity.name }}'{% if activity.id %},
+            'id': {{ activity.id }},
+            'key': '{{ activity.key }}',
+            'description': '{{ activity.description }}',
+            'start_time': new Date('{{ activity.start_time|date:"r" }}'),
+            'end_time': new Date('{{ activity.end_time|date:"r" }}'),
+            'place': '{{ activity.place }}',
+            'book_start': new Date('{{ activity.book_start|date:"r" }}'),
+            'book_end': new Date('{{ activity.book_end|date:"r" }}'),
+            'max_tickets_per_order': {{ activity.max_tickets_per_order }},
+            'total_tickets': {{ activity.total_tickets }},
+            'status': {{ activity.status }}{% else %},
+            'status': 0{% endif %}{% if tickets_checked %},
+            'checked_tickets': {{ tickets_checked }},
+            'ordered_tickets': {{ tickets_ordered }}{% endif %}
+        }
+    </script>
+    <script src="{% static "js/activity_detail.js" %}"></script>
+{% endblock %}
+
+{% block activity-list-active %}{% endblock %}
+
+{% block nav-li-ext %}
+    <li class="{% block activity-detail-active %}active{% endblock %}">
+        <a href="{% if activity.id %}
+        {% url adminpage.views.activity_detail actid=activity.id %}
+        {% else %}
+        {% url adminpage.views.activity_add %}
+        {% endif %} ">{{ activity.name }}</a>
+    </li>
+{% endblock %}
 
 {% block content %}
-
-<form class="form-horizontal" role="form">
-    <div class="container" style="padding-top:80px">
-
-
-        <div class="form-group">
-            <label for="Name" class="col-sm-2 control-label">Name</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="Name" placeholder="Name">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="Venue" class="col-sm-2 control-label">Venue</label>
-            <div class="col-sm-10">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="Venue">
-                        大礼堂 <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">中礼堂</a></li>
-                        <li><a href="#">小礼堂 action</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">新清华学堂</a></li>
-                    </ul>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="Description" class="col-sm-2 control-label">Description</label>
-            <div class="col-sm-10">
-                <textarea class="form-control" rows="3" id="Description" placeholder="Description"></textarea>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="starttime" class="col-sm-2 control-label">Show time</label>
-
-            <div class="col-sm-10" >
-                <input type="date" class="from-control" id="starttime">
-                <input type="date" class="from-control" id="endtime">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="TicketNum" class="col-sm-2 control-label">TicketNum</label>
-            <div class="col-sm-10">
-                <input type="number" class="form-control" id="TicketNum" placeholder="TicketNum">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="Limit" class="col-sm-2 control-label">Limit</label>
-            <div class="col-sm-10">
-                <input type="number" class="form-control" id="Limit" placeholder="Limit">
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            <label for="bookstart" class="col-sm-2 control-label">Bookstart</label>
-
-            <div class="col-sm-10" >
-                <input type="date" class="from-control" id="bookstart">
-                <input type="date" class="from-control" id="bookend">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox"> Place
-                    </label>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">Save</button>
-                <button type="reset" class="btn btn-danger">Reset</button>
-            </div>
-        </div>
-
-
+    <div class="container" id="detail-noscript">
+        <noscript>请开启JavaScript后重试。</noscript>
     </div>
-</form>
+    <div class="container" id="detail-form" style="display: none;">
+        <form class="form-horizontal" role="form" method="post" action="{% url adminpage.views.activity_post %}" id="activity-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="input-name" class="col-sm-2 control-label">活动名称</label>
+                <div class="col-sm-10">
+                    <input type="text" name="name" class="form-control" id="input-name" placeholder="活动名称，如 马兰花开">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="input-key" class="col-sm-2 control-label">活动代码</label>
+                <div class="col-sm-10">
+                    <input type="text" name="key" class="form-control" id="input-key" placeholder="用户用于该活动订票的代码，如 mlhk">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="input-place" class="col-sm-2 control-label">活动地点</label>
+                <div class="col-sm-10">
+                    <input type="text" name="place" class="form-control" id="input-place" placeholder="活动地点，如 大礼堂">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="input-description" class="col-sm-2 control-label">活动简介</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" name="description" rows="3" id="input-description" placeholder="描述，如 好看的舞台剧" row="3" style="resize: none;"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="input-start-apr" class="col-sm-2 control-label">活动时间</label>
+                <div class="input-group date form_datetime col-sm-4" id="input-start_time" data-link-field="raw-start_time">
+                    <input class="form-control" size="16" type="text" value="" id="input-start-apr" readonly>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                </div>
+                <input type="hidden" name="start_time" id="raw-start_time" value="" />
+                <label for="input-end-apr" class="col-sm-2 control-label">结束时间</label>
+                <div class="input-group date form_datetime col-sm-4" id="input-end_time" data-link-field="raw-end_time">
+                    <input class="form-control" size="16" type="text" value="" id="input-end-apr" readonly>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                </div>
+                <input type="hidden" name="end_time" id="raw-end_time" value="" />
+            </div>
+
+            <div class="form-group">
+                <label for="input-total_tickets" class="col-sm-2 control-label">总票数</label>
+                <div class="col-sm-10">
+                    <input type="number" name="total_tickets" class="form-control" id="input-total_tickets" placeholder="此次活动通过“清小团”的发票总数，如 1000">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="input-max_tickets_per_order" class="col-sm-2 control-label">每人最大订票数</label>
+                <div class="col-sm-10">
+                    <input type="number" name="max_tickets_per_order" class="form-control" id="input-max_tickets_per_order" placeholder="每人最大订票数，如 2">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="input-book-start-apr" class="col-sm-2 control-label">订票时间</label>
+                <div class="input-group date form_datetime col-sm-4" id="input-book_start" data-link-field="raw-book_start">
+                    <input class="form-control" size="16" type="text" value="" id="input-book-start-apr" readonly>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                </div>
+                <input type="hidden" name="book_start" id="raw-book_start" value="" />
+                <label for="input-book-end-apr" class="col-sm-2 control-label">截止时间</label>
+                <div class="input-group date form_datetime col-sm-4" id="input-book_end" data-link-field="raw-book_end">
+                    <input class="form-control" size="16" type="text" value="" id="input-book-end-apr" readonly>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                </div>
+                <input type="hidden" name="book_end" id="raw-book_end" value="" />
+            </div>
+
+            <div class="form-group" id="progress-tickets">
+                <label class="col-sm-2 control-label">订票与入场情况</label>
+                <div class="col-sm-10">
+                    <div class="progress progress-in-form">
+                      <div class="progress-bar progress-bar-success" id="tickets-checked" style="width: 0%">
+                      </div>
+                      <div class="progress-bar progress-bar-warning" id="tickets-ordered" style="width: 0%">
+                      </div>
+                      <div class="progress-bar progress-bar-danger" id="tickets-remain" style="width: 0%">
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="checkSeat" disabled name="seat">分配座位
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" onclick="publishActivity();" class="btn btn-primary" id="publishBtn">发布</button>
+                    <button type="submit" class="btn btn-default" id="saveBtn">暂存</button>
+                    <button type="reset" class="btn btn-warning" id="resetBtn">重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container" id="detail-processing" style="display: none;">
+        <img src="{% static "img/loading.gif" %}">
+        正在执行，请稍候……
+    </div>
+
+    <div class="container" id="detail-result" style="display: none;">
+        <h1>处理结果</h1>
+        <pre id="resultHolder"></pre>
+        <div class="col-sm-offset-2">
+            <a class="btn btn-success" href="{% url adminpage.views.activity_list %}">返回列表</a>
+            <button class="btn btn-info" id="continueBtn">继续修改</button>
+        </div>
+    </div>
 
 {% endblock %}
