@@ -23,7 +23,7 @@ while True:
            '{"type":"view","name":"马兰花开","url":"http://student.tsinghua.edu.cn/"},{"type":"click","name":"全部",' \
            '"key":"TSINGHUATUAN_ALL"}]},{"type":"click","name":"订票","key":"TSINGHUATUAN_BOOK"},{"type":"click",' \
            '"name":"订单","key":"TSINGHUATUAN_ORDER"}]}'
-    ext_tpl = ext_tpl % (FROM_USER_NAME, FROM_USER_NAME, str(int(time.time())), 'text', '订单')
+    ext_tpl = ext_tpl % (FROM_USER_NAME, FROM_USER_NAME, str(int(time.time())), 'text', '活动')
     #evt_tpl = evt_tpl % (FROM_USER_NAME, FROM_USER_NAME, str(int(time.time())), 'CLICK', 'TSINGHUATUAN_ORDER')
     req = urllib2.Request(url = url, data = ext_tpl)
     #req = urllib2.Request(url = url_menu, data = data)

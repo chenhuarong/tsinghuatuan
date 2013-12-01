@@ -39,7 +39,7 @@ def get_reply_text_xml(msg, reply_content):
 def get_reply_news_xml(msg, articles, num):
     ext_tpl = '<xml><ToUserName><![CDATA[%s]]></ToUserName><FromUserName><![CDATA[%s]]></FromUserName><CreateTime>%s' \
               '</CreateTime><MsgType><![CDATA[%s]]></MsgType><ArticleCount>%s</ArticleCount><Articles>%s</Articles></xml>'
-    ext_tpl = ext_tpl % (msg['FromUserName'], msg['ToUserName'], str(int(time.time())), 'text',str(num), articles)
+    ext_tpl = ext_tpl % (msg['FromUserName'], msg['ToUserName'], str(int(time.time())), 'news',str(num), articles)
     return ext_tpl
 
 # entry of weixin handler
