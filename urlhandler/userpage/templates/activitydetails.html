@@ -1,0 +1,26 @@
+{% extends "mobile_base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+清小团 - 活动详情
+{% endblock %}
+
+{% block css %}
+<link href="{% static "css/details.css" %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block js %}
+    <script src="{% static "js/details.js" %}"></script>
+{% endblock %}
+
+{% block theme %}
+    {{ act_name }}
+{% endblock %}
+
+{% block content %}
+
+{% include 'activityphoto.html' %}
+{% include 'activitytext.html' %}
+
+{% endblock %}

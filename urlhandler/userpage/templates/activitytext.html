@@ -1,0 +1,102 @@
+<div class="details-text">
+
+    <div class="details-wrapper" id="booktime">
+        <div class="text-inner">
+            <div class="trigger" id="booktrigger">
+                <a>订票时间</a>
+            </div>
+        </div>
+    </div>
+    <div class="date-wrapper" style="display: none" id="bookdetails">
+        <div class="details-divider"></div>
+        <div class="inner">
+            <div class="date">
+                <span class="hour">{{ act_bookstart |date:"h:m"}}</span><br>
+                <span class="day">{{ act_bookstart |date:"Y/m/d"}}</span>
+            </div>
+        </div>
+        <div class="date-space">
+            <span class="space"> - </span>
+            <span class="day"></span>
+        </div>
+        <div class="inner">
+            <div class="date">
+                <span class="hour">{{ act_bookend |date:"h:m"}}</span><br>
+                <span class="day">{{ act_bookend |date:"Y/m/d"}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="details-divider"></div>
+
+    <div class="details-wrapper" id="activitytime">
+        <div class="text-inner">
+            <div class="trigger">
+                <a>活动时间</a>
+            </div>
+        </div>
+    </div>
+    <div class="date-wrapper" style="display: none">
+        <div class="inner">
+            <div class="date">
+                <span class="hour">{{ act_begintime |date:"h:m"}}</span><br>
+                <span class="day">{{ act_begintime |date:"Y/m/d"}}</span>
+            </div>
+        </div>
+        <div class="date-space">
+            <span class="space"> - </span>
+            <span class="day"></span>
+        </div>
+        <div class="inner">
+            <div class="date">
+                <span class="hour">{{ act_endtime |date:"h:m"}}</span><br>
+                <span class="day">{{ act_endtime |date:"Y/m/d"}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="details-divider"></div>
+
+    <div class="details-wrapper" id="place">
+        <div class="text-inner">
+            <div class="trigger">
+                <a>活动地点</a>
+            </div>
+        </div>
+    </div>
+    <div class="toggle_container" style="display: none;">
+            <ul>
+                <li>{{ activity_place }}</li>
+            </ul>
+    </div>
+    <div class="details-divider"></div>
+
+    <div class="details-wrapper" id="ticket">
+        <div class="text-inner">
+            <div class="trigger">
+                <a>票务信息</a>
+            </div>
+        </div>
+    </div>
+    <div class="toggle_container" style="display: none;" >
+            <ul>
+                <li>活动预计发票数：{{ act_totaltickets }}</li>
+                <li>活动每个可订最大张数：{{ act_perorder }}</li>
+            </ul>
+    </div>
+    <div class="details-divider"></div>
+
+    <div class="details-wrapper" id="content">
+        <div class="text-inner">
+            <div class="trigger">
+                <a>活动详情</a>
+            </div>
+        </div>
+    </div>
+    <div class="toggle_container" style="display: none;">
+            <ul>
+                <li>{{ activity_text }}</li>
+            </ul>
+    </div>
+    <div class="details-divider"></div>
+    距订票开始还有：
+</div>
+

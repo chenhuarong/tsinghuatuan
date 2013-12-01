@@ -20,7 +20,11 @@
 {% endblock %}
 
 {% block header %}
+<img class="header-img" src="{% static "img/logo.png" %}" />
+{% endblock %}
 
+{% block theme %}
+    用户认证
 {% endblock %}
 
 {% block content %}
@@ -55,9 +59,4 @@
         <p>认证成功！</p>
         <p>您已经可以使用清小团的全部功能了！</p>
     </div>
-{% endblock %}
-
-{% block footer %}
-<hr />
-清小团 &copy; 2013
 {% endblock %}

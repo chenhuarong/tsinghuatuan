@@ -1,0 +1,42 @@
+html {
+  font-size: 62.5%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+
+body
+{
+    margin:0px;
+    font-family:"微软雅黑","黑体","宋体";
+    font-size: 14px;
+    line-height: 1.428571429;
+    background:url(../img/bg.png) repeat;
+    color: #423932;
+}
+
+h1{
+  font-size: 36px;
+  text-align:center;
+}
+
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  width: 90%;
+  border-top: 1px solid #CDCECF;
+}
+
+footer{
+    text-align: center;
+}
+
+footer,
+header {
+  display: block;
+}
+
+.header-img{
+    width: 100%;
+}

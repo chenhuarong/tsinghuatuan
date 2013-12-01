@@ -4,4 +4,5 @@ urlpatterns = patterns('',
                        url(r'^$', 'userpage.views.home'),
                        url(r'^validate/$', 'userpage.views.validate_view'),
                        url(r'^validate/try/$', 'userpage.views.validate_post'),
+                       url(r'^activity/$','userpage.views.details_view'),
                        )
