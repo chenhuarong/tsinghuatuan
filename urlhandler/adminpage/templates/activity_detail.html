@@ -29,9 +29,9 @@
             'max_tickets_per_order': {{ activity.max_tickets_per_order }},
             'total_tickets': {{ activity.total_tickets }},
             'status': {{ activity.status }}{% else %},
-            'status': 0{% endif %}{% if tickets_checked %},
-            'checked_tickets': {{ tickets_checked }},
-            'ordered_tickets': {{ tickets_ordered }}{% endif %}
+            'status': 0{% endif %}{% if activity.tickets_ready %},
+            'checked_tickets': {{ activity.checked_tickets }},
+            'ordered_tickets': {{ activity.ordered_tickets }}{% endif %}
         }
     </script>
     <script src="{% static "js/activity_detail.js" %}"></script>
@@ -104,14 +104,14 @@
             <div class="form-group">
                 <label for="input-total_tickets" class="col-sm-2 control-label">总票数</label>
                 <div class="col-sm-10">
-                    <input type="number" name="total_tickets" class="form-control" id="input-total_tickets" placeholder="此次活动通过“清小团”的发票总数，如 1000">
+                    <input type="number" name="total_tickets" class="form-control" id="input-total_tickets" min="0" placeholder="此次活动通过“清小团”的发票总数，如 1000">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="input-max_tickets_per_order" class="col-sm-2 control-label">每人最大订票数</label>
+                <label for="input-max_tickets_per_order" class="col-sm-2 control-label" min="0">每人最大订票数</label>
                 <div class="col-sm-10">
-                    <input type="number" name="max_tickets_per_order" class="form-control" id="input-max_tickets_per_order" placeholder="每人最大订票数，如 2">
+                    <input type="number" name="max_tickets_per_order" class="form-control" id="input-max_tickets_per_order" min="0" placeholder="每人最大订票数，如 2">
                 </div>
             </div>
 

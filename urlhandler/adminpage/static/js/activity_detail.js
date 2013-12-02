@@ -47,7 +47,7 @@ var actionMap = {
 }, keyMap = {
     'name': 'value',
     'key': 'value',
-    'description': 'text',
+    'description': 'value',
     'start_time': 'time',
     'end_time': 'time',
     'place': 'value',
@@ -90,18 +90,26 @@ function initializeForm(activity) {
     if (!activity.id) {
         $('#input-name').val('');
     }
-    if (activity.checked_tickets) {
+    if (typeof activity.checked_tickets !== 'undefined') {
         initialProgress(activity.checked_tickets, activity.ordered_tickets, activity.total_tickets);
     }
     lockByStatus(activity.status, activity.book_start, activity.start_time);
 }
 
+function check_percent(p) {
+    if (p > 100.0) {
+        return 100.0;
+    } else {
+        return p;
+    }
+}
+
 function initialProgress(checked, ordered, total) {
-    $('#tickets-checked').css('width', (100.0 * checked / total) + '%')
+    $('#tickets-checked').css('width', check_percent(100.0 * checked / total) + '%')
         .tooltip('destroy').tooltip({'title': '已检入：' + checked + '/' + ordered + '=' + (100.0 * checked / ordered).toFixed(2) + '%'});
-    $('#tickets-ordered').css('width', (100.0 * (ordered - checked) / total) + '%')
+    $('#tickets-ordered').css('width', check_percent(100.0 * (ordered - checked) / total) + '%')
         .tooltip('destroy').tooltip({'title': '订票总数：' + ordered + '/' + total + '=' + (100.0 * ordered / total).toFixed(2) + '%' + '，其中未检票：' + (ordered - checked) + '/' + ordered + '=' + (100.0 * (ordered - checked) / total).toFixed(2) + '%'});
-    $('#tickets-remain').css('width', (100.0 * (total - ordered) / total) + '%')
+    $('#tickets-remain').css('width', check_percent(100.0 * (total - ordered) / total) + '%')
         .tooltip('destroy').tooltip({'title': '余票：' + (total - ordered) + '/' + total + '=' + (100.0 * (total - ordered) / total).toFixed(2) + '%'});
 }
 
@@ -218,10 +226,6 @@ function showProgressByStatus(status, book_start) {
     }
 }
 
-//enableDatetimePicker($('.form_datetime'));
-initializeForm(activity);
-showForm();
-
 function beforeSubmit(formData, jqForm, options) {
     var i, len, nameMap = {
         'name': '活动名称',
@@ -316,6 +320,23 @@ function submitComplete(xhr) {
     showResult();
 }
 
+function publishActivity() {
+    showProcessing();
+    setResult('');
+    var options = {
+        dataType: 'json',
+        beforeSubmit: beforePublish,
+        success: submitResponse,
+        error: submitError,
+        complete: submitComplete
+    };
+    $('#activity-form').ajaxSubmit(options);
+    return false;
+}
+
+initializeForm(activity);
+showForm();
+
 $('#activity-form').submit(function() {
     showProcessing();
     setResult('');
@@ -332,17 +353,3 @@ $('#activity-form').submit(function() {
     initializeForm(activity);
     return false;
 });
-
-function publishActivity() {
-    showProcessing();
-    setResult('');
-    var options = {
-        dataType: 'json',
-        beforeSubmit: beforePublish,
-        success: submitResponse,
-        error: submitError,
-        complete: submitComplete
-    };
-    $('#activity-form').ajaxSubmit(options);
-    return false;
-}

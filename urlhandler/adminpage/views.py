@@ -17,45 +17,62 @@ from django.shortcuts import render_to_response
 
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login,logout as auth_logout
-from django.views.decorators.csrf import csrf_protect
-
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+
+from django.views.decorators.csrf import csrf_protect
 
 #import database
 from urlhandler.models import Activity, Order, Ticket
 
 @csrf_protect
 def home(request):
-    #return HttpResponse('login.html')
-    return render_to_response('login.html',context_instance=RequestContext(request))
+    if not request.user.is_authenticated():
+        return render_to_response('login.html', context_instance=RequestContext(request))
+    else:
+        return HttpResponseRedirect(reverse('adminpage.views.activity_list'))
 
 
 def activity_list(request):
-    activities = Activity.objects.all()
-    return render_to_response('activity_list.html', locals())
+    actmodels = Activity.objects.all()
+    activities = []
+    for act in actmodels:
+        activities += [wrap_activity_dict(act)]
+    return render_to_response('activity_list.html', {
+        'activities': activities,
+    })
 
-def avtivity_new(request):
-    pass
 
 @csrf_protect
 def login(request):
-    username = request.POST['username']
-    password = request.POST['password']
+    if not request.POST:
+        raise Http404
 
-    user = auth.authenticate(username = username, password = password)
-    if user is not None:
+    rtnJSON = {}
+
+    username = request.POST.get('username', '')
+    password = request.POST.get('password', '')
+
+    user = auth.authenticate(username=username, password=password)
+    if user is not None and user.is_active:
         auth.login(request, user)
-
-        activities = Activity.objects.all()
-        return render_to_response('activity_list.html',locals())
+        rtnJSON['message'] = 'success'
+        rtnJSON['next'] = reverse('adminpage.views.activity_list')
     else:
-        message = "用户名或密码不正确，请重新输入"
-        return render_to_response('login.html', locals())
+        rtnJSON['message'] = 'failed'
+        if User.objects.filter(username=username, is_active=True):
+            rtnJSON['error'] = 'wrong'
+        else:
+            rtnJSON['error'] = 'none'
+
+    return HttpResponse(json.dumps(rtnJSON), content_type='application/json')
+
 
 def logout(request):
     auth.logout(request)
-    return render_to_response('/',context_instance=RequestContext(request))
+    return HttpResponseRedirect(reverse('adminpage.views.home'))
+
 
 def str_to_datetime(str):
     return datetime.strptime(str, '%Y-%m-%d %H:%M:%S')
@@ -67,7 +84,7 @@ def activity_create(activity):
         preDict[k] = activity[k]
     for k in ['start_time', 'end_time', 'book_start', 'book_end']:
         preDict[k] = str_to_datetime(activity[k])
-    preDict['status'] = 1 if activity.has_key('publish') else 0
+    preDict['status'] = 1 if ('publish' in activity) else 0
     newact = Activity.objects.create(**preDict)
     return newact
 
@@ -99,7 +116,7 @@ def activity_modify(activity):
         setattr(nowact, key, activity[key])
     for key in timelist:
         setattr(nowact, key, str_to_datetime(activity[key]))
-    if (nowact.status == 0) and activity.has_key('publish'):
+    if (nowact.status == 0) and ('publish' in activity):
         nowact.status = 1
     nowact.save()
     return nowact
@@ -119,7 +136,8 @@ def get_checked_tickets(activity):
 
 def wrap_activity_dict(activity):
     dt = model_to_dict(activity)
-    if (dt['status'] >= 1) and (datetime.now() >= dt['start_time']):
+    if (dt['status'] >= 1) and (datetime.now() >= dt['book_start']):
+        dt['tickets_ready'] = 1
         dt['ordered_tickets'] = get_ordered_tickets(activity)
         dt['checked_tickets'] = get_checked_tickets(activity)
     return dt
@@ -157,7 +175,7 @@ def activity_post(request):
     post = request.POST
     rtnJSON = dict()
     try:
-        if post.has_key('id'):
+        if 'id' in post:
             activity = activity_modify(post)
         else:
             activity = activity_create(post)
