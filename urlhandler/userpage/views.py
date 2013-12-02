@@ -103,14 +103,19 @@ def details_view(request):
     act_text = activity[0].description
     act_photo = STATIC_URL + "img/mlhk.png"
     cur_time = timezone.now() # use the setting UTC
+    act_seconds = 0
     if act_bookstart <= cur_time <= act_bookend:
-        act_status = u'订票正在进行中，请回复代码：“%s+订票张数”或点击菜单栏中“%s”进行订票'%(act_key,act_name)
+        act_delta = act_bookend - cur_time
+        act_seconds = act_delta.total_seconds()
+        act_status = 0 # during book time
     elif cur_time < act_bookstart:
-        act_status = u'订票尚未开始，订票时间为:%s-%s'%(act_bookstart, act_bookend)
+        act_delta = act_bookstart - cur_time
+        act_seconds = act_delta.total_seconds()
+        act_status = 1 # before book time
     else:
-        act_status = u'活动订票已结束，可回复代码：%s查询订票结果'%(act_key)
+        act_status = 2 # after book time
     variables=RequestContext(request,{'act_name':act_name,'activity_text':act_text, 'activity_photo':act_photo,
                                       'act_bookstart':act_bookstart,'act_bookend':act_bookend,'act_begintime':act_begintime,
                                       'act_endtime':act_endtime,'act_totaltickets':act_totaltickets,'act_perorder':act_perorder,
-                                      'act_place':act_place, 'act_status':act_status})
+                                      'act_place':act_place, 'act_status':act_status, 'act_seconds':act_seconds})
     return render_to_response('activitydetails.html', variables)
