@@ -15,21 +15,57 @@
 
 {% block content %}
     <div class="container">
-        <form class="form-signin" action="{% url 'adminpage.views.login' %}" method="post">{% csrf_token %}
+        <form id="login" class="form-signin" action="{% url adminpage.views.login %}" method="post" role="form">
+            {% csrf_token %}
             <h2 class="form-signin-heading">登录</h2>
-            <!--{% if message %}-->
-                <div class="alert alert-danger">{{ message }}</div>
-            <!--{% endif %}-->
 
-            <input type="text" name="username" class="form-control" placeholder="用户名" required autofocus>
+            <div id="alert"></div>
 
-            <input type="password" name="password" class="form-control" placeholder="密码" required>
+            <input type="text" id="inputUsername" name="username" class="form-control" placeholder="用户名" required autofocus>
+
+            <input type="password" id="inputPassword" name="password" class="form-control" placeholder="密码" required>
 
             <label class="checkbox">
                 <input type="checkbox" value="Remember me">记住我
             </label>
-            <input type="submit" class="btn btn-block btn-primary" value="登录">
+            <input id="" type="submit" class="btn btn-block btn-primary" value="登录">
         </form>
     </div>
 
+{% endblock %}
+
+{% block js %}
+<script src="{% static "lib/jq/form/jquery.form.min.js" %}"></script>
+<script>
+    function showError(message, dom){
+        $('#alert').addClass('alert alert-danger');
+        $('#alert').text(message);
+        dom.focus();
+    }
+    function response(data){
+        if (data.message == 'success'){
+            location.href = data.next;
+        } else{
+            switch (data.error){
+                case 'wrong':
+                    showError('密码错误，请重新输入', $('#inputPassword'));
+                    break;
+                case 'none':
+                    showError('用户不存在，请重新输入', $('#inputUsername'));
+                    break;
+                default:
+                    showError('未知错误，请联系管理员', $(window));
+            }
+        }
+    }
+    $('#login').submit(function() {
+        var data = {
+            dataType: 'json',
+            beforeSubmit: function(){return true},
+            success: response
+        }
+        $(this).ajaxSubmit(data);
+        return false;
+    });
+</script>
 {% endblock %}

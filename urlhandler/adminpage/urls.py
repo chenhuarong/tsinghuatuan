@@ -7,5 +7,5 @@ urlpatterns = patterns('',
                        url(r'^add/$', 'adminpage.views.activity_add'),
                        url(r'^modify/$', 'adminpage.views.activity_post'),
                        url(r'^login/$', 'adminpage.views.login'),
-                       url(r'^$', 'adminpage.views.logout'),
+                       url(r'^logout/$', 'adminpage.views.logout'),
                        )
