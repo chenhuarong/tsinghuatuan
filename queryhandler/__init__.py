@@ -250,10 +250,10 @@ def get_book_key(msg):
     reply_content = []
     if(activitys.exists() ==  True):
         for activity in activitys:
-            content = u'%s将于%s在%s举行,%s至%s为开放订票时间，订票请回复%s,回复%s 2表示您要订2张票'
+            content = u'%s将于%s在%s举行,%s至%s为开放订票时间，订票请回复%s，回复%s 2表示您要订2张票，最多可订%s张'
             content = content %(activity.name, activity.start_time.strftime('%Y-%m-%d %H:%M'),
                                 activity.end_time.strftime('%Y-%m-%d %H:%M'), activity.book_start.strftime('%Y-%m-%d %H:%M'),
-                                activity.book_end.strftime('%Y-%m-%d %H:%M'), activity.key, activity.key)
+                                activity.book_end.strftime('%Y-%m-%d %H:%M'), activity.key, activity.key, activity.max_tickets_per_order)
             reply_content += [content]
         reply_content = '\r\n'.join(reply_content)
     else:
@@ -283,4 +283,4 @@ def get_order(msg):
             elif order.status == 3:
                 item = u'%s%s张，订票成功!<a href="http://sailon.duappp.com">点此查看电子票</a>\r\n'%(activity.name, order.tickets)
                 reply_content += [item]
-    return get_reply_text_xml(msg, '\r\n'.join(reply_content) if len(reply_content) == 0 else u'您目前没有订单')
+    return get_reply_text_xml(msg, '\r\n'.join(reply_content) if not (len(reply_content) == 0) else u'您目前没有订单')
