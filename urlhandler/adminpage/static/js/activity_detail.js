@@ -226,10 +226,6 @@ function showProgressByStatus(status, book_start) {
     }
 }
 
-//enableDatetimePicker($('.form_datetime'));
-initializeForm(activity);
-showForm();
-
 function beforeSubmit(formData, jqForm, options) {
     var i, len, nameMap = {
         'name': '活动名称',
@@ -324,6 +320,23 @@ function submitComplete(xhr) {
     showResult();
 }
 
+function publishActivity() {
+    showProcessing();
+    setResult('');
+    var options = {
+        dataType: 'json',
+        beforeSubmit: beforePublish,
+        success: submitResponse,
+        error: submitError,
+        complete: submitComplete
+    };
+    $('#activity-form').ajaxSubmit(options);
+    return false;
+}
+
+initializeForm(activity);
+showForm();
+
 $('#activity-form').submit(function() {
     showProcessing();
     setResult('');
@@ -340,17 +353,3 @@ $('#activity-form').submit(function() {
     initializeForm(activity);
     return false;
 });
-
-function publishActivity() {
-    showProcessing();
-    setResult('');
-    var options = {
-        dataType: 'json',
-        beforeSubmit: beforePublish,
-        success: submitResponse,
-        error: submitError,
-        complete: submitComplete
-    };
-    $('#activity-form').ajaxSubmit(options);
-    return false;
-}

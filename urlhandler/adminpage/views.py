@@ -31,8 +31,7 @@ def home(request):
     if not request.user.is_authenticated():
         return render_to_response('login.html', context_instance=RequestContext(request))
     else:
-        activities = Activity.objects.all()
-        return render_to_response('activity_list.html', {'activities':activities})
+        return HttpResponseRedirect(reverse('adminpage.views.activity_list'))
 
 
 def activity_list(request):
@@ -44,6 +43,7 @@ def activity_list(request):
         'activities': activities,
     })
 
+
 @csrf_protect
 def login(request):
     if not request.POST:
@@ -54,23 +54,25 @@ def login(request):
     username = request.POST.get('username', '')
     password = request.POST.get('password', '')
 
-    user = auth.authenticate(username = username, password = password)
+    user = auth.authenticate(username=username, password=password)
     if user is not None and user.is_active:
         auth.login(request, user)
         rtnJSON['message'] = 'success'
-        rtnJSON['next'] = '/adminpage/list/'
+        rtnJSON['next'] = reverse('adminpage.views.activity_list')
     else:
         rtnJSON['message'] = 'failed'
-        if User.objects.filter(username=username, is_active = True):
+        if User.objects.filter(username=username, is_active=True):
             rtnJSON['error'] = 'wrong'
         else:
             rtnJSON['error'] = 'none'
 
     return HttpResponse(json.dumps(rtnJSON), content_type='application/json')
 
+
 def logout(request):
     auth.logout(request)
-    return HttpResponseRedirect('/adminpage/')
+    return HttpResponseRedirect(reverse('adminpage.views.home'))
+
 
 def str_to_datetime(str):
     return datetime.strptime(str, '%Y-%m-%d %H:%M:%S')
@@ -82,7 +84,7 @@ def activity_create(activity):
         preDict[k] = activity[k]
     for k in ['start_time', 'end_time', 'book_start', 'book_end']:
         preDict[k] = str_to_datetime(activity[k])
-    preDict['status'] = 1 if activity.has_key('publish') else 0
+    preDict['status'] = 1 if ('publish' in activity) else 0
     newact = Activity.objects.create(**preDict)
     return newact
 
@@ -114,7 +116,7 @@ def activity_modify(activity):
         setattr(nowact, key, activity[key])
     for key in timelist:
         setattr(nowact, key, str_to_datetime(activity[key]))
-    if (nowact.status == 0) and activity.has_key('publish'):
+    if (nowact.status == 0) and ('publish' in activity):
         nowact.status = 1
     nowact.save()
     return nowact
@@ -173,7 +175,7 @@ def activity_post(request):
     post = request.POST
     rtnJSON = dict()
     try:
-        if post.has_key('id'):
+        if 'id' in post:
             activity = activity_modify(post)
         else:
             activity = activity_create(post)

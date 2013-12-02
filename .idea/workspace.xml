@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="519d02f1-9909-43c4-95c4-b95f242a05f2" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/queryhandler/__init__.py" afterPath="$PROJECT_DIR$/queryhandler/__init__.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js" afterPath="$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/views.py" afterPath="$PROJECT_DIR$/urlhandler/adminpage/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="src.iws" />
@@ -14,10 +16,10 @@
     <file path="/local.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385444702930" ignored="false" />
     <file path="/app.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385173807291" ignored="false" />
     <file path="/urls.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385857157930" ignored="false" />
-    <file path="/views.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385961858563" ignored="false" />
+    <file path="/views.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385968372225" ignored="false" />
     <file path="/fragment.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385656032450" ignored="false" />
     <file path="/weixin_simulator.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385224804577" ignored="false" />
-    <file path="/__init__.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385965468644" ignored="false" />
+    <file path="/__init__.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385967292070" ignored="false" />
     <file path="/settings.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385859317581" ignored="false" />
     <file path="/app.conf" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385134430791" ignored="false" />
     <file path="/models.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385912372997" ignored="false" />
@@ -36,12 +38,13 @@
     <file path="/base_with_nav.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385745927491" ignored="false" />
     <file path="/activity_home.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385774078238" ignored="false" />
     <file path="/activity_detail.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385961023891" ignored="false" />
-    <file path="/activity_detail.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385965151152" ignored="false" />
+    <file path="/activity_detail.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385968731648" ignored="false" />
     <file path="/activity_detail.css" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385829855964" ignored="false" />
     <file path="/activity_modify_result.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385854733054" ignored="false" />
     <file path="/Library/Python/2.7/site-packages/django/db/__init__.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385895087607" ignored="false" />
     <file path="/Django Console" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385911895672" ignored="false" />
     <file path="/activity_list.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385961241145" ignored="false" />
+    <file path="/.gitignore" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385966876128" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +81,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/urlhandler/adminpage/static/css/activity_detail.css" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_modify_result.html" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/urls.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
@@ -91,9 +93,10 @@
         <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_base.html" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_list.html" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_detail.html" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/queryhandler/__init__.py" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/views.py" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js" />
-        <option value="$PROJECT_DIR$/queryhandler/__init__.py" />
       </list>
     </option>
   </component>
@@ -794,16 +797,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.23529412" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="22" selection-start="217" selection-end="217" vertical-scroll-proportion="-1.7253522" />
-      </provider>
-    </entry>
     <entry file="file:///Library/Python/2.7/site-packages/django/db/models/base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="273" column="6" selection-start="12334" selection-end="12334" vertical-scroll-proportion="-21.16949">
@@ -833,11 +826,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activitydetails.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.18811882" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="35" selection-start="517" selection-end="517" vertical-scroll-proportion="0.22029702" />
@@ -848,37 +836,68 @@
         <state line="7" column="11" selection-start="160" selection-end="160" vertical-scroll-proportion="0.259901" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/views.py">
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/activity_list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="0" selection-start="2292" selection-end="2292" vertical-scroll-proportion="1.7468944" />
+        <state line="55" column="20" selection-start="1472" selection-end="1472" vertical-scroll-proportion="0.30807248">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activitydetails.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activitytext.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="48" selection-start="1805" selection-end="1805" vertical-scroll-proportion="0.19193548" />
+        <state line="51" column="48" selection-start="1805" selection-end="1805" vertical-scroll-proportion="0.9919355">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/activity_list.html">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="20" selection-start="1472" selection-end="1472" vertical-scroll-proportion="0.30807248" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="0" selection-start="2515" selection-end="2515" vertical-scroll-proportion="0.5229794" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/activity_detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="166" column="10" selection-start="8758" selection-end="8758" vertical-scroll-proportion="0.45634267" />
+        <state line="2" column="5" selection-start="18" selection-end="18" vertical-scroll-proportion="0.04658385">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="255" column="106" selection-start="10638" selection-end="10638" vertical-scroll-proportion="0.31061807">
+        <state line="13" column="0" selection-start="348" selection-end="348" vertical-scroll-proportion="0.30279502">
           <folding>
             <element signature="e#54#67#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="30" selection-start="683" selection-end="683" vertical-scroll-proportion="0.17289719">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="355" column="0" selection-start="9407" selection-end="9407" vertical-scroll-proportion="0.8915663">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/activity_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="166" column="10" selection-start="8758" selection-end="8758" vertical-scroll-proportion="0.2173913">
+          <folding />
         </state>
       </provider>
     </entry>
