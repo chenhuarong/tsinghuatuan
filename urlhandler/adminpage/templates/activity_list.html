@@ -4,7 +4,10 @@
 
 {% block activity-title %}活动列表{% endblock %}
 
-{% block activity-list-active %}active{% endblock %}
+{% block nav-li %}
+    <li class="{% block activity-list-active %}active{% endblock %}"><a class="btn-link" href="{% url adminpage.views.activity_list %}">活动列表</a></li>
+    {% block nav-li-ext %}{% endblock %}
+{% endblock %}
 
 {% block css %}
     <link href="{% static "lib/bs/css/bootstrap-select.css" %}" rel="stylesheet" type="text/css" />
@@ -18,7 +21,7 @@
 {% endblock %}
 
 {% block username %}
-    <a href={% url "adminpage.views.logout" %} >登出</a>
+    <a href={% url adminpage.views.logout %} >登出</a>
 
 {% endblock %}
 
@@ -27,7 +30,7 @@
 <div class="container" xmlns="http://www.w3.org/1999/html">
 
     <div class="pageheader">
-        <h1 class="lead"> 活动信息 </h1>
+        <h1 class="lead">活动列表</h1>
     </div>
 
     <div class="panel panel-default">
@@ -35,7 +38,7 @@
 
             <form action="." method="GET" >{% csrf_token %}
 
-                <a class="btn btn-default" href={% url "adminpage.views.activity_detail" actid=0 %}>新增活动</a>
+                <a class="btn btn-default" href={% url adminpage.views.activity_add %}>新增活动</a>
             </form>
         </div>
 
@@ -45,7 +48,7 @@
                 <th>状态</th>
                 <th>名称</th>
                 <th>简介</th>
-                <th>上映时间</th>
+                <th>活动时间</th>
                 <th>地点</th>
                 <th>订票时间</th>
                 <th>编辑</th>
@@ -56,13 +59,13 @@
             <tr>
                 <td>{{ item.status }}</td>
                 <td>{{ item.name }}</td>
-                <td><{{ item.description }}/td>
-                <td>{{ item.start_time }} - {{ item.end_time }} </td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.start_time|date:"y/m/d l H:i" }} - {{ item.end_time|date:"y/m/d l H:i" }} </td>
                 <td>{{ item.place }}</td>
-                <td>{{ item.book_start }} - {{ item.book_end }}</td>
+                <td>{{ item.book_start|date:"y/m/d l H:i" }} - {{ item.book_end|date:"y/m/d l H:i" }}</td>
                 <td>
                     <span class=".glyphicon .glyphicon-arrow-right">
-                        <a href={% url "adminpage.views.activity_detail" actid=item.id %}>Click</a>
+                        <a href={% url adminpage.views.activity_detail actid=item.id %}><span class="glyphicon glyphicon-pencil"></span> 详情</a>
                     </span>
                 </td>
             </tr>

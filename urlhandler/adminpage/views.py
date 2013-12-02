@@ -32,11 +32,13 @@ def home(request):
 
 
 def activity_list(request):
-    activities = Activity.objects.all()
-    return render_to_response('activity_list.html', locals())
-
-def avtivity_new(request):
-    pass
+    actmodels = Activity.objects.all()
+    activities = []
+    for act in actmodels:
+        activities += [wrap_activity_dict(act)]
+    return render_to_response('activity_list.html', {
+        'activities': activities,
+    })
 
 @csrf_protect
 def login(request):
@@ -119,7 +121,8 @@ def get_checked_tickets(activity):
 
 def wrap_activity_dict(activity):
     dt = model_to_dict(activity)
-    if (dt['status'] >= 1) and (datetime.now() >= dt['start_time']):
+    if (dt['status'] >= 1) and (datetime.now() >= dt['book_start']):
+        dt['tickets_ready'] = 1
         dt['ordered_tickets'] = get_ordered_tickets(activity)
         dt['checked_tickets'] = get_checked_tickets(activity)
     return dt

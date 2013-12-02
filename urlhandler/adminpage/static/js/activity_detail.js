@@ -47,7 +47,7 @@ var actionMap = {
 }, keyMap = {
     'name': 'value',
     'key': 'value',
-    'description': 'text',
+    'description': 'value',
     'start_time': 'time',
     'end_time': 'time',
     'place': 'value',
@@ -90,7 +90,7 @@ function initializeForm(activity) {
     if (!activity.id) {
         $('#input-name').val('');
     }
-    if (activity.checked_tickets) {
+    if (typeof activity.checked_tickets !== 'undefined') {
         initialProgress(activity.checked_tickets, activity.ordered_tickets, activity.total_tickets);
     }
     lockByStatus(activity.status, activity.book_start, activity.start_time);

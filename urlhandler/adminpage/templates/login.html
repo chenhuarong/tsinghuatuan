@@ -15,7 +15,7 @@
 
 {% block content %}
     <div class="container">
-        <form class="form-signin" action="{% url 'adminpage.views.login' %}" method="post">{% csrf_token %}
+        <form class="form-signin" action="{% url adminpage.views.login %}" method="post">{% csrf_token %}
             <h2 class="form-signin-heading">登录</h2>
             <!--{% if message %}-->
                 <div class="alert alert-danger">{{ message }}</div>
