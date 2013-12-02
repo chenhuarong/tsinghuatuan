@@ -169,7 +169,7 @@ def get_order_result(msg, receive_msg):
             order = Order(
                 user = user,
                 activity = activity,
-                status = 0,
+                status = 1,
                 tickets = tickets_num
             )
             order.save()
