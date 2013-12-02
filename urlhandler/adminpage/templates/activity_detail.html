@@ -29,9 +29,9 @@
             'max_tickets_per_order': {{ activity.max_tickets_per_order }},
             'total_tickets': {{ activity.total_tickets }},
             'status': {{ activity.status }}{% else %},
-            'status': 0{% endif %}{% if tickets_checked %},
-            'checked_tickets': {{ tickets_checked }},
-            'ordered_tickets': {{ tickets_ordered }}{% endif %}
+            'status': 0{% endif %}{% if activity.tickets_ready %},
+            'checked_tickets': {{ activity.checked_tickets }},
+            'ordered_tickets': {{ activity.ordered_tickets }}{% endif %}
         }
     </script>
     <script src="{% static "js/activity_detail.js" %}"></script>

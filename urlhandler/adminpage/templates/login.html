@@ -17,6 +17,7 @@
     <div class="container">
         <form id="login" class="form-signin" action="{% url adminpage.views.login %}" method="post" role="form">
             {% csrf_token %}
+
             <h2 class="form-signin-heading">登录</h2>
 
             <div id="alert"></div>
