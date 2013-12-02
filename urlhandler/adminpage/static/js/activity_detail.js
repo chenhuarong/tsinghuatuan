@@ -96,12 +96,20 @@ function initializeForm(activity) {
     lockByStatus(activity.status, activity.book_start, activity.start_time);
 }
 
+function check_percent(p) {
+    if (p > 100.0) {
+        return 100.0;
+    } else {
+        return p;
+    }
+}
+
 function initialProgress(checked, ordered, total) {
-    $('#tickets-checked').css('width', (100.0 * checked / total) + '%')
+    $('#tickets-checked').css('width', check_percent(100.0 * checked / total) + '%')
         .tooltip('destroy').tooltip({'title': '已检入：' + checked + '/' + ordered + '=' + (100.0 * checked / ordered).toFixed(2) + '%'});
-    $('#tickets-ordered').css('width', (100.0 * (ordered - checked) / total) + '%')
+    $('#tickets-ordered').css('width', check_percent(100.0 * (ordered - checked) / total) + '%')
         .tooltip('destroy').tooltip({'title': '订票总数：' + ordered + '/' + total + '=' + (100.0 * ordered / total).toFixed(2) + '%' + '，其中未检票：' + (ordered - checked) + '/' + ordered + '=' + (100.0 * (ordered - checked) / total).toFixed(2) + '%'});
-    $('#tickets-remain').css('width', (100.0 * (total - ordered) / total) + '%')
+    $('#tickets-remain').css('width', check_percent(100.0 * (total - ordered) / total) + '%')
         .tooltip('destroy').tooltip({'title': '余票：' + (total - ordered) + '/' + total + '=' + (100.0 * (total - ordered) / total).toFixed(2) + '%'});
 }
 
