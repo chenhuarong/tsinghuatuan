@@ -44,8 +44,7 @@ def check_help(msg):
 
 #get help information
 def get_help_response(msg):
-    user = User.objects.get(weixin_id = msg['FromUserName'])
-    if user.status == 0:
+    if is_authenticated(msg['FromUserName']):
         reply_content = u'<a href="http://tsinghuatuan.duapp.com/userpage/validate/?openid=%s">' \
                         u'点此绑定信息门户账号</a>\r\n' % msg['FromUserName']
     else:
@@ -66,7 +65,7 @@ def check_bookable_activites(msg):
 #get bookable activities
 def get_bookable_activities(msg):
     now = string.atof(msg['CreateTime'])
-    activitys = Activity.objects.filter(end_time__gte=datetime.datetime.fromtimestamp(now)).order_by('book_start')
+    activitys = Activity.objects.filter(status=1, end_time__gte=datetime.datetime.fromtimestamp(now)).order_by('book_start')
     items = ''
     num = 0
     for activity in activitys:
@@ -103,7 +102,7 @@ def get_tickets(msg):
                                        u'门户账号</a>\r\n' % msg['FromUserName'])
 
     now = string.atof(msg['CreateTime'])
-    activitys = Activity.objects.filter(end_time__gte=datetime.datetime.fromtimestamp(now))
+    activitys = Activity.objects.filter(status=1, end_time__gte=datetime.datetime.fromtimestamp(now))
     reply_content = []
     all_tickets = []
     for activity in activitys:
@@ -135,7 +134,7 @@ def check_book_cmd(msg):
         return 0
     now = string.atof(msg['CreateTime'])
     now = datetime.datetime.fromtimestamp(now)
-    activitys = Activity.objects.filter(end_time__gte=now, key = receive_msg[0])
+    activitys = Activity.objects.filter(status=1, end_time__gte=now, key = receive_msg[0])
     if not activitys.exists():                 # book command is correct and the activity is at booking stage
         return 0
     if len(receive_msg) == 1:
@@ -147,13 +146,14 @@ def book_tickets(msg):
     if is_authenticated(msg['FromUserName']):
         user = User.objects.get(weixin_id=msg['FromUserName'])
     else:
-        return get_reply_text_xml(msg, u'对不起，尚未绑定账号，不能抢票或取票，<a href="http://tsinghuatuan.duapp.com/userpage/validate/?openid=%s">'
+        return get_reply_text_xml(msg, u'对不起，尚未绑定账号，不能抢票，<a href="http://tsinghuatuan.duapp.com/userpage/validate/?openid=%s">'
                                        u'点此绑定信息门户账号</a>\r\n' % msg['FromUserName'])
 
     now = string.atof(msg['CreateTime'])
     now = datetime.datetime.fromtimestamp(now)
-
-    activitys = Activity.objects.filter(book_end__gte=now, book_start__lte=now)
+    receive_msg = msg['Content']
+    receive_msg = receive_msg.split()
+    activitys = Activity.objects.filter(status=1,end_time__gte=now, key=receive_msg[0])
     activity = activitys[0]
 
     if activity.book_start > now:
@@ -210,7 +210,7 @@ def book_tickets(msg):
                            'http://student.tsinghua.edu.cn/')
             return get_reply_news_xml(msg, item, 1)
         else:
-            return get_reply_text_xml(msg, u'抢票已经结束，欢迎关注下次活动')
+            return get_reply_text_xml(msg, u'票已被使用，没有可用的票')
 
 #check return command
 def check_return_cmd(msg):
@@ -222,7 +222,7 @@ def check_return_cmd(msg):
         return 0
     now = string.atof(msg['CreateTime'])
     now = datetime.datetime.fromtimestamp(now)
-    activitys = Activity.objects.filter(end_time__gte=now, key = receive_msg[0])
+    activitys = Activity.objects.filter(status=1, end_time__gte=now, key=receive_msg[0])
     if not activitys.exists():                 # book command is correct and the activity is at booking stage
         return 0
     if len(receive_msg) > 1:
@@ -236,7 +236,7 @@ def return_tickets(msg):
 
     receive_msg = msg['Content']
     receive_msg = receive_msg.split()
-    activitys = Activity.objects.filter(end_time__gte=now, key = receive_msg[0])
+    activitys = Activity.objects.filter(status=1, end_time__gte=now, key=receive_msg[0])
     activity = activitys[0]
 
     if len(receive_msg) == 2 and receive_msg[1].lower() == 'qx':
@@ -269,12 +269,73 @@ def return_tickets(msg):
 def check_book_event(msg):
     if msg['MsgType'] == 'event' and msg['Event']=='CLICK' and msg['EventKey'] == 'TSINGHUA_WECHAT_BOOK':
         return 1
+    if msg['MsgType'] == 'text' and msg['Content'] == '抢票':
+        return 1
     return 0
 
 
 #handle book event
 def get_book_event(msg):
-    return book_tickets(msg)
+    if is_authenticated(msg['FromUserName']):
+        user = User.objects.get(weixin_id=msg['FromUserName'])
+    else:
+        return get_reply_text_xml(msg, u'对不起，尚未绑定账号，不能抢票，<a href="http://tsinghuatuan.duapp.com/userpage/validate/?openid=%s">'
+                                       u'点此绑定信息门户账号</a>\r\n' % msg['FromUserName'])
+
+    now = string.atof(msg['CreateTime'])
+    now = datetime.datetime.fromtimestamp(now)
+
+    activitys = Activity.objects.filter(status=1, book_end__gte=now, book_start__lte=now)
+    if activitys.exists() == 0:
+        future_activitys = Activity.objects.filter(status=1, book_start__gte=now).order_by('book_start')
+        if len(future_activitys) == 0:
+            return get_reply_text_xml(msg, u'暂时没有抢票活动')
+        else:
+            future_activity = future_activitys[0]
+            return get_reply_text_xml(msg, u'抢票%s开始，<a href="%s">详情</a>' % (future_activity.book_start, 'http://tsinghuatuan.duapp.com/userpage'
+                                                                                             '/activity/?activityid='+str(future_activity.id)))
+    else:
+        activity = activitys[0]
+
+    tickets = Ticket.objects.filter(user=user, activity=activity)
+    if tickets.exists() == 0:
+        if activity.remain_tickets == 0:
+            return  get_reply_text_xml(msg, u'票已抢完，欢迎关注下次活动')
+        random_string = ''.join([random.choice(string.ascii_letters + string.digits) for n in xrange(32)])
+        while(Ticket.objects.filter(unique_id=random_string).exists()):
+            random_string = ''.join([random.choice(string.ascii_letters + string.digits) for n in xrange(32)])
+        ticket = Ticket(
+            user = user,
+            activity = activity,
+            unique_id = random_string,
+            status = 1,
+            seat = ''
+        )
+        ticket.save()
+        activity.remain_tickets -= 1
+        activity.save()
+        item = '<item><Title><![CDATA[%s]]></Title><Description><![CDATA[%s]]></Description>' \
+               '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
+        description = u'活动时间：%s\r\n活动地点：%s' %(ticket.activity.start_time.strftime( '%y-%m-%d %H:%M'), ticket.activity.place)
+        item = item % (ticket.activity.name, description, QRCODE_URL + str(ticket.unique_id),
+                       'http://student.tsinghua.edu.cn/')
+        return get_reply_news_xml(msg, item, 1)
+    elif tickets[0].status == 0:
+        if activity.remain_tickets == 0:
+            return  get_reply_text_xml(msg, u'票已抢完，欢迎关注下次活动')
+        ticket = tickets[0]
+        ticket.status = 1
+        ticket.save()
+        activity.remain_tickets -= 1
+        activity.save()
+        item = '<item><Title><![CDATA[%s]]></Title><Description><![CDATA[%s]]></Description>' \
+               '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
+        description = u'活动时间：%s\r\n活动地点：%s' %(ticket.activity.start_time.strftime( '%y-%m-%d %H:%M'), ticket.activity.place)
+        item = item % (ticket.activity.name, description, QRCODE_URL + str(ticket.unique_id),
+                       'http://student.tsinghua.edu.cn/')
+        return get_reply_news_xml(msg, item, 1)
+    else:
+        return get_reply_text_xml(msg, u'不能重复抢票，<a href="%s">查看电子票</a>' % 'about:blank')
 
 
 #check subscribe event
@@ -286,14 +347,6 @@ def check_subscribe(msg):
 
 #handle subscribe event
 def get_subscibe(msg):
-    users = User.objects.filter(weixin_id=msg['FromUserName'])
-    if not users.exists():
-        user = User(
-            weixin_id=msg['FromUserName'],
-            stu_id=0,
-            status=0
-        )
-        user.save()
     return get_help_response(msg)
 
 
@@ -308,9 +361,10 @@ def check_unsubscribe(msg):
 
 #handle unsubscribe event
 def get_unsubscibe(msg):
-    user = User.objects.get(weixin_id=msg['FromUserName'])
-    user.status = 0
-    user.save()
+    if is_authenticated(msg['FromUserName']):
+        user = User.objects.get(weixin_id=msg['FromUserName'])
+        user.status = 0
+        user.save()
     return get_reply_text_xml(msg, u'账号绑定已经解除')
 
 
