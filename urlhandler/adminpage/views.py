@@ -116,7 +116,7 @@ def activity_modify(activity):
 
 
 def get_checked_tickets(activity):
-    return Ticket.objects.filter(activity=activity, status=1).count()
+    return Ticket.objects.filter(activity=activity, status=2).count()
 
 
 def wrap_activity_dict(activity):
