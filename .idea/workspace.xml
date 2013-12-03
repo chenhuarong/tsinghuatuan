@@ -39,7 +39,7 @@
     <file path="/Django Console" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385911895672" ignored="false" />
     <file path="/activity_list.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385961241145" ignored="false" />
     <file path="/.gitignore" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385966876128" ignored="false" />
-    <file path="/tickethandler.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386054563277" ignored="false" />
+    <file path="/tickethandler.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386068900463" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,10 +59,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="__init__.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="30" selection-start="2002" selection-end="2002" vertical-scroll-proportion="-0.7201166">
+            <state line="62" column="30" selection-start="2002" selection-end="2002" vertical-scroll-proportion="7.6">
               <folding>
                 <element signature="e#54#67#0" expanded="true" />
               </folding>
@@ -70,10 +70,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tickethandler.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="tickethandler.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="4" selection-start="2215" selection-end="2307" vertical-scroll-proportion="17.48">
+            <state line="247" column="53" selection-start="9496" selection-end="9496" vertical-scroll-proportion="0.8272727">
               <folding>
                 <element signature="e#22#35#0" expanded="true" />
               </folding>
@@ -122,8 +122,8 @@
         <option value="$PROJECT_DIR$/urlhandler/adminpage/views.py" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js" />
         <option value="$PROJECT_DIR$/queryhandler/__init__.py" />
-        <option value="$PROJECT_DIR$/queryhandler/tickethandler.py" />
         <option value="$PROJECT_DIR$/weixin_simulator.py" />
+        <option value="$PROJECT_DIR$/queryhandler/tickethandler.py" />
       </list>
     </option>
   </component>
@@ -598,11 +598,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
+    <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="4" selection-start="2215" selection-end="2307" vertical-scroll-proportion="17.48">
+        <state line="62" column="30" selection-start="2002" selection-end="2002" vertical-scroll-proportion="7.6">
           <folding>
-            <element signature="e#22#35#0" expanded="true" />
+            <element signature="e#54#67#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -614,11 +614,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
+    <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="30" selection-start="2002" selection-end="2002" vertical-scroll-proportion="-0.7201166">
+        <state line="247" column="53" selection-start="9496" selection-end="9496" vertical-scroll-proportion="0.8272727">
           <folding>
-            <element signature="e#54#67#0" expanded="true" />
+            <element signature="e#22#35#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -34,7 +34,7 @@ def is_authenticated(username):
 def check_help(msg):
     if msg['MsgType'] == 'text' and msg['Content'] == '帮助':
         return 1
-    if msg['MsgType'] == 'event' and msg['EventKey'] == 'TSINGHUA_WECHAT_HELP':
+    if msg['MsgType'] == 'event' and msg['Event']=='CLICK'and msg['EventKey'] == 'TSINGHUA_WECHAT_HELP':
         return 1
     if msg['MsgType'] == 'event' and msg['Event'] == 'scan':
         return 1
@@ -56,7 +56,7 @@ def get_help_response(msg):
 def check_book(msg):
     if msg['MsgType'] == 'text' and msg['Content'] == '订票':
         return 1
-    if msg['MsgType'] == 'event' and msg['EventKey'] == 'TSINGHUA_WECHAT_BOOK':
+    if msg['MsgType'] == 'event' and msg['Event']=='CLICK' and msg['EventKey'] == 'TSINGHUA_WECHAT_BOOK':
         return 1
     return 0
 
@@ -95,7 +95,7 @@ def get_order(msg):
     if is_authenticated(msg['FromUserName']):
         user = User.objects.get(weixin_id=msg['FromUserName'])
     else:
-        return get_reply_text_xml(msg, u'<a href="http://tsinghuatuan.duapp.com/userpage/validate/?openid=%s">点此绑定信息'
+        return get_reply_text_xml(msg, u'对不起，尚未绑定账号，不能查看订单，<a href="http://tsinghuatuan.duapp.com/userpage/validate/?openid=%s">点此绑定信息'
                                        u'门户账号</a>\r\n' % msg['FromUserName'])
 
     now = string.atof(msg['CreateTime'])
@@ -222,6 +222,8 @@ def get_subscibe(msg):
 def check_unsubscribe(msg):
     if msg['MsgType'] == 'event' and msg['Event'] == 'unsubscribe':
         return 1
+    if msg['MsgType'] == 'text' and msg['Content'] == '解除账号绑定':
+        return 1
     return 0
 
 
@@ -231,3 +233,19 @@ def get_unsubscibe(msg):
     user.status = 0
     user.save()
     return get_help_response(msg)
+
+
+#check bind event
+def check_bind_account(msg):
+    if msg['MsgType'] == 'event' and msg['Event']=='CLICK' and msg['EventKey'] == 'TSINGHUA_WECHAT_BIND':
+        return 1
+    return 0
+
+
+#handle bind event
+def bind_account(msg):
+    if is_authenticated(msg['FromUserName']):
+        return get_reply_text_xml(msg, u'若要解绑请回复"解除账号绑定"')
+    else:
+        return get_reply_text_xml(msg, u'<a href="http://tsinghuatuan.duapp.com/userpage/validate/?openid=%s">'
+                                       u'点此绑定信息门户账号</a>\r\n' % msg['FromUserName'])
