@@ -232,7 +232,7 @@ def get_unsubscibe(msg):
     user = User.objects.get(weixin_id=msg['FromUserName'])
     user.status = 0
     user.save()
-    return get_help_response(msg)
+    return get_reply_text_xml(msg, u'账号绑定已经解除')
 
 
 #check bind event
