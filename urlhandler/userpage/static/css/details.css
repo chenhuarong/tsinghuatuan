@@ -33,6 +33,7 @@
     padding-left: 10px;
     font-size: 12px;
     text-align: left;
+    word-break:break-all;
 }
 .details-img{
     width:96%;
