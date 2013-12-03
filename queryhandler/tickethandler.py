@@ -108,7 +108,7 @@ def get_tickets(msg):
         tickets =  Ticket.objects.filter(user=user, activity=activity, status=1)
         if tickets.exists():
             all_tickets.append(tickets[0])
-            item = u'%s1张，回复"%s"取票\r\n' % (activity.name, activity.key)
+            item = u'%s1张，回复"%s"取票' % (activity.name, activity.key)
             reply_content += [item]
 
     if len(all_tickets) == 1:
@@ -117,8 +117,8 @@ def get_tickets(msg):
                '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
         description = u'活动时间：%s\r\n活动地点：%s\r\n回复%s qx退票' %(ticket.activity.start_time.strftime( '%y-%m-%d %H:%M'),
                                                            ticket.activity.place, ticket.activity.key)
-        item = item % (ticket.activity.name, description, QRCODE_URL + str(ticket.unique_id),
-                       'http://student.tsinghua.edu.cn/')
+        url =  'http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s' % ticket.unique_id
+        item = item % (ticket.activity.name, description, QRCODE_URL + str(ticket.unique_id), url)
         return get_reply_news_xml(msg, item, 1)
     else:
         return get_reply_text_xml(msg, '\r\n'.join(reply_content) if not (len(reply_content) == 0) else u'您目前没有票')
@@ -181,8 +181,8 @@ def book_tickets(msg):
                    '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
             description = u'活动时间：%s\r\n活动地点：%s\r\n回复%s qx退票' %(ticket.activity.start_time.strftime( '%y-%m-%d %H:%M'),
                                                                ticket.activity.place, ticket.activity.key)
-            item = item % (ticket.activity.name, description, QRCODE_URL + str(ticket.unique_id),
-                           'http://student.tsinghua.edu.cn/')
+            url =  'http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s' % ticket.unique_id
+            item = item % (ticket.activity.name, description, QRCODE_URL + str(ticket.unique_id), url)
             return get_reply_news_xml(msg, item, 1)
         elif tickets[0].status == 0:
             if activity.remain_tickets == 0:
@@ -196,11 +196,11 @@ def book_tickets(msg):
                    '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
             description = u'活动时间：%s\r\n活动地点：%s\r\n回复%s qx退票' %(ticket.activity.start_time.strftime( '%y-%m-%d %H:%M'),
                                                                ticket.activity.place, ticket.activity.key)
-            item = item % (ticket.activity.name, description, QRCODE_URL + str(ticket.unique_id),
-                           'http://student.tsinghua.edu.cn/')
+            url =  'http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s' % ticket.unique_id
+            item = item % (ticket.activity.name, description, QRCODE_URL + str(ticket.unique_id), url)
             return get_reply_news_xml(msg, item, 1)
         else:
-            url =  'http://tsinghuatuan.duapp.com/ticket/?uid=%s' % tickets[0].unique_id
+            url =  'http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s' % tickets[0].unique_id
             return get_reply_text_xml(msg, u'不能重复抢票，<a href="%s">查看电子票</a>' % url)
     else:
         tickets =  Ticket.objects.filter(user=user, activity=activity, status=1)
@@ -210,8 +210,9 @@ def book_tickets(msg):
                    '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
             description = u'活动时间：%s\r\n活动地点：%s\r\n回复%s qx退票' %(ticket.activity.start_time.strftime( '%y-%m-%d %H:%M'),
                                                                ticket.activity.place, ticket.activity.key)
+            url =  'http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s' % ticket.unique_id
             item = item % (ticket.activity.name, description, QRCODE_URL + str(ticket.unique_id),
-                           'http://student.tsinghua.edu.cn/')
+                           url)
             return get_reply_news_xml(msg, item, 1)
         else:
             return get_reply_text_xml(msg, u'票已被使用，没有可用的票')
@@ -265,7 +266,7 @@ def return_tickets(msg):
             else:
                 return get_reply_text_xml(msg, u'未找到您的抢票记录，退票失败')
         else:
-            return get_reply_text_xml(msg, u'抢票时间已过，不能退票，可以将票转让于他人'% activity.key)
+            return get_reply_text_xml(msg, u'抢票时间已过，不能退票，可以将票转让于他人')
     else:
         return get_reply_text_xml(msg, u'输入的命令不合法，%s qx表示退票'% activity.key)
 
@@ -322,8 +323,8 @@ def get_book_event(msg):
                '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
         description = u'活动时间：%s\r\n活动地点：%s\r\n回复%s qx退票' %(ticket.activity.start_time.strftime( '%y-%m-%d %H:%M'),
                                                            ticket.activity.place, ticket.activity.key)
-        item = item % (ticket.activity.name, description, QRCODE_URL + str(ticket.unique_id),
-                       'http://student.tsinghua.edu.cn/')
+        url =  'http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s' % ticket.unique_id
+        item = item % (ticket.activity.name, description, QRCODE_URL + str(ticket.unique_id), url)
         return get_reply_news_xml(msg, item, 1)
     elif tickets[0].status == 0:
         if activity.remain_tickets == 0:
@@ -337,11 +338,11 @@ def get_book_event(msg):
                '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
         description = u'活动时间：%s\r\n活动地点：%s\r\n回复%s qx退票' %(ticket.activity.start_time.strftime( '%y-%m-%d %H:%M'),
                                                            ticket.activity.place, ticket.activity.key)
-        item = item % (ticket.activity.name, description, QRCODE_URL + str(ticket.unique_id),
-                       'http://student.tsinghua.edu.cn/')
+        url =  'http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s' % ticket.unique_id
+        item = item % (ticket.activity.name, description, QRCODE_URL + str(ticket.unique_id), url)
         return get_reply_news_xml(msg, item, 1)
     else:
-        url =  'http://tsinghuatuan.duapp.com/ticket/?uid=%s' % tickets[0].unique_id
+        url =  'http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s' % tickets[0].unique_id
         return get_reply_text_xml(msg, u'不能重复抢票，<a href="%s">查看电子票</a>' % url)
 
 

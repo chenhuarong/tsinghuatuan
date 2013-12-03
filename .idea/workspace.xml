@@ -51,7 +51,7 @@
     <file path="/activity_list.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386088143094" ignored="false" />
     <file path="/ticket.css" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386093022815" ignored="false" />
     <file path="/activityticket.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386093087982" ignored="false" />
-    <file path="/tickethandler.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386095544279" ignored="false" />
+    <file path="/tickethandler.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386097680323" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +110,7 @@
       <file leaf-file-name="tickethandler.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="113" column="29" selection-start="4412" selection-end="4412" vertical-scroll-proportion="0.29148936">
+            <state line="186" column="36" selection-start="8342" selection-end="8342" vertical-scroll-proportion="-0.05106383">
               <folding />
             </state>
           </provider>
@@ -497,7 +497,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -674,7 +674,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="29" selection-start="4412" selection-end="4412" vertical-scroll-proportion="0.29148936">
+        <state line="186" column="36" selection-start="8342" selection-end="8342" vertical-scroll-proportion="-0.05106383">
           <folding />
         </state>
       </provider>
