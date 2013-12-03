@@ -360,16 +360,21 @@ function submitComplete(xhr) {
 }
 
 function publishActivity() {
-    showProcessing();
-    setResult('');
-    var options = {
-        dataType: 'json',
-        beforeSubmit: beforePublish,
-        success: submitResponse,
-        error: submitError,
-        complete: submitComplete
-    };
-    $('#activity-form').ajaxSubmit(options);
+    if(!$('#activity-form')[0].checkValidity || $('#activity-form')[0].checkValidity()){
+        showProcessing();
+        setResult('');
+        var options = {
+            dataType: 'json',
+            beforeSubmit: beforePublish,
+            success: submitResponse,
+            error: submitError,
+            complete: submitComplete
+        };
+        $('#activity-form').ajaxSubmit(options);
+        return false;
+    } else {
+        $('#saveBtn').click();
+    }
     return false;
 }
 

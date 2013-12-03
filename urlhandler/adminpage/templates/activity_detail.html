@@ -14,11 +14,11 @@
     <script src="{% static "lib/jq/form/jquery.form.min.js" %}"></script>
     <script>
         var activity = {
-            'name': '{{ activity.name|escapejs }}'{% if activity.id %},
+            'name': '{{ activity.name }}'{% if activity.id %},
             'id': {{ activity.id }},
             'key': '{{ activity.key|escapejs }}',
             'description': '{{ activity.description|escapejs }}',
-            'pic_url': '{{ activity.pic_url|escapejs }}',
+            'pic_url': '{{ activity.pic_url }}',
             'start_time': {
                 'year': {{ activity.start_time.year }},
                 'month': {{ activity.start_time.month }},
@@ -33,7 +33,7 @@
                 'hour': {{ activity.end_time.hour }},
                 'minute': {{ activity.end_time.minute }}
             },
-            'place': '{{ activity.place|escapejs }}',
+            'place': '{{ activity.place }}',
             'book_start': {
                 'year': {{ activity.book_start.year }},
                 'month': {{ activity.book_start.month }},
