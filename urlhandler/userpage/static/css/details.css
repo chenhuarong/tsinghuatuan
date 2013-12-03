@@ -31,6 +31,7 @@
     display: block;
     padding: 6px 0 6px 5px;
     padding-left: 10px;
+    padding-right: 10px;
     font-size: 12px;
     text-align: left;
     word-break:break-all;
@@ -45,13 +46,12 @@
 .date-wrapper{
     padding-left: 3%;
     height: 50px;
+    min-width: 300px;
 }
 .date-wrapper .inner{
     background: lightgrey;
     border-top: 6px solid lightgrey;
     border-bottom: 6px solid lightgrey;
-    max-height: 300px;
-    overflow: hidden;
     border-radius: 10px;
     float:left;
 }
