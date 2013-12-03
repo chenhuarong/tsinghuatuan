@@ -7,26 +7,47 @@
 {% load staticfiles %}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static "lib/bs/datetimepicker/css/bootstrap-datetimepicker.min.css" %}"/>
     <link rel="stylesheet" href="{% static "css/activity_detail.css" %}"/>
 {% endblock %}
 
 {% block js %}
     <script src="{% static "lib/jq/form/jquery.form.min.js" %}"></script>
-    <script src="{% static "lib/bs/datetimepicker/js/bootstrap-datetimepicker.js" %}"></script>
-    <script src="{% static "lib/bs/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" %}"></script>
     <script>
         var activity = {
             'name': '{{ activity.name }}'{% if activity.id %},
             'id': {{ activity.id }},
-            'key': '{{ activity.key }}',
-            'description': '{{ activity.description }}',
-            'start_time': new Date('{{ activity.start_time|date:"r" }}'),
-            'end_time': new Date('{{ activity.end_time|date:"r" }}'),
+            'key': '{{ activity.key|escapejs }}',
+            'description': '{{ activity.description|escapejs }}',
+            'pic_url': '{{ activity.pic_url }}',
+            'start_time': {
+                'year': {{ activity.start_time.year }},
+                'month': {{ activity.start_time.month }},
+                'day': {{ activity.start_time.day }},
+                'hour': {{ activity.start_time.hour }},
+                'minute': {{ activity.start_time.minute }}
+            },
+            'end_time': {
+                'year': {{ activity.end_time.year }},
+                'month': {{ activity.end_time.month }},
+                'day': {{ activity.end_time.day }},
+                'hour': {{ activity.end_time.hour }},
+                'minute': {{ activity.end_time.minute }}
+            },
             'place': '{{ activity.place }}',
-            'book_start': new Date('{{ activity.book_start|date:"r" }}'),
-            'book_end': new Date('{{ activity.book_end|date:"r" }}'),
-            'max_tickets_per_order': {{ activity.max_tickets_per_order }},
+            'book_start': {
+                'year': {{ activity.book_start.year }},
+                'month': {{ activity.book_start.month }},
+                'day': {{ activity.book_start.day }},
+                'hour': {{ activity.book_start.hour }},
+                'minute': {{ activity.book_start.minute }}
+            },
+            'book_end': {
+                'year': {{ activity.book_end.year }},
+                'month': {{ activity.book_end.month }},
+                'day': {{ activity.book_end.day }},
+                'hour': {{ activity.book_end.hour }},
+                'minute': {{ activity.book_end.minute }}
+            },
             'total_tickets': {{ activity.total_tickets }},
             'status': {{ activity.status }}{% else %},
             'status': 0{% endif %}{% if activity.tickets_ready %},
@@ -59,7 +80,7 @@
             <div class="form-group">
                 <label for="input-name" class="col-sm-2 control-label">活动名称</label>
                 <div class="col-sm-10">
-                    <input type="text" name="name" class="form-control" id="input-name" placeholder="活动名称，如 马兰花开">
+                    <input type="text" name="name" class="form-control" id="input-name" placeholder="活动名称，如 马兰花开" autofocus>
                 </div>
             </div>
 
@@ -84,21 +105,97 @@
                 </div>
             </div>
 
+
             <div class="form-group">
-                <label for="input-start-apr" class="col-sm-2 control-label">活动时间</label>
-                <div class="input-group date form_datetime col-sm-4" id="input-start_time" data-link-field="raw-start_time">
-                    <input class="form-control" size="16" type="text" value="" id="input-start-apr" readonly>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                <label for="input-pic_url" class="col-sm-2 control-label" min="0">活动配图</label>
+                <div class="col-sm-10">
+                    <input type="url" name="pic_url" class="form-control" id="input-pic_url" min="0" placeholder="请填入图片链接">
                 </div>
-                <input type="hidden" name="start_time" id="raw-start_time" value="" />
-                <label for="input-end-apr" class="col-sm-2 control-label">结束时间</label>
-                <div class="input-group date form_datetime col-sm-4" id="input-end_time" data-link-field="raw-end_time">
-                    <input class="form-control" size="16" type="text" value="" id="input-end-apr" readonly>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+            </div>
+
+            <div class="form-group">
+                <label for="input-start-year" class="col-sm-2 control-label">活动开始</label>
+                <div class="form-inline col-sm-10" id="input-start_time">
+                    <div class="form-group date-input">
+                        <input class="form-control" maxlength="4" type="number" id="input-start-year" value=""
+                               date-part="year" placeholder="年，>=2013" min="2013" max="2100" step="1">
+                    </div>
+                    <div class="form-group date-label">
+                        <label class="control-label" for="input-start-year">年</label>
+                    </div>
+                    <div class="form-group date-input">
+                        <input class="form-control" maxlength="2" type="number" id="input-start-month" value="" date-part="month"
+                               placeholder="月，1-12" min="1" max="12" step="1">
+                    </div>
+                    <div class="form-group date-label">
+                        <label class="control-label" for="input-start-month">月</label>
+                    </div>
+                    <div class="form-group date-input">
+                        <input class="form-control" maxlength="2" type="number" id="input-start-day" value="" date-part="day"
+                               placeholder="日，1-31" min="1" max="31" step="1">
+                    </div>
+                    <div class="form-group date-label">
+                        <label class="control-label" for="input-start-day">日</label>
+                    </div>
+                    <div class="form-group date-offset">
+                    </div>
+                    <div class="form-group date-input">
+                        <input class="form-control" maxlength="2" type="number" id="input-start-hour" value="" date-part="hour"
+                               placeholder="小时，0-23" min="0" max="23" step="1">
+                    </div>
+                    <div class="form-group date-label">
+                        <label class="control-label" for="input-start-hour">时</label>
+                    </div>
+                    <div class="form-group date-input">
+                        <input class="form-control" maxlength="2" type="number" id="input-start-minute" value="" date-part="minute"
+                               placeholder="分钟，0-59"min="0" max="59" step="1">
+                    </div>
+                    <div class="form-group date-label">
+                        <label class="control-label" for="input-start-minute">分</label>
+                    </div>
                 </div>
-                <input type="hidden" name="end_time" id="raw-end_time" value="" />
+            </div>
+            <div class="form-group">
+                <label for="input-end-year" class="col-sm-2 control-label">活动结束</label>
+                <div class="form-inline col-sm-10" id="input-end_time">
+                    <div class="form-group date-input">
+                        <input class="form-control" maxlength="4" type="number" id="input-end-year" value=""
+                               date-part="year" placeholder="年，>=2013" min="2013" max="2100" step="1">
+                    </div>
+                    <div class="form-group date-label">
+                        <label class="control-label" for="input-end-year">年</label>
+                    </div>
+                    <div class="form-group date-input">
+                        <input class="form-control" maxlength="2" type="number" id="input-end-month" value="" date-part="month"
+                               placeholder="月，1-12" min="1" max="12" step="1">
+                    </div>
+                    <div class="form-group date-label">
+                        <label class="control-label" for="input-end-month">月</label>
+                    </div>
+                    <div class="form-group date-input">
+                        <input class="form-control" maxlength="2" type="number" id="input-end-day" value="" date-part="day"
+                               placeholder="日，1-31" min="1" max="31" step="1">
+                    </div>
+                    <div class="form-group date-label">
+                        <label class="control-label" for="input-end-day">日</label>
+                    </div>
+                    <div class="form-group date-offset">
+                    </div>
+                    <div class="form-group date-input">
+                        <input class="form-control" maxlength="2" type="number" id="input-end-hour" value="" date-part="hour"
+                               placeholder="小时，0-23" min="0" max="23" step="1">
+                    </div>
+                    <div class="form-group date-label">
+                        <label class="control-label" for="input-end-hour">时</label>
+                    </div>
+                    <div class="form-group date-input">
+                        <input class="form-control" maxlength="2" type="number" id="input-end-minute" value="" date-part="minute"
+                               placeholder="分钟，0-59"min="0" max="59" step="1">
+                    </div>
+                    <div class="form-group date-label">
+                        <label class="control-label" for="input-end-minute">分</label>
+                    </div>
+                </div>
             </div>
 
             <div class="form-group">
@@ -109,27 +206,88 @@
             </div>
 
             <div class="form-group">
-                <label for="input-max_tickets_per_order" class="col-sm-2 control-label" min="0">每人最大订票数</label>
-                <div class="col-sm-10">
-                    <input type="number" name="max_tickets_per_order" class="form-control" id="input-max_tickets_per_order" min="0" placeholder="每人最大订票数，如 2">
+                <label for="input-book-start-year" class="col-sm-2 control-label">订票开始</label>
+                <div class="form-inline col-sm-10" id="input-book_start">
+                    <div class="form-group date-input">
+                        <input class="form-control" maxlength="4" type="number" id="input-book-start-year" value=""
+                               date-part="year" placeholder="年，>=2013" min="2013" max="2100" step="1">
+                    </div>
+                    <div class="form-group date-label">
+                        <label class="control-label" for="input-book-start-year">年</label>
+                    </div>
+                    <div class="form-group date-input">
+                        <input class="form-control" maxlength="2" type="number" id="input-book-start-month" value="" date-part="month"
+                               placeholder="月，1-12" min="1" max="12" step="1">
+                    </div>
+                    <div class="form-group date-label">
+                        <label class="control-label" for="input-book-start-month">月</label>
+                    </div>
+                    <div class="form-group date-input">
+                        <input class="form-control" maxlength="2" type="number" id="input-book-start-day" value="" date-part="day"
+                               placeholder="日，1-31" min="1" max="31" step="1">
+                    </div>
+                    <div class="form-group date-label">
+                        <label class="control-label" for="input-book-start-day">日</label>
+                    </div>
+                    <div class="form-group date-offset">
+                    </div>
+                    <div class="form-group date-input">
+                        <input class="form-control" maxlength="2" type="number" id="input-book-start-hour" value="" date-part="hour"
+                               placeholder="小时，0-23" min="0" max="23" step="1">
+                    </div>
+                    <div class="form-group date-label">
+                        <label class="control-label" for="input-book-start-hour">时</label>
+                    </div>
+                    <div class="form-group date-input">
+                        <input class="form-control" maxlength="2" type="number" id="input-book-start-minute" value="" date-part="minute"
+                               placeholder="分钟，0-59"min="0" max="59" step="1">
+                    </div>
+                    <div class="form-group date-label">
+                        <label class="control-label" for="input-book-start-minute">分</label>
+                    </div>
                 </div>
             </div>
-
             <div class="form-group">
-                <label for="input-book-start-apr" class="col-sm-2 control-label">订票时间</label>
-                <div class="input-group date form_datetime col-sm-4" id="input-book_start" data-link-field="raw-book_start">
-                    <input class="form-control" size="16" type="text" value="" id="input-book-start-apr" readonly>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                <label for="input-book-end-year" class="col-sm-2 control-label">订票结束</label>
+                <div class="form-inline col-sm-10" id="input-book_end">
+                    <div class="form-group date-input">
+                        <input class="form-control" maxlength="4" type="number" id="input-book-end-year" value=""
+                               date-part="year" placeholder="年，>=2013" min="2013" max="2100" step="1">
+                    </div>
+                    <div class="form-group date-label">
+                        <label class="control-label" for="input-book-end-year">年</label>
+                    </div>
+                    <div class="form-group date-input">
+                        <input class="form-control" maxlength="2" type="number" id="input-book-end-month" value="" date-part="month"
+                               placeholder="月，1-12" min="1" max="12" step="1">
+                    </div>
+                    <div class="form-group date-label">
+                        <label class="control-label" for="input-book-end-month">月</label>
+                    </div>
+                    <div class="form-group date-input">
+                        <input class="form-control" maxlength="2" type="number" id="input-book-end-day" value="" date-part="day"
+                               placeholder="日，1-31" min="1" max="31" step="1">
+                    </div>
+                    <div class="form-group date-label">
+                        <label class="control-label" for="input-book-end-day">日</label>
+                    </div>
+                    <div class="form-group date-offset">
+                    </div>
+                    <div class="form-group date-input">
+                        <input class="form-control" maxlength="2" type="number" id="input-book-end-hour" value="" date-part="hour"
+                               placeholder="小时，0-23" min="0" max="23" step="1">
+                    </div>
+                    <div class="form-group date-label">
+                        <label class="control-label" for="input-book-end-hour">时</label>
+                    </div>
+                    <div class="form-group date-input">
+                        <input class="form-control" maxlength="2" type="number" id="input-book-end-minute" value="" date-part="minute"
+                               placeholder="分钟，0-59"min="0" max="59" step="1">
+                    </div>
+                    <div class="form-group date-label">
+                        <label class="control-label" for="input-book-end-minute">分</label>
+                    </div>
                 </div>
-                <input type="hidden" name="book_start" id="raw-book_start" value="" />
-                <label for="input-book-end-apr" class="col-sm-2 control-label">截止时间</label>
-                <div class="input-group date form_datetime col-sm-4" id="input-book_end" data-link-field="raw-book_end">
-                    <input class="form-control" size="16" type="text" value="" id="input-book-end-apr" readonly>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
-                </div>
-                <input type="hidden" name="book_end" id="raw-book_end" value="" />
             </div>
 
             <div class="form-group" id="progress-tickets">

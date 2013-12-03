@@ -2,3 +2,26 @@
     margin-top: 7px;
     margin-bottom: 0;
 }
+
+.form-group.date-input {
+    margin-left: 0;
+    margin-right: 0;
+    width: 13%;
+}
+
+.form-group.date-label {
+    margin-left: 0;
+    margin-right: 0;
+    width: 5%;
+}
+
+.form-group.date-offset {
+    margin-left: 0;
+    margin-right: 0;
+    width: 3%;
+}
+
+.form-group.date-label>label {
+    padding-top: 0;
+    padding-left: 5px;
+}

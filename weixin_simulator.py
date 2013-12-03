@@ -8,10 +8,11 @@ import time
 from settings import LOCAL_PORT
 from settings import LUCKY_URL
 import xml.etree.ElementTree as ET
+import qrcode
 
 url = 'http://localhost:' + str(LOCAL_PORT) + LUCKY_URL
 url_token = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxb2545ef150be8096&secret=c0739f56c0f676c0e2850ef286d754bf"
-url_menu = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=y_yyhJmDinOV9WvE4cVorZ5YDR2xXsNKgL36khCQYHNoxqKxyATwS860wANpUz0DndXwBeAMAGLhtmkO1QAONvMQwak3WKKM9Btj-9Y17j0sVSMiXjCA3h9wPSYmTLg8vMXsUPVmy8mzGRf8fzuVzw"
+url_menu = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=rQhG7MI4zvWg0K66XeoPk9pTKcf46qNgza8dEyetBLBAVDQnET2k7rtYD_iTzzsRth3oeDFJhwvH1IL8i9rjsEZKEIoAytbrB5jhqr8oEKn2mF6dC08JTzyNTCafWUkRXIqzoahFtmk79BbRrYNLDQ"
 FROM_USER_NAME = 'WeixinSimulator'
 while True:
     line = raw_input()
@@ -19,14 +20,20 @@ while True:
               '<MsgType><![CDATA[%s]]></MsgType><Content><![CDATA[%s]]></Content><FuncFlag>0</FuncFlag></xml>'
     evt_tpl ='<xml><ToUserName><![CDATA[%s]]></ToUserName><FromUserName><![CDATA[%s]]></FromUserName><CreateTime>%s</CreateTime>' \
              '<MsgType><![CDATA[event]]></MsgType><Event><![CDATA[%s]]></Event><EventKey><![CDATA[%s]]></EventKey></xml>'
-    data = ' {"button":[{"name":"活动","sub_button":[{"type":"view","name":"新年音乐会","url":"http://student.tsinghua.edu.cn/"},' \
-           '{"type":"view","name":"马兰花开","url":"http://student.tsinghua.edu.cn/"},{"type":"click","name":"全部",' \
-           '"key":"TSINGHUATUAN_ALL"}]},{"type":"click","name":"订票","key":"TSINGHUATUAN_BOOK"},{"type":"click",' \
-           '"name":"订单","key":"TSINGHUATUAN_ORDER"}]}'
-    ext_tpl = ext_tpl % (FROM_USER_NAME, FROM_USER_NAME, str(int(time.time())), 'text', '活动')
-    #evt_tpl = evt_tpl % (FROM_USER_NAME, FROM_USER_NAME, str(int(time.time())), 'CLICK', 'TSINGHUATUAN_ORDER')
-    req = urllib2.Request(url = url, data = ext_tpl)
-    #req = urllib2.Request(url = url_menu, data = data)
+    data = '{"button":[{"name":"资讯","sub_button":[{"type":"click","name":"新闻","key":"TSINGHUA_WECHAT_NEWS"},' \
+           '{"type":"click","name":"热门活动","key":"TSINGHUA_WECHAT_ACTIVITY"},{"type":"click","name":"讲座","key":' \
+           '"TSINGHUA_WECHAT_LECTURE"},{"type":"click","name":"查询","key":"TSINGHUA_WECHAT_QUERY"}]},{"name":"服务",' \
+           '"sub_button":[{"type":"click","name":"抢啥","key":"TSINGHUA_WECHAT_BOOK_ACTIVITY"},{"type":"click","name":' \
+           '"抢票","key":"TSINGHUA_WECHAT_BOOK"},{"type":"click","name":"查票","key":"TSINGHUA_WECHAT_TICKET"},' \
+           '{"type":"click","name":"指路","key":"TSINGHUA_WECHAT_PATH"},{"type":"click",' \
+           '"name":"聊天","key":"TSINGHUA_WECHAT_CHAT"}]},{"name":"其他","sub_button":[{"type":"click","name":"绑定",' \
+           '"key":"TSINGHUA_WECHAT_BIND"},{"type":"click","name":"部门","key":"TSINGHUA_WECHAT_DEPARTMENT"},{"type":' \
+           '"click","name":"社团","key":"TSINGHUA_WECHAT_COMMUNITY"},{"type":"click","name":"吐槽","key":"TSINGHUA_WECHAT_CONFIDE"},' \
+           '{"type":"click","name":"帮助","key":"TSINGHUA_WECHAT_HELP"}]}]}'
+    #ext_tpl = ext_tpl % (FROM_USER_NAME, FROM_USER_NAME, str(int(time.time())), 'text', line)
+    evt_tpl = evt_tpl % (FROM_USER_NAME, FROM_USER_NAME, str(int(time.time())), 'CLICK', 'TSINGHUA_WECHAT_TICKET')
+    req = urllib2.Request(url = url, data = evt_tpl)
+    #req = urllib2.Request(url=url_menu,data=data)
     resdata = urllib2.urlopen(req)
     res = resdata.read()
     res = unicode(res, "utf-8")

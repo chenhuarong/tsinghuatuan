@@ -10,14 +10,28 @@
 {% endblock %}
 
 {% block css %}
-    <link href="{% static "lib/bs/css/bootstrap-select.css" %}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{% static "css/activity_list.css" %}"/>
 {% endblock %}
 
 {% block js %}
-    <script src="{% static "lib/bs/js/bootstrap-select.js" %}"></script>
     <script>
-        $('.selectpicker').selectpicker();
+        activities = [
+            {% for activity in activities %}
+                {
+                    'status': {{ activity.status }},
+                    'name': '{{ activity.name|escapejs }}',
+                    'description': '{{ activity.description|escapejs }}',
+                    'start_time': new Date('{{ activity.start_time|date:"r" }}'),
+                    'end_time': new Date('{{ activity.end_time|date:"r" }}'),
+                    'place': '{{ activity.place|escapejs }}',
+                    'book_start': new Date('{{ activity.book_start|date:"r" }}'),
+                    'book_end': new Date('{{ activity.book_end|date:"r" }}'),
+                    'detail_url': '{% url adminpage.views.activity_detail actid=activity.id %}'
+                }{% if forloop.last %}{% else %},{% endif %}
+            {% endfor %}
+        ];
     </script>
+    <script src="{% static "js/activity_list.js" %}"></script>
 {% endblock %}
 
 {% block username %}
@@ -35,11 +49,7 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-
-            <form action="." method="GET" >{% csrf_token %}
-
-                <a class="btn btn-default" href={% url adminpage.views.activity_add %}>新增活动</a>
-            </form>
+            <a class="btn btn-default" href={% url adminpage.views.activity_add %}>新增活动</a>
         </div>
 
         <table class="table table-hover">
@@ -54,22 +64,7 @@
                 <th>编辑</th>
             </tr>
             </thead>
-            <tbody>
-            {% for item in activities %}
-            <tr>
-                <td>{{ item.status }}</td>
-                <td>{{ item.name }}</td>
-                <td>{{ item.description }}</td>
-                <td>{{ item.start_time|date:"y/m/d l H:i" }} - {{ item.end_time|date:"y/m/d l H:i" }} </td>
-                <td>{{ item.place }}</td>
-                <td>{{ item.book_start|date:"y/m/d l H:i" }} - {{ item.book_end|date:"y/m/d l H:i" }}</td>
-                <td>
-                    <span class=".glyphicon .glyphicon-arrow-right">
-                        <a href={% url adminpage.views.activity_detail actid=item.id %}><span class="glyphicon glyphicon-pencil"></span> 详情</a>
-                    </span>
-                </td>
-            </tr>
-            {% endfor %}
+            <tbody id="tbody-activities">
             </tbody>
         </table>
     </div>
