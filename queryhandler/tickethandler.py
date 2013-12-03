@@ -4,7 +4,6 @@ import string
 import time,datetime
 from urlhandler.models import *
 
-#QRCODE_URL = 'http://127.0.0.1/userpage/qrcode/?qrcode='
 QRCODE_URL = 'http://tsinghuaqr.duapp.com/'
 
 # get reply xml(reply text), using msg(source dict object) and reply_content(text, string)
