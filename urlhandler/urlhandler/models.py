@@ -20,6 +20,8 @@ class Activity(models.Model):
     max_tickets_per_order = models.IntegerField(default=2)
     total_tickets = models.IntegerField()
     status = models.IntegerField()
+    pic_url = models.CharField(max_length=255)
+    remain_tickets = models.IntegerField()
     # Something about status:
     # 0: saved but not published
     # 1: published but not determined
