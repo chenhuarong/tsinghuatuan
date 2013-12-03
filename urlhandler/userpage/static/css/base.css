@@ -9,20 +9,20 @@ body
 {
     margin:0px;
     font-family:"微软雅黑","黑体","宋体";
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1.428571429;
     background:url(../img/bg.png) repeat;
     color: #423932;
 }
 
 h1{
-  font-size: 30px;
+  font-size: 20px;
   text-align:center;
 }
 
 hr {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   border: 0;
   width: 90%;
   border-top: 1px solid #CDCECF;
