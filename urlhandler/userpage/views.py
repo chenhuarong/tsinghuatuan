@@ -7,6 +7,7 @@ from urlhandler.models import User, Activity
 from urlhandler.settings import STATIC_URL
 import urllib, urllib2
 from django.utils import timezone
+import qrcode
 
 def home(request):
     return render_to_response('mobile_base.html')
@@ -119,3 +120,20 @@ def details_view(request):
                                       'act_endtime':act_endtime,'act_totaltickets':act_totaltickets,'act_perorder':act_perorder,
                                       'act_place':act_place, 'act_status':act_status, 'act_seconds':act_seconds})
     return render_to_response('activitydetails.html', variables)
+
+def qrcode_view(request):
+    requestdata = request.GET
+    if (not requestdata) or (not 'qrcode' in requestdata):
+        raise Http404
+    qr = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=10,
+        border=4,
+        )
+    qr.add_data(requestdata.get('qrcode', ''))
+    qr.make(fit=True)
+    img = qr.make_image()
+    response = HttpResponse(mimetype="image/png")
+    img.save(response, 'png')
+    return response

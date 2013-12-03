@@ -32,11 +32,12 @@ class Ticket(models.Model):
     user = models.ForeignKey(User)
     unique_id = models.CharField(max_length=255)
     activity = models.ForeignKey(Activity)
-    isUsed = models.IntegerField()
+    status = models.IntegerField()
     seat = models.CharField(max_length=255)
     # Something about isUsed
-    # 0: ordered but not checked
-    # 1: checked
+    # 0: ticket order is cancelled
+    # 1: ticket order is valid
+    # 2: ticket is used
 
 class Order(models.Model):
     user = models.ForeignKey(User)

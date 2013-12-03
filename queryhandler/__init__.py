@@ -9,12 +9,15 @@ from urlhandler.models import *
 from .tickethandler import *
 
 functions = [
-    {'check':check_book, 'do':get_bookable_activities},
-    {'check':check_order, 'do':get_order},
+    {'check':check_bookable_activites, 'do':get_bookable_activities},
+    {'check':check_ticket_cmd, 'do':get_tickets},
     {'check':check_book_cmd, 'do':book_tickets},
     {'check':check_help, 'do':get_help_response},
     {'check':check_subscribe, 'do':get_subscibe},
     {'check':check_unsubscribe, 'do':get_unsubscibe},
+    {'check':check_bind_account, 'do':bind_account},
+    {'check':check_book_event, 'do':get_book_event},
+    {'check':check_return_cmd, 'do':return_tickets},
 ]
 
 
