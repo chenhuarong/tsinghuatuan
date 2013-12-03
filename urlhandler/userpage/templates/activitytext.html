@@ -1,15 +1,15 @@
 <div class="details-text">
 
     {% if act_status == 0 %}
-        <div class="timer-wrapper">
+        <div class="timer-wrapper" id="duringbook">
         订票正在进行中，距订票结束还有：
         </div>
     {% elif act_status == 1 %}
-        <div class="timer-wrapper">
+        <div class="timer-wrapper" id="beforebook">
         距订票开始还有：
         </div>
     {% else %}
-        <div class="timer-wrapper">
+        <div class="invalid-time">
         订票已结束，感谢您的关注！
         </div>
     {% endif %}
@@ -19,15 +19,11 @@
     </div>
     <div class="details-divider"></div>
 
-    <div class="details-wrapper" id="booktime">
-        <div class="text-inner">
-            <div class="trigger" id="booktrigger">
-                <a>订票时间</a>
-            </div>
-        </div>
+    <div class="timer-wrapper">
+    订票时间：
     </div>
-    <div class="date-wrapper" style="display: none" id="bookdetails">
-        <div class="details-divider"></div>
+    <div class="details-divider"></div>
+    <div class="date-wrapper" id="bookdetails">
         <div class="inner">
             <div class="date">
                 <span class="hour">{{ act_bookstart|date:"H:i"}}</span><br>
@@ -47,15 +43,11 @@
     </div>
     <div class="details-divider"></div>
 
-    <div class="details-wrapper" id="activitytime">
-        <div class="text-inner">
-            <div class="trigger" id="timetrigger">
-                <a>活动时间</a>
-            </div>
-        </div>
+    <div class="timer-wrapper">
+    活动时间：
     </div>
-    <div class="date-wrapper" style="display: none" id="timedetails">
-        <div class="details-divider"></div>
+    <div class="details-divider"></div>
+    <div class="date-wrapper" id="timedetails">
         <div class="inner">
             <div class="date">
                 <span class="hour">{{ act_begintime|date:"H:i"}}</span><br>
@@ -75,46 +67,74 @@
     </div>
     <div class="details-divider"></div>
 
-    <div class="details-wrapper" id="place">
+    <div class="timer-wrapper">
+    活动地点：
+    </div>
+    <div class="details-divider"></div>
+    <div class="details-wrapper">
         <div class="text-inner">
-            <div class="trigger" id="placetrigger">
-                <a>活动地点</a>
+            <div class="trigger">
+                <a>{{ act_place }}</a>
             </div>
         </div>
-    </div>
-    <div class="toggle_container" style="display: none;" id="placedetails">
-            <ul>
-                <li>{{ act_place }}</li>
-            </ul>
     </div>
     <div class="details-divider"></div>
 
-    <div class="details-wrapper" id="ticket">
+    <div class="timer-wrapper">
+    订票代码：<!--<div class="clipcopy" id="copykey">点此复制</div>-->
+    </div>
+    <div class="details-divider"></div>
+    <div class="details-wrapper">
         <div class="text-inner">
-            <div class="trigger" id="tickettrigger">
-                <a>票务信息</a>
+            <div class="trigger">
+                <a id="actkey">{{ act_key }}   </a>
             </div>
         </div>
-    </div>
-    <div class="toggle_container" style="display: none;" id="ticketdetails">
-            <ul>
-                <li>活动预计发票数：{{ act_totaltickets }}</li>
-                <li>活动每个可订最大张数：{{ act_perorder }}</li>
-            </ul>
     </div>
     <div class="details-divider"></div>
 
-    <div class="details-wrapper" id="content">
+    <div class="timer-wrapper">
+    活动预计发票数：
+    </div>
+    <div class="details-divider"></div>
+    <div class="details-wrapper">
         <div class="text-inner">
-            <div class="trigger" id="contenttrigger">
-                <a>活动详情</a>
+            <div class="trigger">
+                <a>{{ act_totaltickets }}</a>
             </div>
         </div>
     </div>
-    <div class="toggle_container" style="display: none;" id="contentdetails">
-            <ul>
-                <li>{{ activity_text }}</li>
-            </ul>
+    <div class="details-divider"></div>
+
+    <div class="timer-wrapper">
+    活动详情：
+    </div>
+    <div class="details-divider"></div>
+    <div class="details-wrapper" id="actabstract">
+        <div class="text-inner">
+            <div class="trigger">
+                <a>{{ act_abstract }}</a>
+            </div>
+            {% if act_text_status == 1 %}
+            <div id="slidedown" class="abstract-wrapper">
+                <div class="abstract" >
+                    查看更多
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="details-wrapper" id="actdetails" style="display: none">
+        <div class="text-inner">
+            <div class="trigger">
+                <a>{{ act_text }}</a>
+            </div>
+            <div id="slideup" class="abstract-wrapper">
+                <div class="abstract" >
+                    收起更多
+                </div>
+            </div>
+        </div>
     </div>
     <div class="details-divider"></div>
 
@@ -127,7 +147,7 @@
     function CountDown()
     {
         var strtimer = '';
-        if(totalseconds>=0){
+        if(totalseconds>0){
             var days = parseInt(totalseconds / 60 / 60 / 24, 10);
             var hours = parseInt(totalseconds  / 60 / 60 % 24, 10);
             var minutes = parseInt(totalseconds  / 60 % 60, 10);
@@ -144,9 +164,11 @@
             clearInterval(timer);
             if(actstatus == 0){//from booktime to end
                 strtimer = '订票已结束，感谢您的关注！';
+                document.getElementById('duringbook').style.display  ="none";
             }
-            else{
+            if(actstatus == 1){
                 strtimer = '订票已经开始!';
+                document.getElementById('beforebook').style.display  ="none";
             }
         }
         document.getElementById('activitytimer').innerHTML = strtimer;
