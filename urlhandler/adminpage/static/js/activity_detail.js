@@ -4,7 +4,7 @@
  * Date: 13-11-30
  * Time: 上午11:43
  */
-
+/*
 var datetimepicker_option = {
     format: "yyyy年mm月dd日 - hh:ii",
     autoclose: true,
@@ -30,8 +30,14 @@ function disableDatetimePicker(dom) {
     dom.datetimepicker('remove');
     dom.children('.input-group-addon').css('cursor', 'no-drop').children().css('cursor', 'no-drop');
 }
-
-var actionMap = {
+*/
+var dateInterfaceMap = {
+    'year': 'getFullYear',
+    'month': 'getMonth',
+    'day': 'getDate',
+    'hour': 'getHours',
+    'minute': 'getMinutes'
+}, actionMap = {
     'value': function(dom, value) {
         dom.val(value);
     },
@@ -39,9 +45,14 @@ var actionMap = {
         dom.text(value);
     },
     'time': function(dom, value) {
-        if (value) {
-            enableDatetimePicker(dom);
-            dom.datetimepicker('setDate', value);
+        if (value instanceof Object) {
+            var parts = dom.children(), i, len, part;
+            for (i = 0, len = parts.length; i < len; ++i) {
+                part = $(parts[i]).children();
+                if (part.attr('date-part')) {
+                    part.val(value[part.attr('date-part')]);
+                }
+            }
         }
     }
 }, keyMap = {
@@ -63,19 +74,26 @@ var actionMap = {
         dom.prop('disabled', lock);
     },
     'time': function(dom, lock) {
-        if (lock) {
-            disableDatetimePicker(dom);
-        } else {
-            enableDatetimePicker(dom);
+        var parts = dom.children(), i, len, part;
+        for (i = 0, len = parts.length; i < len; ++i) {
+            part = $(parts[i]).children();
+            if (part.attr('date-part')) {
+                part.prop('disabled', lock);
+            }
         }
+        dom.prop('disabled', lock);
     }
 };
 
 function updateActivity(nact) {
-    var key;
+    var key, key2, tdate;
     for (key in nact) {
         if (keyMap[key] == 'time') {
-            activity[key] = new Date(nact[key]);
+            activity[key] = {};
+            tdate = new Date(nact[key])
+            for (key2 in dateInterfaceMap) {
+                activity[key][key2] = tdate[dateInterfaceMap[key2]]() + ((key2 == 'month') ? 1 : 0);
+            }
         } else {
             activity[key] = nact[key];
         }
@@ -226,6 +244,27 @@ function showProgressByStatus(status, book_start) {
     }
 }
 
+function wrapDateString(dom, formData, name) {
+    var parts = dom.children(), i, len, tmpDate = {}, part;
+    for (i = 0, len = parts.length; i < len; ++i) {
+        part = $(parts[i]).children();
+        if (part.attr('date-part')) {
+            if (part.val().length == 0) {
+                return false;
+            } else {
+                tmpDate[part.attr('date-part')] = parseInt(part.val());
+            }
+        }
+    }
+    formData.push({
+        name: name,
+        required: false,
+        type: 'string',
+        value: tmpDate.year + '-' + tmpDate.month + '-' + tmpDate.day + ' ' + tmpDate.hour + ':' + tmpDate.minute + ':00'
+    });
+    return true;
+}
+
 function beforeSubmit(formData, jqForm, options) {
     var i, len, nameMap = {
         'name': '活动名称',
@@ -238,10 +277,19 @@ function beforeSubmit(formData, jqForm, options) {
         'max_tickets_per_order': '每人最大订票数',
         'book_start': '订票开始时间',
         'book_end': '订票结束时间'
-    }, lackArray = [];
+    }, lackArray = [], dateArray = [
+        'start_time', 'end_time', 'book_start', 'book_end'
+    ];
     for (i = 0, len = formData.length; i < len; ++i) {
         if (!formData[i].value) {
             lackArray.push(nameMap[formData[i].name]);
+        }
+    }
+    for (i = 0, len = dateArray.length; i < len; ++i) {
+        if (!$('#input-' + dateArray[i]).prop('disabled')) {
+            if (!wrapDateString($('#input-' + dateArray[i]), formData, dateArray[i])) {
+                lackArray.push(nameMap[dateArray[i]]);
+            }
         }
     }
     if (lackArray.length > 0) {
