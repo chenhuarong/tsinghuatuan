@@ -35,11 +35,7 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-
-            <form action="." method="GET" >{% csrf_token %}
-
-                <a class="btn btn-default" href={% url adminpage.views.activity_add %}>新增活动</a>
-            </form>
+            <a class="btn btn-default" href={% url adminpage.views.activity_add %}>新增活动</a>
         </div>
 
         <table class="table table-hover">

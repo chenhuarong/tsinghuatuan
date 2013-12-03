@@ -25,14 +25,12 @@ class Activity(models.Model):
     # Something about status:
     # 0: saved but not published
     # 1: published but not determined
-    # 2: is determining
-    # 3: determined
 
 class Ticket(models.Model):
     user = models.ForeignKey(User)
     unique_id = models.CharField(max_length=255)
     activity = models.ForeignKey(Activity)
-    isUsed = models.IntegerField()
+    status = models.IntegerField()
     seat = models.CharField(max_length=255)
     # Something about isUsed
     # 0: ordered but not checked

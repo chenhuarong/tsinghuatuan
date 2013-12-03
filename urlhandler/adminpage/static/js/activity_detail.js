@@ -64,7 +64,7 @@ var dateInterfaceMap = {
     'place': 'value',
     'book_start': 'time',
     'book_end': 'time',
-    'max_tickets_per_order': 'value',
+    'pic_url': 'value',
     'total_tickets': 'value'
 }, lockMap = {
     'value': function(dom, lock) {
@@ -179,44 +179,27 @@ function lockByStatus(status, book_start, start_time) {
         // published but not determined
         '1': {
             'name': true,
-            'key': function() {
-                return (new Date() >= book_start);
-            },
-            'book_start': true,
-            'book_end': true,
-            'max_tickets_per_order': function() {
-                return (new Date() >= book_start);
-            }
-        },
-        // determining
-        '2': {
-            'name': true,
-            'key': true,
-            'book_start': true,
-            'book_end': true,
-            'max_tickets_per_order': true,
-            'total_tickets': true
-        },
-        // determined
-        '3': {
-            'name': true,
             'key': true,
             'description': function() {
-                return (new Date() >= start_time);
+                return (new Date() >= getDateByObj(start_time));
+            },
+            'pic_url': function() {
+                return (new Date() >= getDateByObj(start_time));
             },
             'start_time': function() {
-                return (new Date() >= start_time);
+                return (new Date() >= getDateByObj(start_time));
             },
             'end_time': function() {
-                return (new Date() >= start_time);
+                return (new Date() >= getDateByObj(start_time));
             },
             'place': function() {
-                return (new Date() >= start_time);
+                return (new Date() >= getDateByObj(start_time));
             },
             'book_start': true,
             'book_end': true,
-            'max_tickets_per_order': true,
-            'total_tickets': true
+            'total_tickets': function() {
+                return (new Date() >= getDateByObj(book_start));
+            }
         }
     }, key;
     for (key in keyMap) {
@@ -237,11 +220,19 @@ function lockByStatus(status, book_start, start_time) {
 }
 
 function showProgressByStatus(status, book_start) {
-    if ((status >= 1) && (new Date() >= book_start)) {
+    if ((status >= 1) && (new Date() >= getDateByObj(book_start))) {
         $('#progress-tickets').show();
     } else {
         $('#progress-tickets').hide();
     }
+}
+
+function getDateString(tmpDate) {
+    return tmpDate.year + '-' + tmpDate.month + '-' + tmpDate.day + ' ' + tmpDate.hour + ':' + tmpDate.minute + ':00';
+}
+
+function getDateByObj(obj) {
+    return new Date(obj.year, obj.month - 1, obj.day, obj.hour, obj.minute);
 }
 
 function wrapDateString(dom, formData, name) {
@@ -260,7 +251,7 @@ function wrapDateString(dom, formData, name) {
         name: name,
         required: false,
         type: 'string',
-        value: tmpDate.year + '-' + tmpDate.month + '-' + tmpDate.day + ' ' + tmpDate.hour + ':' + tmpDate.minute + ':00'
+        value: getDateString(tmpDate)
     });
     return true;
 }
@@ -274,7 +265,7 @@ function beforeSubmit(formData, jqForm, options) {
         'start_time': '活动开始时间',
         'end_time': '活动结束时间',
         'total_tickets': '活动总票数',
-        'max_tickets_per_order': '每人最大订票数',
+        'pic_url': '活动配图',
         'book_start': '订票开始时间',
         'book_end': '订票结束时间'
     }, lackArray = [], dateArray = [
