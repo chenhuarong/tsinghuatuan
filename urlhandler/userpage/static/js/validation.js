@@ -12,7 +12,7 @@ function hideElem(id) {
 }
 
 function showElem(id) {
-    document.getElementById(id).setAttribute('style', '');
+    document.getElementById(id).setAttribute('style', 'display:block');
 }
 
 function clearHelp(groupid, helpid) {
@@ -165,10 +165,12 @@ window.setupWeixin({'optionMenu':false, 'toolbar':false});
 
 clearAllHelps();
 
-document.getElementById('inputUsername').focus();
-
-if (!isValidated) {
-    showElem('validationHolder');
-} else {
-    showElem('successHolder');
+function showValidation(isValidated) {
+    if (!isValidated) {
+        showElem('validationHolder');
+        document.getElementById('inputUsername').focus();
+    } else {
+        showElem('successHolder');
+        hideElem('validationHolder');
+    }
 }
