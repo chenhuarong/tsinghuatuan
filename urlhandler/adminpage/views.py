@@ -123,7 +123,7 @@ def wrap_activity_dict(activity):
     dt = model_to_dict(activity)
     if (dt['status'] >= 1) and (datetime.now() >= dt['book_start']):
         dt['tickets_ready'] = 1
-        dt['ordered_tickets'] = activity.total_tickets - activity.remain_tickets
+        dt['ordered_tickets'] = int(activity.total_tickets) - int(activity.remain_tickets)
         dt['checked_tickets'] = get_checked_tickets(activity)
     return dt
 

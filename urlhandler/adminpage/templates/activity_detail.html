@@ -7,28 +7,18 @@
 {% load staticfiles %}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static "lib/bs/datetimepicker/css/bootstrap-datetimepicker.min.css" %}"/>
     <link rel="stylesheet" href="{% static "css/activity_detail.css" %}"/>
-    <style>
-    /*.form-control.date-input{width:20%}*/
-    .form-group.date-input{margin-left: 0;margin-right: 0;width: 13%;}
-    .form-group.date-label{margin-left: 0;margin-right: 0;width: 5%;}
-    .form-group.date-offset{margin-left: 0;margin-right: 0;width: 3%;}
-    .form-group.date-label>label{padding-top: 0; padding-left: 5px;}
-    </style>
 {% endblock %}
 
 {% block js %}
     <script src="{% static "lib/jq/form/jquery.form.min.js" %}"></script>
-    <script src="{% static "lib/bs/datetimepicker/js/bootstrap-datetimepicker.js" %}"></script>
-    <script src="{% static "lib/bs/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" %}"></script>
     <script>
         var activity = {
-            'name': '{{ activity.name }}'{% if activity.id %},
+            'name': '{{ activity.name|escapejs }}'{% if activity.id %},
             'id': {{ activity.id }},
-            'key': '{{ activity.key }}',
-            'description': '{{ activity.description }}',
-            'pic_url': '{{ activity.pic_url }}',
+            'key': '{{ activity.key|escapejs }}',
+            'description': '{{ activity.description|escapejs }}',
+            'pic_url': '{{ activity.pic_url|escapejs }}',
             'start_time': {
                 'year': {{ activity.start_time.year }},
                 'month': {{ activity.start_time.month }},
@@ -43,7 +33,7 @@
                 'hour': {{ activity.end_time.hour }},
                 'minute': {{ activity.end_time.minute }}
             },
-            'place': '{{ activity.place }}',
+            'place': '{{ activity.place|escapejs }}',
             'book_start': {
                 'year': {{ activity.book_start.year }},
                 'month': {{ activity.book_start.month }},
