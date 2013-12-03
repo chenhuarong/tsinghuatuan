@@ -167,7 +167,6 @@ clearAllHelps();
 
 function showValidation(isValidated) {
     if (!isValidated) {
-        showElem('validationHolder');
         document.getElementById('inputUsername').focus();
     } else {
         showElem('successHolder');
