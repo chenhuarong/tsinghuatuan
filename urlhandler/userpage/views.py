@@ -18,10 +18,13 @@ def validate_view(request):
         raise Http404
     requestdata = request.GET
     if User.objects.filter(weixin_id=requestdata.get('openid', ''), status=1).exists():
-        raise Http404
+        isValidated = 1
+    else:
+        isValidated = 0
     return render_to_response('validation.html', {
         'openid': requestdata.get('openid', ''),
         'studentid': requestdata.get('studentid', ''),
+        'isValidated': isValidated,
     }, context_instance=RequestContext(request))
 
 

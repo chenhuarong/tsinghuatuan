@@ -48,7 +48,7 @@ def get_help_response(msg):
         reply_content = u''
     else:
         reply_content = u'<a href="http://tsinghuatuan.duapp.com/userpage/validate/?openid=%s">' \
-                        u'点此绑定信息门户账号</a>' % msg['FromUserName']
+                        u'点此绑定信息门户账号</a>\r\n' % msg['FromUserName']
     reply_content += u'您好，回复以下关键字可以得到相应结果:\r\n抢啥 抢票 查票 帮助'
     return get_reply_text_xml(msg, reply_content)
 
@@ -98,7 +98,7 @@ def get_tickets(msg):
         user = User.objects.get(weixin_id=msg['FromUserName'])
     else:
         return get_reply_text_xml(msg, u'对不起，尚未绑定账号，不能查票，<a href="http://tsinghuatuan.duapp.com/userpage/validate/?openid=%s">点此绑定信息'
-                                       u'门户账号</a>\r\n' % msg['FromUserName'])
+                                       u'门户账号</a>' % msg['FromUserName'])
 
     now = string.atof(msg['CreateTime'])
     activitys = Activity.objects.filter(status=1, end_time__gte=datetime.datetime.fromtimestamp(now))
