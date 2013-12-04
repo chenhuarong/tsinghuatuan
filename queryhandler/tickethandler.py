@@ -3,6 +3,8 @@ import random
 import string
 import time, datetime
 from urlhandler.models import *
+from django.db.models import F
+from django.db import transaction
 
 QRCODE_URL = 'http://tsinghuaqr.duapp.com/'
 
@@ -202,7 +204,7 @@ def return_tickets(msg):
 
     receive_msg = msg['Content']
     receive_msg = receive_msg.split()
-    activitys = Activity.objects.select_for_update().filter(status=1, end_time__gte=now, key=receive_msg[0])
+    activitys = Activity.objects.filter(status=1, end_time__gte=now, key=receive_msg[0])
     activity = activitys[0]
 
     if len(receive_msg) == 2 and receive_msg[1].lower() == 'qx':
@@ -223,7 +225,7 @@ def return_tickets(msg):
                 ticket.status = 0
                 ticket.save()
 
-                activity.remain_tickets += 1
+                activity.update(remain_tickets=F('remain_tickets') + 1)
                 activity.save()
                 return get_reply_text_xml(msg, u'退票成功，欢迎关注下次活动')
             else:
@@ -243,6 +245,7 @@ def check_book_event(msg):
 
 
 #handle book event
+@transaction.commit_manually()
 def get_book_event(msg):
     if is_authenticated(msg['FromUserName']):
         user = User.objects.get(weixin_id=msg['FromUserName'])
@@ -283,6 +286,7 @@ def get_book_event(msg):
         ticket.save()
         activity.remain_tickets -= 1
         activity.save()
+        transaction.commit()
         item = '<item><Title><![CDATA[%s]]></Title><Description><![CDATA[%s]]></Description>' \
                '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
         description = u'活动时间：%s\r\n活动地点：%s\r\n回复%s qx退票' %(ticket.activity.start_time.strftime('%Y-%m-%d %H:%M'),
@@ -298,6 +302,7 @@ def get_book_event(msg):
         ticket.save()
         activity.remain_tickets -= 1
         activity.save()
+        transaction.commit()
         item = '<item><Title><![CDATA[%s]]></Title><Description><![CDATA[%s]]></Description>' \
                '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
         description = u'活动时间：%s\r\n活动地点：%s\r\n回复%s qx退票' %(ticket.activity.start_time.strftime('%Y-%m-%d %H:%M'),
