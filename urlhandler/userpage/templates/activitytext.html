@@ -14,7 +14,7 @@
         </div>
     {% endif %}
     <div class="details-divider"></div>
-    <div style="text-align: center">
+    <div style="text-align: center;min-width: 300px">
         <div id="activitytimer"></div>
     </div>
     <div class="details-divider"></div>
@@ -23,21 +23,18 @@
     抢票时间：
     </div>
     <div class="details-divider"></div>
-    <div class="date-wrapper" id="bookdetails">
-        <div class="inner">
-            <div class="date">
-                <span class="hour">{{ act_bookstart|date:"H:i"}}</span><br>
-                <span class="day">{{ act_bookstart|date:"Y/m/d"}}</span>
+    <div class="details-wrapper">
+        <div class="text-inner">
+            <div class="trigger">
+                <a>开始时间：{{ act_bookstart|date:"Y年m月d日H时i分" }}</a>
             </div>
         </div>
-        <div class="date-space">
-            <span class="space"> - </span>
-            <span class="day"></span>
-        </div>
-        <div class="inner">
-            <div class="date">
-                <span class="hour">{{ act_bookend|date:"H:i"}}</span><br>
-                <span class="day">{{ act_bookend|date:"Y/m/d"}}</span>
+    </div>
+    <div class="details-divider"></div>
+    <div class="details-wrapper">
+        <div class="text-inner">
+            <div class="trigger">
+                <a>结束时间：{{ act_bookend|date:"Y年m月d日H时i分" }}</a>
             </div>
         </div>
     </div>
@@ -47,21 +44,18 @@
     活动时间：
     </div>
     <div class="details-divider"></div>
-    <div class="date-wrapper" id="timedetails">
-        <div class="inner">
-            <div class="date">
-                <span class="hour">{{ act_begintime|date:"H:i"}}</span><br>
-                <span class="day">{{ act_begintime|date:"Y/m/d"}}</span>
+    <div class="details-wrapper">
+        <div class="text-inner">
+            <div class="trigger">
+                <a>开始时间：{{ act_begintime|date:"Y年m月d日H时i分" }}</a>
             </div>
         </div>
-        <div class="date-space">
-            <span class="space"> - </span>
-            <span class="day"></span>
-        </div>
-        <div class="inner">
-            <div class="date">
-                <span class="hour">{{ act_endtime|date:"H:i"}}</span><br>
-                <span class="day">{{ act_endtime|date:"Y/m/d"}}</span>
+    </div>
+    <div class="details-divider"></div>
+    <div class="details-wrapper">
+        <div class="text-inner">
+            <div class="trigger">
+                <a>结束时间：{{ act_endtime|date:"Y年m月d日H时i分" }}</a>
             </div>
         </div>
     </div>
@@ -81,7 +75,7 @@
     <div class="details-divider"></div>
 
     <div class="timer-wrapper">
-    订票代码：<!--<div class="clipcopy" id="copykey">点此复制</div>-->
+    取票代码：<!--<div class="clipcopy" id="copykey">点此复制</div>-->
     </div>
     <div class="details-divider"></div>
     <div class="details-wrapper">

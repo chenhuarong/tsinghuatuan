@@ -92,7 +92,7 @@ function getTd(para) {
 var tdMap = {
     'status': 'status',
     'name': 'text',
-    'description': 'text',
+    'description': 'longtext',
     'activity_time': 'time',
     'place': 'text',
     'book_time': 'time',
@@ -103,6 +103,13 @@ var tdMap = {
     },
     'text': function(act, key) {
         return act[key];
+    },
+    'longtext': function(act, key) {
+        var str = act[key];
+        if (str.length > 55) {
+            str = str.substr(0, 55) + '... <a href="' + act['detail_url'] + '">显示全部</a>';
+        }
+        return str;
     },
     'time': function(act, key) {
         return smartTimeMap[key](act);

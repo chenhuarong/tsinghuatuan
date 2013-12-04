@@ -1,0 +1,17 @@
+.ticket{
+    display: block;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    padding: 20px 20px;
+    background-color: #fff;
+    border: 1px solid #c0c0c0;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+}
+img{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}

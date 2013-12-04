@@ -7,9 +7,19 @@
 
 var xmlhttp = null;
 
+function hideElem(id) {
+    document.getElementById(id).setAttribute('style', 'display:none');
+}
+
+function showElem(id) {
+    document.getElementById(id).setAttribute('style', 'display:block');
+}
+
 function clearHelp(groupid, helpid) {
     document.getElementById(groupid).setAttribute('class', 'form-group');
-    document.getElementById(helpid).setAttribute('hidden', 'hidden');
+    //document.getElementById(helpid).setAttribute('hidden', 'hidden');
+    //document.getElementById(helpid).setAttribute('style', 'display:none;');
+    hideElem(helpid);
 }
 
 function clearAllHelps() {
@@ -20,13 +30,15 @@ function clearAllHelps() {
 
 function showSuccess(groupid, helpid) {
     document.getElementById(groupid).setAttribute('class', 'form-group has-success');
-    document.getElementById(helpid).setAttribute('hidden', 'hidden');
+    //document.getElementById(helpid).setAttribute('hidden', 'hidden');
+    hideElem(helpid);
 }
 
 function showError(groupid, helpid, text) {
     var dom = document.getElementById(helpid);
     dom.innerText = text;
-    dom.removeAttribute('hidden');
+    //dom.removeAttribute('hidden');
+    showElem(helpid);
     document.getElementById(groupid).setAttribute('class', 'form-group has-error');
 }
 
@@ -46,11 +58,13 @@ function disableAll(flag) {
 }
 
 function showLoading(flag) {
-    var dom = document.getElementById('helpLoading');
+    //var dom = document.getElementById('helpLoading');
     if (flag) {
-        dom.removeAttribute('hidden');
+        //dom.removeAttribute('hidden');
+        showElem('helpLoading');
     } else {
-        dom.setAttribute('hidden', 'hidden');
+        //dom.setAttribute('hidden', 'hidden');
+        hideElem('helpLoading');
     }
 }
 
@@ -63,8 +77,10 @@ function readyStateChanged() {
             switch (result)
             {
                 case 'Accepted':
-                    document.getElementById('validationHolder').setAttribute('hidden', 'hidden');
-                    document.getElementById('successHolder').removeAttribute('hidden');
+                    //document.getElementById('validationHolder').setAttribute('hidden', 'hidden');
+                    hideElem('validationHolder');
+                    //document.getElementById('successHolder').removeAttribute('hidden');
+                    showElem('successHolder');
                     return;
 
                 case 'Rejected':
@@ -111,7 +127,8 @@ function checkNotEmpty(groupid, helpid, inputid, hintName) {
         document.getElementById(groupid).setAttribute('class', 'form-group has-error');
         var dom = document.getElementById(helpid);
         dom.innerText = '请输入' + hintName + '！';
-        dom.removeAttribute('hidden');
+        //dom.removeAttribute('hidden');
+        showElem(helpid);
         return false;
     } else {
         showSuccess(groupid, helpid);
@@ -124,7 +141,8 @@ function checkIsDigit(groupid, helpid, inputid, hintName) {
         document.getElementById(groupid).setAttribute('class', 'form-group has-error');
         var dom = document.getElementById(helpid);
         dom.innerText = hintName + '必须为数字！';
-        dom.removeAttribute('hidden');
+        //dom.removeAttribute('hidden');
+        showElem(helpid);
         return false;
     } else {
         showSuccess(groupid, helpid);
@@ -147,4 +165,11 @@ window.setupWeixin({'optionMenu':false, 'toolbar':false});
 
 clearAllHelps();
 
-document.getElementById('inputUsername').focus();
+function showValidation(isValidated) {
+    if (!isValidated) {
+        document.getElementById('inputUsername').focus();
+    } else {
+        showElem('successHolder');
+        hideElem('validationHolder');
+    }
+}

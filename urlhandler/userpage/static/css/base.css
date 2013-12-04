@@ -14,24 +14,16 @@ body
     background:url(../img/bg.png) repeat;
     color: #423932;
 }
-
-h1{
-  font-size: 20px;
-  text-align:center;
-}
-
 hr {
-  margin-top: 10px;
+  margin-top: 5px;
   margin-bottom: 10px;
   border: 0;
   width: 90%;
   border-top: 1px solid #CDCECF;
 }
-
 footer{
     text-align: center;
 }
-
 footer,
 header {
   display: block;
@@ -39,4 +31,10 @@ header {
 
 .header-img{
     width: 100%;
+}
+.theme{
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 10px;
 }

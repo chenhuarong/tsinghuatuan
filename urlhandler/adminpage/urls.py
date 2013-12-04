@@ -8,4 +8,6 @@ urlpatterns = patterns('',
                        url(r'^modify/$', 'adminpage.views.activity_post'),
                        url(r'^login/$', 'adminpage.views.login'),
                        url(r'^logout/$', 'adminpage.views.logout'),
+                       url(r'^order/$', 'adminpage.views.order_list'),
+                       url(r'^print/(?P<unique_id>\d+)/$', 'adminpage.views.print_ticket')
                        )

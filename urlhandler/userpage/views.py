@@ -18,10 +18,13 @@ def validate_view(request):
         raise Http404
     requestdata = request.GET
     if User.objects.filter(weixin_id=requestdata.get('openid', ''), status=1).exists():
-        raise Http404
+        isValidated = 1
+    else:
+        isValidated = 0
     return render_to_response('validation.html', {
         'openid': requestdata.get('openid', ''),
         'studentid': requestdata.get('studentid', ''),
+        'isValidated': isValidated,
     }, context_instance=RequestContext(request))
 
 
@@ -140,7 +143,7 @@ def ticket_view(request):
     act_begintime = activity[0].start_time
     act_endtime = activity[0].end_time
     act_place = activity[0].place
-    act_photo = "http://tsinghuaqr.duapp.com/"+uid
+    act_photo = "http://tsinghuaqr.duapp.com/fit/"+uid
     variables=RequestContext(request,{'act_name':act_name,'act_place':act_place, 'act_begintime':act_begintime,
                                       'act_endtime':act_endtime,'act_photo':act_photo})
     return render_to_response('activityticket.html', variables)

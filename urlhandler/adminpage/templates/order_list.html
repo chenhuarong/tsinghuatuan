@@ -1,0 +1,73 @@
+{% extends "activity_base.html" %}
+
+{% load staticfiles %}
+
+{% block activity-title %}订单列表{% endblock %}
+
+{% block nav-li %}
+
+{% endblock %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}
+
+{% block username %}
+    <a href="#" >登出</a>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container" xmlns="http://www.w3.org/1999/html">
+
+    <div class="pageheader">
+        <h1 class="lead">订单列表</h1>
+    </div>
+
+    <div class="panel panel-default">
+    <!--
+        <div class="panel-heading">
+
+        </div>
+    -->
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>名称</th>
+                <th>时间</th>
+                <th>地点</th>
+                <th>座位</th>
+                <th>是否有效</th>
+                <th>打印</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for item in orders %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.start_time|date:"y/m/d l H:i" }} - {{ item.end_time|date:"y/m/d l H:i" }} </td>
+                <td>{{ item.place }}</td>
+                <td>{{ item.seat }}</td>
+                <td>{{ item.valid }}</td>
+                <td>
+                    <span>
+                        <a href={% url adminpage.views.print_ticket unique_id=item.unique_id %}>
+                            <span class="glyphicon glyphicon-print"></span> 打印
+                        </a>
+                    </span>
+
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+{% endblock %}

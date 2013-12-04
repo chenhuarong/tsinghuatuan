@@ -25,8 +25,9 @@ from django.views.decorators.csrf import csrf_protect
 
 #import database
 from urlhandler.models import Activity, Order, Ticket
-
-
+<<<<<<< HEAD
+from urlhandler.models import User as Booker
+@csrf_protect
 def home(request):
     if not request.user.is_authenticated():
         return render_to_response('login.html', context_instance=RequestContext(request))
@@ -170,3 +171,39 @@ def activity_post(request):
         rtnJSON['error'] = str(e)
     return HttpResponse(json.dumps(rtnJSON, cls=DatetimeJsonEncoder), content_type='application/json')
 
+def order_list(request):
+    UID = 1
+    orders = []
+
+    try:
+        qset = Ticket.objects.filter(user_id = UID)
+        print qset
+        item = {}
+        for x in qset:
+            activity = Activity.objects.get(id = x.activity_id)
+            item['name'] = activity.name
+            item['start_time'] = activity.start_time
+            item['end_time'] = activity.end_time
+            item['place'] = activity.place
+            item['seat'] = x.seat
+            item['valid'] = x.isUsed
+            item['unique_id'] = x.unique_id
+        orders.append(item)
+    except:
+        raise Http404
+    return render_to_response('order_list.html', {
+        'orders': orders,
+    }, context_instance=RequestContext(request))
+
+def print_ticket(request, unique_id):
+    try:
+        ticket = Ticket.objects.get(unique_id = unique_id)
+        activity = Activity.objects.get(id = ticket.activity_id)
+        qr_addr = "http://tsinghuaqr.duapp.com/fit/" + unique_id
+
+    except:
+        raise Http404
+    return render_to_response('print_ticket.html', {
+        'qr_addr': qr_addr,
+        'activity': activity
+    },context_instance=RequestContext(request))
