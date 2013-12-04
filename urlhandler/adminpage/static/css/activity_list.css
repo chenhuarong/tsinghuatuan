@@ -8,10 +8,10 @@
     min-width: 100px;
 }
 .td-activity_time {
-    min-width: 260px;
+    width: 135px;
 }
 .td-book_time {
-    min-width: 260px;
+    width: 135px;
 }
 .td-place {
     min-width: 90px;
