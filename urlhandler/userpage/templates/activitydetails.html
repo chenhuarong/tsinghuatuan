@@ -10,8 +10,8 @@
 <link href="{% static "css/details.css" %}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
-{% block js %}
-    <script src="{% static "js/details.js" %}"></script>
+{% block header %}
+    <img class="header-img" src="{% static "img/logo.png" %}" />
 {% endblock %}
 
 {% block theme %}
@@ -23,4 +23,8 @@
 {% include 'activityphoto.html' %}
 {% include 'activitytext.html' %}
 
+{% endblock %}
+
+{% block js %}
+    <script src="{% static "js/details.js" %}"></script>
 {% endblock %}

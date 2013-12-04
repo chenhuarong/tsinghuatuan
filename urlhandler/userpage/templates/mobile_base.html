@@ -9,7 +9,11 @@
 </head>
 <body>
     <header>{% block header %}{% endblock %}</header>
-    <h1>{% block theme %}{% endblock %}</h1>
+
+    <div class="theme">{% block theme %}{% endblock %}</div>
+
+    <hr/>
+
     {% block content %}{% endblock %}
     <footer>
         <hr />

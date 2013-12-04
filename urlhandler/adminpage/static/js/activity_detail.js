@@ -4,7 +4,7 @@
  * Date: 13-11-30
  * Time: 上午11:43
  */
-
+/*
 var datetimepicker_option = {
     format: "yyyy年mm月dd日 - hh:ii",
     autoclose: true,
@@ -30,8 +30,14 @@ function disableDatetimePicker(dom) {
     dom.datetimepicker('remove');
     dom.children('.input-group-addon').css('cursor', 'no-drop').children().css('cursor', 'no-drop');
 }
-
-var actionMap = {
+*/
+var dateInterfaceMap = {
+    'year': 'getFullYear',
+    'month': 'getMonth',
+    'day': 'getDate',
+    'hour': 'getHours',
+    'minute': 'getMinutes'
+}, actionMap = {
     'value': function(dom, value) {
         dom.val(value);
     },
@@ -39,9 +45,14 @@ var actionMap = {
         dom.text(value);
     },
     'time': function(dom, value) {
-        if (value) {
-            enableDatetimePicker(dom);
-            dom.datetimepicker('setDate', value);
+        if (value instanceof Object) {
+            var parts = dom.children(), i, len, part;
+            for (i = 0, len = parts.length; i < len; ++i) {
+                part = $(parts[i]).children();
+                if (part.attr('date-part')) {
+                    part.val(value[part.attr('date-part')]);
+                }
+            }
         }
     }
 }, keyMap = {
@@ -53,7 +64,7 @@ var actionMap = {
     'place': 'value',
     'book_start': 'time',
     'book_end': 'time',
-    'max_tickets_per_order': 'value',
+    'pic_url': 'value',
     'total_tickets': 'value'
 }, lockMap = {
     'value': function(dom, lock) {
@@ -63,19 +74,26 @@ var actionMap = {
         dom.prop('disabled', lock);
     },
     'time': function(dom, lock) {
-        if (lock) {
-            disableDatetimePicker(dom);
-        } else {
-            enableDatetimePicker(dom);
+        var parts = dom.children(), i, len, part;
+        for (i = 0, len = parts.length; i < len; ++i) {
+            part = $(parts[i]).children();
+            if (part.attr('date-part')) {
+                part.prop('disabled', lock);
+            }
         }
+        dom.prop('disabled', lock);
     }
 };
 
 function updateActivity(nact) {
-    var key;
+    var key, key2, tdate;
     for (key in nact) {
         if (keyMap[key] == 'time') {
-            activity[key] = new Date(nact[key]);
+            activity[key] = {};
+            tdate = new Date(nact[key])
+            for (key2 in dateInterfaceMap) {
+                activity[key][key2] = tdate[dateInterfaceMap[key2]]() + ((key2 == 'month') ? 1 : 0);
+            }
         } else {
             activity[key] = nact[key];
         }
@@ -108,7 +126,7 @@ function initialProgress(checked, ordered, total) {
     $('#tickets-checked').css('width', check_percent(100.0 * checked / total) + '%')
         .tooltip('destroy').tooltip({'title': '已检入：' + checked + '/' + ordered + '=' + (100.0 * checked / ordered).toFixed(2) + '%'});
     $('#tickets-ordered').css('width', check_percent(100.0 * (ordered - checked) / total) + '%')
-        .tooltip('destroy').tooltip({'title': '订票总数：' + ordered + '/' + total + '=' + (100.0 * ordered / total).toFixed(2) + '%' + '，其中未检票：' + (ordered - checked) + '/' + ordered + '=' + (100.0 * (ordered - checked) / total).toFixed(2) + '%'});
+        .tooltip('destroy').tooltip({'title': '订票总数：' + ordered + '/' + total + '=' + (100.0 * ordered / total).toFixed(2) + '%' + '，其中未检票：' + (ordered - checked) + '/' + ordered + '=' + (100.0 * (ordered - checked) / ordered).toFixed(2) + '%'});
     $('#tickets-remain').css('width', check_percent(100.0 * (total - ordered) / total) + '%')
         .tooltip('destroy').tooltip({'title': '余票：' + (total - ordered) + '/' + total + '=' + (100.0 * (total - ordered) / total).toFixed(2) + '%'});
 }
@@ -161,44 +179,27 @@ function lockByStatus(status, book_start, start_time) {
         // published but not determined
         '1': {
             'name': true,
-            'key': function() {
-                return (new Date() >= book_start);
-            },
-            'book_start': true,
-            'book_end': true,
-            'max_tickets_per_order': function() {
-                return (new Date() >= book_start);
-            }
-        },
-        // determining
-        '2': {
-            'name': true,
-            'key': true,
-            'book_start': true,
-            'book_end': true,
-            'max_tickets_per_order': true,
-            'total_tickets': true
-        },
-        // determined
-        '3': {
-            'name': true,
             'key': true,
             'description': function() {
-                return (new Date() >= start_time);
+                return (new Date() >= getDateByObj(start_time));
+            },
+            'pic_url': function() {
+                return (new Date() >= getDateByObj(start_time));
             },
             'start_time': function() {
-                return (new Date() >= start_time);
+                return (new Date() >= getDateByObj(start_time));
             },
             'end_time': function() {
-                return (new Date() >= start_time);
+                return (new Date() >= getDateByObj(start_time));
             },
             'place': function() {
-                return (new Date() >= start_time);
+                return (new Date() >= getDateByObj(start_time));
             },
             'book_start': true,
             'book_end': true,
-            'max_tickets_per_order': true,
-            'total_tickets': true
+            'total_tickets': function() {
+                return (new Date() >= getDateByObj(book_start));
+            }
         }
     }, key;
     for (key in keyMap) {
@@ -219,16 +220,41 @@ function lockByStatus(status, book_start, start_time) {
 }
 
 function showProgressByStatus(status, book_start) {
-    if ((status >= 1) && (new Date() >= book_start)) {
+    if ((status >= 1) && (new Date() >= getDateByObj(book_start))) {
         $('#progress-tickets').show();
     } else {
         $('#progress-tickets').hide();
     }
 }
 
-//enableDatetimePicker($('.form_datetime'));
-initializeForm(activity);
-showForm();
+function getDateString(tmpDate) {
+    return tmpDate.year + '-' + tmpDate.month + '-' + tmpDate.day + ' ' + tmpDate.hour + ':' + tmpDate.minute + ':00';
+}
+
+function getDateByObj(obj) {
+    return new Date(obj.year, obj.month - 1, obj.day, obj.hour, obj.minute);
+}
+
+function wrapDateString(dom, formData, name) {
+    var parts = dom.children(), i, len, tmpDate = {}, part;
+    for (i = 0, len = parts.length; i < len; ++i) {
+        part = $(parts[i]).children();
+        if (part.attr('date-part')) {
+            if (part.val().length == 0) {
+                return false;
+            } else {
+                tmpDate[part.attr('date-part')] = parseInt(part.val());
+            }
+        }
+    }
+    formData.push({
+        name: name,
+        required: false,
+        type: 'string',
+        value: getDateString(tmpDate)
+    });
+    return true;
+}
 
 function beforeSubmit(formData, jqForm, options) {
     var i, len, nameMap = {
@@ -239,13 +265,22 @@ function beforeSubmit(formData, jqForm, options) {
         'start_time': '活动开始时间',
         'end_time': '活动结束时间',
         'total_tickets': '活动总票数',
-        'max_tickets_per_order': '每人最大订票数',
+        'pic_url': '活动配图',
         'book_start': '订票开始时间',
         'book_end': '订票结束时间'
-    }, lackArray = [];
+    }, lackArray = [], dateArray = [
+        'start_time', 'end_time', 'book_start', 'book_end'
+    ];
     for (i = 0, len = formData.length; i < len; ++i) {
         if (!formData[i].value) {
             lackArray.push(nameMap[formData[i].name]);
+        }
+    }
+    for (i = 0, len = dateArray.length; i < len; ++i) {
+        if (!$('#input-' + dateArray[i]).prop('disabled')) {
+            if (!wrapDateString($('#input-' + dateArray[i]), formData, dateArray[i])) {
+                lackArray.push(nameMap[dateArray[i]]);
+            }
         }
     }
     if (lackArray.length > 0) {
@@ -324,6 +359,28 @@ function submitComplete(xhr) {
     showResult();
 }
 
+function publishActivity() {
+    if(!$('#activity-form')[0].checkValidity || $('#activity-form')[0].checkValidity()){
+        showProcessing();
+        setResult('');
+        var options = {
+            dataType: 'json',
+            beforeSubmit: beforePublish,
+            success: submitResponse,
+            error: submitError,
+            complete: submitComplete
+        };
+        $('#activity-form').ajaxSubmit(options);
+        return false;
+    } else {
+        $('#saveBtn').click();
+    }
+    return false;
+}
+
+initializeForm(activity);
+showForm();
+
 $('#activity-form').submit(function() {
     showProcessing();
     setResult('');
@@ -340,17 +397,3 @@ $('#activity-form').submit(function() {
     initializeForm(activity);
     return false;
 });
-
-function publishActivity() {
-    showProcessing();
-    setResult('');
-    var options = {
-        dataType: 'json',
-        beforeSubmit: beforePublish,
-        success: submitResponse,
-        error: submitError,
-        complete: submitComplete
-    };
-    $('#activity-form').ajaxSubmit(options);
-    return false;
-}

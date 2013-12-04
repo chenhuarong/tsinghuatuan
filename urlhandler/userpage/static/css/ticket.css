@@ -1,0 +1,12 @@
+.ticket-wrapper{
+    padding-left: 10px;
+    padding-bottom: 8px;
+    text-align: center;
+}
+.details-wrapper{
+    text-align: center;
+    padding-bottom: 5px;
+}
+img{
+    width: 85%;
+}

@@ -25,14 +25,14 @@ from django.views.decorators.csrf import csrf_protect
 
 #import database
 from urlhandler.models import Activity, Order, Ticket
+<<<<<<< HEAD
 from urlhandler.models import User as Booker
 @csrf_protect
 def home(request):
     if not request.user.is_authenticated():
         return render_to_response('login.html', context_instance=RequestContext(request))
     else:
-        activities = Activity.objects.all()
-        return render_to_response('activity_list.html', {'activities':activities})
+        return HttpResponseRedirect(reverse('adminpage.views.activity_list'))
 
 
 def activity_list(request):
@@ -44,7 +44,7 @@ def activity_list(request):
         'activities': activities,
     })
 
-@csrf_protect
+
 def login(request):
     if not request.POST:
         raise Http404
@@ -54,23 +54,25 @@ def login(request):
     username = request.POST.get('username', '')
     password = request.POST.get('password', '')
 
-    user = auth.authenticate(username = username, password = password)
+    user = auth.authenticate(username=username, password=password)
     if user is not None and user.is_active:
         auth.login(request, user)
         rtnJSON['message'] = 'success'
-        rtnJSON['next'] = '/adminpage/list/'
+        rtnJSON['next'] = reverse('adminpage.views.activity_list')
     else:
         rtnJSON['message'] = 'failed'
-        if User.objects.filter(username=username, is_active = True):
+        if User.objects.filter(username=username, is_active=True):
             rtnJSON['error'] = 'wrong'
         else:
             rtnJSON['error'] = 'none'
 
     return HttpResponse(json.dumps(rtnJSON), content_type='application/json')
 
+
 def logout(request):
     auth.logout(request)
-    return HttpResponseRedirect('/adminpage/')
+    return HttpResponseRedirect(reverse('adminpage.views.home'))
+
 
 def str_to_datetime(str):
     return datetime.strptime(str, '%Y-%m-%d %H:%M:%S')
@@ -78,11 +80,12 @@ def str_to_datetime(str):
 
 def activity_create(activity):
     preDict = dict()
-    for k in ['name', 'key', 'description', 'place', 'max_tickets_per_order', 'total_tickets']:
+    for k in ['name', 'key', 'description', 'place', 'pic_url', 'total_tickets']:
         preDict[k] = activity[k]
     for k in ['start_time', 'end_time', 'book_start', 'book_end']:
         preDict[k] = str_to_datetime(activity[k])
-    preDict['status'] = 1 if activity.has_key('publish') else 0
+    preDict['status'] = 1 if ('publish' in activity) else 0
+    preDict['remain_tickets'] = preDict['total_tickets']
     newact = Activity.objects.create(**preDict)
     return newact
 
@@ -91,52 +94,37 @@ def activity_modify(activity):
     nowact = Activity.objects.get(id=activity['id'])
     now = datetime.now()
     if nowact.status == 0:
-        keylist = ['name', 'key', 'description', 'place', 'max_tickets_per_order', 'total_tickets']
+        keylist = ['name', 'key', 'description', 'place', 'pic_url', 'total_tickets']
         timelist = ['start_time', 'end_time', 'book_start', 'book_end']
     elif nowact.status == 1:
-        if now >= nowact.book_start:
-            keylist = ['description', 'place', 'total_tickets']
-            timelist = ['start_time', 'end_time']
-        else:
-            keylist = ['key', 'description', 'place', 'max_tickets_per_order', 'total_tickets']
-            timelist = ['start_time', 'end_time']
-    elif nowact.status == 2:
-        keylist = ['description', 'place']
-        timelist = ['start_time', 'end_time']
-    elif nowact.staus == 3:
         if now >= nowact.start_time:
             keylist = []
             timelist = []
+        elif now >= nowact.book_start:
+            keylist = ['description', 'place', 'pic_url']
+            timelist = ['start_time', 'end_time']
         else:
-            keylist = ['description', 'place']
+            keylist = ['description', 'place', 'pic_url', 'total_tickets']
             timelist = ['start_time', 'end_time']
     for key in keylist:
         setattr(nowact, key, activity[key])
     for key in timelist:
         setattr(nowact, key, str_to_datetime(activity[key]))
-    if (nowact.status == 0) and activity.has_key('publish'):
+    if (nowact.status == 0) and ('publish' in activity):
         nowact.status = 1
     nowact.save()
     return nowact
 
 
-def get_ordered_tickets(activity):
-    orders = Order.objects.filter(activity=activity, status=1).all()
-    result = 0
-    for order in orders:
-        result += order.tickets
-    return result
-
-
 def get_checked_tickets(activity):
-    return Ticket.objects.filter(activity=activity, isUsed=0).count()
+    return Ticket.objects.filter(activity=activity, status=2).count()
 
 
 def wrap_activity_dict(activity):
     dt = model_to_dict(activity)
     if (dt['status'] >= 1) and (datetime.now() >= dt['book_start']):
         dt['tickets_ready'] = 1
-        dt['ordered_tickets'] = get_ordered_tickets(activity)
+        dt['ordered_tickets'] = int(activity.total_tickets) - int(activity.remain_tickets)
         dt['checked_tickets'] = get_checked_tickets(activity)
     return dt
 
@@ -173,7 +161,7 @@ def activity_post(request):
     post = request.POST
     rtnJSON = dict()
     try:
-        if post.has_key('id'):
+        if 'id' in post:
             activity = activity_modify(post)
         else:
             activity = activity_create(post)

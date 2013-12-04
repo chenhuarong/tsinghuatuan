@@ -3,7 +3,7 @@
 from django.http import HttpResponse, Http404
 from django.template import RequestContext
 from django.shortcuts import render_to_response
-from urlhandler.models import User, Activity
+from urlhandler.models import User, Activity, Ticket
 from urlhandler.settings import STATIC_URL
 import urllib, urllib2
 from django.utils import timezone
@@ -18,10 +18,13 @@ def validate_view(request):
         raise Http404
     requestdata = request.GET
     if User.objects.filter(weixin_id=requestdata.get('openid', ''), status=1).exists():
-        raise Http404
+        isValidated = 1
+    else:
+        isValidated = 0
     return render_to_response('validation.html', {
         'openid': requestdata.get('openid', ''),
         'studentid': requestdata.get('studentid', ''),
+        'isValidated': isValidated,
     }, context_instance=RequestContext(request))
 
 
@@ -99,18 +102,48 @@ def details_view(request):
     act_begintime = activity[0].start_time
     act_endtime = activity[0].end_time
     act_totaltickets = activity[0].total_tickets
-    act_perorder = activity[0].max_tickets_per_order
     act_text = activity[0].description
-    act_photo = STATIC_URL + "img/mlhk.png"
+    act_abstract = act_text
+    MAX_LEN = 256
+    act_text_status = 0
+    if len(act_text) > MAX_LEN:
+        act_text_status = 1
+        act_abstract = act_text[0:MAX_LEN]+u'...'
+    act_photo = activity[0].pic_url
     cur_time = timezone.now() # use the setting UTC
+    act_seconds = 0
     if act_bookstart <= cur_time <= act_bookend:
-        act_status = u'订票正在进行中，请回复代码：“%s+订票张数”或点击菜单栏中“%s”进行订票'%(act_key,act_name)
+        act_delta = act_bookend - cur_time
+        act_seconds = act_delta.total_seconds()
+        act_status = 0 # during book time
     elif cur_time < act_bookstart:
-        act_status = u'订票尚未开始，订票时间为:%s-%s'%(act_bookstart, act_bookend)
+        act_delta = act_bookstart - cur_time
+        act_seconds = act_delta.total_seconds()
+        act_status = 1 # before book time
     else:
-        act_status = u'活动订票已结束，可回复代码：%s查询订票结果'%(act_key)
-    variables=RequestContext(request,{'act_name':act_name,'activity_text':act_text, 'activity_photo':act_photo,
+        act_status = 2 # after book time
+    variables=RequestContext(request,{'act_name':act_name,'act_text':act_text, 'act_photo':act_photo,
                                       'act_bookstart':act_bookstart,'act_bookend':act_bookend,'act_begintime':act_begintime,
-                                      'act_endtime':act_endtime,'act_totaltickets':act_totaltickets,'act_perorder':act_perorder,
-                                      'act_place':act_place, 'act_status':act_status})
+                                      'act_endtime':act_endtime,'act_totaltickets':act_totaltickets,'act_key':act_key,
+                                      'act_place':act_place, 'act_status':act_status, 'act_seconds':act_seconds,
+                                      'act_abstract':act_abstract, 'act_text_status':act_text_status})
     return render_to_response('activitydetails.html', variables)
+
+
+def ticket_view(request):
+    requestdata = request.GET
+    if (not requestdata) or (not 'uid' in requestdata):
+        raise Http404
+    uid  = requestdata.get('uid', '')
+    ticket = Ticket.objects.filter(unique_id=uid)
+    if not ticket.exists():
+        raise Http404  #current activity is invalid
+    activity = Activity.objects.filter(id=ticket[0].activity_id)
+    act_name = activity[0].name
+    act_begintime = activity[0].start_time
+    act_endtime = activity[0].end_time
+    act_place = activity[0].place
+    act_photo = "http://tsinghuaqr.duapp.com/fit/"+uid
+    variables=RequestContext(request,{'act_name':act_name,'act_place':act_place, 'act_begintime':act_begintime,
+                                      'act_endtime':act_endtime,'act_photo':act_photo})
+    return render_to_response('activityticket.html', variables)

@@ -1,0 +1,21 @@
+.td-status {
+    min-width: 90px;
+}
+.td-name {
+    min-width: 90px;
+}
+.td-description {
+    min-width: 100px;
+}
+.td-activity_time {
+    min-width: 260px;
+}
+.td-book_time {
+    min-width: 260px;
+}
+.td-place {
+    min-width: 90px;
+}
+.td-detail_url {
+    min-width: 70px;
+}

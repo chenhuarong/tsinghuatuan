@@ -16,6 +16,7 @@
     function ajaxForm() {
         submitValidation('{{ openid }}');
     }
+    window.onload = function() {showValidation({{ isValidated }});}
     </script>
 {% endblock %}
 
@@ -48,13 +49,13 @@
           <div class="form-group" id="submitGroup">
             <div class="col-xs-offset-3 col-xs-9">
               <button onclick="ajaxForm();" class="btn btn-default" id="submitBtn">认证</button>
-              <p class="help-block" id="helpLoading" hidden><img src="{% static "img/loading.gif" %}">正在认证，请稍候...</p>
+              <p class="help-block" id="helpLoading" style="display: none"><img src="{% static "img/loading.gif" %}">正在认证，请稍候...</p>
               <p class="help-block" id="helpSubmit"></p>
             </div>
           </div>
         </form>
     </div>
-    <div id="successHolder" hidden>
+    <div id="successHolder" style="display: none">
         <img src="{% static "img/success.png" %}" />
         <p>认证成功！</p>
         <p>您已经可以使用清小团的全部功能了！</p>
