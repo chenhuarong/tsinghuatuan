@@ -339,7 +339,7 @@ def get_unsubscibe(msg):
 def check_bind_account(msg):
     if msg['MsgType'] == 'event' and msg['Event']=='CLICK' and msg['EventKey'] == 'TSINGHUA_WECHAT_BIND':
         return 1
-    if msg['MsgType'] == 'text' and msg['Content'] == '抢票':
+    if msg['MsgType'] == 'text' and msg['Content'] == '绑定':
         return 1
     return 0
 
