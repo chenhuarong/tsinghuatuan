@@ -4,7 +4,6 @@ import string
 import time, datetime
 from urlhandler.models import *
 from django.db.models import F
-from django.db import transaction
 
 QRCODE_URL = 'http://tsinghuaqr.duapp.com/'
 
@@ -245,7 +244,6 @@ def check_book_event(msg):
 
 
 #handle book event
-@transaction.commit_manually()
 def get_book_event(msg):
     if is_authenticated(msg['FromUserName']):
         user = User.objects.get(weixin_id=msg['FromUserName'])
@@ -256,7 +254,7 @@ def get_book_event(msg):
     now = string.atof(msg['CreateTime'])
     now = datetime.datetime.fromtimestamp(now)
 
-    activitys = Activity.objects.select_for_update().filter(status=1, book_end__gte=now, book_start__lte=now)
+    activitys = Activity.objects.filter(status=1, book_end__gte=now, book_start__lte=now)
     if activitys.exists() == 0:
         future_activitys = Activity.objects.filter(status=1, book_start__gte=now).order_by('book_start')
         if len(future_activitys) == 0:
@@ -271,7 +269,7 @@ def get_book_event(msg):
 
     tickets = Ticket.objects.filter(user=user, activity=activity)
     if tickets.exists() == 0:
-        if activity.remain_tickets == 0:
+        if activity.remain_tickets <= 0:
             return  get_reply_text_xml(msg, u'票已抢完，欢迎关注下次活动')
         random_string = ''.join([random.choice(string.ascii_letters + string.digits) for n in xrange(32)])
         while Ticket.objects.filter(unique_id=random_string).exists():
@@ -284,7 +282,7 @@ def get_book_event(msg):
             seat = ''
         )
         ticket.save()
-        activity.remain_tickets -= 1
+        activity.update(remain_tickets=F('remain_tickets') - 1)
         activity.save()
         item = '<item><Title><![CDATA[%s]]></Title><Description><![CDATA[%s]]></Description>' \
                '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
@@ -292,16 +290,14 @@ def get_book_event(msg):
                                                            ticket.activity.place, ticket.activity.key)
         url =  'http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s' % ticket.unique_id
         item = item % (ticket.activity.name, description, QRCODE_URL + str(ticket.unique_id), url)
-        rtn = get_reply_news_xml(msg, item, 1)
-        transaction.commit()
-        return rtn
+        return get_reply_news_xml(msg, item, 1)
     elif tickets[0].status == 0:
-        if activity.remain_tickets == 0:
+        if activity.remain_tickets <= 0:
             return  get_reply_text_xml(msg, u'票已抢完，欢迎关注下次活动')
         ticket = tickets[0]
         ticket.status = 1
         ticket.save()
-        activity.remain_tickets -= 1
+        activity.update(remain_tickets=F('remain_tickets') - 1)
         activity.save()
         item = '<item><Title><![CDATA[%s]]></Title><Description><![CDATA[%s]]></Description>' \
                '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
@@ -309,9 +305,7 @@ def get_book_event(msg):
                                                            ticket.activity.place, ticket.activity.key)
         url =  'http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s' % ticket.unique_id
         item = item % (ticket.activity.name, description, QRCODE_URL + str(ticket.unique_id), url)
-        rtn = get_reply_news_xml(msg, item, 1)
-        transaction.commit()
-        return rtn
+        return get_reply_news_xml(msg, item, 1)
     else:
         url =  'http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s' % tickets[0].unique_id
         return get_reply_text_xml(msg, u'您已抢到%s的票，不能重复抢票，<a href="%s">查看电子票</a>' % (activity.name, url))
