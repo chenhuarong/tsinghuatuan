@@ -64,8 +64,10 @@
                 <td>{{ item.place }}</td>
                 <td>{{ item.book_start|date:"y/m/d l H:i" }} - {{ item.book_end|date:"y/m/d l H:i" }}</td>
                 <td>
-                    <span class=".glyphicon .glyphicon-arrow-right">
-                        <a href={% url adminpage.views.activity_detail actid=item.id %}><span class="glyphicon glyphicon-pencil"></span> 详情</a>
+                    <span>
+                        <a href={% url adminpage.views.activity_detail actid=item.id %}>
+                            <span class="glyphicon glyphicon-pencil"></span> 详情
+                        </a>
                     </span>
                 </td>
             </tr>
