@@ -146,7 +146,7 @@ def book_tickets(msg):
     if is_authenticated(msg['FromUserName']):
         user = User.objects.get(weixin_id=msg['FromUserName'])
     else:
-        return get_reply_text_xml(msg, u'对不起，尚未绑定账号，不能抢票，<a href="http://tsinghuatuan.duapp.com/userpage/validate/?openid=%s">'
+        return get_reply_text_xml(msg, u'对不起，尚未绑定账号，不能取票，<a href="http://tsinghuatuan.duapp.com/userpage/validate/?openid=%s">'
                                        u'点此绑定信息门户账号</a>' % msg['FromUserName'])
 
     now = string.atof(msg['CreateTime'])
@@ -324,7 +324,7 @@ def get_subscibe(msg):
 def check_unsubscribe(msg):
     if msg['MsgType'] == 'event' and msg['Event'] == 'unsubscribe':
         return 1
-    if msg['MsgType'] == 'text' and msg['Content'] == '解除账号绑定':
+    if msg['MsgType'] == 'text' and msg['Content'] == '解绑':
         return 1
     return 0
 
@@ -350,7 +350,7 @@ def check_bind_account(msg):
 #handle bind event
 def bind_account(msg):
     if is_authenticated(msg['FromUserName']):
-        return get_reply_text_xml(msg, u'若要解绑请回复"解除账号绑定"')
+        return get_reply_text_xml(msg, u'若要解绑请回复“解绑”')
     else:
         return get_reply_text_xml(msg, u'<a href="http://tsinghuatuan.duapp.com/userpage/validate/?openid=%s">'
                                        u'点此绑定信息门户账号</a>' % msg['FromUserName'])
