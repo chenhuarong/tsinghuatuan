@@ -2,20 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="519d02f1-9909-43c4-95c4-b95f242a05f2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/src.iml" afterPath="$PROJECT_DIR$/.idea/src.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/queryhandler/tickethandler.py" afterPath="$PROJECT_DIR$/queryhandler/tickethandler.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/userpage/static/css/ticket.css" afterPath="$PROJECT_DIR$/urlhandler/userpage/static/css/ticket.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/userpage/views.py" afterPath="$PROJECT_DIR$/urlhandler/userpage/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="src.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386141496145" ignored="false" />
+    <file path="/Dummy.txt" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386142206265" ignored="false" />
     <file path="/requirements.txt" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386079546625" ignored="false" />
     <file path="/index.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385138258915" ignored="false" />
     <file path="/local.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385444702930" ignored="false" />
     <file path="/app.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386079449384" ignored="false" />
-    <file path="/urls.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386080045605" ignored="false" />
-    <file path="/views.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386100983525" ignored="false" />
+    <file path="/urls.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386142051703" ignored="false" />
+    <file path="/views.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386142359822" ignored="false" />
     <file path="/fragment.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385656032450" ignored="false" />
     <file path="/weixin_simulator.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385224804577" ignored="false" />
     <file path="/__init__.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385967292070" ignored="false" />
@@ -43,21 +42,22 @@
     <file path="/Library/Python/2.7/site-packages/django/db/__init__.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385895087607" ignored="false" />
     <file path="/Django Console" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385911895672" ignored="false" />
     <file path="/activity_list.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386085052659" ignored="false" />
-    <file path="/.gitignore" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1385966876128" ignored="false" />
+    <file path="/.gitignore" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386142225785" ignored="false" />
     <file path="$PROJECT_DIR$/../QRservice/index.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386079364993" ignored="false" />
     <file path="$PROJECT_DIR$/../QRservice/app.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386079484197" ignored="false" />
     <file path="$PROJECT_DIR$/../QRservice/requirements.txt" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386081520014" ignored="false" />
-    <file path="$PROJECT_DIR$/../QRservice/settings.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386079555309" ignored="false" />
+    <file path="$PROJECT_DIR$/../QRservice/settings.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386141905005" ignored="false" />
     <file path="$PROJECT_DIR$/../QRservice/qrhandler/qrhandler/settings.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386080366651" ignored="false" />
     <file path="$PROJECT_DIR$/../QRservice/qrhandler/qrhandler/__init__.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386079729811" ignored="false" />
-    <file path="$PROJECT_DIR$/../QRservice/qrhandler/qrhandler/urls.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386080301268" ignored="false" />
-    <file path="$PROJECT_DIR$/../QRservice/qrhandler/qrhandler/views.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386080316768" ignored="false" />
+    <file path="$PROJECT_DIR$/../QRservice/qrhandler/qrhandler/urls.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386142052211" ignored="false" />
+    <file path="$PROJECT_DIR$/../QRservice/qrhandler/qrhandler/views.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386142114868" ignored="false" />
     <file path="/activity_list.css" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386086098963" ignored="false" />
     <file path="/activity_list.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386088143094" ignored="false" />
     <file path="/ticket.css" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386093022815" ignored="false" />
     <file path="/activityticket.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386093087982" ignored="false" />
     <file path="/tickethandler.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386141666550" ignored="false" />
     <file path="/activitytext.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386101514416" ignored="false" />
+    <file path="$PROJECT_DIR$/../QRservice/.gitignore" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386142227185" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,14 +102,14 @@
         <option value="$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/urls.py" />
-        <option value="$PROJECT_DIR$/urlhandler/userpage/static/css/ticket.css" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/views.py" />
-        <option value="$PROJECT_DIR$/urlhandler/userpage/views.py" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activitytext.html" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/static/js/validation.js" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/validation.html" />
         <option value="$PROJECT_DIR$/queryhandler/tickethandler.py" />
+        <option value="$PROJECT_DIR$/urlhandler/userpage/views.py" />
+        <option value="$PROJECT_DIR$/urlhandler/userpage/static/css/ticket.css" />
       </list>
     </option>
   </component>
@@ -144,6 +144,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -278,6 +279,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="userpage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TsinghuaTuan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="urlhandler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="urlhandler" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -338,20 +365,19 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-    <property name="restartRequiresConfirmation" value="true" />
+    <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="restartRequiresConfirmation" value="true" />
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -420,29 +446,6 @@
       <option name="PARAMETERS" value="" />
       <method />
     </configuration>
-    <configuration default="true" type="tests" factoryName="Unittests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="src" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <method />
-    </configuration>
     <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -464,6 +467,29 @@
       <option name="runNoReload" value="false" />
       <option name="useCustomRunCommand" value="false" />
       <option name="customRunCommand" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="src" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -614,11 +640,11 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32779455" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31779054" sideWeight="0.68429005" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32281205" sideWeight="0.6858006" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39518902" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32537314" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31532848" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3141994" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985073" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -692,28 +718,9 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="378" column="1" selection-start="10751" selection-end="10752" vertical-scroll-proportion="0.3478261" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="73" selection-start="367" selection-end="367" vertical-scroll-proportion="-4.56">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/activity_list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="30" column="24" selection-start="1301" selection-end="1301" vertical-scroll-proportion="0.6686992" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="23" selection-start="351" selection-end="351" vertical-scroll-proportion="0.40983605">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
@@ -721,11 +728,6 @@
         <state line="1" column="19" selection-start="33" selection-end="33" vertical-scroll-proportion="0.023659306">
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/css/ticket.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="23" selection-start="157" selection-end="157" vertical-scroll-proportion="0.16561514" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/views.py">
@@ -746,9 +748,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activitytext.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="6" selection-start="2125" selection-end="2125" vertical-scroll-proportion="0.479062">
-          <folding />
-        </state>
+        <state line="77" column="6" selection-start="2125" selection-end="2125" vertical-scroll-proportion="0.479062" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/urlhandler/models.py">
@@ -765,35 +765,55 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/validation.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="217" selection-end="217" vertical-scroll-proportion="0.42525774">
+        <state line="11" column="0" selection-start="217" selection-end="217" vertical-scroll-proportion="0.42525774" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/js/validation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="169" column="57" selection-start="5191" selection-end="5191" vertical-scroll-proportion="0.5488722" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="346" column="18" selection-start="14977" selection-end="14977" vertical-scroll-proportion="0.697479" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="45" selection-start="653" selection-end="653" vertical-scroll-proportion="0.4022082" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activityphoto.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="35" selection-start="169" selection-end="169" vertical-scroll-proportion="0.12295082">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="73" selection-start="367" selection-end="367" vertical-scroll-proportion="0.2112676">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/css/ticket.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="1" selection-start="183" selection-end="183" vertical-scroll-proportion="0.38732395">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="35" selection-start="956" selection-end="956" vertical-scroll-proportion="0.69174755">
+        <state line="142" column="32" selection-start="5771" selection-end="5771" vertical-scroll-proportion="0.527845">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/js/validation.js">
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="169" column="57" selection-start="5191" selection-end="5191" vertical-scroll-proportion="0.5488722">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="346" column="18" selection-start="14977" selection-end="14977" vertical-scroll-proportion="0.697479">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="45" selection-start="653" selection-end="653" vertical-scroll-proportion="0.4022082">
+        <state line="23" column="0" selection-start="454" selection-end="454" vertical-scroll-proportion="0.73383087">
           <folding />
         </state>
       </provider>
