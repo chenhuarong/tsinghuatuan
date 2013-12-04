@@ -1,10 +1,11 @@
 #-*- coding:utf-8 -*-
 import random
 import string
-import time,datetime
+import time, datetime
 from urlhandler.models import *
 
 QRCODE_URL = 'http://tsinghuaqr.duapp.com/'
+
 
 # get reply xml(reply text), using msg(source dict object) and reply_content(text, string)
 def get_reply_text_xml(msg, reply_content):
@@ -201,7 +202,7 @@ def return_tickets(msg):
 
     receive_msg = msg['Content']
     receive_msg = receive_msg.split()
-    activitys = Activity.objects.filter(status=1, end_time__gte=now, key=receive_msg[0])
+    activitys = Activity.objects.select_for_update().filter(status=1, end_time__gte=now, key=receive_msg[0])
     activity = activitys[0]
 
     if len(receive_msg) == 2 and receive_msg[1].lower() == 'qx':
@@ -221,6 +222,7 @@ def return_tickets(msg):
                 ticket = tickets[0]
                 ticket.status = 0
                 ticket.save()
+
                 activity.remain_tickets += 1
                 activity.save()
                 return get_reply_text_xml(msg, u'退票成功，欢迎关注下次活动')
@@ -251,7 +253,7 @@ def get_book_event(msg):
     now = string.atof(msg['CreateTime'])
     now = datetime.datetime.fromtimestamp(now)
 
-    activitys = Activity.objects.filter(status=1, book_end__gte=now, book_start__lte=now)
+    activitys = Activity.objects.select_for_update().filter(status=1, book_end__gte=now, book_start__lte=now)
     if activitys.exists() == 0:
         future_activitys = Activity.objects.filter(status=1, book_start__gte=now).order_by('book_start')
         if len(future_activitys) == 0:
