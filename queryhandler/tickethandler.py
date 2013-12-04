@@ -1,12 +1,10 @@
 #-*- coding:utf-8 -*-
 import random
 import string
-import time, datetime
+import time,datetime
 from urlhandler.models import *
-from django.db.models import F
 
 QRCODE_URL = 'http://tsinghuaqr.duapp.com/'
-
 
 # get reply xml(reply text), using msg(source dict object) and reply_content(text, string)
 def get_reply_text_xml(msg, reply_content):
@@ -223,8 +221,7 @@ def return_tickets(msg):
                 ticket = tickets[0]
                 ticket.status = 0
                 ticket.save()
-
-                activity.update(remain_tickets=F('remain_tickets') + 1)
+                activity.remain_tickets += 1
                 activity.save()
                 return get_reply_text_xml(msg, u'退票成功，欢迎关注下次活动')
             else:
@@ -269,7 +266,7 @@ def get_book_event(msg):
 
     tickets = Ticket.objects.filter(user=user, activity=activity)
     if tickets.exists() == 0:
-        if activity.remain_tickets <= 0:
+        if activity.remain_tickets == 0:
             return  get_reply_text_xml(msg, u'票已抢完，欢迎关注下次活动')
         random_string = ''.join([random.choice(string.ascii_letters + string.digits) for n in xrange(32)])
         while Ticket.objects.filter(unique_id=random_string).exists():
@@ -282,7 +279,7 @@ def get_book_event(msg):
             seat = ''
         )
         ticket.save()
-        activity.update(remain_tickets=F('remain_tickets') - 1)
+        activity.remain_tickets -= 1
         activity.save()
         item = '<item><Title><![CDATA[%s]]></Title><Description><![CDATA[%s]]></Description>' \
                '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
@@ -292,12 +289,12 @@ def get_book_event(msg):
         item = item % (ticket.activity.name, description, QRCODE_URL + str(ticket.unique_id), url)
         return get_reply_news_xml(msg, item, 1)
     elif tickets[0].status == 0:
-        if activity.remain_tickets <= 0:
+        if activity.remain_tickets == 0:
             return  get_reply_text_xml(msg, u'票已抢完，欢迎关注下次活动')
         ticket = tickets[0]
         ticket.status = 1
         ticket.save()
-        activity.update(remain_tickets=F('remain_tickets') - 1)
+        activity.remain_tickets -= 1
         activity.save()
         item = '<item><Title><![CDATA[%s]]></Title><Description><![CDATA[%s]]></Description>' \
                '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
