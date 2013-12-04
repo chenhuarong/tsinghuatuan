@@ -25,8 +25,9 @@ from django.views.decorators.csrf import csrf_protect
 
 #import database
 from urlhandler.models import Activity, Order, Ticket
-<<<<<<< HEAD
+
 from urlhandler.models import User as Booker
+
 @csrf_protect
 def home(request):
     if not request.user.is_authenticated():
@@ -34,8 +35,10 @@ def home(request):
     else:
         return HttpResponseRedirect(reverse('adminpage.views.activity_list'))
 
-
 def activity_list(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('adminpage.views.home'))
+
     actmodels = Activity.objects.all()
     activities = []
     for act in actmodels:
@@ -79,6 +82,7 @@ def str_to_datetime(str):
 
 
 def activity_create(activity):
+
     preDict = dict()
     for k in ['name', 'key', 'description', 'place', 'pic_url', 'total_tickets']:
         preDict[k] = activity[k]
@@ -130,6 +134,9 @@ def wrap_activity_dict(activity):
 
 
 def activity_add(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('adminpage.views.home'))
+
     return render_to_response('activity_detail.html', {
         'activity': {
             'name': u'新建活动',
@@ -138,12 +145,18 @@ def activity_add(request):
 
 
 def activity_detail(request, actid):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('adminpage.views.home'))
+
     try:
         activity = Activity.objects.get(id=actid)
+
+        unpublished = (activity.status == 0)
     except:
         raise Http404
     return render_to_response('activity_detail.html', {
         'activity': wrap_activity_dict(activity),
+        'unpublished': unpublished
     }, context_instance=RequestContext(request))
 
 
@@ -156,6 +169,9 @@ class DatetimeJsonEncoder(json.JSONEncoder):
 
 
 def activity_post(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('adminpage.views.home'))
+
     if not request.POST:
         raise Http404
     post = request.POST
@@ -172,22 +188,25 @@ def activity_post(request):
     return HttpResponse(json.dumps(rtnJSON, cls=DatetimeJsonEncoder), content_type='application/json')
 
 def order_list(request):
+
     UID = 1
     orders = []
-
     try:
         qset = Ticket.objects.filter(user_id = UID)
-        print qset
         item = {}
         for x in qset:
             activity = Activity.objects.get(id = x.activity_id)
+
             item['name'] = activity.name
+
             item['start_time'] = activity.start_time
+
             item['end_time'] = activity.end_time
             item['place'] = activity.place
             item['seat'] = x.seat
-            item['valid'] = x.isUsed
+            item['valid'] = x.status
             item['unique_id'] = x.unique_id
+
         orders.append(item)
     except:
         raise Http404
@@ -200,7 +219,6 @@ def print_ticket(request, unique_id):
         ticket = Ticket.objects.get(unique_id = unique_id)
         activity = Activity.objects.get(id = ticket.activity_id)
         qr_addr = "http://tsinghuaqr.duapp.com/fit/" + unique_id
-
     except:
         raise Http404
     return render_to_response('print_ticket.html', {
