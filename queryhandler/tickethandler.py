@@ -286,14 +286,15 @@ def get_book_event(msg):
         ticket.save()
         activity.remain_tickets -= 1
         activity.save()
-        transaction.commit()
         item = '<item><Title><![CDATA[%s]]></Title><Description><![CDATA[%s]]></Description>' \
                '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
         description = u'活动时间：%s\r\n活动地点：%s\r\n回复%s qx退票' %(ticket.activity.start_time.strftime('%Y-%m-%d %H:%M'),
                                                            ticket.activity.place, ticket.activity.key)
         url =  'http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s' % ticket.unique_id
         item = item % (ticket.activity.name, description, QRCODE_URL + str(ticket.unique_id), url)
-        return get_reply_news_xml(msg, item, 1)
+        rtn = get_reply_news_xml(msg, item, 1)
+        transaction.commit()
+        return rtn
     elif tickets[0].status == 0:
         if activity.remain_tickets == 0:
             return  get_reply_text_xml(msg, u'票已抢完，欢迎关注下次活动')
@@ -302,14 +303,15 @@ def get_book_event(msg):
         ticket.save()
         activity.remain_tickets -= 1
         activity.save()
-        transaction.commit()
         item = '<item><Title><![CDATA[%s]]></Title><Description><![CDATA[%s]]></Description>' \
                '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
         description = u'活动时间：%s\r\n活动地点：%s\r\n回复%s qx退票' %(ticket.activity.start_time.strftime('%Y-%m-%d %H:%M'),
                                                            ticket.activity.place, ticket.activity.key)
         url =  'http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s' % ticket.unique_id
         item = item % (ticket.activity.name, description, QRCODE_URL + str(ticket.unique_id), url)
-        return get_reply_news_xml(msg, item, 1)
+        rtn = get_reply_news_xml(msg, item, 1)
+        transaction.commit()
+        return rtn
     else:
         url =  'http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s' % tickets[0].unique_id
         return get_reply_text_xml(msg, u'您已抢到%s的票，不能重复抢票，<a href="%s">查看电子票</a>' % (activity.name, url))
