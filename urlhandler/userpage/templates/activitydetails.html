@@ -10,6 +10,10 @@
 <link href="{% static "css/details.css" %}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
+{% block header %}
+    <img class="header-img" src="{% static "img/logo.png" %}" />
+{% endblock %}
+
 {% block theme %}
     {{ act_name }}
 {% endblock %}

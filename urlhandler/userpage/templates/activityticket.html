@@ -10,6 +10,10 @@
 <link href="{% static "css/ticket.css" %}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
+{% block js %}
+    <script src="{% static "js/ticket.js" %}"></script>
+{% endblock %}
+
 {% block header %}
 <img class="header-img" src="{% static "img/logo.png" %}" />
 {% endblock %}
@@ -19,7 +23,6 @@
 {% endblock %}
 
 {% block content %}
-    <hr/>
 
     {% include 'activityphoto.html' %}
 
