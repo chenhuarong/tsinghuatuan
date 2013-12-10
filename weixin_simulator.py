@@ -30,9 +30,9 @@ while True:
            '"key":"TSINGHUA_WECHAT_BIND"},{"type":"click","name":"部门","key":"TSINGHUA_WECHAT_DEPARTMENT"},{"type":' \
            '"click","name":"社团","key":"TSINGHUA_WECHAT_COMMUNITY"},{"type":"click","name":"吐槽","key":"TSINGHUA_WECHAT_CONFIDE"},' \
            '{"type":"click","name":"帮助","key":"TSINGHUA_WECHAT_HELP"}]}]}'
-    #ext_tpl = ext_tpl % (FROM_USER_NAME, FROM_USER_NAME, str(int(time.time())), 'text', line)
-    evt_tpl = evt_tpl % (FROM_USER_NAME, FROM_USER_NAME, str(int(time.time())), 'CLICK', 'TSINGHUA_WECHAT_BOOK')
-    req = urllib2.Request(url = url, data = evt_tpl)
+    ext_tpl = ext_tpl % (FROM_USER_NAME+str(1), FROM_USER_NAME+str(1), str(int(time.time())), 'text', '抢啥')
+    #evt_tpl = evt_tpl % (FROM_USER_NAME+str(1), FROM_USER_NAME+str(1), str(int(time.time())), 'CLICK', 'TSINGHUA_WECHAT_BOOK')
+    req = urllib2.Request(url = url, data = ext_tpl)
     #req = urllib2.Request(url=url_menu,data=data)
     resdata = urllib2.urlopen(req)
     res = resdata.read()
