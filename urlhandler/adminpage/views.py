@@ -27,7 +27,6 @@ from django.views.decorators.csrf import csrf_protect
 from urlhandler.models import Activity, Order, Ticket
 
 from urlhandler.models import User as Booker
-from queryhandler.tickethandler import activity_remain_tickets
 @csrf_protect
 def home(request):
     if not request.user.is_authenticated():
@@ -129,7 +128,7 @@ def wrap_activity_dict(activity):
     dt = model_to_dict(activity)
     if (dt['status'] >= 1) and (datetime.now() >= dt['book_start']):
         dt['tickets_ready'] = 1
-        dt['ordered_tickets'] = int(activity.total_tickets) - int(activity_remain_tickets[activity.id])
+        dt['ordered_tickets'] = int(activity.total_tickets) - int(activity.remain_tickets)
         dt['checked_tickets'] = get_checked_tickets(activity)
     return dt
 
