@@ -2,16 +2,12 @@
 import random
 import string
 import time,datetime
-import threading
 from urlhandler.models import *
 from queryhandler.settings import QRCODE_URL
+from django.db.models import F
+from django.db import transaction
 
-activity_lock = {}
-activity_remain_tickets = {}
-activities = Activity.objects.all()
-for activity in activities:
-    activity_lock[activity.id] = threading.Lock()
-    activity_remain_tickets[activity.id] = activity.total_tickets
+
 
 # get reply xml(reply text), using msg(source dict object) and reply_content(text, string)
 def get_reply_text_xml(msg, reply_content):
@@ -228,9 +224,7 @@ def return_tickets(msg):
                 ticket = tickets[0]
                 ticket.status = 0
                 ticket.save()
-                activity_lock[activity.id].acquire()
-                activity_remain_tickets[activity.id] += 1
-                activity_lock[activity.id].release()
+                Activity.objects.filter(status=1, end_time__gte=now, key=receive_msg[0]).update(remain_tickets=F('remain_tickets')+1)
                 return get_reply_text_xml(msg, u'退票成功，欢迎关注下次活动')
             else:
                 return get_reply_text_xml(msg, u'未找到您的抢票记录，退票失败')
@@ -259,63 +253,59 @@ def get_book_ticket_response(msg):
     now = string.atof(msg['CreateTime'])
     now = datetime.datetime.fromtimestamp(now)
 
-    activities = Activity.objects.filter(status=1, book_end__gte=now, book_start__lte=now)
-    if activities.exists() == 0:
-        future_activities = Activity.objects.filter(status=1, book_start__gte=now).order_by('book_start')
-        if len(future_activities) == 0:
-            return get_reply_text_xml(msg, u'暂时没有抢票活动')
-        else:
-            future_activity = future_activities[0]
-            start_time = u'%s年%s月%s日%s时%s分' % (future_activity.book_start.year, future_activity.book_start.month, future_activity.book_start.day, future_activity.book_start.hour, future_activity.book_start.minute)
-            return get_reply_text_xml(msg, u'%s%s开始抢票，<a href="%s">详情</a>' % (future_activity.name, start_time, 'http://tsinghuatuan.duapp.com'
-                                                                                                                '/userpage/activity/?activityid='+str(future_activity.id)))
-    else:
-        activity = activities[0]
-    print activity_remain_tickets[activity.id]
-    tickets = Ticket.objects.filter(user=user, activity=activity)
-    if tickets.exists() == 0:
-        activity_lock[activity.id].acquire()
-        if activity_remain_tickets[activity.id] == 0:
-            return  get_reply_text_xml(msg, u'票已抢完，欢迎关注下次活动')
+    random_string = ''.join([random.choice(string.ascii_letters + string.digits) for n in xrange(32)])
+    while Ticket.objects.filter(unique_id=random_string).exists():
         random_string = ''.join([random.choice(string.ascii_letters + string.digits) for n in xrange(32)])
-        while Ticket.objects.filter(unique_id=random_string).exists():
-            random_string = ''.join([random.choice(string.ascii_letters + string.digits) for n in xrange(32)])
-        ticket = Ticket(
-            user = user,
-            activity = activity,
-            unique_id = random_string,
-            status = 1,
-            seat = ''
-        )
-        ticket.save()
-        activity_remain_tickets[activity.id] -= 1
-        activity_lock[activity.id].release()
-        item = '<item><Title><![CDATA[%s]]></Title><Description><![CDATA[%s]]></Description>' \
-               '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
-        description = u'活动时间：%s\r\n活动地点：%s\r\n回复%s qx退票' %(ticket.activity.start_time.strftime('%Y-%m-%d %H:%M'),
-                                                           ticket.activity.place, ticket.activity.key)
-        url =  'http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s' % ticket.unique_id
-        item = item % (ticket.activity.name, description, QRCODE_URL + str(ticket.unique_id), url)
-        return get_reply_news_xml(msg, item, 1)
-    elif tickets[0].status == 0:
-        activity_lock[activity.id].acquire()
-        if activity_remain_tickets[activity.id] == 0:
-            return  get_reply_text_xml(msg, u'票已抢完，欢迎关注下次活动')
-        ticket = tickets[0]
-        ticket.status = 1
-        ticket.save()
-        activity_remain_tickets[activity.id] -= 1
-        activity_lock[activity.id].release()
-        item = '<item><Title><![CDATA[%s]]></Title><Description><![CDATA[%s]]></Description>' \
-               '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
-        description = u'活动时间：%s\r\n活动地点：%s\r\n回复%s qx退票' %(ticket.activity.start_time.strftime('%Y-%m-%d %H:%M'),
-                                                           ticket.activity.place, ticket.activity.key)
-        url =  'http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s' % ticket.unique_id
-        item = item % (ticket.activity.name, description, QRCODE_URL + str(ticket.unique_id), url)
-        return get_reply_news_xml(msg, item, 1)
-    else:
-        url =  'http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s' % tickets[0].unique_id
-        return get_reply_text_xml(msg, u'您已抢到%s的票，不能重复抢票，<a href="%s">查看电子票</a>' % (activity.name, url))
+    with transaction.commit_on_success():
+        activities = Activity.objects.select_for_update().filter(status=1, book_end__gte=now, book_start__lte=now)
+        if activities.exists() == 0:
+            future_activities = Activity.objects.filter(status=1, book_start__gte=now).order_by('book_start')
+            if len(future_activities) == 0:
+                return get_reply_text_xml(msg, u'暂时没有抢票活动')
+            else:
+                future_activity = future_activities[0]
+                start_time = u'%s年%s月%s日%s时%s分' % (future_activity.book_start.year, future_activity.book_start.month, future_activity.book_start.day, future_activity.book_start.hour, future_activity.book_start.minute)
+                return get_reply_text_xml(msg, u'%s%s开始抢票，<a href="%s">详情</a>' % (future_activity.name, start_time, 'http://tsinghuatuan.duapp.com'
+                                                                                                                '/userpage/activity/?activityid='+str(future_activity.id)))
+        else:
+            activity = activities[0]
+        tickets = Ticket.objects.filter(user=user, activity=activity)
+        if tickets.exists() == 0:
+            if activity.remain_tickets == 0:
+                return  get_reply_text_xml(msg, u'票已抢完，欢迎关注下次活动')
+            ticket = Ticket(
+                user = user,
+                activity = activity,
+                unique_id = random_string,
+                status = 1,
+                seat = ''
+            )
+            ticket.save()
+            Activity.objects.filter(status=1, book_end__gte=now, book_start__lte=now).update(remain_tickets=F('remain_tickets')-1)
+            item = '<item><Title><![CDATA[%s]]></Title><Description><![CDATA[%s]]></Description>' \
+                   '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
+            description = u'活动时间：%s\r\n活动地点：%s\r\n回复%s qx退票' %(ticket.activity.start_time.strftime('%Y-%m-%d %H:%M'),
+                                                               ticket.activity.place, ticket.activity.key)
+            url =  'http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s' % ticket.unique_id
+            item = item % (ticket.activity.name, description, QRCODE_URL + str(ticket.unique_id), url)
+            return get_reply_news_xml(msg, item, 1)
+        elif tickets[0].status == 0:
+            if activity.remain_tickets == 0:
+                return  get_reply_text_xml(msg, u'票已抢完，欢迎关注下次活动')
+            ticket = tickets[0]
+            ticket.status = 1
+            ticket.save()
+            Activity.objects.filter(status=1, book_end__gte=now, book_start__lte=now).update(remain_tickets=F('remain_tickets')-1)
+            item = '<item><Title><![CDATA[%s]]></Title><Description><![CDATA[%s]]></Description>' \
+                   '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
+            description = u'活动时间：%s\r\n活动地点：%s\r\n回复%s qx退票' %(ticket.activity.start_time.strftime('%Y-%m-%d %H:%M'),
+                                                               ticket.activity.place, ticket.activity.key)
+            url =  'http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s' % ticket.unique_id
+            item = item % (ticket.activity.name, description, QRCODE_URL + str(ticket.unique_id), url)
+            return get_reply_news_xml(msg, item, 1)
+        else:
+            url =  'http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s' % tickets[0].unique_id
+            return get_reply_text_xml(msg, u'您已抢到%s的票，不能重复抢票，<a href="%s">查看电子票</a>' % (activity.name, url))
 
 
 #check subscribe event
