@@ -5,6 +5,7 @@
     min-width: 90px;
 }
 .td-description {
+    word-break: break-all;
     min-width: 100px;
 }
 .td-activity_time {
@@ -18,4 +19,8 @@
 }
 .td-detail_url {
     min-width: 70px;
+}
+.td-delete {
+    min-width: 50px;
+    text-align: center;
 }

@@ -96,7 +96,8 @@ var tdMap = {
     'activity_time': 'time',
     'place': 'text',
     'book_time': 'time',
-    'detail_url': 'editlink'
+    'detail_url': 'editlink',
+    'delete': 'deletelink'
 }, tdActionMap = {
     'status': function(act, key) {
         return getSmartStatus(act);
@@ -109,6 +110,9 @@ var tdMap = {
     },
     'editlink': function(act, key) {
         return '<a href="' + act[key] + '"><span class="glyphicon glyphicon-pencil"></span> 详情</a>';
+    },
+    'deletelink':function(act, key) {
+        return '<a href="#" id="'+act[key]+'" onclick="deleteact('+act[key]+')"><span class="glyphicon glyphicon-trash"></span></a>';
     }
 }, smartTimeMap = {
     'activity_time': function(act) {
@@ -119,8 +123,43 @@ var tdMap = {
     }
 };
 
+function deleteact(actid){
+    //alert(actid);
+    var i, len, curact;
+    for(i = 0, len = activities.length; i < len; ++i){
+        if(activities[i].delete == actid){
+            curact = activities[i];
+            break;
+        }
+    }
+    var content = '确认删除<span style="color:red">'+getSmartStatus(curact)+'</span>活动：<span style="color:red">'+curact.name+'</span>？';
+    $('#modalcontent').html(content);
+    $('#'+actid).css("background-color","#FFE4C4");
+    $('#deleteid').val(actid);
+    $('#delModal').modal({
+      keyboard: false,
+      backdrop:false
+    });
+}
+
+function delConfirm(){
+    var delid = $('#deleteid').val();
+    //alert(delid);
+    var tmp  ="/adminpage/delete/";
+    $.post(tmp,{'activityId':delid}, function(ret) {
+
+    });
+    $('#'+delid).css("background-color","#FFF");
+    window.location.href="/adminpage/list/"
+}
+
+function delCancel(){
+    var delid = $('#deleteid').val();
+    $('#'+delid).css("background-color","#FFF");
+}
+
 function appendAct(act) {
-    var tr = $('<tr></tr>'), key;
+    var tr = $('<tr id='+act.delete+'></tr>'), key;
     for (key in tdMap) {
         getTd(key).html(tdActionMap[tdMap[key]](act, key)).appendTo(tr);
     }

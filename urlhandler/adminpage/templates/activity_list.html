@@ -5,7 +5,7 @@
 {% block activity-title %}活动列表{% endblock %}
 
 {% block nav-li %}
-    <li class="{% block activity-list-active %}active{% endblock %}"><a class="btn-link" href="{% url adminpage.views.activity_list %}">活动列表</a></li>
+    <li class="{% block activity-list-active %}active{% endblock %}"><a class="btn-link" href="{% url "adminpage.views.activity_list" %}">活动列表</a></li>
     {% block nav-li-ext %}{% endblock %}
 {% endblock %}
 
@@ -26,7 +26,8 @@
                     'place': '{{ activity.place|escapejs }}',
                     'book_start': new Date('{{ activity.book_start|date:"r" }}'),
                     'book_end': new Date('{{ activity.book_end|date:"r" }}'),
-                    'detail_url': '{% url adminpage.views.activity_detail actid=activity.id %}'
+                    'detail_url': '{% url "adminpage.views.activity_detail" actid=activity.id %}',
+                    'delete':{{ activity.id }}
                 }{% if forloop.last %}{% else %},{% endif %}
             {% endfor %}
         ];
@@ -35,7 +36,7 @@
 {% endblock %}
 
 {% block username %}
-    <a href={% url adminpage.views.logout %} >登出</a>
+    <a href={% url "adminpage.views.logout" %} >登出</a>
 
 {% endblock %}
 
@@ -49,7 +50,7 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <a class="btn btn-default" href={% url adminpage.views.activity_add %}>新增活动</a>
+            <a class="btn btn-default" href={% url "adminpage.views.activity_add" %}>新增活动</a>
         </div>
 
         <table class="table table-hover">
@@ -62,6 +63,7 @@
                 <th>地点</th>
                 <th>订票时间</th>
                 <th>编辑</th>
+                <th>删除</th>
             </tr>
             </thead>
             <tbody id="tbody-activities">
@@ -70,4 +72,24 @@
     </div>
 
 </div>
+
+<!-- Modal -->
+<div id="deleteid" style="display: none;"></div>
+<div class="modal fade" id="delModal" tabindex="-1" role="dialog" aria-labelledby="delModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="delModalLabel">确认删除</h4>
+      </div>
+      <div class="modal-body" id="modalcontent">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="delConfirm()">确认</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="delCancel()">取消</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% endblock %}

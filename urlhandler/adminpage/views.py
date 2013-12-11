@@ -21,7 +21,7 @@ from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
-from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_protect,csrf_exempt
 
 #import database
 from urlhandler.models import Activity, Order, Ticket
@@ -114,6 +114,19 @@ def activity_modify(activity):
     nowact.save()
     return nowact
 
+@csrf_exempt
+def activity_delete(request):
+    requestdata = request.POST
+    curact = Activity.objects.get(id= requestdata.get('activityId',''))
+    curact.delete()
+    #删除后刷新界面
+    actmodels = Activity.objects.all()
+    activities = []
+    for act in actmodels:
+        activities += [wrap_activity_dict(act)]
+    return render_to_response('activity_list.html', {
+        'activities': activities,
+    })
 
 def get_checked_tickets(activity):
     return Ticket.objects.filter(activity=activity, status=2).count()
