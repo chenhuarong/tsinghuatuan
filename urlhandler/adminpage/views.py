@@ -35,8 +35,8 @@ def home(request):
         return HttpResponseRedirect(reverse('adminpage.views.activity_list'))
 
 def activity_list(request):
-    if not request.user.is_authenticated():
-        return HttpResponseRedirect(reverse('adminpage.views.home'))
+    #if not request.user.is_authenticated():
+    #    return HttpResponseRedirect(reverse('adminpage.views.home'))
 
     actmodels = Activity.objects.all()
     activities = []
@@ -185,7 +185,7 @@ class DatetimeJsonEncoder(json.JSONEncoder):
 
 def activity_post(request):
     if not request.user.is_authenticated():
-        return HttpResponseRedirect(reverse('adminpage.views.home'))
+       return HttpResponseRedirect(reverse('adminpage.views.home'))
 
     if not request.POST:
         raise Http404

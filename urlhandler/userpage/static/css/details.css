@@ -106,7 +106,7 @@ span.space{
 }
 .invalid-time{
     text-align: center;
-    font: 20px;
+    font-size: 20px;
     color: crimson;
 }
 .timer{

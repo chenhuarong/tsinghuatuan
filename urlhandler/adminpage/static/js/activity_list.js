@@ -89,6 +89,8 @@ function getTd(para) {
     return $('<td class="td-' + para + '"></td>');
 }
 
+var duringbook = new Array,beforeact = new Array, duringact = new Array;
+
 var tdMap = {
     'status': 'status',
     'name': 'text',
@@ -121,13 +123,16 @@ var tdMap = {
     'deletelink':function(act, key) {
         var now = new Date()
         if(now >= getDateByObj(act.book_start) && now < getDateByObj(act.book_end)){
-            return '<span class="td-ban glyphicon glyphicon-ban-circle" data-toggle="tooltip" data-original-title="活动正在订票中，不能删除!"></span>';
+            duringbook.push(act[key]);
+            return '<span id="del'+act[key]+'" class="td-ban glyphicon glyphicon-ban-circle" ></span>';
         }
         else if(now >= getDateByObj(act.book_end) && now < getDateByObj(act.start_time)){
-            return '<span class="td-ban glyphicon glyphicon-ban-circle" data-toggle="tooltip" data-original-title="活动已发票，不能删除!"></span>';
+            beforeact.push(act[key]);
+            return '<span id="del'+act[key]+'" class="td-ban glyphicon glyphicon-ban-circle" ></span>';
         }
         else if(now >= getDateByObj(act.start_time) && now < getDateByObj(act.end_time)){
-            return '<span class="td-ban glyphicon glyphicon-ban-circle" data-toggle="tooltip" data-original-title="活动正在进行中，不能删除!"></span>';
+            duringact.push(act[key]);
+            return '<span id="del'+act[key]+'" class="td-ban glyphicon glyphicon-ban-circle" ></span>';
         }
         else{
             return '<a href="#" id="'+act[key]+'" onclick="deleteact('+act[key]+')"><span class="glyphicon glyphicon-trash"></span></a>';
@@ -182,6 +187,40 @@ function delCancel(){
     $('#'+delid).css("background-color","#FFF");
 }
 
+function createtips(){
+    var id;
+    for(id in duringbook){
+        $('#del'+duringbook[id]).popover({
+            html: true,
+            placement: 'top',
+            title:'',
+            content: '<span style="color:red;">活动正在订票中，不能删除!</span>',
+            trigger: 'hover',
+            container: 'body'
+        });
+    }
+    for(id in beforeact){
+        $('#del'+beforeact[id]).popover({
+            html: true,
+            placement: 'top',
+            title:'',
+            content: '<span style="color:red;">活动已发票，不能删除!</span>',
+            trigger: 'hover',
+            container: 'body'
+        });
+    }
+    for(id in duringact){
+        $('#del'+duringact[id]).popover({
+            html: true,
+            placement: 'top',
+            title:'',
+            content: '<span style="color:red;">活动正在进行中，不能删除!</span>',
+            trigger: 'hover',
+            container: 'body'
+        });
+    }
+}
+
 function appendAct(act) {
     var tr = $('<tr id='+act.delete+'></tr>'), key;
     for (key in tdMap) {
@@ -195,6 +234,7 @@ function initialActs() {
     for (i = 0, len = activities.length; i < len; ++i) {
         appendAct(activities[i]);
     }
+    createtips();
 }
 
 clearActs();

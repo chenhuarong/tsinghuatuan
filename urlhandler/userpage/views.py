@@ -126,7 +126,7 @@ def details_view(request):
     variables=RequestContext(request,{'act_name':act_name,'act_text':act_text, 'act_photo':act_photo,
                                       'act_bookstart':act_bookstart,'act_bookend':act_bookend,'act_begintime':act_begintime,
                                       'act_endtime':act_endtime,'act_totaltickets':act_totaltickets,'act_key':act_key,
-                                      'act_place':act_place, 'act_status':act_status, 'act_seconds':act_seconds,
+                                      'act_place':act_place, 'act_status':act_status, 'act_seconds':act_seconds,'cur_time':cur_time,
                                       'act_abstract':act_abstract, 'act_text_status':act_text_status,'act_ticket_remian':act_ticket_remian})
     return render_to_response('activitydetails.html', variables)
 
