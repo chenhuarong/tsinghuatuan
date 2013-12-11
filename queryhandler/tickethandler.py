@@ -68,13 +68,21 @@ def check_bookable_activities(msg):
 #get bookable activities
 def get_bookable_activities(msg):
     now = string.atof(msg['CreateTime'])
-    activities = Activity.objects.filter(status=1, end_time__gte=datetime.datetime.fromtimestamp(now)).order_by('book_start')
+    now = datetime.datetime.fromtimestamp(now)
+    activities = Activity.objects.filter(status=1, end_time__gte=now).order_by('book_start')
     items = ''
     num = 0
     for activity in activities:
         item = '<item><Title><![CDATA[%s]]></Title><Description><![CDATA[%s]]></Description>' \
                '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
-        item = item % (activity.name, activity.description, activity.pic_url, 'http://tsinghuatuan.duapp.com/userpage/activity/?activityid='+str(activity.id))
+        title = activity.name+'(%s)'
+        if activity.book_start > now:
+            title = title % u'抢票未开始'
+        elif activity.book_end > now:
+            title = title % u'抢票进行中'
+        else:
+            title = title % u'抢票已结束'
+        item = item % (title, activity.description, activity.pic_url, 'http://tsinghuatuan.duapp.com/userpage/activity/?activityid='+str(activity.id))
         items += item
         num += 1
         if num == 10:
@@ -269,7 +277,7 @@ def get_book_ticket_response(msg):
                                                                                                                 '/userpage/activity/?activityid='+str(future_activity.id)))
         else:
             activity = activities[0]
-        tickets = Ticket.objects.filter(user=user, activity=activity)
+        tickets = Ticket.objects.select_for_update().filter(user=user, activity=activity)
         if tickets.exists() == 0:
             if activity.remain_tickets == 0:
                 return  get_reply_text_xml(msg, u'票已抢完，欢迎关注下次活动')
