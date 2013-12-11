@@ -122,6 +122,36 @@ function check_percent(p) {
     }
 }
 
+function checktime(){
+    var actstart = new Date($('#input-start-year').val(), $('#input-start-month').val()-1, $('#input-start-day').val(), $('#input-start-hour').val(), $('#input-start-minute').val());
+    var actend = new Date($('#input-end-year').val(), $('#input-end-month').val()-1, $('#input-end-day').val(), $('#input-end-hour').val(), $('#input-end-minute').val());
+    var bookstart = new Date($('#input-book-start-year').val(), $('#input-book-start-month').val()-1, $('#input-book-start-day').val(), $('#input-book-start-hour').val(), $('#input-book-start-minute').val());
+    var bookend = new Date($('#input-book-end-year').val(), $('#input-book-end-month').val()-1, $('#input-book-end-day').val(), $('#input-book-end-hour').val(), $('#input-book-end-minute').val());
+    var now = new Date();
+    $('#input-book-start-year').tooltip('show');
+    if(bookstart <= now){
+        alert('“订票开始时间”应晚于“当前时间”');
+        $('#input-book-start-year').focus();
+        return false;
+    }
+    if(bookend <= bookstart){
+        alert('“订票结束时间”应晚于“订票开始时间”');
+        $('#input-book-start-year').focus();
+        return false;
+    }
+    if(actstart <= bookend){
+        alert('“活动开始时间”应晚于“订票结束时间”');
+         $('#input-start-year').focus();
+        return false;
+    }
+    if(actend <= actstart){
+        alert('“活动结束时间”应晚于“活动开始时间”');
+         $('#input-start-year').focus();
+        return false;
+    }
+    return true;
+}
+
 function initialProgress(checked, ordered, total) {
     $('#tickets-checked').css('width', check_percent(100.0 * checked / total) + '%')
         .tooltip('destroy').tooltip({'title': '已检入：' + checked + '/' + ordered + '=' + (100.0 * checked / ordered).toFixed(2) + '%'});
@@ -210,13 +240,12 @@ function lockByStatus(status, book_start, start_time) {
         lockMap[keyMap[key]]($('#input-' + key), flag);
     }
     showProgressByStatus(status, book_start);
-    $('#publishBtn').show();
     if (status >= 1) {
         $('#saveBtn').hide();
     } else {
         $('#saveBtn').show();
     }
-    $('#resetBtn').show();
+    showPublishByStatus(status,start_time)
 }
 
 function showProgressByStatus(status, book_start) {
@@ -224,6 +253,16 @@ function showProgressByStatus(status, book_start) {
         $('#progress-tickets').show();
     } else {
         $('#progress-tickets').hide();
+    }
+}
+
+function showPublishByStatus(status, start_time) {
+    if ((status >= 1) && (new Date() >= getDateByObj(start_time))) {
+        $('#publishBtn').hide();
+        $('#resetBtn').hide();
+    } else {
+        $('#resetBtn').show();
+        $('#publishBtn').show();
     }
 }
 
@@ -360,6 +399,8 @@ function submitComplete(xhr) {
 }
 
 function publishActivity() {
+    if(!checktime())
+        return false;
     if(!$('#activity-form')[0].checkValidity || $('#activity-form')[0].checkValidity()){
         showProcessing();
         setResult('');

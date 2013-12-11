@@ -112,7 +112,19 @@ var tdMap = {
         return '<a href="' + act[key] + '"><span class="glyphicon glyphicon-pencil"></span> 详情</a>';
     },
     'deletelink':function(act, key) {
-        return '<a href="#" id="'+act[key]+'" onclick="deleteact('+act[key]+')"><span class="glyphicon glyphicon-trash"></span></a>';
+        var now = new Date()
+        if(now >= getDateByObj(act.book_start) && now < getDateByObj(act.book_end)){
+            return '<span class="td-ban glyphicon glyphicon-ban-circle" data-toggle="tooltip" data-original-title="活动正在订票中，不能删除!"></span>';
+        }
+        else if(now >= getDateByObj(act.book_end) && now < getDateByObj(act.start_time)){
+            return '<span class="td-ban glyphicon glyphicon-ban-circle" data-toggle="tooltip" data-original-title="活动已发票，不能删除!"></span>';
+        }
+        else if(now >= getDateByObj(act.start_time) && now < getDateByObj(act.end_time)){
+            return '<span class="td-ban glyphicon glyphicon-ban-circle" data-toggle="tooltip" data-original-title="活动正在进行中，不能删除!"></span>';
+        }
+        else{
+            return '<a href="#" id="'+act[key]+'" onclick="deleteact('+act[key]+')"><span class="glyphicon glyphicon-trash"></span></a>';
+        }
     }
 }, smartTimeMap = {
     'activity_time': function(act) {
@@ -122,6 +134,10 @@ var tdMap = {
         return getSmartTimeRange(act.book_start, act.book_end);
     }
 };
+
+function getDateByObj(obj) {
+    return obj;
+}
 
 function deleteact(actid){
     //alert(actid);
@@ -140,6 +156,7 @@ function deleteact(actid){
       keyboard: false,
       backdrop:false
     });
+    return;
 }
 
 function delConfirm(){

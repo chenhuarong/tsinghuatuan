@@ -103,6 +103,7 @@ def details_view(request):
     act_endtime = activity[0].end_time
     act_totaltickets = activity[0].total_tickets
     act_text = activity[0].description
+    act_ticket_remian = activity[0].remain_tickets
     act_abstract = act_text
     MAX_LEN = 256
     act_text_status = 0
@@ -126,7 +127,7 @@ def details_view(request):
                                       'act_bookstart':act_bookstart,'act_bookend':act_bookend,'act_begintime':act_begintime,
                                       'act_endtime':act_endtime,'act_totaltickets':act_totaltickets,'act_key':act_key,
                                       'act_place':act_place, 'act_status':act_status, 'act_seconds':act_seconds,
-                                      'act_abstract':act_abstract, 'act_text_status':act_text_status})
+                                      'act_abstract':act_abstract, 'act_text_status':act_text_status,'act_ticket_remian':act_ticket_remian})
     return render_to_response('activitydetails.html', variables)
 
 

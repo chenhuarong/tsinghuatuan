@@ -117,6 +117,8 @@ def activity_modify(activity):
 @csrf_exempt
 def activity_delete(request):
     requestdata = request.POST
+    if not requestdata:
+        raise Http404
     curact = Activity.objects.get(id= requestdata.get('activityId',''))
     curact.delete()
     #删除后刷新界面
@@ -176,6 +178,13 @@ def activity_post(request):
         if 'id' in post:
             activity = activity_modify(post)
         else:
+            iskey = Activity.objects.filter(key=post['key'])
+            if iskey:
+                now = datetime.now()
+                for keyact in iskey:
+                    if now < keyact.end_time:
+                        rtnJSON['error'] = "当前有活动正在使用该活动代码"
+                        return HttpResponse(json.dumps(rtnJSON, cls=DatetimeJsonEncoder), content_type='application/json')
             activity = activity_create(post)
             rtnJSON['updateUrl'] = reverse('adminpage.views.activity_detail', kwargs={'actid': activity.id})
         rtnJSON['activity'] = wrap_activity_dict(activity)
