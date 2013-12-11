@@ -1,0 +1,71 @@
+{% extends "activity_base.html" %}
+
+{% load staticfiles %}
+
+{% block css %}
+    <link href="{% static "css/ticket_detail.css" %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <!--
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    活动名称
+                </h3>
+                <button class="btn btn-info" id="print">
+                    打印
+                </button>
+            </div>
+            <div class="panel-body">
+                <div>
+                    <img src={{ qr_addr }}>
+                    <p>
+                        时间:{{ activity.start_time|date:"y/m/d l H:i" }} - {{ activity.end_time|date:"y/m/d l H:i" }}
+                    </p>
+                    <p>
+                        地点:{{ activity.place }}
+                    </p>
+                    <p>
+                        座位:{{ activity.seat }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        -->
+        <div class="ticket">
+            <h3 style="text-align: center">
+                {{ activity.name }}
+            </h3>
+            <div style="text-align: center">
+                <img src={{ qr_addr }}>
+            </div>
+            <div>
+                <p>
+                    开始时间:{{ activity.start_time|date:"y/m/d l H:i" }}
+                </p>
+                <p>
+                    结束时间:{{ activity.end_time|date:"y/m/d l H:i" }}
+                </p>
+                <p>
+                    地点:{{ activity.place }}
+                </p>
+                <p>
+                    座位:{{ activity.seat }}
+                </p>
+            </div>
+        </div>
+        <button class="btn btn-success block" id="print" style="text-align: center">打印</button>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static "lib/jq/jquery-1.10.2.min.js" %}"></script>
+    <script src="{% static "js/jquery.PrintArea.js" %}"></script>
+    <script>
+        $("#print").click(function(){
+            $('.ticket').printArea();
+        });
+    </script>
+{% endblock %}
