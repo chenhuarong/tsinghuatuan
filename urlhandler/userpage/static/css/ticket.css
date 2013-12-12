@@ -10,3 +10,15 @@
 img{
     width: 85%;
 }
+.status-size{
+    font-size: 18px;
+}
+.ticket-invalid{
+   color: red;
+}
+.ticket-valid{
+   color: green;
+}
+.ticket-used{
+    color: orangered;
+}
