@@ -5,6 +5,8 @@
     text-align:center;
     padding-right: 10px;
     padding-left: 10px;
+}
+.img-wrapper{
     padding-top: 10px;
 }
 .details-wrapper .img-inner{
@@ -33,7 +35,7 @@
     padding: 6px 0 6px 5px;
     padding-left: 10px;
     padding-right: 10px;
-    font-size: 16px;
+    font-size: 14px;
     text-align: left;
     word-break:break-all;
 }
