@@ -43,37 +43,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="212" column="12" selection-start="7241" selection-end="7241" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_list.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/activity_list.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="20" selection-start="2573" selection-end="2573" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="activity_list.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_list.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="203" column="42" selection-start="6272" selection-end="6272" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_checkin.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_checkin.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="22" selection-start="1474" selection-end="1474" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -88,10 +61,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activityphoto.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="activityphoto.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activityphoto.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="10" selection-start="138" selection-end="138" vertical-scroll-proportion="0.18037975">
+            <state line="5" column="28" selection-start="174" selection-end="174" vertical-scroll-proportion="-3.392857">
               <folding />
             </state>
           </provider>
@@ -109,7 +82,36 @@
       <file leaf-file-name="validation.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/css/validation.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="4" selection-start="118" selection-end="118" vertical-scroll-proportion="0.0">
+            <state line="9" column="0" selection-start="105" selection-end="105" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activityticket.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="18.321428">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="validation.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/validation.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="95" selection-start="764" selection-end="764" vertical-scroll-proportion="-5.428571">
+              <folding>
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#2;n#form#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mobile_base.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/mobile_base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="11" selection-start="544" selection-end="550" vertical-scroll-proportion="-1.7857143">
               <folding />
             </state>
           </provider>
@@ -124,10 +126,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ticket.css" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ticket.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/css/ticket.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="3" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0">
+            <state line="10" column="15" selection-start="181" selection-end="181" vertical-scroll-proportion="0.5523256">
               <folding />
             </state>
           </provider>
@@ -151,7 +153,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/urlhandler/adminpage/static/lib/jq/fullscreen/jquery.fullscreen.js" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/static/lib/screenfull/screenfull.min.js" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/static/lib/screenfull/screenfull.js" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/urls.py" />
@@ -162,11 +163,12 @@
         <option value="$PROJECT_DIR$/urlhandler/adminpage/views.py" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_list.js" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/static/css/base.css" />
-        <option value="$PROJECT_DIR$/urlhandler/userpage/static/css/ticket.css" />
-        <option value="$PROJECT_DIR$/urlhandler/userpage/static/css/validation.css" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activitytext.html" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/static/css/details.css" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activityphoto.html" />
+        <option value="$PROJECT_DIR$/urlhandler/userpage/templates/validation.html" />
+        <option value="$PROJECT_DIR$/urlhandler/userpage/static/css/validation.css" />
+        <option value="$PROJECT_DIR$/urlhandler/userpage/static/css/ticket.css" />
       </list>
     </option>
   </component>
@@ -764,25 +766,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="351" column="69" selection-start="10012" selection-end="10045" vertical-scroll-proportion="0.42857143" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/urlhandler/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="27" selection-start="992" selection-end="992" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/static/css/activity_checkin.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="17" selection-start="637" selection-end="637" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/activity_checkin.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="49" column="25" selection-start="2229" selection-end="2229" vertical-scroll-proportion="0.0">
@@ -834,30 +817,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/css/base.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="23" selection-start="445" selection-end="445" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/css/ticket.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="3" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/css/validation.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="4" selection-start="118" selection-end="118" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activitytext.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="134" column="32" selection-start="3806" selection-end="3806" vertical-scroll-proportion="-4.071429">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activityphoto.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="28" selection-start="174" selection-end="174" vertical-scroll-proportion="-3.392857">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/mobile_base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="11" selection-start="544" selection-end="550" vertical-scroll-proportion="-1.7857143">
           <folding />
         </state>
       </provider>
@@ -869,9 +845,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activityphoto.html">
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/validation.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="10" selection-start="138" selection-end="138" vertical-scroll-proportion="0.18037975">
+        <state line="32" column="95" selection-start="764" selection-end="764" vertical-scroll-proportion="-5.428571">
+          <folding>
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#2;n#form#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/css/base.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="23" selection-start="445" selection-end="445" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/css/validation.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="0" selection-start="105" selection-end="105" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="18.321428">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/css/ticket.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="15" selection-start="181" selection-end="181" vertical-scroll-proportion="0.5523256">
           <folding />
         </state>
       </provider>
