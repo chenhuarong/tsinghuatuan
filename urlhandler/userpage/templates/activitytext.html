@@ -49,49 +49,49 @@
     <div class="timer-wrapper">
     抢票时间：
     </div>
-    <div class="details-divider"></div>
     <div class="details-wrapper">
         <div class="text-inner">
             <div class="trigger">
-                <a>开始时间：{{ act_bookstart|date:"Y年m月d日H时i分" }}</a>
+                <a>{{ act_bookstart|date:"Y年m月d日 H时i分" }} 至 {{ act_bookend|date:"H时i分" }}</a>
             </div>
         </div>
     </div>
     <div class="details-divider"></div>
+    <!--
     <div class="details-wrapper">
         <div class="text-inner">
             <div class="trigger">
-                <a>结束时间：{{ act_bookend|date:"Y年m月d日H时i分" }}</a>
+                <a>结束时间：</a>
             </div>
         </div>
     </div>
     <div class="details-divider"></div>
+    -->
 
     <div class="timer-wrapper">
     活动时间：
     </div>
-    <div class="details-divider"></div>
     <div class="details-wrapper">
         <div class="text-inner">
             <div class="trigger">
-                <a>开始时间：{{ act_begintime|date:"Y年m月d日H时i分" }}</a>
+                <a>{{ act_begintime|date:"Y年m月d日 H时i分" }} 至 {{ act_endtime|date:"H时i分" }}</a>
             </div>
         </div>
     </div>
     <div class="details-divider"></div>
+    <!--
     <div class="details-wrapper">
         <div class="text-inner">
             <div class="trigger">
-                <a>结束时间：{{ act_endtime|date:"Y年m月d日H时i分" }}</a>
+                <a>结束时间：</a>
             </div>
         </div>
     </div>
     <div class="details-divider"></div>
-
+    -->
     <div class="timer-wrapper">
     活动地点：
     </div>
-    <div class="details-divider"></div>
     <div class="details-wrapper">
         <div class="text-inner">
             <div class="trigger">
@@ -104,7 +104,6 @@
     <div class="timer-wrapper">
     取票代码：<!--<div class="clipcopy" id="copykey">点此复制</div>-->
     </div>
-    <div class="details-divider"></div>
     <div class="details-wrapper">
         <div class="text-inner">
             <div class="trigger">
@@ -117,7 +116,6 @@
     <div class="timer-wrapper">
     活动详情：
     </div>
-    <div class="details-divider"></div>
     <div class="details-wrapper" id="actabstract">
         <div class="text-inner">
             {% include 'activityphoto.html' %}
