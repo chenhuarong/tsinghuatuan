@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="519d02f1-9909-43c4-95c4-b95f242a05f2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js" afterPath="$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/static/css/activity_list.css" afterPath="$PROJECT_DIR$/urlhandler/adminpage/static/css/activity_list.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_list.html" afterPath="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_list.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_list.js" afterPath="$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_list.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/userpage/templates/activitydetails.html" afterPath="$PROJECT_DIR$/urlhandler/userpage/templates/activitydetails.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/userpage/templates/activitytext.html" afterPath="$PROJECT_DIR$/urlhandler/userpage/templates/activitytext.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/static/lib/bs/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/urlhandler/adminpage/static/lib/bs/css/bootstrap.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/userpage/static/css/details.css" afterPath="$PROJECT_DIR$/urlhandler/userpage/static/css/details.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/src.iml" afterPath="$PROJECT_DIR$/.idea/src.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/queryhandler/tickethandler.py" afterPath="$PROJECT_DIR$/queryhandler/tickethandler.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/urls.py" afterPath="$PROJECT_DIR$/urlhandler/adminpage/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/views.py" afterPath="$PROJECT_DIR$/urlhandler/adminpage/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/userpage/views.py" afterPath="$PROJECT_DIR$/urlhandler/userpage/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/weixin_simulator.py" afterPath="$PROJECT_DIR$/weixin_simulator.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="src.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,10 +42,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="0" selection-start="2121" selection-end="2121" vertical-scroll-proportion="-8.409091">
+            <state line="212" column="12" selection-start="7241" selection-end="7241" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -100,35 +83,16 @@
       <file leaf-file-name="activity_list.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/activity_list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="20" selection-start="2573" selection-end="2573" vertical-scroll-proportion="-11.166667">
-              <folding>
-                <marker date="1386833769000" expanded="true" signature="463:1702" placeholder="..." />
-                <marker date="1386833769000" expanded="true" signature="490:1458" placeholder="[...]" />
-                <marker date="1386833769000" expanded="true" signature="553:1380" placeholder="{&quot;name&quot;: '{{ activity.name|escapejs }}'...}" />
-                <marker date="1386833769000" expanded="true" signature="1953:2715" placeholder="..." />
-                <marker date="1386833769000" expanded="true" signature="1983:2029" placeholder="..." />
-                <marker date="1386833769000" expanded="true" signature="2068:2707" placeholder="..." />
-                <marker date="1386833769000" expanded="true" signature="2104:2271" placeholder="..." />
-                <marker date="1386833769000" expanded="true" signature="2314:2696" placeholder="..." />
-                <marker date="1386833769000" expanded="true" signature="2334:2616" placeholder="..." />
-                <marker date="1386833769000" expanded="true" signature="2351:2595" placeholder="..." />
-                <marker date="1386833769000" expanded="true" signature="2658:2679" placeholder="..." />
-                <marker date="1386833769000" expanded="false" signature="2759:2773" placeholder="..." />
-                <marker date="1386833769000" expanded="true" signature="2898:3521" placeholder="..." />
-                <marker date="1386833769000" expanded="true" signature="2927:3514" placeholder="..." />
-                <marker date="1386833769000" expanded="true" signature="2959:3505" placeholder="..." />
-                <marker date="1386833769000" expanded="true" signature="2992:3167" placeholder="..." />
-                <marker date="1386833769000" expanded="true" signature="3216:3229" placeholder="..." />
-                <marker date="1386833769000" expanded="true" signature="3262:3494" placeholder="..." />
-              </folding>
+            <state line="70" column="20" selection-start="2573" selection-end="2573" vertical-scroll-proportion="5.25">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_list.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="activity_list.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_list.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="133" column="6" selection-start="3945" selection-end="3945" vertical-scroll-proportion="0.0">
+            <state line="203" column="42" selection-start="6272" selection-end="6272" vertical-scroll-proportion="0.63790447">
               <folding />
             </state>
           </provider>
@@ -192,16 +156,16 @@
         <option value="$PROJECT_DIR$/urlhandler/adminpage/static/css/activity_checkin.css" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_checkin.js" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_checkin.html" />
-        <option value="$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_list.js" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_list.html" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/views.py" />
+        <option value="$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_list.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
     <option name="width" value="1440" />
-    <option name="height" value="812" />
+    <option name="height" value="808" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -909,18 +873,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1440" height="812" extended-state="6" />
+    <frame x="0" y="22" width="1440" height="808" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32779455" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22525108" sideWeight="0.6743516" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22525108" sideWeight="0.6724638" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39473686" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20681265" sideWeight="0.28703704" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3281787" sideWeight="0.49468085" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32564843" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32753623" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985073" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936507" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -995,11 +959,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="70" selection-start="355" selection-end="355" vertical-scroll-proportion="0.11363637" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/static/lib/jq/fullscreen/jquery.fullscreen.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="123" column="0" selection-start="6329" selection-end="6329" vertical-scroll-proportion="4.372038" />
@@ -1013,13 +972,6 @@
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/static/lib/screenfull/screenfull.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="143" column="0" selection-start="3157" selection-end="3157" vertical-scroll-proportion="0.9307159" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="103" selection-start="501" selection-end="501" vertical-scroll-proportion="0.24249423">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/static/css/activity_list.css">
@@ -1062,46 +1014,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_checkin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="22" selection-start="1474" selection-end="1474" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_list.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="133" column="6" selection-start="3945" selection-end="3945" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/activity_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="20" selection-start="2573" selection-end="2573" vertical-scroll-proportion="-11.166667">
-          <folding>
-            <marker date="1386833769000" expanded="true" signature="463:1702" placeholder="..." />
-            <marker date="1386833769000" expanded="true" signature="490:1458" placeholder="[...]" />
-            <marker date="1386833769000" expanded="true" signature="553:1380" placeholder="{&quot;name&quot;: '{{ activity.name|escapejs }}'...}" />
-            <marker date="1386833769000" expanded="true" signature="1953:2715" placeholder="..." />
-            <marker date="1386833769000" expanded="true" signature="1983:2029" placeholder="..." />
-            <marker date="1386833769000" expanded="true" signature="2068:2707" placeholder="..." />
-            <marker date="1386833769000" expanded="true" signature="2104:2271" placeholder="..." />
-            <marker date="1386833769000" expanded="true" signature="2314:2696" placeholder="..." />
-            <marker date="1386833769000" expanded="true" signature="2334:2616" placeholder="..." />
-            <marker date="1386833769000" expanded="true" signature="2351:2595" placeholder="..." />
-            <marker date="1386833769000" expanded="true" signature="2658:2679" placeholder="..." />
-            <marker date="1386833769000" expanded="false" signature="2759:2773" placeholder="..." />
-            <marker date="1386833769000" expanded="true" signature="2898:3521" placeholder="..." />
-            <marker date="1386833769000" expanded="true" signature="2927:3514" placeholder="..." />
-            <marker date="1386833769000" expanded="true" signature="2959:3505" placeholder="..." />
-            <marker date="1386833769000" expanded="true" signature="2992:3167" placeholder="..." />
-            <marker date="1386833769000" expanded="true" signature="3216:3229" placeholder="..." />
-            <marker date="1386833769000" expanded="true" signature="3262:3494" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/activity_checkin.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="49" column="25" selection-start="2229" selection-end="2229" vertical-scroll-proportion="-30.625">
@@ -1129,9 +1041,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_checkin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="22" selection-start="1474" selection-end="1474" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/urlhandler/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="103" selection-start="501" selection-end="501" vertical-scroll-proportion="0.2542373">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="0" selection-start="2121" selection-end="2121" vertical-scroll-proportion="-8.409091">
+        <state line="212" column="12" selection-start="7241" selection-end="7241" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/activity_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="20" selection-start="2573" selection-end="2573" vertical-scroll-proportion="5.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_list.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="203" column="42" selection-start="6272" selection-end="6272" vertical-scroll-proportion="0.63790447">
           <folding />
         </state>
       </provider>

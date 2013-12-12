@@ -188,10 +188,9 @@ function delConfirm(){
     //alert(delid);
     var tmp  ="/adminpage/delete/";
     $.post(tmp,{'activityId':delid}, function(ret) {
-
+        $('#'+delid).css("background-color","#FFF");
+        window.location.href="/adminpage/list/"
     });
-    $('#'+delid).css("background-color","#FFF");
-    window.location.href="/adminpage/list/"
 }
 
 function delCancel(){
