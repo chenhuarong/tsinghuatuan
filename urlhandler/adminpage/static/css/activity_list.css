@@ -17,6 +17,8 @@
 .td-place {
     min-width: 90px;
 }
+.td-operations {
+    min-width: 62px;
 .td-detail_url {
     min-width: 70px;
 }

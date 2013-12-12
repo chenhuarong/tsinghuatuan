@@ -89,6 +89,14 @@ function getTd(para) {
     return $('<td class="td-' + para + '"></td>');
 }
 
+function expand_long_text(dom) {
+    var newhtml = '', par = $(dom).parent(), refdata = par.text();
+    dom = $(dom);
+    refdata = refdata.substring(0, refdata.length - 3);
+    newhtml = dom.attr('ref-data') + ' <a style="cursor:pointer;" ref-data="' + refdata + '" ref-hint="' + dom.text() + '" onclick="expand_long_text(this);">' + dom.attr('ref-hint') + '</a>';
+    par.html(newhtml);
+}
+
 var duringbook = new Array,beforeact = new Array, duringact = new Array;
 
 var tdMap = {
@@ -98,7 +106,7 @@ var tdMap = {
     'activity_time': 'time',
     'place': 'text',
     'book_time': 'time',
-    'detail_url': 'editlink',
+    'operations': 'operation_links',
     'delete': 'deletelink'
 }, tdActionMap = {
     'status': function(act, key) {
@@ -110,15 +118,19 @@ var tdMap = {
     'longtext': function(act, key) {
         var str = act[key];
         if (str.length > 55) {
-            str = str.substr(0, 55) + '... <a href="' + act['detail_url'] + '">显示全部</a>';
+            str = str.substr(0, 55) + '... <a style="cursor:pointer;" ref-data="' + act[key] + '" ref-hint="收起" onclick="expand_long_text(this);">展开</a>';
         }
         return str;
     },
     'time': function(act, key) {
         return smartTimeMap[key](act);
     },
-    'editlink': function(act, key) {
-        return '<a href="' + act[key] + '"><span class="glyphicon glyphicon-pencil"></span> 详情</a>';
+    'operation_links': function(act, key) {
+        var links = act[key], result = [], i, len;
+        for (i = 0, len = links.length; i < len; ++i) {
+            result.push('<a href="' + links[i] + '" target="' + operations_target[i] + '"><span class="glyphicon glyphicon-' + operations_icon[i] + '"></span> ' + operations_name[i] + '</a>');
+        }
+        return result.join('<br/>');
     },
     'deletelink':function(act, key) {
         var now = new Date()
