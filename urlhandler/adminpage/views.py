@@ -21,13 +21,12 @@ from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
-from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_protect,csrf_exempt
 
 #import database
 from urlhandler.models import Activity, Order, Ticket
 
 from urlhandler.models import User as Booker
-from queryhandler.tickethandler import activity_remain_tickets
 @csrf_protect
 def home(request):
     if not request.user.is_authenticated():
@@ -204,6 +203,21 @@ def activity_modify(activity):
     nowact.save()
     return nowact
 
+@csrf_exempt
+def activity_delete(request):
+    requestdata = request.POST
+    if not requestdata:
+        raise Http404
+    curact = Activity.objects.get(id= requestdata.get('activityId',''))
+    curact.delete()
+    #删除后刷新界面
+    actmodels = Activity.objects.all()
+    activities = []
+    for act in actmodels:
+        activities += [wrap_activity_dict(act)]
+    return render_to_response('activity_list.html', {
+        'activities': activities,
+    })
 
 def get_checked_tickets(activity):
     return Ticket.objects.filter(activity=activity, status=2).count()
@@ -214,7 +228,7 @@ def wrap_activity_dict(activity):
     dt = model_to_dict(activity)
     if (dt['status'] >= 1) and (datetime.now() >= dt['book_start']):
         dt['tickets_ready'] = 1
-        dt['ordered_tickets'] = int(activity.total_tickets) - int(activity_remain_tickets[activity.id])
+        dt['ordered_tickets'] = int(activity.total_tickets) - int(activity.remain_tickets)
         dt['checked_tickets'] = get_checked_tickets(activity)
     return dt
 
@@ -256,7 +270,7 @@ class DatetimeJsonEncoder(json.JSONEncoder):
 
 def activity_post(request):
     if not request.user.is_authenticated():
-        return HttpResponseRedirect(reverse('adminpage.views.home'))
+       return HttpResponseRedirect(reverse('adminpage.views.home'))
 
     if not request.POST:
         raise Http404
@@ -266,6 +280,13 @@ def activity_post(request):
         if 'id' in post:
             activity = activity_modify(post)
         else:
+            iskey = Activity.objects.filter(key=post['key'])
+            if iskey:
+                now = datetime.now()
+                for keyact in iskey:
+                    if now < keyact.end_time:
+                        rtnJSON['error'] = "当前有活动正在使用该活动代码"
+                        return HttpResponse(json.dumps(rtnJSON, cls=DatetimeJsonEncoder), content_type='application/json')
             activity = activity_create(post)
             rtnJSON['updateUrl'] = reverse('adminpage.views.activity_detail', kwargs={'actid': activity.id})
         rtnJSON['activity'] = wrap_activity_dict(activity)
