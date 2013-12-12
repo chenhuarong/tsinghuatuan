@@ -1,0 +1,79 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>检票 - {{ activity.name }} - 清小团</title>
+    <link rel="stylesheet" href="{% static "lib/bs/css/bootstrap.min.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/activity_checkin.css" %}"/>
+</head>
+<body onload="auto_adjust();" onresize="auto_adjust();">
+<div id="common-header" class="full-div">
+    <img src="{% static "img/student_logo.png" %}" alt="学生清华" id="logo-img"/>
+
+    <h1 id="header-checkin">“清小团”票务系统 - 检票</h1>
+
+    <h2 id="header-activity">{{ activity.name }}</h2>
+
+    <div id="activity-time"><label id="act-time-label">活动时间：</label><span
+            id="act-time-span">{{ activity.start_time|date:'Y年m月d日h:i' }} 到 {{ activity.end_time|date:'Y年m月d日h:i' }}</span>
+    </div>
+</div>
+<div id="welcome-screen" class="full-div">
+    <img class="center-button" onclick="enter_checkin();" id="pause-button"
+         src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="/>
+
+    <h3 id="pause-hint">↑点击图标开始检票↑</h3>
+    <h4 id="pause-hint">如果没有反应，您需要先启用浏览器全屏功能:)</h4>
+
+</div>
+<div id="checkin-screen" class="full-div" style="display: none;">
+    <form role="form" method="post" id="checkin-form" action="{% url adminpage.views.activity_checkin_post actid=activity.id %}">
+        {% csrf_token %}
+        <div class="form-group col-xs-offset-2 col-xs-8">
+            <input class="form-control input-lg" type="text" id="input-uid" name="uid" placeholder="扫描二维码或输入学号"
+                   onblur="setTimeout(function(){$('#input-uid').focus();});" autocomplete="off" required maxlength="32">
+        </div>
+    </form>
+    <div class="col-xs-offset-2 col-xs-8" id="tickets-table-holder">
+        <!--<table class="table table-hover tickets-table" id="tickets-table-header">
+            <thead>
+                <tr>
+                    <th class="tickets-header">序号</th>
+                    <th class="tickets-header"></th>
+                    <th class="tickets-header">电子票号</th>
+                    <th class="tickets-header">学号</th>
+                    <th class="tickets-header">结果</th>
+                </tr>
+            </thead>
+        </table>-->
+        <div id="tickets-table-body-holder">
+        <table class="table table-hover tickets-table" id="tickets-table-body">
+
+            <tbody id="tickets-table-body">
+                <!--<tr class="success">
+                    <td>1</td>
+                    <td><img class="ticket-status-img" src="{% static "img/good.png" %}"></td>
+                    <td>pYlIOO0On7XvylZDReikGCwZGZL2a2ZE</td>
+                    <td>2011013236</td>
+                    <td>检票成功</td>
+                </tr>
+                <tr class="danger">
+                    <td>1</td>
+                    <td><img class="ticket-status-img" src="{% static "img/error.png" %}"></td>
+                    <td>pYlIOO0On7XvylZDReikGCwZGZL2a2ZE</td>
+                    <td>2011013236</td>
+                    <td>票不存在</td>
+                </tr>-->
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+
+<script src="{% static "lib/jq/jquery-1.10.2.min.js" %}"></script>
+<script src="{% static "lib/jq/form/jquery.form.min.js" %}"></script>
+<script src="{% static "lib/bs/js/bootstrap.min.js" %}"></script>
+<script src="{% static "lib/screenfull/screenfull.min.js" %}"></script>
+<script src="{% static "js/activity_checkin.js" %}"></script>
+</body>
+</html>

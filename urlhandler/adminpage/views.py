@@ -43,9 +43,94 @@ def activity_list(request):
     activities = []
     for act in actmodels:
         activities += [wrap_activity_dict(act)]
+    permission_num = 1 if request.user.is_superuser else 0
     return render_to_response('activity_list.html', {
         'activities': activities,
+        'permission': permission_num,
     })
+
+
+def activity_checkin(request, actid):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('adminpage.views.home'))
+    try:
+        activity = Activity.objects.get(id=actid)
+        if datetime.now() > activity.end_time:
+            raise 'Time out!'
+    except:
+        return HttpResponseRedirect(reverse('adminpage.views.activity_list'))
+
+    return render_to_response('activity_checkin.html', {
+        'activity': activity,
+    }, context_instance=RequestContext(request))
+
+
+def activity_checkin_post(request, actid):
+    if (not request.POST) or (not ('uid' in request.POST)):
+        raise Http404
+    try:
+        activity = Activity.objects.get(id=actid)
+    except:
+        return HttpResponse(json.dumps({'result': 'error', 'stuid': 'Unknown', 'msg': 'noact'}), content_type='application/json')
+
+    rtnJSON = {'result': 'error', 'stuid': 'Unknown', 'msg': 'rejected'}
+    flag = False
+    uid = request.POST['uid']
+    if len(uid) == 10:
+        if not uid.isdigit():
+            rtnJSON['result'] = 'error'
+            rtnJSON['stuid'] = 'Unknown'
+            rtnJSON['msg'] = 'rejected'
+            flag = True
+        if not flag:
+            rtnJSON['stuid'] = uid
+            try:
+                student = Booker.objects.get(stu_id=uid, status=1)
+            except Exception as e:
+                rtnJSON['msg'] = 'nouser'
+                flag = True
+            if not flag:
+                try:
+                    ticket = Ticket.objects.get(user=student, activity=activity)
+                    if ticket.status == 0:
+                        raise 'noticket'
+                    elif ticket.status == 2:
+                        rtnJSON['result'] = 'warning'
+                        rtnJSON['msg'] = 'used'
+                        flag = True
+                    elif ticket.status == 1:
+                        ticket.status = 2
+                        ticket.save()
+                        rtnJSON['msg'] = 'accepted'
+                        rtnJSON['result'] = 'success'
+                        flag = True
+                except:
+                    rtnJSON['msg'] = 'noticket'
+                    flag = True
+    elif len(uid) == 32:
+        try:
+            ticket = Ticket.objects.get(unique_id=uid, activity=activity)
+            if ticket.status == 0:
+                raise 'rejected'
+            elif ticket.status == 2:
+                rtnJSON['msg'] = 'used'
+                rtnJSON['stuid'] = ticket.user.stu_id
+                rtnJSON['result'] = 'warning'
+                flag = True
+            else:
+                ticket.status = 2
+                ticket.save()
+                rtnJSON['result'] = 'success'
+                rtnJSON['stuid'] = ticket.user.stu_id
+                rtnJSON['msg'] = 'accepted'
+                flag = True
+        except:
+            rtnJSON['result'] = 'error'
+            rtnJSON['stuid'] = 'Unknown'
+            rtnJSON['msg'] = 'rejected'
+            flag = True
+
+    return HttpResponse(json.dumps(rtnJSON), content_type='application/json')
 
 
 def login(request):
