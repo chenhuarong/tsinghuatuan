@@ -16,20 +16,19 @@ from django.shortcuts import render
 from django.shortcuts import render_to_response
 
 from django.contrib.auth import authenticate
-from django.contrib.auth import login as auth_login,logout as auth_logout
+from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
-from django.views.decorators.csrf import csrf_protect,csrf_exempt
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
 
-#import database
-import urllib,urllib2
+import urllib
+import urllib2
 
 from urlhandler.models import Activity, Ticket
 from urlhandler.models import User as Booker
 from urlhandler.models import UserSession
-
 
 from weixinlib.custom_menu import get_custom_menu, modify_custom_menu
 
@@ -40,6 +39,7 @@ def home(request):
         return render_to_response('login.html', context_instance=RequestContext(request))
     else:
         return HttpResponseRedirect(reverse('adminpage.views.activity_list'))
+
 
 def activity_list(request):
     if not request.user.is_authenticated():
@@ -77,7 +77,8 @@ def activity_checkin_post(request, actid):
     try:
         activity = Activity.objects.get(id=actid)
     except:
-        return HttpResponse(json.dumps({'result': 'error', 'stuid': 'Unknown', 'msg': 'noact'}), content_type='application/json')
+        return HttpResponse(json.dumps({'result': 'error', 'stuid': 'Unknown', 'msg': 'noact'}),
+                            content_type='application/json')
 
     rtnJSON = {'result': 'error', 'stuid': 'Unknown', 'msg': 'rejected'}
     flag = False
@@ -173,7 +174,6 @@ def str_to_datetime(str):
 
 
 def activity_create(activity):
-
     preDict = dict()
     for k in ['name', 'key', 'description', 'place', 'pic_url', 'total_tickets']:
         preDict[k] = activity[k]
@@ -210,16 +210,18 @@ def activity_modify(activity):
     nowact.save()
     return nowact
 
+
 @csrf_exempt
 def activity_delete(request):
     requestdata = request.POST
     if not requestdata:
         raise Http404
-    curact = Activity.objects.get(id= requestdata.get('activityId',''))
+    curact = Activity.objects.get(id=requestdata.get('activityId', ''))
     curact.status = -1
     curact.save()
     #删除后刷新界面
     return HttpResponse('OK')
+
 
 def get_checked_tickets(activity):
     return Ticket.objects.filter(activity=activity, status=2).count()
@@ -288,7 +290,8 @@ def activity_post(request):
                 for keyact in iskey:
                     if now < keyact.end_time:
                         rtnJSON['error'] = u"当前有活动正在使用该活动代码"
-                        return HttpResponse(json.dumps(rtnJSON, cls=DatetimeJsonEncoder), content_type='application/json')
+                        return HttpResponse(json.dumps(rtnJSON, cls=DatetimeJsonEncoder),
+                                            content_type='application/json')
             activity = activity_create(post)
             rtnJSON['updateUrl'] = reverse('adminpage.views.activity_detail', kwargs={'actid': activity.id})
         rtnJSON['activity'] = wrap_activity_dict(activity)
@@ -300,6 +303,7 @@ def activity_post(request):
 def order_index(request):
     return render_to_response('print_login.html', context_instance=RequestContext(request))
 
+
 def order_login(request):
     if not request.POST:
         raise Http404
@@ -309,13 +313,11 @@ def order_login(request):
     username = request.POST.get('username', '')
     password = request.POST.get('password', '')
 
-
     try:
         Booker.objects.get(stu_id=username)
     except:
         rtnJSON['message'] = 'none'
         return HttpResponse(json.dumps(rtnJSON), content_type='application/json')
-
 
     req_data = urllib.urlencode({'userid': username, 'userpass': password, 'submit1': u'登录'.encode('gb2312')})
     request_url = 'https://learn.tsinghua.edu.cn/MultiLanguage/lesson/teacher/loginteacher.jsp'
@@ -330,10 +332,10 @@ def order_login(request):
     if 'loginteacher_action.jsp' in res:
 
         user_session = UserSession()
-        if(user_session.generate_session(username)):
+        if user_session.generate_session(username):
             rtnJSON['message'] = 'success'
-            u = UserSession.objects.get(stu_id = username)
-            rtnJSON['next'] = reverse('adminpage.views.order_list', kwargs={'stuid':username,'pk':u.session_key})
+            u = UserSession.objects.get(stu_id=username)
+            rtnJSON['next'] = reverse('adminpage.views.order_list', kwargs={'stuid': username, 'pk': u.session_key})
 
         else:
             rtnJSON['message'] = 'failed'
@@ -342,20 +344,22 @@ def order_login(request):
 
     return HttpResponse(json.dumps(rtnJSON), content_type='application/json')
 
+
 def order_logout(request):
     return HttpResponseRedirect(reverse('adminpage.views.order_index'))
+
 
 def order_list(request, stuid, pk):
     orders = []
     try:
         user_sesssion = UserSession()
-        if user_sesssion.is_session_valid(stu_id=stuid,session_key=pk):
-            qset = Ticket.objects.filter(stu_id = stuid)
+        if user_sesssion.is_session_valid(stu_id=stuid, session_key=pk):
+            qset = Ticket.objects.filter(stu_id=stuid)
 
             for x in qset:
                 item = {}
 
-                activity = Activity.objects.get(id = x.activity_id)
+                activity = Activity.objects.get(id=x.activity_id)
 
                 item['name'] = activity.name
 
@@ -379,15 +383,16 @@ def order_list(request, stuid, pk):
         'orders': orders,
     }, context_instance=RequestContext(request))
 
+
 def print_ticket(request, unique_id):
     try:
-        ticket = Ticket.objects.get(unique_id = unique_id)
+        ticket = Ticket.objects.get(unique_id=unique_id)
 
         pk = request.POST.get('pk')
 
         user_session = UserSession()
-        if(user_session.can_print(stu_id=ticket.stu_id,session_key=pk)):
-            activity = Activity.objects.get(id = ticket.activity_id)
+        if user_session.can_print(stu_id=ticket.stu_id, session_key=pk):
+            activity = Activity.objects.get(id=ticket.activity_id)
             qr_addr = "http://tsinghuaqr.duapp.com/fit/" + unique_id
         else:
             return HttpResponseRedirect(reverse('adminpage.views.order_index'))
@@ -397,9 +402,8 @@ def print_ticket(request, unique_id):
     return render_to_response('print_ticket.html', {
         'qr_addr': qr_addr,
         'activity': activity,
-        'stu_id':ticket.stu_id
-    },context_instance=RequestContext(request))
-
+        'stu_id': ticket.stu_id
+    }, context_instance=RequestContext(request))
 
 
 def adjust_menu_view(request):
@@ -442,12 +446,13 @@ def custom_menu_modify_post(request):
     sub_button = []
     for menu in menus:
         sub_button += [{
-            'type': 'click',
-            'name': menu['name'],
-            'key': 'TSINGHUA_BOOK_' + str(menu['id']),
-            'sub_button': [],
-        }]
+                           'type': 'click',
+                           'name': menu['name'],
+                           'key': 'TSINGHUA_BOOK_' + str(menu['id']),
+                           'sub_button': [],
+                       }]
     current_menu[2]['sub_button'] = sub_button
-    return HttpResponse(modify_custom_menu(json.dumps({'button':current_menu}, ensure_ascii=False).encode('utf8')), content_type='application/json')
+    return HttpResponse(modify_custom_menu(json.dumps({'button': current_menu}, ensure_ascii=False).encode('utf8')),
+                        content_type='application/json')
 
 
