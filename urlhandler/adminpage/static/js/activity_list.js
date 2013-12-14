@@ -108,6 +108,17 @@ var tdMap = {
     'book_time': 'time',
     'operations': 'operation_links',
     'delete': 'deletelink'
+}, operationMap = {
+    'checkin': function(act) {
+        if (new Date() >= act.end_time) {
+            return false;
+        } else {
+            return true;
+        }
+    },
+    'detail': function(act) {
+        return true;
+    }
 }, tdActionMap = {
     'status': function(act, key) {
         return getSmartStatus(act);
@@ -127,13 +138,18 @@ var tdMap = {
     },
     'operation_links': function(act, key) {
         var links = act[key], result = [], i, len;
-        for (i = 0, len = links.length; i < len; ++i) {
-            result.push('<a href="' + links[i] + '" target="' + operations_target[i] + '"><span class="glyphicon glyphicon-' + operations_icon[i] + '"></span> ' + operations_name[i] + '</a>');
+        for (i in links) {
+            if (operationMap[i](act)) {
+                result.push('<a href="' + links[i] + '" target="' + operations_target[i] + '"><span class="glyphicon glyphicon-' + operations_icon[i] + '"></span> ' + operations_name[i] + '</a>');
+            }
         }
         return result.join('<br/>');
     },
     'deletelink':function(act, key) {
-        var now = new Date()
+        if (typeof act[key] == 'undefined') {
+            return;
+        }
+        var now = new Date();
         if(now >= getDateByObj(act.book_start) && now < getDateByObj(act.book_end)){
             duringbook.push(act[key]);
             return '<span id="del'+act[key]+'" class="td-ban glyphicon glyphicon-ban-circle" ></span>';
@@ -215,7 +231,7 @@ function createtips(){
             html: true,
             placement: 'top',
             title:'',
-            content: '<span style="color:red;">活动已发票，不能删除!</span>',
+            content: '<span style="color:red;">活动已出票，不能删除!</span>',
             trigger: 'hover',
             container: 'body'
         });
@@ -233,7 +249,7 @@ function createtips(){
 }
 
 function appendAct(act) {
-    var tr = $('<tr id='+act.delete+'></tr>'), key;
+    var tr = $('<tr' + ((typeof act.delete != "undefined") ? (' id="'+act.delete+'"') : '') + '></tr>'), key;
     for (key in tdMap) {
         getTd(key).html(tdActionMap[tdMap[key]](act, key)).appendTo(tr);
     }
