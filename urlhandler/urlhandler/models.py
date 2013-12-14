@@ -37,12 +37,3 @@ class Ticket(models.Model):
     # 0: ticket order is cancelled
     # 1: ticket order is valid
     # 2: ticket is used
-
-class Order(models.Model):
-    user = models.ForeignKey(User)
-    activity = models.ForeignKey(Activity)
-    status = models.IntegerField()
-    tickets = models.IntegerField()
-    # Something about status
-    # 0: canceled
-    # 1: valid
