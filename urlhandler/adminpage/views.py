@@ -99,7 +99,7 @@ def activity_checkin_post(request, actid):
                 flag = True
             if not flag:
                 try:
-                    ticket = Ticket.objects.get(user=student, activity=activity)
+                    ticket = Ticket.objects.get(stu_id=student.stu_id, activity=activity)
                     if ticket.status == 0:
                         raise 'noticket'
                     elif ticket.status == 2:
@@ -122,14 +122,14 @@ def activity_checkin_post(request, actid):
                 raise 'rejected'
             elif ticket.status == 2:
                 rtnJSON['msg'] = 'used'
-                rtnJSON['stuid'] = ticket.user.stu_id
+                rtnJSON['stuid'] = ticket.stu_id
                 rtnJSON['result'] = 'warning'
                 flag = True
             else:
                 ticket.status = 2
                 ticket.save()
                 rtnJSON['result'] = 'success'
-                rtnJSON['stuid'] = ticket.user.stu_id
+                rtnJSON['stuid'] = ticket.stu_id
                 rtnJSON['msg'] = 'accepted'
                 flag = True
         except:
