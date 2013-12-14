@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" hash="2041470753">
-    <data-source source="LOCAL" name="Django default" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="7d2a223e-9fd7-4a1c-b279-97b55680e70a">
+    <data-source source="LOCAL" name="Django default" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="4736925a-9282-4e54-b13e-c1e3b6a5d1ca">
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://sqld.duapp.com:4050/NYenZfWMVWuqtUGNuQsI</jdbc-url>
       <user-name>6jIVijhGUVreXBNI6jYzZGlt</user-name>
