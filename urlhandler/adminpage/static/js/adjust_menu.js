@@ -83,6 +83,7 @@ function downmenu(count) {
 function removemenu(count) {
     menus.splice(count, 1);
     update_menus(menus);
+    update_alters(alters);
 }
 
 function wrap_menu_item_html(menu, i, len) {
