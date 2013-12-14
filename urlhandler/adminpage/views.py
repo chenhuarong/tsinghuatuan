@@ -310,6 +310,14 @@ def order_login(request):
     username = request.POST.get('username', '')
     password = request.POST.get('password', '')
 
+
+    try:
+        Booker.objects.get(stu_id=username)
+    except:
+        rtnJSON['message'] = 'none'
+        return HttpResponse(json.dumps(rtnJSON), content_type='application/json')
+
+
     req_data = urllib.urlencode({'userid': username, 'userpass': password, 'submit1': u'登录'.encode('gb2312')})
     request_url = 'https://learn.tsinghua.edu.cn/MultiLanguage/lesson/teacher/loginteacher.jsp'
     req = urllib2.Request(url=request_url, data=req_data)
@@ -321,6 +329,7 @@ def order_login(request):
         raise Http404
 
     if 'loginteacher_action.jsp' in res:
+
         user_session = UserSession()
         if(user_session.generate_session(username)):
             rtnJSON['message'] = 'success'
