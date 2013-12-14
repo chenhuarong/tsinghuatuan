@@ -25,26 +25,33 @@
     background-color: lightgrey;
 }
 .trigger {
-}
-.active {
-}
-.trigger a{
     color: #000;
     text-decoration: none;
     display: block;
     padding: 6px 0 6px 5px;
     padding-left: 10px;
     padding-right: 10px;
-    font-size: 14px;
     text-align: left;
     word-break:break-all;
+}
+.trigger a{
+
+}
+.trigger h7{
+    font-size: 14px;
+}
+.trigger h8{
+    font-size: 12px;
+}
+.trigger h9{
+    font-size: 11px;
 }
 .details-img{
     width:96%;
 }
 .details-divider{
     width: 100%;
-    height: 8px;
+    height: 6px;
 }
 .date-wrapper{
     padding-left: 3%;
@@ -105,6 +112,7 @@ span.space{
 }
 .timer-wrapper{
     padding-left: 10px;
+    padding-bottom: 3px;
 }
 .invalid-time{
     text-align: center;
@@ -142,6 +150,7 @@ span.space{
     border-radius: 10px;
     padding: 2px;
     text-align: center;
+    font-size: 14px;
 }
 .clipcopy{
     float: right;

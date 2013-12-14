@@ -51,9 +51,28 @@
     </div>
     <div class="details-wrapper">
         <div class="text-inner">
-            <div class="trigger">
-                <a>{{ act_bookstart|date:"Y年m月d日 H时i分" }} 至 {{ act_bookend|date:"H时i分" }}</a>
+
+            {% if act_bookstart.year != act_bookend.year %}
+            <div class="trigger" >
+                <h7>开始时间：{{ act_bookstart|date:"Y年m月d日 H时i分" }}</h7>
             </div>
+            <div class="trigger">
+                <h7>结束时间：{{ act_bookend|date:"Y年m月d日 H时i分" }}</h7>
+            </div>
+            {% elif act_bookstart.month != act_bookend.month %}
+            <div class="trigger">
+                <h9>{{ act_bookstart|date:"Y年m月d日 H时i分" }} 至 {{ act_bookend|date:"m月d日H时i分" }}</h9>
+            </div>
+            {% elif act_bookstart.day != act_bookend.day %}
+            <div class="trigger">
+                <h8>{{ act_bookstart|date:"Y年m月d日 H时i分" }} 至 {{ act_bookend|date:"d日H时i分" }}</h8>
+            </div>
+            {% else %}
+            <div class="trigger">
+                <h7>{{ act_bookstart|date:"Y年m月d日 H时i分" }} 至 {{ act_bookend|date:"H时i分" }}</h7>
+            </div>
+            {% endif %}
+
         </div>
     </div>
     <div class="details-divider"></div>
@@ -73,9 +92,28 @@
     </div>
     <div class="details-wrapper">
         <div class="text-inner">
-            <div class="trigger">
-                <a>{{ act_begintime|date:"Y年m月d日 H时i分" }} 至 {{ act_endtime|date:"H时i分" }}</a>
+
+            {% if act_begintime.year != act_endtime.year %}
+            <div class="trigger" >
+                <h7>开始时间：{{ act_begintime|date:"Y年m月d日 H时i分" }}</h7>
             </div>
+            <div class="trigger">
+                <h7>结束时间：{{ act_endtime|date:"Y年m月d日 H时i分" }}</h7>
+            </div>
+            {% elif act_begintime.month != act_endtime.month %}
+            <div class="trigger">
+                <h9>{{ act_begintime|date:"Y年m月d日 H时i分" }} 至 {{ act_endtime|date:"m月d日H时i分" }}</h9>
+            </div>
+            {% elif act_begintime.day != act_endtime.day %}
+            <div class="trigger">
+                <h8>{{ act_begintime|date:"Y年m月d日 H时i分" }} 至 {{ act_endtime|date:"d日H时i分" }}</h8>
+            </div>
+            {% else %}
+            <div class="trigger">
+                <h7>{{ act_begintime|date:"Y年m月d日 H时i分" }} 至 {{ act_endtime|date:"H时i分" }}</h7>
+            </div>
+            {% endif %}
+
         </div>
     </div>
     <div class="details-divider"></div>
