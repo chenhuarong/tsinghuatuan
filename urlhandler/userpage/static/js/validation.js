@@ -165,7 +165,6 @@ window.setupWeixin({'optionMenu':false, 'toolbar':false});
 
 clearAllHelps();
 
-
 document.getElementById('inputUsername').onfocus = function(){
     setfooter();
 }

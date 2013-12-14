@@ -37,15 +37,17 @@
         <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state line="347" column="36" selection-start="11603" selection-end="11603" vertical-scroll-proportion="-5.32">
-              <folding />
+              <folding>
+                <element signature="e#23#68#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="validation.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="validation.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/js/validation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="167" column="0" selection-start="5071" selection-end="5071" vertical-scroll-proportion="-4.68">
+            <state line="166" column="0" selection-start="5070" selection-end="5070" vertical-scroll-proportion="0.70858896">
               <folding />
             </state>
           </provider>
@@ -101,16 +103,16 @@
       <file leaf-file-name="validation.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/validation.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="44" selection-start="277" selection-end="277" vertical-scroll-proportion="-5.642857">
+            <state line="13" column="61" selection-start="294" selection-end="294" vertical-scroll-proportion="-3.607143">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mobile_base.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="mobile_base.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/mobile_base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="58" selection-start="700" selection-end="700" vertical-scroll-proportion="0.7647059">
+            <state line="22" column="44" selection-start="686" selection-end="690" vertical-scroll-proportion="-14.928572">
               <folding />
             </state>
           </provider>
@@ -155,10 +157,10 @@
         <option value="$PROJECT_DIR$/urlhandler/userpage/static/css/details.css" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activitytext.html" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/static/css/base.css" />
-        <option value="$PROJECT_DIR$/urlhandler/userpage/static/js/validation.js" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/static/js/weixin_lib.js" />
-        <option value="$PROJECT_DIR$/urlhandler/userpage/templates/validation.html" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/mobile_base.html" />
+        <option value="$PROJECT_DIR$/urlhandler/userpage/templates/validation.html" />
+        <option value="$PROJECT_DIR$/urlhandler/userpage/static/js/validation.js" />
       </list>
     </option>
   </component>
@@ -810,13 +812,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="347" column="36" selection-start="11603" selection-end="11603" vertical-scroll-proportion="-5.32">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/css/details.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="45" column="0" selection-start="805" selection-end="805" vertical-scroll-proportion="0.0">
@@ -845,20 +840,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/js/validation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="167" column="0" selection-start="5071" selection-end="5071" vertical-scroll-proportion="-4.68">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/validation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="44" selection-start="277" selection-end="277" vertical-scroll-proportion="-5.642857">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/js/weixin_lib.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="54" column="5" selection-start="1906" selection-end="1906" vertical-scroll-proportion="0.0">
@@ -870,7 +851,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/mobile_base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="58" selection-start="700" selection-end="700" vertical-scroll-proportion="0.7647059">
+        <state line="22" column="44" selection-start="686" selection-end="690" vertical-scroll-proportion="-14.928572">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="347" column="36" selection-start="11603" selection-end="11603" vertical-scroll-proportion="-5.32">
+          <folding>
+            <element signature="e#23#68#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/validation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="61" selection-start="294" selection-end="294" vertical-scroll-proportion="-3.607143">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/js/validation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="166" column="0" selection-start="5070" selection-end="5070" vertical-scroll-proportion="0.70858896">
           <folding />
         </state>
       </provider>
