@@ -6,5 +6,4 @@ urlpatterns = patterns('',
                        url(r'^validate/try/$', 'userpage.views.validate_post'),
                        url(r'^activity/$','userpage.views.details_view'),
                        url(r'^ticket/$','userpage.views.ticket_view'),
-                       url(r'^help/$', 'userpage.views.help'),
                        )

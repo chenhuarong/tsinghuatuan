@@ -335,18 +335,6 @@ def order_login(request):
         request.session.set_expiry(0)
         rtnJSON['message'] = 'success'
         rtnJSON['next'] = reverse('adminpage.views.order_list')
-
-<<<<<<< HEAD
-=======
-        user_session = UserSession()
-        if user_session.generate_session(username):
-            rtnJSON['message'] = 'success'
-            u = UserSession.objects.get(stu_id=username)
-            rtnJSON['next'] = reverse('adminpage.views.order_list', kwargs={'stuid': username, 'pk': u.session_key})
-
-        else:
-            rtnJSON['message'] = 'failed'
->>>>>>> ba87859d9bdbe240d901c1f90d3223c39b67b3e1
     else:
         rtnJSON['message'] = 'failed'
 
