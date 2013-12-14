@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="519d02f1-9909-43c4-95c4-b95f242a05f2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/src.iml" afterPath="$PROJECT_DIR$/.idea/src.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/templates/print_ticket.html" afterPath="$PROJECT_DIR$/urlhandler/adminpage/templates/print_ticket.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/urls.py" afterPath="$PROJECT_DIR$/urlhandler/adminpage/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/userpage/urls.py" afterPath="$PROJECT_DIR$/urlhandler/userpage/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/views.py" afterPath="$PROJECT_DIR$/urlhandler/adminpage/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="src.iws" />
@@ -20,7 +16,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/src$local.coverage" NAME="local Coverage Results" MODIFIED="1387037433883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/src$local.coverage" NAME="local Coverage Results" MODIFIED="1387038370281" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/src$syncdb.coverage" NAME="syncdb Coverage Results" MODIFIED="1386997483920" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -38,18 +34,34 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="337" column="9" selection-start="11297" selection-end="11297" vertical-scroll-proportion="0.0" vertical-offset="4860" max-vertical-offset="6810">
-              <folding>
-                <element signature="e#23#68#0" expanded="true" />
-              </folding>
+            <state line="350" column="0" selection-start="11658" selection-end="11658" vertical-scroll-proportion="0.0" vertical-offset="4395" max-vertical-offset="6345">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="0" selection-start="23" selection-end="23" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlhandler/userpage/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="439" selection-end="439" vertical-scroll-proportion="0.2251407" vertical-offset="0" max-vertical-offset="533">
+            <state line="8" column="24" selection-start="463" selection-end="463" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="210">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/urlhandler/userpage/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="37" selection-start="903" selection-end="903" vertical-scroll-proportion="0.0" vertical-offset="375" max-vertical-offset="2370">
               <folding />
             </state>
           </provider>
@@ -58,7 +70,7 @@
       <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="75" selection-start="1255" selection-end="1255" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
+            <state line="16" column="75" selection-start="1164" selection-end="1164" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
               <folding />
             </state>
           </provider>
@@ -67,7 +79,7 @@
       <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlhandler/urlhandler/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="123" column="52" selection-start="3523" selection-end="3523" vertical-scroll-proportion="0.0" vertical-offset="1485" max-vertical-offset="2040">
+            <state line="123" column="52" selection-start="3523" selection-end="3523" vertical-scroll-proportion="0.0" vertical-offset="1845" max-vertical-offset="2040">
               <folding />
             </state>
           </provider>
@@ -100,19 +112,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="order_list.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/order_list.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="0" selection-start="1643" selection-end="1643" vertical-scroll-proportion="0.0" vertical-offset="515" max-vertical-offset="1155">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="print_ticket.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="print_ticket.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/print_ticket.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="42" selection-start="1151" selection-end="1151" vertical-scroll-proportion="0.0" vertical-offset="309" max-vertical-offset="930">
+            <state line="11" column="9" selection-start="264" selection-end="264" vertical-scroll-proportion="0.18860511" vertical-offset="69" max-vertical-offset="930">
               <folding />
             </state>
           </provider>
@@ -145,13 +148,13 @@
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/help.html" />
         <option value="$PROJECT_DIR$/queryhandler/tickethandler.py" />
         <option value="$PROJECT_DIR$/urlhandler/urlhandler/settings.py" />
-        <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/print_ticket.html" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/order_list.html" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/print_login.html" />
         <option value="$PROJECT_DIR$/urlhandler/urlhandler/models.py" />
+        <option value="$PROJECT_DIR$/urlhandler/userpage/urls.py" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/views.py" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/urls.py" />
-        <option value="$PROJECT_DIR$/urlhandler/userpage/urls.py" />
+        <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/print_ticket.html" />
       </list>
     </option>
   </component>
@@ -187,7 +190,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -382,6 +384,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -720,7 +723,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32669324" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.77218544" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28003004" sideWeight="0.7735099" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28903905" sideWeight="0.7735099" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.394702" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20681265" sideWeight="0.28703704" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3281787" sideWeight="0.49468085" order="10" side_tool="true" content_ui="tabs" />
@@ -752,13 +755,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/base_with_nav.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="50" selection-start="421" selection-end="421" vertical-scroll-proportion="0.27738264" vertical-offset="0" max-vertical-offset="885">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/activity_checkin.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="0" selection-start="444" selection-end="444" vertical-scroll-proportion="0.2347084" vertical-offset="0" max-vertical-offset="1260" />
@@ -773,9 +769,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/activity_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="28" selection-start="2419" selection-end="2756" vertical-scroll-proportion="-6.25" vertical-offset="840" max-vertical-offset="5250">
-          <folding />
-        </state>
+        <state line="66" column="28" selection-start="2419" selection-end="2756" vertical-scroll-proportion="-6.25" vertical-offset="840" max-vertical-offset="5250" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/activity_base.html">
@@ -787,23 +781,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/urlhandler/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="37" selection-start="339" selection-end="339" vertical-scroll-proportion="0.28195488" vertical-offset="0" max-vertical-offset="532">
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="23" selection-end="23" vertical-scroll-proportion="0.027027028" vertical-offset="0" max-vertical-offset="555" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/print_ticket.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="42" selection-start="1151" selection-end="1151" vertical-scroll-proportion="0.0" vertical-offset="309" max-vertical-offset="930">
-          <folding />
-        </state>
+        <state line="10" column="37" selection-start="339" selection-end="339" vertical-scroll-proportion="0.28195488" vertical-offset="0" max-vertical-offset="532" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/order_list.html">
@@ -841,25 +819,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="24" selection-start="463" selection-end="463" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="37" selection-start="903" selection-end="903" vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="2280">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="23" selection-end="23" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="337" column="9" selection-start="11297" selection-end="11297" vertical-scroll-proportion="0.0" vertical-offset="4860" max-vertical-offset="6810">
-          <folding>
-            <element signature="e#23#68#0" expanded="true" />
-          </folding>
+        <state line="350" column="0" selection-start="11658" selection-end="11658" vertical-scroll-proportion="0.0" vertical-offset="4395" max-vertical-offset="6345">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="75" selection-start="1255" selection-end="1255" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
+        <state line="16" column="75" selection-start="1164" selection-end="1164" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/urls.py">
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/print_ticket.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="439" selection-end="439" vertical-scroll-proportion="0.2251407" vertical-offset="0" max-vertical-offset="533">
+        <state line="11" column="9" selection-start="264" selection-end="264" vertical-scroll-proportion="0.18860511" vertical-offset="69" max-vertical-offset="930">
           <folding />
         </state>
       </provider>
