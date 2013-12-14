@@ -5,6 +5,7 @@
     <ignored path="src.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387038666485" ignored="false" />
+    <file path="/tickethandler.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387039298344" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +59,7 @@
       <file leaf-file-name="tickethandler.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="139" column="29" selection-start="5501" selection-end="5501" vertical-scroll-proportion="0.57537156">
+            <state line="135" column="35" selection-start="5388" selection-end="5388" vertical-scroll-proportion="0.17197452">
               <folding />
             </state>
           </provider>
@@ -744,7 +745,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="139" column="29" selection-start="5501" selection-end="5501" vertical-scroll-proportion="0.57537156">
+        <state line="135" column="35" selection-start="5388" selection-end="5388" vertical-scroll-proportion="0.17197452">
           <folding />
         </state>
       </provider>

@@ -134,8 +134,6 @@ def get_tickets(msg):
             all_tickets.append(tickets[0])
             item = u'“%s”<a href="http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s">电子票</a>' % (activity.name, tickets[0].unique_id)
             reply_content += [item]
-            item = u'-----------------------'
-            reply_content += [item]
 
     if len(all_tickets) == 1:
         ticket = all_tickets[0]
@@ -147,7 +145,7 @@ def get_tickets(msg):
         item = item % (ticket.activity.name, description, QRCODE_URL + str(ticket.unique_id), url)
         return get_reply_news_xml(msg, item, 1)
     else:
-        return get_reply_text_xml(msg, '\r\n'.join(reply_content) if not (len(reply_content) == 0) else u'您目前没有票')
+        return get_reply_text_xml(msg, u'\r\n-----------------------'.join(reply_content) if not (len(reply_content) == 0) else u'您目前没有票')
 
 
 #check fetch command message
