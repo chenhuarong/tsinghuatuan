@@ -422,7 +422,7 @@ def custom_menu_get(request):
     wrap_menu = []
     for menu in current_menu:
         wrap_menu += [{
-                          'name': menu['name'][2:],
+                          'name': menu['name'],
                           'id': int(menu['key'].split('_')[-1]),
                       }]
     return HttpResponse(json.dumps(wrap_menu), content_type='application/json')
