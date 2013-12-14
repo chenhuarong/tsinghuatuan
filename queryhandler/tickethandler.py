@@ -163,7 +163,7 @@ def check_fetch_cmd(msg):
 #handle order message
 def get_fetch_cmd_response(msg):
     if is_authenticated(msg['FromUserName']):
-        user = User.objects.get(weixin_id=msg['FromUserName'])
+        user = User.objects.get(weixin_id=msg['FromUserName'], status=1)
     else:
         return get_reply_text_xml(msg, u'对不起，尚未绑定账号，不能取票，<a href="http://tsinghuatuan.duapp.com/userpage/validate/?openid=%s">'
                                        u'点此绑定信息门户账号</a>' % msg['FromUserName'])
@@ -223,7 +223,7 @@ def get_book_ticket_response(msg):
 
 def book_ticket(msg, key):
     if is_authenticated(msg['FromUserName']):
-        user = User.objects.get(weixin_id=msg['FromUserName'])
+        user = User.objects.get(weixin_id=msg['FromUserName'], status=1)
     else:
         return get_reply_text_xml(msg, u'对不起，尚未绑定账号，不能抢票，<a href="http://tsinghuatuan.duapp.com/userpage/validate/?openid=%s">'
                                        u'点此绑定信息门户账号</a>' % msg['FromUserName'])
@@ -329,7 +329,7 @@ def return_tickets(msg):
                                                                                                      '/userpage/activity/?activityid='+str(activity.id)))
     elif activity.book_end > now:
         if is_authenticated(msg['FromUserName']):
-            user = User.objects.get(weixin_id=msg['FromUserName'])
+            user = User.objects.get(weixin_id=msg['FromUserName'], status=1)
         else:
             return get_reply_text_xml(msg, u'对不起，尚未绑定账号，不能退票，<a href="http://tsinghuatuan.duapp.com/userpage/'
                                            u'validate/?openid=%s">点此绑定信息门户账号</a>' % msg['FromUserName'])
@@ -383,7 +383,7 @@ def check_unsubscribe(msg):
 #handle unsubscribe event
 def get_unsubscibe_response(msg):
     if is_authenticated(msg['FromUserName']):
-        user = User.objects.filter(weixin_id=msg['FromUserName']).update(status=0)
+        user = User.objects.filter(weixin_id=msg['FromUserName'], status=1).update(status=0)
     return get_reply_text_xml(msg, u'账号绑定已经解除')
 
 
