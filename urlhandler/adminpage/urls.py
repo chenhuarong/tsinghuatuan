@@ -13,4 +13,7 @@ urlpatterns = patterns('',
                        url(r'^logout/$', 'adminpage.views.logout'),
                        url(r'^order/$', 'adminpage.views.order_list'),
                        url(r'^print/(?P<unique_id>\d+)/$', 'adminpage.views.print_ticket'),
+                       url(r'^menu/adjust/$', 'adminpage.views.adjust_menu_view'),
+                       url(r'^menu/get/$', 'adminpage.views.custom_menu_get'),
+                       url(r'^menu/submit/$', 'adminpage.views.custom_menu_modify_post'),
                        )

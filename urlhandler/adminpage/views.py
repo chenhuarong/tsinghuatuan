@@ -27,6 +27,10 @@ from django.views.decorators.csrf import csrf_protect,csrf_exempt
 from urlhandler.models import Activity, Order, Ticket
 
 from urlhandler.models import User as Booker
+
+from weixinlib.custom_menu import get_custom_menu, modify_custom_menu
+
+
 @csrf_protect
 def home(request):
     if not request.user.is_authenticated():
@@ -38,7 +42,7 @@ def activity_list(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('adminpage.views.home'))
 
-    actmodels = Activity.objects.order_by('-id').all()
+    actmodels = Activity.objects.filter(status__gt=0).order_by('-id').all()
     activities = []
     for act in actmodels:
         activities += [wrap_activity_dict(act)]
@@ -209,15 +213,10 @@ def activity_delete(request):
     if not requestdata:
         raise Http404
     curact = Activity.objects.get(id= requestdata.get('activityId',''))
-    curact.delete()
+    curact.status = -1
+    curact.save()
     #删除后刷新界面
-    actmodels = Activity.objects.all()
-    activities = []
-    for act in actmodels:
-        activities += [wrap_activity_dict(act)]
-    return render_to_response('activity_list.html', {
-        'activities': activities,
-    })
+    return HttpResponse('OK')
 
 def get_checked_tickets(activity):
     return Ticket.objects.filter(activity=activity, status=2).count()
@@ -332,3 +331,52 @@ def print_ticket(request, unique_id):
         'qr_addr': qr_addr,
         'activity': activity
     },context_instance=RequestContext(request))
+
+
+def adjust_menu_view(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('adminpage.views.home'))
+    if not request.user.is_superuser:
+        return HttpResponseRedirect(reverse('adminpage.views.activity_list'))
+    activities = Activity.objects.filter(book_end__lt=datetime.now())
+    return render_to_response('adjust_menu.html', {
+        'activities': activities,
+    }, context_instance=RequestContext(request))
+
+
+def custom_menu_get(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('adminpage.views.home'))
+    if not request.user.is_superuser:
+        return HttpResponseRedirect(reverse('adminpage.views.activity_list'))
+    current_menu = get_custom_menu()[2]['sub_button']
+    wrap_menu = []
+    for menu in current_menu:
+        wrap_menu += [{
+                          'name': menu['name'][2:],
+                          'id': int(menu['key'].split('_')[-1]),
+                      }]
+    return HttpResponse(json.dumps(wrap_menu), content_type='application/json')
+
+
+def custom_menu_modify_post(request):
+    if not request.user.is_authenticated():
+        raise Http404
+    if not request.user.is_superuser:
+        raise Http404
+    if not request.POST:
+        raise Http404
+    if not 'menus' in request.POST:
+        raise Http404
+    menus = json.loads(request.POST.get('menus', ''))
+    current_menu = get_custom_menu()
+    sub_button = []
+    for menu in menus:
+        sub_button += [{
+            'type': 'click',
+            'name': u'抢：' + menu['name'],
+            'key': 'TSINGHUA_BOOK_' + str(menu['id']),
+            'sub_button': [],
+        }]
+    current_menu[2]['sub_button'] = sub_button
+    return HttpResponse(modify_custom_menu(json.dumps({'button':current_menu}, ensure_ascii=False).encode('utf8')), content_type='application/json')

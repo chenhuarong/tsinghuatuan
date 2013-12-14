@@ -1,0 +1,66 @@
+{% extends "activity_list.html" %}
+
+{% load staticfiles %}
+
+{% block activity-title %}设置微信抢票菜单{% endblock %}
+
+{% block activity-list-active %}{% endblock %}
+
+{% block nav-li-ext %}
+    <li class="{% block activity-menu-active %}active{% endblock %}">
+        <a href="{% url adminpage.views.adjust_menu_view %} ">抢票菜单</a>
+    </li>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/adjust_menu.css" %}"/>
+{% endblock %}
+
+{% block js %}
+    <script>
+    alters = [{% for activity in activities %}{
+        'name': '{{ activity.name }}',
+        'id': '{{ activity.id }}'
+    }{% if not forloop.last %},{% endif %}{% endfor %}]
+    </script>
+    <script src="{% static "lib/jq/form/jquery.form.min.js" %}"></script>
+    <script src="{% static "js/adjust_menu.js" %}"></script>
+    <script>
+    document.ready = function() {get_custom_menu('{% url adminpage.views.custom_menu_get %}');};
+    </script>
+{% endblock %}
+
+{% block content %}
+<div class="container" id="container-loading">
+    <img src="{% static "img/loading.gif" %}"><span id="loading-msg">正在载入...</span>
+</div>
+<div class="container" id="container-result" style="display: none;">
+<span id="result-msg">成功！</span>
+</div>
+<div class="container" id="container-main" style="display: none;">
+    <div class="pageheader">
+        <h1 class="lead">设置微信抢票菜单</h1>
+    </div>
+    <div class="col-xs-4">
+        <div class="panel panel-default">
+            <ul class="list-group" id="current-menus">
+            </ul>
+            <div class="panel-footer font-center">
+                抢票<span class="glyphicon glyphicon-chevron-up"></span>
+            </div>
+        </div>
+        <form action="{% url adminpage.views.custom_menu_modify_post %}" method="post" id="submit-weixin-menu-form">
+            {% csrf_token %}
+            <button class="btn btn-danger btn-lg" type="submit">提交</button>
+        </form>
+    </div>
+    <div class="col-xs-1"></div>
+    <div class="col-xs-5" id="alter-activities">
+        <div class="panel panel-default">
+            <ul class="list-group" id="current-alters">
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
