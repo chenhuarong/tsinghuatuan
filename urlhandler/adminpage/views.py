@@ -38,7 +38,7 @@ def activity_list(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('adminpage.views.home'))
 
-    actmodels = Activity.objects.all()
+    actmodels = Activity.objects.order_by('-id').all()
     activities = []
     for act in actmodels:
         activities += [wrap_activity_dict(act)]
@@ -270,7 +270,7 @@ class DatetimeJsonEncoder(json.JSONEncoder):
 
 def activity_post(request):
     if not request.user.is_authenticated():
-       return HttpResponseRedirect(reverse('adminpage.views.home'))
+        return HttpResponseRedirect(reverse('adminpage.views.home'))
 
     if not request.POST:
         raise Http404

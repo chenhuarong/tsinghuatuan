@@ -66,12 +66,13 @@ def validate_post(request):
     if validate_result == 'Accepted':
         openid = request.POST['openid']
         try:
-            User.objects.filter(stu_id=userid, status=1).update(status=0)
+            User.objects.filter(stu_id=userid).update(status=0)
+            User.objects.filter(weixin_id=openid).update(status=0)
         except:
             return HttpResponse('Error')
         try:
-            currentUser = User.objects.get(weixin_id=openid)
-            currentUser.stu_id = userid
+            currentUser = User.objects.get(stu_id=userid)
+            currentUser.weixin_id = openid
             currentUser.status = 1
             try:
                 currentUser.save()

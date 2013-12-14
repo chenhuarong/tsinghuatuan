@@ -467,3 +467,4 @@ $('#activity-form').submit(function() {
     return false;
 });
 
+$('.form-control').on('click', function() {$(this).select();});
