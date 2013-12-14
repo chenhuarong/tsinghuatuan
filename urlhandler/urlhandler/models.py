@@ -26,7 +26,7 @@ class Activity(models.Model):
     # Something about status:
     # -1: deleted
     # 0: saved but not published
-    # 1: published but not determined
+    # 1: published
 
 class Ticket(models.Model):
     stu_id = models.CharField(max_length=255)

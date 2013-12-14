@@ -1,0 +1,11 @@
+
+.font-center {
+    text-align: center;
+}
+
+#alter-activities {
+    height: 328px;
+    overflow-y: auto;
+    box-shadow: 0px 1px 5px black;
+    border-radius: 10px;
+}

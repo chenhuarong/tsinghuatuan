@@ -16,19 +16,23 @@ from django.shortcuts import render
 from django.shortcuts import render_to_response
 
 from django.contrib.auth import authenticate
-from django.contrib.auth import login as auth_login,logout as auth_logout
+from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
-from django.views.decorators.csrf import csrf_protect,csrf_exempt
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
 
-#import database
-import urllib,urllib2
+import urllib
+import urllib2
 
 from urlhandler.models import Activity, Ticket
 from urlhandler.models import User as Booker
 from django.contrib.sessions.models import Session
+
+from weixinlib.custom_menu import get_custom_menu, modify_custom_menu
+from weixinlib.settings import WEIXIN_CUSTOM_MENU_TEMPLATE
+
 
 @csrf_protect
 def home(request):
@@ -37,11 +41,12 @@ def home(request):
     else:
         return HttpResponseRedirect(reverse('adminpage.views.activity_list'))
 
+
 def activity_list(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('adminpage.views.home'))
 
-    actmodels = Activity.objects.order_by('-id').all()
+    actmodels = Activity.objects.filter(status__gt=0).order_by('-id').all()
     activities = []
     for act in actmodels:
         activities += [wrap_activity_dict(act)]
@@ -73,7 +78,8 @@ def activity_checkin_post(request, actid):
     try:
         activity = Activity.objects.get(id=actid)
     except:
-        return HttpResponse(json.dumps({'result': 'error', 'stuid': 'Unknown', 'msg': 'noact'}), content_type='application/json')
+        return HttpResponse(json.dumps({'result': 'error', 'stuid': 'Unknown', 'msg': 'noact'}),
+                            content_type='application/json')
 
     rtnJSON = {'result': 'error', 'stuid': 'Unknown', 'msg': 'rejected'}
     flag = False
@@ -169,7 +175,6 @@ def str_to_datetime(str):
 
 
 def activity_create(activity):
-
     preDict = dict()
     for k in ['name', 'key', 'description', 'place', 'pic_url', 'total_tickets']:
         preDict[k] = activity[k]
@@ -206,21 +211,18 @@ def activity_modify(activity):
     nowact.save()
     return nowact
 
+
 @csrf_exempt
 def activity_delete(request):
     requestdata = request.POST
     if not requestdata:
         raise Http404
-    curact = Activity.objects.get(id= requestdata.get('activityId',''))
-    curact.delete()
+    curact = Activity.objects.get(id=requestdata.get('activityId', ''))
+    curact.status = -1
+    curact.save()
     #删除后刷新界面
-    actmodels = Activity.objects.all()
-    activities = []
-    for act in actmodels:
-        activities += [wrap_activity_dict(act)]
-    return render_to_response('activity_list.html', {
-        'activities': activities,
-    })
+    return HttpResponse('OK')
+
 
 def get_checked_tickets(activity):
     return Ticket.objects.filter(activity=activity, status=2).count()
@@ -288,8 +290,9 @@ def activity_post(request):
                 now = datetime.now()
                 for keyact in iskey:
                     if now < keyact.end_time:
-                        rtnJSON['error'] = u'当前有活动正在使用该活动代码'
-                        return HttpResponse(json.dumps(rtnJSON, cls=DatetimeJsonEncoder), content_type='application/json')
+                        rtnJSON['error'] = u"当前有活动正在使用该活动代码"
+                        return HttpResponse(json.dumps(rtnJSON, cls=DatetimeJsonEncoder),
+                                            content_type='application/json')
             activity = activity_create(post)
             rtnJSON['updateUrl'] = reverse('adminpage.views.activity_detail', kwargs={'actid': activity.id})
         rtnJSON['activity'] = wrap_activity_dict(activity)
@@ -301,6 +304,7 @@ def activity_post(request):
 def order_index(request):
     return render_to_response('print_login.html', context_instance=RequestContext(request))
 
+
 def order_login(request):
     if not request.POST:
         raise Http404
@@ -310,13 +314,11 @@ def order_login(request):
     username = request.POST.get('username', '')
     password = request.POST.get('password', '')
 
-
     try:
         Booker.objects.get(stu_id=username)
     except:
         rtnJSON['message'] = 'none'
         return HttpResponse(json.dumps(rtnJSON), content_type='application/json')
-
 
     req_data = urllib.urlencode({'userid': username, 'userpass': password, 'submit1': u'登录'.encode('gb2312')})
     request_url = 'https://learn.tsinghua.edu.cn/MultiLanguage/lesson/teacher/loginteacher.jsp'
@@ -334,10 +336,22 @@ def order_login(request):
         rtnJSON['message'] = 'success'
         rtnJSON['next'] = reverse('adminpage.views.order_list')
 
+<<<<<<< HEAD
+=======
+        user_session = UserSession()
+        if user_session.generate_session(username):
+            rtnJSON['message'] = 'success'
+            u = UserSession.objects.get(stu_id=username)
+            rtnJSON['next'] = reverse('adminpage.views.order_list', kwargs={'stuid': username, 'pk': u.session_key})
+
+        else:
+            rtnJSON['message'] = 'failed'
+>>>>>>> ba87859d9bdbe240d901c1f90d3223c39b67b3e1
     else:
         rtnJSON['message'] = 'failed'
 
     return HttpResponse(json.dumps(rtnJSON), content_type='application/json')
+
 
 def order_logout(request):
     return HttpResponseRedirect(reverse('adminpage.views.order_index'))
@@ -373,6 +387,7 @@ def order_list(request):
         'stuid':stuid
     }, context_instance=RequestContext(request))
 
+
 def print_ticket(request, unique_id):
 
     if not 'stuid' in request.session:
@@ -390,4 +405,56 @@ def print_ticket(request, unique_id):
         'activity': activity,
         'stu_id':ticket.stu_id
     },context_instance=RequestContext(request))
+
+
+
+def adjust_menu_view(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('adminpage.views.home'))
+    if not request.user.is_superuser:
+        return HttpResponseRedirect(reverse('adminpage.views.activity_list'))
+    activities = Activity.objects.filter(end_time__gt=datetime.now())
+    return render_to_response('adjust_menu.html', {
+        'activities': activities,
+    }, context_instance=RequestContext(request))
+
+
+def custom_menu_get(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('adminpage.views.home'))
+    if not request.user.is_superuser:
+        return HttpResponseRedirect(reverse('adminpage.views.activity_list'))
+    current_menu = get_custom_menu()[2]['sub_button']
+    wrap_menu = []
+    for menu in current_menu:
+        wrap_menu += [{
+                          'name': menu['name'],
+                          'id': int(menu['key'].split('_')[-1]),
+                      }]
+    return HttpResponse(json.dumps(wrap_menu), content_type='application/json')
+
+
+def custom_menu_modify_post(request):
+    if not request.user.is_authenticated():
+        raise Http404
+    if not request.user.is_superuser:
+        raise Http404
+    if not request.POST:
+        raise Http404
+    if not 'menus' in request.POST:
+        raise Http404
+    menus = json.loads(request.POST.get('menus', ''))
+    current_menu = WEIXIN_CUSTOM_MENU_TEMPLATE.copy()
+    sub_button = []
+    for menu in menus:
+        sub_button += [{
+                           'type': 'click',
+                           'name': menu['name'],
+                           'key': 'TSINGHUA_BOOK_' + str(menu['id']),
+                           'sub_button': [],
+                       }]
+    current_menu['button'][2]['sub_button'] = sub_button
+    return HttpResponse(modify_custom_menu(json.dumps(current_menu, ensure_ascii=False).encode('utf8')),
+                        content_type='application/json')
+
 
