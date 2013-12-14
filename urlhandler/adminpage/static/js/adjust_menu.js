@@ -45,8 +45,7 @@ function get_custom_menu(url) {
         },
         success: function(jsonData) {
             menus = jsonData;
-            update_menus(menus);
-            update_alters(alters);
+            updateall();
             show_main();
         }
     })
@@ -66,7 +65,7 @@ function upmenu(count) {
         var menu = menus[count];
         menus[count] = menus[count - 1];
         menus[count - 1] = menu;
-        update_menus(menus);
+        updateall();
      }
 }
 
@@ -76,14 +75,13 @@ function downmenu(count) {
         var menu = menus[count];
         menus[count] = menus[count + 1];
         menus[count + 1] = menu;
-        update_menus(menus);
+        updateall();
     }
 }
 
 function removemenu(count) {
     menus.splice(count, 1);
-    update_menus(menus);
-    update_alters(alters);
+    updateall();
 }
 
 function wrap_menu_item_html(menu, i, len) {
@@ -136,6 +134,9 @@ function update_alters(alters) {
 
 function update_alters_status(menus, alters) {
     var i, j;
+    for (i in alters) {
+        alters[i]['inmenu'] = false;
+    }
     for (i in menus) {
         for (j in alters) {
             if (alters[j].id == menus[i].id) {
@@ -144,6 +145,11 @@ function update_alters_status(menus, alters) {
             }
         }
     }
+}
+
+function updateall() {
+    update_menus(menus);
+    update_alters(alters);
 }
 
 function change_alter(i) {
@@ -159,8 +165,7 @@ function change_alter(i) {
     } else {
         menus.push(alters[i]);
     }
-    update_menus(menus);
-    update_alters(alters);
+    updateall();
 }
 
 update_alters(alters);
