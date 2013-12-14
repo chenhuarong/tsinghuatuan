@@ -8,38 +8,12 @@
 
 {% block content %}
     <div class="container">
-        <!--
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">
-                    活动名称
-                </h3>
-                <button class="btn btn-info" id="print">
-                    打印
-                </button>
-            </div>
-            <div class="panel-body">
-                <div>
-                    <img src={{ qr_addr }}>
-                    <p>
-                        时间:{{ activity.start_time|date:"y/m/d l H:i" }} - {{ activity.end_time|date:"y/m/d l H:i" }}
-                    </p>
-                    <p>
-                        地点:{{ activity.place }}
-                    </p>
-                    <p>
-                        座位:{{ activity.seat }}
-                    </p>
-                </div>
-            </div>
-        </div>
-        -->
         <div class="ticket">
             <h3 style="text-align: center">
                 {{ activity.name }}
             </h3>
             <div style="text-align: center">
-                <img src={{ qr_addr }}>
+                <img  id="qrcode" src={{ qr_addr }}>
             </div>
             <div>
                 <p>
@@ -52,11 +26,16 @@
                     地点:{{ activity.place }}
                 </p>
                 <p>
-                    座位:{{ activity.seat }}
+                    座位:
+                    {% if activity.seat %}
+                        {{ activity.seat }}
+                    {% else %}
+                        未指定
+                    {% endif %}
                 </p>
             </div>
         </div>
-        <button class="btn btn-success block" id="print" style="text-align: center">打印</button>
+        <!--<button class="btn btn-success block" id="print" style="text-align: center">打印</button>-->
     </div>
 {% endblock %}
 

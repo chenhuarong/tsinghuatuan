@@ -193,8 +193,11 @@ def order_list(request):
     orders = []
     try:
         qset = Ticket.objects.filter(user_id = UID)
-        item = {}
+
         for x in qset:
+            item = {}
+            print x.activity_id
+
             activity = Activity.objects.get(id = x.activity_id)
 
             item['name'] = activity.name
@@ -207,7 +210,9 @@ def order_list(request):
             item['valid'] = x.status
             item['unique_id'] = x.unique_id
 
-        orders.append(item)
+            orders.append(item)
+
+        print orders
     except:
         raise Http404
     return render_to_response('order_list.html', {
