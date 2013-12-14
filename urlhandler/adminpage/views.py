@@ -31,6 +31,7 @@ from urlhandler.models import User as Booker
 from urlhandler.models import UserSession
 
 from weixinlib.custom_menu import get_custom_menu, modify_custom_menu
+from weixinlib.settings import WEIXIN_CUSTOM_MENU_TEMPLATE
 
 
 @csrf_protect
@@ -442,7 +443,7 @@ def custom_menu_modify_post(request):
     if not 'menus' in request.POST:
         raise Http404
     menus = json.loads(request.POST.get('menus', ''))
-    current_menu = get_custom_menu()
+    current_menu = WEIXIN_CUSTOM_MENU_TEMPLATE.copy()
     sub_button = []
     for menu in menus:
         sub_button += [{
@@ -451,8 +452,8 @@ def custom_menu_modify_post(request):
                            'key': 'TSINGHUA_BOOK_' + str(menu['id']),
                            'sub_button': [],
                        }]
-    current_menu[2]['sub_button'] = sub_button
-    return HttpResponse(modify_custom_menu(json.dumps({'button': current_menu}, ensure_ascii=False).encode('utf8')),
+    current_menu['button'][2]['sub_button'] = sub_button
+    return HttpResponse(modify_custom_menu(json.dumps(current_menu, ensure_ascii=False).encode('utf8')),
                         content_type='application/json')
 
 
