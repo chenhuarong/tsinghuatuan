@@ -27,7 +27,7 @@ class Activity(models.Model):
     # 1: published but not determined
 
 class Ticket(models.Model):
-    user = models.ForeignKey(User)
+    stu_id = models.CharField(max_length=255)
     unique_id = models.CharField(max_length=255)
     activity = models.ForeignKey(Activity)
     status = models.IntegerField()

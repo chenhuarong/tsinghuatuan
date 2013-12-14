@@ -11,12 +11,12 @@ from .tickethandler import *
 functions = [
     {'check':check_bookable_activities, 'do':get_bookable_activities},
     {'check':check_ticket_cmd, 'do':get_tickets},
-    {'check':check_activity_key, 'do':get_activity_key_response},
+    {'check':check_book_cmd, 'do':get_book_cmd_response},
     {'check':check_help, 'do':get_help_response},
     {'check':check_subscribe, 'do':get_subscibe_response},
     {'check':check_unsubscribe, 'do':get_unsubscibe_response},
     {'check':check_bind_account, 'do':bind_account},
-    {'check':check_book_event, 'do':get_book_ticket_response},
+    {'check':check_book_event, 'do':get_book_event_response},
     {'check':check_return_cmd, 'do':return_tickets},
 ]
 
