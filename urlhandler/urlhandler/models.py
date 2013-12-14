@@ -39,6 +39,7 @@ class Ticket(models.Model):
     # 1: ticket order is valid
     # 2: ticket is used
 
+'''
 class UserSession(models.Model):
     stu_id = models.CharField(max_length=255)
     session_key = models.CharField(max_length=255)
@@ -76,4 +77,4 @@ class UserSession(models.Model):
             return True
         except:
             return False
-
+'''

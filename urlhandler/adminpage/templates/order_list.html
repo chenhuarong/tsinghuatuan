@@ -4,10 +4,6 @@
 
 {% block activity-title %}订单列表{% endblock %}
 
-{% block nav-li %}
-
-{% endblock %}
-
 {% block css %}
 
 {% endblock %}
@@ -60,8 +56,7 @@
                     <span>
                         <form action="{% url adminpage.views.print_ticket unique_id=item.unique_id %}" method="post">
                             {% csrf_token %}
-                            <input type="hidden" name="pk" value="{{ item.keyvalue }}" />
-                            <button value="打印" ><span class="glyphicon glyphicon-print"></span> 打印</button>
+                            <button value="打印" class="btn-default"><span class="glyphicon glyphicon-print"></span> 打印</button>
                         </form>
 
                     </span>

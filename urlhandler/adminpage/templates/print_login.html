@@ -10,11 +10,8 @@
 {% endblock %}
 
 {% block nav-title %}
-    <!--<img src="{% static "logo.png" %}">-->
 “清小团”票务管理系统
 {% endblock %}
-
-
 
 {% block content %}
     <div class="container">
@@ -29,7 +26,7 @@
 
             <input type="password" id="inputPassword" name="password" class="form-control" placeholder="info密码" required>
 
-            <input id="" type="submit" class="btn btn-block btn-primary" value="登录">
+            <input id="login_btn" type="submit" class="btn btn-block btn-primary" value="登录">
         </form>
     </div>
 
@@ -44,6 +41,8 @@
         dom.focus();
     }
     function response(data){
+        $('#login_btn').prop('disabled', false);
+
         if (data.message == 'success'){
             location.href = data.next;
         } else{
@@ -52,7 +51,6 @@
             }else{
                 showError('用户不存在',$('#inputUsername'));
             }
-
         }
     }
     $('#login').submit(function() {
@@ -61,6 +59,8 @@
             beforeSubmit: function(){return true},
             success: response
         }
+        $('#login_btn').prop('disabled', true);
+
         $(this).ajaxSubmit(data);
         return false;
     });
