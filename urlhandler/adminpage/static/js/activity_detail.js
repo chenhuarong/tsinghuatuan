@@ -85,6 +85,8 @@ var dateInterfaceMap = {
     }
 };
 
+var curstatus = 0;
+
 function updateActivity(nact) {
     var key, key2, tdate;
     for (key in nact) {
@@ -111,7 +113,8 @@ function initializeForm(activity) {
     if (typeof activity.checked_tickets !== 'undefined') {
         initialProgress(activity.checked_tickets, activity.ordered_tickets, activity.total_tickets);
     }
-    lockByStatus(activity.status, activity.book_start, activity.start_time);
+    curstatus = activity.status;
+    lockByStatus(curstatus, activity.book_start, activity.start_time);
 }
 
 function check_percent(p) {
@@ -128,29 +131,32 @@ function checktime(){
     var bookstart = new Date($('#input-book-start-year').val(), $('#input-book-start-month').val()-1, $('#input-book-start-day').val(), $('#input-book-start-hour').val(), $('#input-book-start-minute').val());
     var bookend = new Date($('#input-book-end-year').val(), $('#input-book-end-month').val()-1, $('#input-book-end-day').val(), $('#input-book-end-hour').val(), $('#input-book-end-minute').val());
     var now = new Date();
-    if(bookstart <= now){
-        $('#input-book-start-year').popover({
+    if(curstatus == 0){
+        if(bookstart <= now){
+            $('#input-book-start-year').popover({
+                    html: true,
+                    placement: 'top',
+                    title:'',
+                    content: '<span style="color:red;">“订票开始时间”应晚于“当前时间”</span>',
+                    trigger: 'focus',
+                    container: 'body'
+            });
+            $('#input-book-start-year').focus();
+            return false;
+        }
+
+        if(bookend <= bookstart){
+            $('#input-book-end-year').popover({
                 html: true,
                 placement: 'top',
                 title:'',
-                content: '<span style="color:red;">“订票开始时间”应晚于“当前时间”</span>',
+                content: '<span style="color:red;">“订票结束时间”应晚于“订票开始时间”</span>',
                 trigger: 'focus',
                 container: 'body'
-        });
-        $('#input-book-start-year').focus();
-        return false;
-    }
-    if(bookend <= bookstart){
-        $('#input-book-end-year').popover({
-            html: true,
-            placement: 'top',
-            title:'',
-            content: '<span style="color:red;">“订票结束时间”应晚于“订票开始时间”</span>',
-            trigger: 'focus',
-            container: 'body'
-        });
-        $('#input-book-end-year').focus();
-        return false;
+            });
+            $('#input-book-end-year').focus();
+            return false;
+        }
     }
     if(actstart <= bookend){
         $('#input-start-year').popover({
