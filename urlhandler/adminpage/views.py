@@ -194,14 +194,14 @@ def activity_modify(activity):
         timelist = ['start_time', 'end_time', 'book_start', 'book_end']
     elif nowact.status == 1:
         if now >= nowact.start_time:
-            keylist = []
-            timelist = []
+            keylist = ['description', 'pic_url']
+            timelist = ['start_time', 'end_time']
         elif now >= nowact.book_start:
             keylist = ['description', 'place', 'pic_url']
-            timelist = ['start_time', 'end_time']
+            timelist = ['start_time', 'end_time', 'book_end']
         else:
             keylist = ['description', 'place', 'pic_url', 'total_tickets']
-            timelist = ['start_time', 'end_time']
+            timelist = ['start_time', 'end_time', 'book_end']
     for key in keylist:
         setattr(nowact, key, activity[key])
     for key in timelist:
