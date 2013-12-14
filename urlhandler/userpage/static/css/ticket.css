@@ -8,7 +8,7 @@
     padding-bottom: 5px;
 }
 img{
-    width: 85%;
+    width: 50%;
 }
 .status-size{
     font-size: 18px;
@@ -21,4 +21,9 @@ img{
 }
 .ticket-used{
     color: orangered;
+}
+footer{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
 }
