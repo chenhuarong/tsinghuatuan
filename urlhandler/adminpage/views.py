@@ -24,6 +24,8 @@ from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_protect,csrf_exempt
 
 #import database
+import urllib,urllib2
+
 from urlhandler.models import Activity, Order, Ticket
 
 from urlhandler.models import User as Booker
@@ -294,14 +296,46 @@ def activity_post(request):
         rtnJSON['error'] = str(e)
     return HttpResponse(json.dumps(rtnJSON, cls=DatetimeJsonEncoder), content_type='application/json')
 
-def order_list(request):
 
-    UID = 1
+def order_index(request):
+    return render_to_response('print_login.html', context_instance=RequestContext(request))
+
+def order_login(request):
+    if not request.POST:
+        raise Http404
+
+    rtnJSON = {}
+
+    username = request.POST.get('username', '')
+    password = request.POST.get('password', '')
+
+    req_data = urllib.urlencode({'userid': username, 'userpass': password, 'submit1': u'登录'.encode('gb2312')})
+    request_url = 'https://learn.tsinghua.edu.cn/MultiLanguage/lesson/teacher/loginteacher.jsp'
+    req = urllib2.Request(url=request_url, data=req_data)
+    res_data = urllib2.urlopen(req)
+
+    try:
+        res = res_data.read()
+    except:
+        raise Http404
+
+    if 'loginteacher_action.jsp' in res:
+        rtnJSON['message'] = 'success'
+        rtnJSON['next'] = reverse('adminpage.views.order_list', kwargs={'stuid':username})
+    else:
+        rtnJSON['message'] = 'failed'
+
+    return HttpResponse(json.dumps(rtnJSON), content_type='application/json')
+
+def order_list(request, stuid):
     orders = []
     try:
-        qset = Ticket.objects.filter(user_id = UID)
-        item = {}
+        qset = Ticket.objects.filter(user_id = stuid)
+
         for x in qset:
+            item = {}
+            print x.activity_id
+
             activity = Activity.objects.get(id = x.activity_id)
 
             item['name'] = activity.name
@@ -314,7 +348,9 @@ def order_list(request):
             item['valid'] = x.status
             item['unique_id'] = x.unique_id
 
-        orders.append(item)
+            orders.append(item)
+
+        print orders
     except:
         raise Http404
     return render_to_response('order_list.html', {
