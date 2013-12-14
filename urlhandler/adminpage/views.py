@@ -407,7 +407,7 @@ def adjust_menu_view(request):
         return HttpResponseRedirect(reverse('adminpage.views.home'))
     if not request.user.is_superuser:
         return HttpResponseRedirect(reverse('adminpage.views.activity_list'))
-    activities = Activity.objects.filter(book_end__lt=datetime.now())
+    activities = Activity.objects.filter(book_end__gt=datetime.now())
     return render_to_response('adjust_menu.html', {
         'activities': activities,
     }, context_instance=RequestContext(request))
@@ -443,7 +443,7 @@ def custom_menu_modify_post(request):
     for menu in menus:
         sub_button += [{
             'type': 'click',
-            'name': u'抢：' + menu['name'],
+            'name': menu['name'],
             'key': 'TSINGHUA_BOOK_' + str(menu['id']),
             'sub_button': [],
         }]
