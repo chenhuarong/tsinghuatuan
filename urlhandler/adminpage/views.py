@@ -26,7 +26,7 @@ from django.views.decorators.csrf import csrf_protect,csrf_exempt
 #import database
 import urllib,urllib2
 
-from urlhandler.models import Activity, Order, Ticket
+from urlhandler.models import Activity, Ticket
 
 from urlhandler.models import User as Booker
 @csrf_protect
