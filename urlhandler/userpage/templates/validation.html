@@ -16,7 +16,7 @@
     function ajaxForm() {
         submitValidation('{{ openid }}');
     }
-    window.onload = function() {showValidation({{ isValidated }});}
+    window.addEventListener('load', function() {showValidation({{ isValidated }});}, false);
     </script>
 {% endblock %}
 
