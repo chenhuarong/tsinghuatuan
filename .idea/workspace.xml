@@ -8,7 +8,7 @@
     <file path="/validation.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386997501345" ignored="false" />
     <file path="/activitytext.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386996928400" ignored="false" />
     <file path="/base.css" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386997014703" ignored="false" />
-    <file path="/weixin_lib.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386997231915" ignored="false" />
+    <file path="/weixin_lib.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386999915193" ignored="false" />
     <file path="/validation.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386998951687" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,10 +53,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="details.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="details.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/js/details.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="0" selection-start="309" selection-end="309" vertical-scroll-proportion="0.4045584">
+            <state line="14" column="18" selection-start="350" selection-end="350" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -65,7 +65,7 @@
       <file leaf-file-name="weixin_lib.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/js/weixin_lib.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="5" selection-start="1906" selection-end="1906" vertical-scroll-proportion="0.0">
+            <state line="48" column="51" selection-start="1764" selection-end="1764" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -85,7 +85,7 @@
       <file leaf-file-name="activitydetails.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activitydetails.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="41" selection-start="496" selection-end="496" vertical-scroll-proportion="-8.142858">
+            <state line="27" column="41" selection-start="496" selection-end="496" vertical-scroll-proportion="-14.25">
               <folding />
             </state>
           </provider>
@@ -109,10 +109,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="validation.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="validation.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/validation.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="48" selection-start="281" selection-end="281" vertical-scroll-proportion="-3.607143">
+            <state line="13" column="52" selection-start="285" selection-end="285" vertical-scroll-proportion="0.14193548">
               <folding />
             </state>
           </provider>
@@ -121,7 +121,7 @@
       <file leaf-file-name="mobile_base.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/mobile_base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="6" selection-start="372" selection-end="372" vertical-scroll-proportion="-6.107143">
+            <state line="22" column="52" selection-start="694" selection-end="694" vertical-scroll-proportion="-6.785714">
               <folding />
             </state>
           </provider>
@@ -157,10 +157,10 @@
         <option value="$PROJECT_DIR$/urlhandler/userpage/static/css/details.css" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activitytext.html" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/static/css/base.css" />
-        <option value="$PROJECT_DIR$/urlhandler/userpage/static/js/weixin_lib.js" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/static/js/validation.js" />
-        <option value="$PROJECT_DIR$/urlhandler/userpage/templates/validation.html" />
+        <option value="$PROJECT_DIR$/urlhandler/userpage/static/js/weixin_lib.js" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/mobile_base.html" />
+        <option value="$PROJECT_DIR$/urlhandler/userpage/templates/validation.html" />
       </list>
     </option>
   </component>
@@ -819,15 +819,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/js/weixin_lib.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="5" selection-start="1906" selection-end="1906" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="347" column="36" selection-start="11603" selection-end="11603" vertical-scroll-proportion="-5.32">
@@ -844,20 +835,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/validation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="48" selection-start="281" selection-end="281" vertical-scroll-proportion="-3.607143">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/mobile_base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="6" selection-start="372" selection-end="372" vertical-scroll-proportion="-6.107143">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activitytext.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="154" column="18" selection-start="4786" selection-end="4786" vertical-scroll-proportion="-92.28571">
@@ -865,16 +842,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activitydetails.html">
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/js/details.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="41" selection-start="496" selection-end="496" vertical-scroll-proportion="-8.142858">
+        <state line="14" column="18" selection-start="350" selection-end="350" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/js/details.js">
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/js/weixin_lib.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="309" selection-end="309" vertical-scroll-proportion="0.4045584">
+        <state line="48" column="51" selection-start="1764" selection-end="1764" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activitydetails.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="41" selection-start="496" selection-end="496" vertical-scroll-proportion="-14.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/mobile_base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="52" selection-start="694" selection-end="694" vertical-scroll-proportion="-6.785714">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/validation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="52" selection-start="285" selection-end="285" vertical-scroll-proportion="0.14193548">
           <folding />
         </state>
       </provider>
