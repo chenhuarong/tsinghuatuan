@@ -165,6 +165,15 @@ window.setupWeixin({'optionMenu':false, 'toolbar':false});
 
 clearAllHelps();
 
+/*
+document.getElementById('inputUsername').onfocus = function(){
+    setfooter();
+}
+
+document.getElementById('inputPassword').onfocus = function(){
+    setfooter();
+}*/
+
 function showValidation(isValidated) {
     if (!isValidated) {
         document.getElementById('inputUsername').focus();

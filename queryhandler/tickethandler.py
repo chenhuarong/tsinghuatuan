@@ -129,10 +129,10 @@ def get_tickets(msg):
     reply_content = []
     all_tickets = []
     for activity in activities:
-        tickets =  Ticket.objects.filter(user=user, activity=activity, status=1)
+        tickets =  Ticket.objects.filter(stu_id=user.stu_id, activity=activity, status=1)
         if tickets.exists():
             all_tickets.append(tickets[0])
-            item = u'%s1张，回复“%s”取票' % (activity.name, activity.key)
+            item = u'%s1张，回复“取票 %s”即可取票' % (activity.name, activity.key)
             reply_content += [item]
 
     if len(all_tickets) == 1:
@@ -156,7 +156,7 @@ def check_fetch_cmd(msg):
     receive_msg = receive_msg.split()
     if len(receive_msg) != 2:
         return 0
-    if receive_msg[0] != u'取票':
+    if receive_msg[0] != '取票':
         return 0
     return 1
 
@@ -174,11 +174,13 @@ def get_fetch_cmd_response(msg):
     receive_msg = msg['Content']
     receive_msg = receive_msg.split()
     activities = Activity.objects.filter(status=1,end_time__gte=now, key=receive_msg[1])
+
     if not activities.exists():
         return get_reply_text_xml(msg, u'活动代号不存在')
-    activity = activities[0]
+    else:
+        activity = activities[0]
 
-    tickets =  Ticket.objects.filter(user=user, activity=activity, status=1)
+    tickets =  Ticket.objects.filter(stu_id=user.stu_id, activity=activity, status=1)
     if tickets.exists():
         ticket = tickets[0]
         item = '<item><Title><![CDATA[%s]]></Title><Description><![CDATA[%s]]></Description>' \
@@ -189,27 +191,7 @@ def get_fetch_cmd_response(msg):
         item = item % (ticket.activity.name, description, QRCODE_URL + str(ticket.unique_id), url)
         return get_reply_news_xml(msg, item, 1)
     else:
-        if activity.book_start > now:
-            start_time = u'%s年%s月%s日%s时%s分' % (activity.book_start.year, activity.book_start.month, activity.book_start.day, activity.book_start.hour, activity.book_start.minute)
-            return get_reply_text_xml(msg, u'%s%s开始抢票，<a href="%s">详情</a>' % (activity.name, start_time, 'http://tsinghuatuan.duapp.com'
-                                                                                                         '/userpage/activity/?activityid='+str(activity.id)))
-        elif activity.book_end > now:
-            return get_reply_text_xml(msg, u'现在是抢票时间哦')
-        else:
-            return get_reply_text_xml(msg, u'没有%s的票'% activity.key)
-
-#check return command message
-def check_return_cmd(msg):
-    if msg['MsgType'] != 'text':
-        return 0
-    receive_msg = msg['Content']
-    receive_msg = receive_msg.split()
-    if len(receive_msg) != 2:
-        return 0
-    if receive_msg[0] != u'退票':
-        return 0
-    return 1
-
+        return get_reply_text_xml(msg, u'没有%s的票'% activity.name)
 
 #check book command message
 def check_book_cmd(msg):
@@ -219,30 +201,54 @@ def check_book_cmd(msg):
     receive_msg = receive_msg.split()
     if len(receive_msg) != 2:
         return 0
-    if receive_msg[0] != u'抢票':
+    if receive_msg[0] != '抢票':
         return 0
     return 1
 
 #handle order message
-def get_book_cmd_response(msg):
+def get_book_ticket_response(msg):
+    if msg['MsgType'] == 'text':
+        receive_msg = msg['Content']
+        receive_msg = receive_msg.split()
+        key = receive_msg[1]
+    else:
+        cmd_list = msg['EventKey'].split('_')
+        activity_id = int(cmd_list[2])
+        activity = Activity.objects.filter(id = activity_id)
+        if activity.exists():
+            activity = activity[0]
+            key = activity.key
+        else:
+            key = 'INVALID_KEY'
+    return book_ticket(msg, key)
+
+def book_ticket(msg, key):
     if is_authenticated(msg['FromUserName']):
         user = User.objects.get(weixin_id=msg['FromUserName'])
     else:
         return get_reply_text_xml(msg, u'对不起，尚未绑定账号，不能抢票，<a href="http://tsinghuatuan.duapp.com/userpage/validate/?openid=%s">'
                                        u'点此绑定信息门户账号</a>' % msg['FromUserName'])
 
+    #get cmd content
     now = string.atof(msg['CreateTime'])
     now = datetime.datetime.fromtimestamp(now)
 
+    #generate random string for ticket
     random_string = ''.join([random.choice(string.ascii_letters + string.digits) for n in xrange(32)])
     while Ticket.objects.filter(unique_id=random_string).exists():
         random_string = ''.join([random.choice(string.ascii_letters + string.digits) for n in xrange(32)])
+
     with transaction.commit_on_success():
-        activities = Activity.objects.select_for_update().filter(status=1, book_end__gte=now, book_start__lte=now)
+        activities = Activity.objects.select_for_update().filter(status=1, book_end__gte=now, book_start__lte=now, key=key)
+
         if activities.exists() == 0:
-            future_activities = Activity.objects.filter(status=1, book_start__gte=now).order_by('book_start')
-            if len(future_activities) == 0:
-                return get_reply_text_xml(msg, u'暂时没有抢票活动')
+            future_activities = Activity.objects.filter(status=1, book_start__gte=now, key=key)
+            if not future_activities.exists():
+                old_activities = Activity.objects.filter(status=1, key=key)
+                if not old_activities.exists():
+                    return get_reply_text_xml(msg, u'该活动不存在')
+                else:
+                    return get_reply_text_xml(msg, u'抢票时间已过，不能再抢票了,欢迎关注下次活动')
             else:
                 future_activity = future_activities[0]
                 start_time = u'%s年%s月%s日%s时%s分' % (future_activity.book_start.year, future_activity.book_start.month, future_activity.book_start.day, future_activity.book_start.hour, future_activity.book_start.minute)
@@ -250,19 +256,21 @@ def get_book_cmd_response(msg):
                                                                                                                     '/userpage/activity/?activityid='+str(future_activity.id)))
         else:
             activity = activities[0]
-        tickets = Ticket.objects.select_for_update().filter(user=user, activity=activity)
+
+        tickets = Ticket.objects.select_for_update().filter(stu_id=user.stu_id, activity=activity)
+        
         if tickets.exists() == 0:
             if activity.remain_tickets == 0:
                 return  get_reply_text_xml(msg, u'票已抢完，欢迎关注下次活动')
             ticket = Ticket(
-                user = user,
+                stu_id = user.stu_id,
                 activity = activity,
                 unique_id = random_string,
                 status = 1,
                 seat = ''
             )
             ticket.save()
-            Activity.objects.filter(status=1, book_end__gte=now, book_start__lte=now).update(remain_tickets=F('remain_tickets')-1)
+            Activity.objects.filter(status=1, book_end__gte=now, book_start__lte=now, key=key).update(remain_tickets=F('remain_tickets')-1)
             item = '<item><Title><![CDATA[%s]]></Title><Description><![CDATA[%s]]></Description>' \
                    '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
             description = u'活动时间：%s\r\n活动地点：%s\r\n回复“退票 %s”即可退票' %(ticket.activity.start_time.strftime('%Y-%m-%d %H:%M'),
@@ -289,22 +297,18 @@ def get_book_cmd_response(msg):
             return get_reply_text_xml(msg, u'您已抢到%s的票，不能重复抢票，<a href="%s">查看电子票</a>' % (activity.name, url))
 
 
-#check return command
+#check return command message
 def check_return_cmd(msg):
     if msg['MsgType'] != 'text':
         return 0
     receive_msg = msg['Content']
     receive_msg = receive_msg.split()
-    if len(receive_msg) == 0:
+    if len(receive_msg) != 2:
         return 0
-    now = string.atof(msg['CreateTime'])
-    now = datetime.datetime.fromtimestamp(now)
-    activities = Activity.objects.filter(status=1, end_time__gte=now, key=receive_msg[0])
-    if not activities.exists():                 # book command is correct and the activity is at booking stage
+    if receive_msg[0] != '退票':
         return 0
-    if len(receive_msg) > 1:
-        return 1
-    return 0
+    return 1
+
 
 #return tickets
 def return_tickets(msg):
@@ -313,108 +317,44 @@ def return_tickets(msg):
 
     receive_msg = msg['Content']
     receive_msg = receive_msg.split()
-    activities = Activity.objects.filter(status=1, end_time__gte=now, key=receive_msg[0])
-    activity = activities[0]
+    activities = Activity.objects.filter(status=1, end_time__gte=now, key=receive_msg[1])
 
-    if len(receive_msg) == 2 and receive_msg[1].lower() == 'qx':
-        if activity.book_start > now:
-            start_time = u'%s年%s月%s日%s时%s分' % (activity.book_start.year, activity.book_start.month, activity.book_start.day, activity.book_start.hour, activity.book_start.minute)
-            return get_reply_text_xml(msg, u'%s%s开始抢票，<a href="%s">详情</a>' % (activity.name, start_time, 'http://tsinghuatuan.duapp.com'
-                                                                                                         '/userpage/activity/?activityid='+str(activity.id)))
-        elif activity.book_end > now:
-            if is_authenticated(msg['FromUserName']):
-                user = User.objects.get(weixin_id=msg['FromUserName'])
-            else:
-                return get_reply_text_xml(msg, u'对不起，尚未绑定账号，不能退票，<a href="http://tsinghuatuan.duapp.com/userpage/'
-                                               u'validate/?openid=%s">点此绑定信息门户账号</a>' % msg['FromUserName'])
-
-            tickets = Ticket.objects.filter(user=user, activity=activity, status=1)
-            if tickets.exists():   # user has already booked the activity
-                ticket = tickets[0]
-                ticket.status = 0
-                ticket.save()
-                Activity.objects.filter(status=1, end_time__gte=now, key=receive_msg[0]).update(remain_tickets=F('remain_tickets')+1)
-                return get_reply_text_xml(msg, u'退票成功，欢迎关注下次活动')
-            else:
-                return get_reply_text_xml(msg, u'未找到您的抢票记录，退票失败')
-        else:
-            return get_reply_text_xml(msg, u'抢票时间已过，不能退票，可以将票转让于他人')
+    if not activities.exists():
+        return get_reply_text_xml(msg, u'活动代号不存在')
     else:
-        return get_reply_text_xml(msg, u'输入的命令不合法，回复“退票 %s”即可退票'% activity.key)
+        activity = activities[0]
+
+    if activity.book_start > now:
+        start_time = u'%s年%s月%s日%s时%s分' % (activity.book_start.year, activity.book_start.month, activity.book_start.day, activity.book_start.hour, activity.book_start.minute)
+        return get_reply_text_xml(msg, u'%s%s开始抢票，<a href="%s">详情</a>' % (activity.name, start_time, 'http://tsinghuatuan.duapp.com'
+                                                                                                     '/userpage/activity/?activityid='+str(activity.id)))
+    elif activity.book_end > now:
+        if is_authenticated(msg['FromUserName']):
+            user = User.objects.get(weixin_id=msg['FromUserName'])
+        else:
+            return get_reply_text_xml(msg, u'对不起，尚未绑定账号，不能退票，<a href="http://tsinghuatuan.duapp.com/userpage/'
+                                           u'validate/?openid=%s">点此绑定信息门户账号</a>' % msg['FromUserName'])
+
+        tickets = Ticket.objects.filter(stu_id=user.stu_id, activity=activity, status=1)
+        if tickets.exists():   # user has already booked the activity
+            ticket = tickets[0]
+            ticket.status = 0
+            ticket.save()
+            Activity.objects.filter(status=1, end_time__gte=now, key=receive_msg[1]).update(remain_tickets=F('remain_tickets')+1)
+            return get_reply_text_xml(msg, u'退票成功，欢迎关注下次活动')
+        else:
+            return get_reply_text_xml(msg, u'未找到您的抢票记录，退票失败')
+    else:
+        return get_reply_text_xml(msg, u'抢票时间已过，不能退票，可以将票转让于他人')
 
 #check book event
 def check_book_event(msg):
-    if msg['MsgType'] == 'event' and msg['Event']=='CLICK' and msg['EventKey'] == 'TSINGHUA_BOOK':
-        return 1
-    if msg['MsgType'] == 'text' and msg['Content'] == '抢票':
-        return 1
+    if msg['MsgType'] == 'event' and msg['Event']=='CLICK':
+        cmd_list = msg['EventKey'].split('_')
+        if len(cmd_list) == 3:
+            if cmd_list[0] == 'TSINGHUA' and cmd_list[1] == 'BOOK' and  cmd_list[2].isdigit():
+                return 1
     return 0
-
-
-#handle book event
-def get_book_event_response(msg):
-    if is_authenticated(msg['FromUserName']):
-        user = User.objects.get(weixin_id=msg['FromUserName'])
-    else:
-        return get_reply_text_xml(msg, u'对不起，尚未绑定账号，不能抢票，<a href="http://tsinghuatuan.duapp.com/userpage/validate/?openid=%s">'
-                                       u'点此绑定信息门户账号</a>' % msg['FromUserName'])
-
-    now = string.atof(msg['CreateTime'])
-    now = datetime.datetime.fromtimestamp(now)
-
-    random_string = ''.join([random.choice(string.ascii_letters + string.digits) for n in xrange(32)])
-    while Ticket.objects.filter(unique_id=random_string).exists():
-        random_string = ''.join([random.choice(string.ascii_letters + string.digits) for n in xrange(32)])
-    with transaction.commit_on_success():
-        activities = Activity.objects.select_for_update().filter(status=1, book_end__gte=now, book_start__lte=now)
-        if activities.exists() == 0:
-            future_activities = Activity.objects.filter(status=1, book_start__gte=now).order_by('book_start')
-            if len(future_activities) == 0:
-                return get_reply_text_xml(msg, u'暂时没有抢票活动')
-            else:
-                future_activity = future_activities[0]
-                start_time = u'%s年%s月%s日%s时%s分' % (future_activity.book_start.year, future_activity.book_start.month, future_activity.book_start.day, future_activity.book_start.hour, future_activity.book_start.minute)
-                return get_reply_text_xml(msg, u'%s%s开始抢票，<a href="%s">详情</a>' % (future_activity.name, start_time, 'http://tsinghuatuan.duapp.com'
-                                                                                                                '/userpage/activity/?activityid='+str(future_activity.id)))
-        else:
-            activity = activities[0]
-        tickets = Ticket.objects.select_for_update().filter(user=user, activity=activity)
-        if tickets.exists() == 0:
-            if activity.remain_tickets == 0:
-                return  get_reply_text_xml(msg, u'票已抢完，欢迎关注下次活动')
-            ticket = Ticket(
-                user = user,
-                activity = activity,
-                unique_id = random_string,
-                status = 1,
-                seat = ''
-            )
-            ticket.save()
-            Activity.objects.filter(status=1, book_end__gte=now, book_start__lte=now).update(remain_tickets=F('remain_tickets')-1)
-            item = '<item><Title><![CDATA[%s]]></Title><Description><![CDATA[%s]]></Description>' \
-                   '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
-            description = u'活动时间：%s\r\n活动地点：%s\r\n回复“退票 %s”即可退票' %(ticket.activity.start_time.strftime('%Y-%m-%d %H:%M'),
-                                                               ticket.activity.place, ticket.activity.key)
-            url =  'http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s' % ticket.unique_id
-            item = item % (ticket.activity.name, description, QRCODE_URL + str(ticket.unique_id), url)
-            return get_reply_news_xml(msg, item, 1)
-        elif tickets[0].status == 0:
-            if activity.remain_tickets == 0:
-                return  get_reply_text_xml(msg, u'票已抢完，欢迎关注下次活动')
-            ticket = tickets[0]
-            ticket.status = 1
-            ticket.save()
-            Activity.objects.filter(status=1, book_end__gte=now, book_start__lte=now).update(remain_tickets=F('remain_tickets')-1)
-            item = '<item><Title><![CDATA[%s]]></Title><Description><![CDATA[%s]]></Description>' \
-                   '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
-            description = u'活动时间：%s\r\n活动地点：%s\r\n回复%s qx退票' %(ticket.activity.start_time.strftime('%Y-%m-%d %H:%M'),
-                                                               ticket.activity.place, ticket.activity.key)
-            url =  'http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s' % ticket.unique_id
-            item = item % (ticket.activity.name, description, QRCODE_URL + str(ticket.unique_id), url)
-            return get_reply_news_xml(msg, item, 1)
-        else:
-            url =  'http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s' % tickets[0].unique_id
-            return get_reply_text_xml(msg, u'您已抢到%s的票，不能重复抢票，<a href="%s">查看电子票</a>' % (activity.name, url))
 
 
 #check subscribe event
@@ -426,7 +366,10 @@ def check_subscribe(msg):
 
 #handle subscribe event
 def get_subscibe_response(msg):
-    return get_help_response(msg)
+    reply_content = u'您好，欢迎关注清小团公共平台，<a href="http://tsinghuatuan.duapp.com/userpage/validate/?openid=%s">' \
+                    u'点此绑定信息门户账号</a>\r\n' % msg['FromUserName']
+    reply_content += u'回复以下关键字可以得到相应结果:\r\n抢啥 查票 帮助'
+    return get_reply_text_xml(msg, reply_content)
 
 
 #check unsubscribe event

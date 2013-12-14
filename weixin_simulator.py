@@ -13,7 +13,7 @@ import qrcode
 url = 'http://localhost:' + str(LOCAL_PORT) + LUCKY_URL
 url_token = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxb2545ef150be8096&secret=c0739f56c0f676c0e2850ef286d754bf"
 url_menu = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=tXiFoEsjnwcql3eC3ae_L3hF5OJbtPvoc8HTWwPRndt23ncxtwO9dZ27tNKl777i_39pNH6WeJKlt1kH1gz62iD8js8A8JN7DTRF2CLDCGtpx-NnYOxrM9mgzVfKAO6N_ptLfNe39XfcxKMVAZxl4g"
-FROM_USER_NAME = 'WeixinSimulator'
+FROM_USER_NAME = 'test2'
 while True:
     line = raw_input()
     ext_tpl = '<xml><ToUserName><![CDATA[%s]]></ToUserName><FromUserName><![CDATA[%s]]></FromUserName><CreateTime>%s</CreateTime>' \
@@ -28,8 +28,8 @@ while True:
            '{"type":"click","name":"绑定","key":"TSINGHUA_BIND"}]},{"name":"抢票","sub_button":' \
            '[{"type":"click","name":"新年音乐会","key":"TSINGHUA_BOOK_1"},{"type":"click","name":"新年晚会",' \
            '"key":"TSINGHUA_BOOK_2"}]}]}'
-    ext_tpl = ext_tpl % (FROM_USER_NAME+str(11), FROM_USER_NAME+str(11), str(int(time.time())), 'text', '抢啥')
-    #evt_tpl = evt_tpl % (FROM_USER_NAME+str(3), FROM_USER_NAME+str(3), str(int(time.time())), 'CLICK', 'TSINGHUA_WECHAT_BOOK')
+    ext_tpl = ext_tpl % (FROM_USER_NAME, FROM_USER_NAME, str(int(time.time())), 'text', '取票 新年')
+   #evt_tpl = evt_tpl % (FROM_USER_NAME, FROM_USER_NAME, str(int(time.time())), 'CLICK', 'TSINGHUA_BOOK_1')
     req = urllib2.Request(url = url, data = ext_tpl)
     #req = urllib2.Request(url=url_menu, data = data)
     resdata = urllib2.urlopen(req)
