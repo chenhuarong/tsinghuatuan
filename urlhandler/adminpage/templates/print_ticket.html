@@ -6,6 +6,12 @@
     <link href="{% static "css/ticket_detail.css" %}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
+{% block nav-li %}
+    <li class="active">
+        <a>点击浏览器“打印”打印票</a>
+    </li>
+{% endblock %}
+
 {% block username %}
     <a href={% url adminpage.views.order_logout %} >登出</a>
 {% endblock %}
@@ -24,10 +30,10 @@
                     学号：{{ stu_id }}
                 </p>
                 <p>
-                    开始时间：{{ activity.start_time|date:"y/m/d l H:i" }}
+                    开始时间：{{ activity.start_time|date:"Y年m月d日 H：i" }}
                 </p>
                 <p>
-                    结束时间：{{ activity.end_time|date:"y/m/d l H:i" }}
+                    结束时间：{{ activity.end_time|date:"Y年m月d日 H：i" }}
                 </p>
                 <p>
                     地点：{{ activity.place }}
@@ -42,16 +48,9 @@
                 </p>
             </div>
         </div>
-        <!--<button class="btn btn-success block" id="print" style="text-align: center">打印</button>-->
     </div>
 {% endblock %}
 
 {% block js %}
     <script src="{% static "lib/jq/jquery-1.10.2.min.js" %}"></script>
-    <script src="{% static "js/jquery.PrintArea.js" %}"></script>
-    <script>
-        $("#print").click(function(){
-            $('.ticket').printArea();
-        });
-    </script>
 {% endblock %}
