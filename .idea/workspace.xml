@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="519d02f1-9909-43c4-95c4-b95f242a05f2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/src.iml" afterPath="$PROJECT_DIR$/.idea/src.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js" afterPath="$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/views.py" afterPath="$PROJECT_DIR$/urlhandler/adminpage/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -15,7 +13,7 @@
     <file path="/Django Console" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387035783255" ignored="false" />
     <file path="/weixin_simulator.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386671745601" ignored="false" />
     <file path="/__init__.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387023343819" ignored="false" />
-    <file path="/views.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387038693009" ignored="false" />
+    <file path="/views.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387041601151" ignored="false" />
     <file path="/urls.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387029615716" ignored="false" />
     <file path="/activity_list.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386991615753" ignored="false" />
     <file path="/activity_list.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386987043938" ignored="false" />
@@ -25,7 +23,7 @@
     <file path="/activity_checkin.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386832772066" ignored="false" />
     <file path="/models.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386985904919" ignored="false" />
     <file path="/activity_detail.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386987195810" ignored="false" />
-    <file path="/activity_detail.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386987385495" ignored="false" />
+    <file path="/activity_detail.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387041499839" ignored="false" />
     <file path="/adjust_menu.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387011370651" ignored="false" />
     <file path="/adjust_menu.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387037926770" ignored="false" />
     <file path="/adjust_menu.css" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386997099419" ignored="false" />
@@ -62,9 +60,20 @@
       <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="139" column="0" selection-start="4833" selection-end="4833" vertical-scroll-proportion="2.4013762">
+            <state line="204" column="23" selection-start="7092" selection-end="7092" vertical-scroll-proportion="0.71100914">
               <folding>
                 <element signature="e#23#68#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_detail.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="246" column="64" selection-start="7778" selection-end="7778" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -97,7 +106,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_list.html" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/static/css/adjust_menu.css" />
         <option value="$PROJECT_DIR$/weixinlib/url_generators.py" />
         <option value="$PROJECT_DIR$/weixinlib/weixin_urls.py" />
@@ -112,6 +120,7 @@
         <option value="$PROJECT_DIR$/queryhandler/settings.py" />
         <option value="$PROJECT_DIR$/weixinlib/settings.py" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/static/js/adjust_menu.js" />
+        <option value="$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/views.py" />
       </list>
     </option>
@@ -750,7 +759,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39465874" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20681265" sideWeight="0.28703704" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3281787" sideWeight="0.49468085" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32064423" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32064423" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985073" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936507" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -825,11 +834,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/local.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="4" selection-start="316" selection-end="316" vertical-scroll-proportion="0.34562212" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="24" selection-start="1560" selection-end="1560" vertical-scroll-proportion="0.76642334">
@@ -920,9 +924,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="246" column="64" selection-start="7778" selection-end="7778" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="139" column="0" selection-start="4833" selection-end="4833" vertical-scroll-proportion="2.4013762">
+        <state line="204" column="23" selection-start="7092" selection-end="7092" vertical-scroll-proportion="0.71100914">
           <folding>
             <element signature="e#23#68#0" expanded="true" />
           </folding>

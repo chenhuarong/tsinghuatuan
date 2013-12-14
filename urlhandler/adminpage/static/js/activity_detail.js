@@ -243,23 +243,13 @@ function lockByStatus(status, book_start, start_time) {
         '1': {
             'name': true,
             'key': true,
-            'description': function() {
-                return (new Date() >= getDateByObj(start_time));
-            },
-            'pic_url': function() {
-                return (new Date() >= getDateByObj(start_time));
-            },
-            'start_time': function() {
-                return (new Date() >= getDateByObj(start_time));
-            },
-            'end_time': function() {
-                return (new Date() >= getDateByObj(start_time));
-            },
             'place': function() {
                 return (new Date() >= getDateByObj(start_time));
             },
             'book_start': true,
-            'book_end': true,
+            'book_end': function() {
+                return (new Date() >= getDateByObj(start_time));
+            },
             'total_tickets': function() {
                 return (new Date() >= getDateByObj(book_start));
             }
