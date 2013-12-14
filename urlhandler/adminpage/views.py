@@ -28,7 +28,7 @@ import urllib2
 
 from urlhandler.models import Activity, Ticket
 from urlhandler.models import User as Booker
-from urlhandler.models import UserSession
+from django.contrib.sessions.models import Session
 
 from weixinlib.custom_menu import get_custom_menu, modify_custom_menu
 from weixinlib.settings import WEIXIN_CUSTOM_MENU_TEMPLATE
@@ -331,7 +331,13 @@ def order_login(request):
         raise Http404
 
     if 'loginteacher_action.jsp' in res:
+        request.session['stuid'] = username
+        request.session.set_expiry(0)
+        rtnJSON['message'] = 'success'
+        rtnJSON['next'] = reverse('adminpage.views.order_list')
 
+<<<<<<< HEAD
+=======
         user_session = UserSession()
         if user_session.generate_session(username):
             rtnJSON['message'] = 'success'
@@ -340,6 +346,7 @@ def order_login(request):
 
         else:
             rtnJSON['message'] = 'failed'
+>>>>>>> ba87859d9bdbe240d901c1f90d3223c39b67b3e1
     else:
         rtnJSON['message'] = 'failed'
 
@@ -349,62 +356,56 @@ def order_login(request):
 def order_logout(request):
     return HttpResponseRedirect(reverse('adminpage.views.order_index'))
 
+def order_list(request):
 
-def order_list(request, stuid, pk):
+    if not 'stuid' in request.session:
+        return HttpResponseRedirect(reverse('adminpage.views.order_index'))
+
+    stuid = request.session['stuid']
+
     orders = []
-    try:
-        user_sesssion = UserSession()
-        if user_sesssion.is_session_valid(stu_id=stuid, session_key=pk):
-            qset = Ticket.objects.filter(stu_id=stuid)
+    qset = Ticket.objects.filter(stu_id = stuid)
 
-            for x in qset:
-                item = {}
+    for x in qset:
+        item = {}
 
-                activity = Activity.objects.get(id=x.activity_id)
+        activity = Activity.objects.get(id = x.activity_id)
 
-                item['name'] = activity.name
+        item['name'] = activity.name
 
-                item['start_time'] = activity.start_time
+        item['start_time'] = activity.start_time
 
-                item['end_time'] = activity.end_time
-                item['place'] = activity.place
-                item['seat'] = x.seat
-                item['valid'] = x.status
-                item['unique_id'] = x.unique_id
-                item['keyvalue'] = pk
-
-                orders.append(item)
-        else:
-            return HttpResponseRedirect(reverse('adminpage.views.order_index'))
-
-    except:
-        raise Http404
+        item['end_time'] = activity.end_time
+        item['place'] = activity.place
+        item['seat'] = x.seat
+        item['valid'] = x.status
+        item['unique_id'] = x.unique_id
+        orders.append(item)
 
     return render_to_response('order_list.html', {
         'orders': orders,
+        'stuid':stuid
     }, context_instance=RequestContext(request))
 
 
 def print_ticket(request, unique_id):
+
+    if not 'stuid' in request.session:
+        return HttpResponseRedirect(reverse('adminpage.views.order_index'))
+
     try:
-        ticket = Ticket.objects.get(unique_id=unique_id)
-
-        pk = request.POST.get('pk')
-
-        user_session = UserSession()
-        if user_session.can_print(stu_id=ticket.stu_id, session_key=pk):
-            activity = Activity.objects.get(id=ticket.activity_id)
-            qr_addr = "http://tsinghuaqr.duapp.com/fit/" + unique_id
-        else:
-            return HttpResponseRedirect(reverse('adminpage.views.order_index'))
-
+        ticket = Ticket.objects.get(unique_id = unique_id)
+        activity = Activity.objects.get(id = ticket.activity_id)
+        qr_addr = "http://tsinghuaqr.duapp.com/fit/" + unique_id
     except:
         raise Http404
+
     return render_to_response('print_ticket.html', {
         'qr_addr': qr_addr,
         'activity': activity,
-        'stu_id': ticket.stu_id
-    }, context_instance=RequestContext(request))
+        'stu_id':ticket.stu_id
+    },context_instance=RequestContext(request))
+
 
 
 def adjust_menu_view(request):
