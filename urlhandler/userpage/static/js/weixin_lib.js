@@ -40,3 +40,29 @@ window.getNetworkStatus = function() {
             });
     }
 }
+
+function setfooter(){
+    //正文高度
+    var docHeight = document.body.offsetHeight;
+    //可见页面高度
+    var winHeight = document.documentElement.clientHeight;
+    var footer = document.getElementById('footer');
+    if(docHeight+80 > winHeight){
+        footer.style.position = "static";
+    }
+    else{
+        footer.style.position = "absolute";
+    }
+}
+
+function doResize(){
+    setfooter();
+}
+
+window.onresize = function(){
+    doResize();
+}
+
+window.onload = function() {
+    doResize();
+}
