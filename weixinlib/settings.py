@@ -1,3 +1,5 @@
+#-*- coding:utf-8 -*-
+
 __author__ = 'Epsirom'
 
 from queryhandler.settings import WEIXIN_TOKEN
