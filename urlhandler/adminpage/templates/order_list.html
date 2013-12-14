@@ -17,8 +17,7 @@
 {% endblock %}
 
 {% block username %}
-    <a href="#" >登出</a>
-
+    <a href="print_login.html" >登出</a>
 {% endblock %}
 
 {% block content %}
@@ -30,11 +29,7 @@
     </div>
 
     <div class="panel panel-default">
-    <!--
-        <div class="panel-heading">
 
-        </div>
-    -->
         <table class="table table-hover">
             <thead>
             <tr>
@@ -63,9 +58,12 @@
                 <td>{{ item.valid }}</td>
                 <td>
                     <span>
-                        <a href={% url adminpage.views.print_ticket unique_id=item.unique_id %}>
-                            <span class="glyphicon glyphicon-print"></span> 打印
-                        </a>
+                        <form action="{% url adminpage.views.print_ticket unique_id=item.unique_id %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="pk" value="{{ item.keyvalue }}" />
+                            <button value="打印" ><span class="glyphicon glyphicon-print"></span> 打印</button>
+                        </form>
+
                     </span>
 
                 </td>
