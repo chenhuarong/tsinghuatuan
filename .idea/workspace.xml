@@ -9,7 +9,8 @@
     <file path="/activitytext.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386996928400" ignored="false" />
     <file path="/base.css" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386997014703" ignored="false" />
     <file path="/weixin_lib.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386999915193" ignored="false" />
-    <file path="/validation.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386998951687" ignored="false" />
+    <file path="/validation.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387001484311" ignored="false" />
+    <file path="/validation.css" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387001287403" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +57,7 @@
       <file leaf-file-name="details.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/js/details.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="18" selection-start="350" selection-end="350" vertical-scroll-proportion="0.0">
+            <state line="15" column="31" selection-start="435" selection-end="435" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -91,28 +92,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/css/base.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="9" selection-start="264" selection-end="264" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="details.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/css/details.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="0" selection-start="805" selection-end="805" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="validation.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/validation.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="52" selection-start="285" selection-end="285" vertical-scroll-proportion="0.14193548">
+            <state line="13" column="53" selection-start="290" selection-end="290" vertical-scroll-proportion="0.61290324">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="validation.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/css/validation.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="88" column="20" selection-start="1100" selection-end="1100" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/urlhandler/urlhandler/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="34" column="39" selection-start="1195" selection-end="1195" vertical-scroll-proportion="-7.6">
               <folding />
             </state>
           </provider>
@@ -145,7 +146,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/urlhandler/adminpage/static/css/ticket_detail.css" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/order_list.html" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/print_ticket.html" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_detail.html" />
@@ -160,6 +160,7 @@
         <option value="$PROJECT_DIR$/urlhandler/userpage/static/js/validation.js" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/static/js/weixin_lib.js" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/mobile_base.html" />
+        <option value="$PROJECT_DIR$/urlhandler/userpage/static/css/validation.css" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/validation.html" />
       </list>
     </option>
@@ -340,6 +341,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="weChatWorkspace" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="urlhandler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="urlhandler" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -675,7 +694,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -761,22 +780,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="27" selection-start="508" selection-end="508" vertical-scroll-proportion="0.4716981">
-          <folding>
-            <element signature="e#23#68#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/order_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="39" selection-start="329" selection-end="329" vertical-scroll-proportion="-0.8991416">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="24" selection-start="463" selection-end="463" vertical-scroll-proportion="0.24489796">
@@ -842,13 +845,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/js/details.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="18" selection-start="350" selection-end="350" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/js/weixin_lib.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="48" column="51" selection-start="1764" selection-end="1764" vertical-scroll-proportion="0.0">
@@ -872,9 +868,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/js/details.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="31" selection-start="435" selection-end="435" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/urlhandler/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="39" selection-start="1195" selection-end="1195" vertical-scroll-proportion="-7.6">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/css/validation.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="88" column="20" selection-start="1100" selection-end="1100" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/validation.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="52" selection-start="285" selection-end="285" vertical-scroll-proportion="0.14193548">
+        <state line="13" column="53" selection-start="290" selection-end="290" vertical-scroll-proportion="0.61290324">
           <folding />
         </state>
       </provider>
