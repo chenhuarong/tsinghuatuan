@@ -24,9 +24,12 @@ from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_protect,csrf_exempt
 
 #import database
-from urlhandler.models import Activity, Order, Ticket
+import urllib,urllib2
 
+from urlhandler.models import Activity, Ticket
 from urlhandler.models import User as Booker
+from urlhandler.models import UserSession
+
 
 from weixinlib.custom_menu import get_custom_menu, modify_custom_menu
 
@@ -284,7 +287,7 @@ def activity_post(request):
                 now = datetime.now()
                 for keyact in iskey:
                     if now < keyact.end_time:
-                        rtnJSON['error'] = "当前有活动正在使用该活动代码"
+                        rtnJSON['error'] = u"当前有活动正在使用该活动代码"
                         return HttpResponse(json.dumps(rtnJSON, cls=DatetimeJsonEncoder), content_type='application/json')
             activity = activity_create(post)
             rtnJSON['updateUrl'] = reverse('adminpage.views.activity_detail', kwargs={'actid': activity.id})
@@ -293,29 +296,85 @@ def activity_post(request):
         rtnJSON['error'] = str(e)
     return HttpResponse(json.dumps(rtnJSON, cls=DatetimeJsonEncoder), content_type='application/json')
 
-def order_list(request):
 
-    UID = 1
-    orders = []
+def order_index(request):
+    return render_to_response('print_login.html', context_instance=RequestContext(request))
+
+def order_login(request):
+    if not request.POST:
+        raise Http404
+
+    rtnJSON = {}
+
+    username = request.POST.get('username', '')
+    password = request.POST.get('password', '')
+
+
     try:
-        qset = Ticket.objects.filter(user_id = UID)
-        item = {}
-        for x in qset:
-            activity = Activity.objects.get(id = x.activity_id)
+        Booker.objects.get(stu_id=username)
+    except:
+        rtnJSON['message'] = 'none'
+        return HttpResponse(json.dumps(rtnJSON), content_type='application/json')
 
-            item['name'] = activity.name
 
-            item['start_time'] = activity.start_time
+    req_data = urllib.urlencode({'userid': username, 'userpass': password, 'submit1': u'登录'.encode('gb2312')})
+    request_url = 'https://learn.tsinghua.edu.cn/MultiLanguage/lesson/teacher/loginteacher.jsp'
+    req = urllib2.Request(url=request_url, data=req_data)
+    res_data = urllib2.urlopen(req)
 
-            item['end_time'] = activity.end_time
-            item['place'] = activity.place
-            item['seat'] = x.seat
-            item['valid'] = x.status
-            item['unique_id'] = x.unique_id
-
-        orders.append(item)
+    try:
+        res = res_data.read()
     except:
         raise Http404
+
+    if 'loginteacher_action.jsp' in res:
+
+        user_session = UserSession()
+        if(user_session.generate_session(username)):
+            rtnJSON['message'] = 'success'
+            u = UserSession.objects.get(stu_id = username)
+            rtnJSON['next'] = reverse('adminpage.views.order_list', kwargs={'stuid':username,'pk':u.session_key})
+
+        else:
+            rtnJSON['message'] = 'failed'
+    else:
+        rtnJSON['message'] = 'failed'
+
+    return HttpResponse(json.dumps(rtnJSON), content_type='application/json')
+
+def order_logout(request):
+    return HttpResponseRedirect(reverse('adminpage.views.order_index'))
+
+def order_list(request, stuid, pk):
+    orders = []
+    try:
+        user_sesssion = UserSession()
+        if user_sesssion.is_session_valid(stu_id=stuid,session_key=pk):
+            qset = Ticket.objects.filter(stu_id = stuid)
+
+            for x in qset:
+                item = {}
+
+                activity = Activity.objects.get(id = x.activity_id)
+
+                item['name'] = activity.name
+
+                item['start_time'] = activity.start_time
+
+                item['end_time'] = activity.end_time
+                item['place'] = activity.place
+                item['seat'] = x.seat
+                item['valid'] = x.status
+                item['unique_id'] = x.unique_id
+                item['keyvalue'] = pk
+
+                orders.append(item)
+        else:
+            return HttpResponseRedirect(reverse('adminpage.views.order_index'))
+
+    except:
+        raise Http404
+
     return render_to_response('order_list.html', {
         'orders': orders,
     }, context_instance=RequestContext(request))
@@ -323,14 +382,24 @@ def order_list(request):
 def print_ticket(request, unique_id):
     try:
         ticket = Ticket.objects.get(unique_id = unique_id)
-        activity = Activity.objects.get(id = ticket.activity_id)
-        qr_addr = "http://tsinghuaqr.duapp.com/fit/" + unique_id
+
+        pk = request.POST.get('pk')
+
+        user_session = UserSession()
+        if(user_session.can_print(stu_id=ticket.stu_id,session_key=pk)):
+            activity = Activity.objects.get(id = ticket.activity_id)
+            qr_addr = "http://tsinghuaqr.duapp.com/fit/" + unique_id
+        else:
+            return HttpResponseRedirect(reverse('adminpage.views.order_index'))
+
     except:
         raise Http404
     return render_to_response('print_ticket.html', {
         'qr_addr': qr_addr,
-        'activity': activity
+        'activity': activity,
+        'stu_id':ticket.stu_id
     },context_instance=RequestContext(request))
+
 
 
 def adjust_menu_view(request):

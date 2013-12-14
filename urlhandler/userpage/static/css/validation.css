@@ -7,12 +7,6 @@
     text-align: center;
 }
 
-footer{
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
-}
-
 /* Below is extended from bootstrap */
 
 button,
@@ -86,6 +80,7 @@ label {
   display: inline-block;
   margin-bottom: 5px;
   font-weight: bold;
+  font-size: 15px;
 }
 
 .form-control {

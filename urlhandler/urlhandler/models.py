@@ -1,5 +1,6 @@
 #-*- coding: UTF-8 -*-
 from django.db import models
+import uuid
 
 
 class User(models.Model):
@@ -28,7 +29,7 @@ class Activity(models.Model):
     # 1: published but not determined
 
 class Ticket(models.Model):
-    user = models.ForeignKey(User)
+    stu_id = models.CharField(max_length=255)
     unique_id = models.CharField(max_length=255)
     activity = models.ForeignKey(Activity)
     status = models.IntegerField()
@@ -38,11 +39,41 @@ class Ticket(models.Model):
     # 1: ticket order is valid
     # 2: ticket is used
 
-class Order(models.Model):
-    user = models.ForeignKey(User)
-    activity = models.ForeignKey(Activity)
-    status = models.IntegerField()
-    tickets = models.IntegerField()
-    # Something about status
-    # 0: canceled
-    # 1: valid
+class UserSession(models.Model):
+    stu_id = models.CharField(max_length=255)
+    session_key = models.CharField(max_length=255)
+    session_status = models.IntegerField(1)
+
+    def generate_session(self,stu_id):
+        try:
+            stu = User.objects.get(stu_id=stu_id)
+            sessions = UserSession.objects.filter(stu_id = stu_id)
+            if sessions:
+                for session in sessions:
+                    session.delete()
+            s = UserSession(stu_id=stu_id,session_key=uuid.uuid4(),session_status = 0)
+            s.save()
+            return True
+        except:
+            return False
+
+    def is_session_valid(self,stu_id,session_key):
+        try:
+            s = UserSession.objects.get(stu_id=stu_id,session_key=session_key)
+            if(s.session_status == 0):
+                s.session_status = 1
+                s.save()
+                return True
+            else:
+                s.delete()
+                return False
+        except:
+            return False
+
+    def can_print(self,stu_id,session_key):
+        try:
+            s = UserSession.objects.get(stu_id=stu_id,session_key=session_key)
+            return True
+        except:
+            return False
+
