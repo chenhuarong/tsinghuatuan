@@ -407,7 +407,7 @@ def adjust_menu_view(request):
         return HttpResponseRedirect(reverse('adminpage.views.home'))
     if not request.user.is_superuser:
         return HttpResponseRedirect(reverse('adminpage.views.activity_list'))
-    activities = Activity.objects.filter(book_end__gt=datetime.now())
+    activities = Activity.objects.filter(end_time__gt=datetime.now())
     return render_to_response('adjust_menu.html', {
         'activities': activities,
     }, context_instance=RequestContext(request))
