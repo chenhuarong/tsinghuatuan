@@ -53,7 +53,13 @@
                 <td>{{ item.name }}</td>
                 <td>{{ item.start_time|date:"y/m/d l H:i" }} - {{ item.end_time|date:"y/m/d l H:i" }} </td>
                 <td>{{ item.place }}</td>
-                <td>{{ item.seat }}</td>
+                <td>
+                    {% if item.seat %}
+                        {{ item.seat }}
+                    {% else %}
+                        未指定
+                    {% endif %}
+                </td>
                 <td>{{ item.valid }}</td>
                 <td>
                     <span>

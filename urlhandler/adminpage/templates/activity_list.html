@@ -15,7 +15,7 @@
 
 {% block js %}
     <script>
-        activities = [
+        var activities = [
             {% for activity in activities %}
                 {
                     'status': {{ activity.status }},
@@ -24,12 +24,16 @@
                     'start_time': new Date('{{ activity.start_time|date:"r" }}'),
                     'end_time': new Date('{{ activity.end_time|date:"r" }}'),
                     'place': '{{ activity.place|escapejs }}',
+                {% if permission %}'delete':{{ activity.id }},{% endif %}
+                    'operations': {{% if permission %}'detail':'{% url adminpage.views.activity_detail actid=activity.id %}',{% endif %}'checkin':'{% url adminpage.views.activity_checkin actid=activity.id %}'},
                     'book_start': new Date('{{ activity.book_start|date:"r" }}'),
-                    'book_end': new Date('{{ activity.book_end|date:"r" }}'),
-                    'detail_url': '{% url adminpage.views.activity_detail actid=activity.id %}'
+                    'book_end': new Date('{{ activity.book_end|date:"r" }}')
                 }{% if forloop.last %}{% else %},{% endif %}
             {% endfor %}
         ];
+        var operations_name = {{% if permission %}'detail':'详情',{% endif %}'checkin':'检票'};
+        var operations_icon = {{% if permission %}'detail':'pencil',{% endif %}'checkin':'check'};
+        var operations_target = {{% if permission %}'detail':'',{% endif %}'checkin':'_blank'};
     </script>
     <script src="{% static "js/activity_list.js" %}"></script>
 {% endblock %}
@@ -48,10 +52,10 @@
     </div>
 
     <div class="panel panel-default">
-
         <div class="panel-heading">
+            {% if permission %}
                 <a class="btn btn-default" href={% url adminpage.views.activity_add %}>新增活动</a>
-
+            {% endif %}
         </div>
 
         <table class="table table-hover">
@@ -63,7 +67,8 @@
                 <th>活动时间</th>
                 <th>地点</th>
                 <th>订票时间</th>
-                <th>编辑</th>
+                <th>操作</th>
+                <th></th>
             </tr>
             </thead>
             <tbody id="tbody-activities">
@@ -72,4 +77,24 @@
     </div>
 
 </div>
+
+<!-- Modal -->
+<div id="deleteid" style="display: none;"></div>
+<div class="modal fade" id="delModal" tabindex="-1" role="dialog" aria-labelledby="delModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="delModalLabel">确认删除</h4>
+      </div>
+      <div class="modal-body" id="modalcontent">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="delConfirm()">确认</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="delCancel()">取消</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% endblock %}

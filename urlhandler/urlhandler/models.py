@@ -23,6 +23,7 @@ class Activity(models.Model):
     pic_url = models.CharField(max_length=255)
     remain_tickets = models.IntegerField()
     # Something about status:
+    # -1: deleted
     # 0: saved but not published
     # 1: published but not determined
 

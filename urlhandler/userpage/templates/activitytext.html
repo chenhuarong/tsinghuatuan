@@ -18,53 +18,118 @@
         <div id="activitytimer"></div>
     </div>
     <div class="details-divider"></div>
+    <div class="details-divider"></div>
+
+    {% if act_status == 0 %}
+        <div id="ticket-during-book">
+            <div class="timer-wrapper">
+            当前余票：(截至{{ cur_time|date:"Y年m月d日H时i分s秒" }})
+            </div>
+            <div class="details-divider"></div>
+            <div style="text-align: center;">
+                <span class="ticket">{{ act_ticket_remian }}</span>张
+            </div>
+        </div>
+        <div class="details-divider"></div>
+    {% elif act_status == 1 %}
+        <div  id="ticket-before-book">
+            <div class="timer-wrapper">
+            活动预计发票：
+            </div>
+            <div style="text-align: center;">
+                <span class="ticket">{{ act_totaltickets }}</span>张
+            </div>
+        </div>
+        <div class="details-divider"></div>
+    {% else %}
+
+    {% endif %}
+
 
     <div class="timer-wrapper">
     抢票时间：
     </div>
+    <div class="details-wrapper">
+        <div class="text-inner">
+
+            {% if act_bookstart.year != act_bookend.year %}
+            <div class="trigger" >
+                <h7>开始时间：{{ act_bookstart|date:"Y年m月d日 H时i分" }}</h7>
+            </div>
+            <div class="trigger">
+                <h7>结束时间：{{ act_bookend|date:"Y年m月d日 H时i分" }}</h7>
+            </div>
+            {% elif act_bookstart.month != act_bookend.month %}
+            <div class="trigger">
+                <h9>{{ act_bookstart|date:"Y年m月d日 H时i分" }} 至 {{ act_bookend|date:"m月d日H时i分" }}</h9>
+            </div>
+            {% elif act_bookstart.day != act_bookend.day %}
+            <div class="trigger">
+                <h8>{{ act_bookstart|date:"Y年m月d日 H时i分" }} 至 {{ act_bookend|date:"d日H时i分" }}</h8>
+            </div>
+            {% else %}
+            <div class="trigger">
+                <h7>{{ act_bookstart|date:"Y年m月d日 H时i分" }} 至 {{ act_bookend|date:"H时i分" }}</h7>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
     <div class="details-divider"></div>
+    <!--
     <div class="details-wrapper">
         <div class="text-inner">
             <div class="trigger">
-                <a>开始时间：{{ act_bookstart|date:"Y年m月d日H时i分" }}</a>
+                <a>结束时间：</a>
             </div>
         </div>
     </div>
     <div class="details-divider"></div>
-    <div class="details-wrapper">
-        <div class="text-inner">
-            <div class="trigger">
-                <a>结束时间：{{ act_bookend|date:"Y年m月d日H时i分" }}</a>
-            </div>
-        </div>
-    </div>
-    <div class="details-divider"></div>
+    -->
 
     <div class="timer-wrapper">
     活动时间：
     </div>
-    <div class="details-divider"></div>
     <div class="details-wrapper">
         <div class="text-inner">
-            <div class="trigger">
-                <a>开始时间：{{ act_begintime|date:"Y年m月d日H时i分" }}</a>
-            </div>
-        </div>
-    </div>
-    <div class="details-divider"></div>
-    <div class="details-wrapper">
-        <div class="text-inner">
-            <div class="trigger">
-                <a>结束时间：{{ act_endtime|date:"Y年m月d日H时i分" }}</a>
-            </div>
-        </div>
-    </div>
-    <div class="details-divider"></div>
 
+            {% if act_begintime.year != act_endtime.year %}
+            <div class="trigger" >
+                <h7>开始时间：{{ act_begintime|date:"Y年m月d日 H时i分" }}</h7>
+            </div>
+            <div class="trigger">
+                <h7>结束时间：{{ act_endtime|date:"Y年m月d日 H时i分" }}</h7>
+            </div>
+            {% elif act_begintime.month != act_endtime.month %}
+            <div class="trigger">
+                <h9>{{ act_begintime|date:"Y年m月d日 H时i分" }} 至 {{ act_endtime|date:"m月d日H时i分" }}</h9>
+            </div>
+            {% elif act_begintime.day != act_endtime.day %}
+            <div class="trigger">
+                <h8>{{ act_begintime|date:"Y年m月d日 H时i分" }} 至 {{ act_endtime|date:"d日H时i分" }}</h8>
+            </div>
+            {% else %}
+            <div class="trigger">
+                <h7>{{ act_begintime|date:"Y年m月d日 H时i分" }} 至 {{ act_endtime|date:"H时i分" }}</h7>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+    <div class="details-divider"></div>
+    <!--
+    <div class="details-wrapper">
+        <div class="text-inner">
+            <div class="trigger">
+                <a>结束时间：</a>
+            </div>
+        </div>
+    </div>
+    <div class="details-divider"></div>
+    -->
     <div class="timer-wrapper">
     活动地点：
     </div>
-    <div class="details-divider"></div>
     <div class="details-wrapper">
         <div class="text-inner">
             <div class="trigger">
@@ -77,7 +142,6 @@
     <div class="timer-wrapper">
     取票代码：<!--<div class="clipcopy" id="copykey">点此复制</div>-->
     </div>
-    <div class="details-divider"></div>
     <div class="details-wrapper">
         <div class="text-inner">
             <div class="trigger">
@@ -88,24 +152,11 @@
     <div class="details-divider"></div>
 
     <div class="timer-wrapper">
-    活动预计发票数：
-    </div>
-    <div class="details-divider"></div>
-    <div class="details-wrapper">
-        <div class="text-inner">
-            <div class="trigger">
-                <a>{{ act_totaltickets }}</a>
-            </div>
-        </div>
-    </div>
-    <div class="details-divider"></div>
-
-    <div class="timer-wrapper">
     活动详情：
     </div>
-    <div class="details-divider"></div>
     <div class="details-wrapper" id="actabstract">
         <div class="text-inner">
+            {% include 'activityphoto.html' %}
             <div class="trigger">
                 <a>{{ act_abstract }}</a>
             </div>
@@ -120,6 +171,7 @@
     </div>
     <div class="details-wrapper" id="actdetails" style="display: none">
         <div class="text-inner">
+            {% include 'activityphoto.html' %}
             <div class="trigger">
                 <a>{{ act_text }}</a>
             </div>
@@ -157,12 +209,14 @@
         else{
             clearInterval(timer);
             if(actstatus == 0){//from booktime to end
-                strtimer = '订票已结束，感谢您的关注！';
+                strtimer = '<div class="invalid-time">抢票已结束，感谢您的关注！</div>';
                 document.getElementById('duringbook').style.display  ="none";
+                document.getElementById('ticket-during-book').style.display  ="none";
             }
             if(actstatus == 1){
-                strtimer = '订票已经开始!';
+                strtimer = '<div class="invalid-time">抢票已经开始!</div>';
                 document.getElementById('beforebook').style.display  ="none";
+                document.getElementById('ticket-before-book').style.display  ="none";
             }
         }
         document.getElementById('activitytimer').innerHTML = strtimer;
