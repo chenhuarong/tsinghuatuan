@@ -27,8 +27,9 @@ from django.views.decorators.csrf import csrf_protect,csrf_exempt
 import urllib,urllib2
 
 from urlhandler.models import Activity, Ticket
-
 from urlhandler.models import User as Booker
+from urlhandler.models import UserSession
+
 @csrf_protect
 def home(request):
     if not request.user.is_authenticated():
@@ -320,39 +321,52 @@ def order_login(request):
         raise Http404
 
     if 'loginteacher_action.jsp' in res:
-        rtnJSON['message'] = 'success'
-        rtnJSON['next'] = reverse('adminpage.views.order_list', kwargs={'stuid':username})
+        user_session = UserSession()
+        if(user_session.generate_session(username)):
+            rtnJSON['message'] = 'success'
+            u = UserSession.objects.get(stu_id = username)
+            rtnJSON['next'] = reverse('adminpage.views.order_list', kwargs={'stuid':username,'pk':u.session_key})
+
+        else:
+            rtnJSON['message'] = 'failed'
     else:
         rtnJSON['message'] = 'failed'
 
     return HttpResponse(json.dumps(rtnJSON), content_type='application/json')
 
-def order_list(request, stuid):
+def order_logout(request):
+    return HttpResponseRedirect(reverse('adminpage.views.order_index'))
+
+def order_list(request, stuid, pk):
     orders = []
     try:
-        qset = Ticket.objects.filter(user_id = stuid)
+        user_sesssion = UserSession()
+        if user_sesssion.is_session_valid(stu_id=stuid,session_key=pk):
+            qset = Ticket.objects.filter(stu_id = stuid)
 
-        for x in qset:
-            item = {}
-            print x.activity_id
+            for x in qset:
+                item = {}
 
-            activity = Activity.objects.get(id = x.activity_id)
+                activity = Activity.objects.get(id = x.activity_id)
 
-            item['name'] = activity.name
+                item['name'] = activity.name
 
-            item['start_time'] = activity.start_time
+                item['start_time'] = activity.start_time
 
-            item['end_time'] = activity.end_time
-            item['place'] = activity.place
-            item['seat'] = x.seat
-            item['valid'] = x.status
-            item['unique_id'] = x.unique_id
+                item['end_time'] = activity.end_time
+                item['place'] = activity.place
+                item['seat'] = x.seat
+                item['valid'] = x.status
+                item['unique_id'] = x.unique_id
+                item['keyvalue'] = pk
 
-            orders.append(item)
+                orders.append(item)
+        else:
+            return HttpResponseRedirect(reverse('adminpage.views.order_index'))
 
-        print orders
     except:
         raise Http404
+
     return render_to_response('order_list.html', {
         'orders': orders,
     }, context_instance=RequestContext(request))
@@ -360,11 +374,20 @@ def order_list(request, stuid):
 def print_ticket(request, unique_id):
     try:
         ticket = Ticket.objects.get(unique_id = unique_id)
-        activity = Activity.objects.get(id = ticket.activity_id)
-        qr_addr = "http://tsinghuaqr.duapp.com/fit/" + unique_id
+
+        pk = request.POST.get('pk')
+
+        user_session = UserSession()
+        if(user_session.can_print(stu_id=ticket.stu_id,session_key=pk)):
+            activity = Activity.objects.get(id = ticket.activity_id)
+            qr_addr = "http://tsinghuaqr.duapp.com/fit/" + unique_id
+        else:
+            return HttpResponseRedirect(reverse('adminpage.views.order_index'))
+
     except:
         raise Http404
     return render_to_response('print_ticket.html', {
         'qr_addr': qr_addr,
-        'activity': activity
+        'activity': activity,
+        'stu_id':ticket.stu_id
     },context_instance=RequestContext(request))

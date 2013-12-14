@@ -6,6 +6,10 @@
     <link href="{% static "css/ticket_detail.css" %}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
+{% block username %}
+    <a href={% url adminpage.views.order_logout %} >登出</a>
+{% endblock %}
+
 {% block content %}
     <div class="container">
         <div class="ticket">
@@ -17,13 +21,16 @@
             </div>
             <div>
                 <p>
-                    开始时间:{{ activity.start_time|date:"y/m/d l H:i" }}
+                    学号：{{ stu_id }}
                 </p>
                 <p>
-                    结束时间:{{ activity.end_time|date:"y/m/d l H:i" }}
+                    开始时间：{{ activity.start_time|date:"y/m/d l H:i" }}
                 </p>
                 <p>
-                    地点:{{ activity.place }}
+                    结束时间：{{ activity.end_time|date:"y/m/d l H:i" }}
+                </p>
+                <p>
+                    地点：{{ activity.place }}
                 </p>
                 <p>
                     座位:
