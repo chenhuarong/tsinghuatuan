@@ -287,7 +287,7 @@ def activity_post(request):
                 now = datetime.now()
                 for keyact in iskey:
                     if now < keyact.end_time:
-                        rtnJSON['error'] = "当前有活动正在使用该活动代码"
+                        rtnJSON['error'] = u'当前有活动正在使用该活动代码'
                         return HttpResponse(json.dumps(rtnJSON, cls=DatetimeJsonEncoder), content_type='application/json')
             activity = activity_create(post)
             rtnJSON['updateUrl'] = reverse('adminpage.views.activity_detail', kwargs={'actid': activity.id})
