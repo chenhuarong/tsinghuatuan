@@ -240,6 +240,7 @@ def book_ticket(msg, key):
 
     with transaction.commit_on_success():
         activities = Activity.objects.select_for_update().filter(status=1, book_end__gte=now, book_start__lte=now, key=key)
+
         if activities.exists() == 0:
             future_activities = Activity.objects.filter(status=1, book_start__gte=now, key=key)
             if not future_activities.exists():
@@ -255,7 +256,9 @@ def book_ticket(msg, key):
                                                                                                                     '/userpage/activity/?activityid='+str(future_activity.id)))
         else:
             activity = activities[0]
+
         tickets = Ticket.objects.select_for_update().filter(stu_id=user.stu_id, activity=activity)
+        
         if tickets.exists() == 0:
             if activity.remain_tickets == 0:
                 return  get_reply_text_xml(msg, u'票已抢完，欢迎关注下次活动')
