@@ -145,7 +145,7 @@ def get_tickets(msg):
         item = item % (ticket.activity.name, description, QRCODE_URL + str(ticket.unique_id), url)
         return get_reply_news_xml(msg, item, 1)
     else:
-        return get_reply_text_xml(msg, u'\r\n-----------------------\r\n'.join(reply_content) if not (len(reply_content) == 0) else u'您目前没有票')
+        return get_reply_text_xml(msg, u'\n-----------------------\n'.join(reply_content) if not (len(reply_content) == 0) else u'您目前没有票')
 
 
 #check fetch command message
