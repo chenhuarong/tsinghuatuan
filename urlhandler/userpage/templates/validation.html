@@ -7,11 +7,11 @@
 {% endblock %}
 
 {% block css %}
-<link href="{% static "css/validation.css" %}" rel="stylesheet" type="text/css" />
+<link href="{% static "css/validation.css" %}?_=3" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 {% block js %}
-    <script src="{% static "js/validation.js" %}"></script>
+    <script src="{% static "js/validation.js" %}?_=3"></script>
     <script>
     function ajaxForm() {
         submitValidation('{{ openid }}');

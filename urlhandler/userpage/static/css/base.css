@@ -11,7 +11,7 @@ body
     font-family:"微软雅黑","黑体","宋体";
     font-size: 12px;
     line-height: 1.428571429;
-    background:lightyellow;
+    background:url("../img/bg.png");
     color: #423932;
 }
 hr {

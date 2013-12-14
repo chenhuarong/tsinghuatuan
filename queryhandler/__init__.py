@@ -11,13 +11,14 @@ from .tickethandler import *
 functions = [
     {'check':check_bookable_activities, 'do':get_bookable_activities},
     {'check':check_ticket_cmd, 'do':get_tickets},
-    {'check':check_book_cmd, 'do':get_book_cmd_response},
+    {'check':check_book_cmd, 'do':get_book_ticket_response},
     {'check':check_help, 'do':get_help_response},
     {'check':check_subscribe, 'do':get_subscibe_response},
     {'check':check_unsubscribe, 'do':get_unsubscibe_response},
     {'check':check_bind_account, 'do':bind_account},
-    {'check':check_book_event, 'do':get_book_event_response},
+    {'check':check_book_event, 'do':get_book_ticket_response},
     {'check':check_return_cmd, 'do':return_tickets},
+    {'check':check_fetch_cmd, 'do':get_fetch_cmd_response},
 ]
 
 # convert string 'a=1&b=2&c=3' to dict {'a':1,'b':2,'c':3}
@@ -52,6 +53,7 @@ def handle_weixin_request(environ):
         except (TypeError, ValueError):
             request_body = None
 
+        request_body = unicode(request_body, "utf-8")
         raw_str = smart_str(request_body)
         msg = parse_msg_xml(ET.fromstring(raw_str))
 

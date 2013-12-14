@@ -2,15 +2,15 @@
 
     {% if act_status == 0 %}
         <div class="timer-wrapper" id="duringbook">
-        抢票正在进行中，距抢票结束还有：
+        <h7>抢票正在进行中，距抢票结束还有：</h7>
         </div>
     {% elif act_status == 1 %}
         <div class="timer-wrapper" id="beforebook">
-        距抢票开始还有：
+        <h7>距抢票开始还有：</h7>
         </div>
     {% else %}
         <div class="invalid-time">
-        抢票已结束，感谢您的关注！
+        <h7>抢票已结束，感谢您的关注！</h7>
         </div>
     {% endif %}
     <div class="details-divider"></div>
@@ -23,7 +23,7 @@
     {% if act_status == 0 %}
         <div id="ticket-during-book">
             <div class="timer-wrapper">
-            当前余票：(截至{{ cur_time|date:"Y年m月d日H时i分s秒" }})
+            <h7>当前余票：(截至{{ cur_time|date:"Y年m月d日H时i分s秒" }})</h7>
             </div>
             <div class="details-divider"></div>
             <div style="text-align: center;">
@@ -34,7 +34,7 @@
     {% elif act_status == 1 %}
         <div  id="ticket-before-book">
             <div class="timer-wrapper">
-            活动预计发票：
+            <h7>活动预计发票：</h7>
             </div>
             <div style="text-align: center;">
                 <span class="ticket">{{ act_totaltickets }}</span>张
@@ -47,7 +47,7 @@
 
 
     <div class="timer-wrapper">
-    抢票时间：
+    <h7>抢票时间：</h7>
     </div>
     <div class="details-wrapper">
         <div class="text-inner">
@@ -88,7 +88,7 @@
     -->
 
     <div class="timer-wrapper">
-    活动时间：
+    <h7>活动时间：</h7>
     </div>
     <div class="details-wrapper">
         <div class="text-inner">
@@ -128,31 +128,31 @@
     <div class="details-divider"></div>
     -->
     <div class="timer-wrapper">
-    活动地点：
+    <h7>活动地点：</h7>
     </div>
     <div class="details-wrapper">
         <div class="text-inner">
             <div class="trigger">
-                <a>{{ act_place }}</a>
+                <h7>{{ act_place }}</h7>
             </div>
         </div>
     </div>
     <div class="details-divider"></div>
 
     <div class="timer-wrapper">
-    取票代码：<!--<div class="clipcopy" id="copykey">点此复制</div>-->
+    <h7>取票代码：</h7><!--<div class="clipcopy" id="copykey">点此复制</div>-->
     </div>
     <div class="details-wrapper">
         <div class="text-inner">
             <div class="trigger">
-                <a id="actkey">{{ act_key }}   </a>
+                <h7>{{ act_key }}   </h7>
             </div>
         </div>
     </div>
     <div class="details-divider"></div>
 
     <div class="timer-wrapper">
-    活动详情：
+    <h7>活动详情：</h7>
     </div>
     <div class="details-wrapper" id="actabstract">
         <div class="text-inner">
