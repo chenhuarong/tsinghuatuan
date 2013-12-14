@@ -5,6 +5,7 @@
     <ignored path="src.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387037854949" ignored="false" />
+    <file path="/tickethandler.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387038217312" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,16 +32,16 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="337" column="9" selection-start="11297" selection-end="11297" vertical-scroll-proportion="0.0">
+            <state line="337" column="9" selection-start="11297" selection-end="11297" vertical-scroll-proportion="-0.76">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlhandler/userpage/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="24" selection-start="463" selection-end="463" vertical-scroll-proportion="0.4021164">
+            <state line="8" column="24" selection-start="463" selection-end="463" vertical-scroll-proportion="-6.08">
               <folding />
             </state>
           </provider>
@@ -49,7 +50,16 @@
       <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="75" selection-start="1255" selection-end="1255" vertical-scroll-proportion="0.0">
+            <state line="17" column="75" selection-start="1255" selection-end="1255" vertical-scroll-proportion="-8.52">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tickethandler.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="137" column="35" selection-start="5505" selection-end="5505" vertical-scroll-proportion="0.2764706">
               <folding />
             </state>
           </provider>
@@ -58,7 +68,7 @@
       <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlhandler/urlhandler/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="123" column="52" selection-start="3523" selection-end="3523" vertical-scroll-proportion="0.0">
+            <state line="123" column="52" selection-start="3523" selection-end="3523" vertical-scroll-proportion="-6.24">
               <folding />
             </state>
           </provider>
@@ -134,7 +144,6 @@
         <option value="$PROJECT_DIR$/urlhandler/adminpage/static/css/ticket_detail.css" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/views.py" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/help.html" />
-        <option value="$PROJECT_DIR$/queryhandler/tickethandler.py" />
         <option value="$PROJECT_DIR$/urlhandler/urlhandler/settings.py" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/print_ticket.html" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/order_list.html" />
@@ -143,6 +152,7 @@
         <option value="$PROJECT_DIR$/urlhandler/adminpage/views.py" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/urls.py" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/urls.py" />
+        <option value="$PROJECT_DIR$/queryhandler/tickethandler.py" />
       </list>
     </option>
   </component>
@@ -193,6 +203,52 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="weChatWorkspace" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="weChatWorkspace" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="urlhandler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="weChatWorkspace" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="urlhandler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="userpage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="weChatWorkspace" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="queryhandler" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -625,11 +681,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/base_with_nav.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="50" selection-start="421" selection-end="421" vertical-scroll-proportion="0.27738264" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/activity_checkin.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="0" selection-start="444" selection-end="444" vertical-scroll-proportion="0.2347084" />
@@ -688,13 +739,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/urlhandler/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="123" column="52" selection-start="3523" selection-end="3523" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/urlhandler/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="58" column="24" selection-start="1936" selection-end="1936" vertical-scroll-proportion="0.0">
@@ -702,23 +746,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/views.py">
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="337" column="9" selection-start="11297" selection-end="11297" vertical-scroll-proportion="0.0">
+        <state line="8" column="24" selection-start="463" selection-end="463" vertical-scroll-proportion="-6.08">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/urlhandler/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="123" column="52" selection-start="3523" selection-end="3523" vertical-scroll-proportion="-6.24">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="75" selection-start="1255" selection-end="1255" vertical-scroll-proportion="0.0">
+        <state line="17" column="75" selection-start="1255" selection-end="1255" vertical-scroll-proportion="-8.52">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/urls.py">
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="24" selection-start="463" selection-end="463" vertical-scroll-proportion="0.4021164">
+        <state line="337" column="9" selection-start="11297" selection-end="11297" vertical-scroll-proportion="-0.76">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="137" column="35" selection-start="5505" selection-end="5505" vertical-scroll-proportion="0.2764706">
           <folding />
         </state>
       </provider>

@@ -127,11 +127,14 @@ def get_tickets(msg):
     activities = Activity.objects.filter(status=1, end_time__gte=datetime.datetime.fromtimestamp(now))
     reply_content = []
     all_tickets = []
+    iCount = 0
     for activity in activities:
         tickets =  Ticket.objects.filter(stu_id=user.stu_id, activity=activity, status=1)
         if tickets.exists():
             all_tickets.append(tickets[0])
-            item = u'“%s”电子票，<a href="http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s">查看</a>\r\n' % (activity.name, tickets[0].unique_id)
+            item = u'“%s”电子票，<a href="http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s">查看</a>\n' % (activity.name, tickets[0].unique_id)
+            reply_content += [item]
+            item = u'-----------------------------------------------------'
             reply_content += [item]
 
     if len(all_tickets) == 1:
