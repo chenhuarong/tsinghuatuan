@@ -27,6 +27,17 @@
     {% include 'activityphoto.html' %}
 
     <div class="ticket-wrapper">
+        <b>电子票状态：</b>
+        {% if ticket_status == 0 %}
+            <span class="status-size ticket-invalid">无效</span>
+        {% elif ticket_status == 1 %}
+            <span class="status-size ticket-valid">有效</span>
+        {% elif ticket_status == 2 %}
+            <span class="status-size ticket-used">已使用</span>
+        {% else %}
+        {% endif %}
+    </div>
+    <div class="ticket-wrapper">
         <b>活动地点：</b>{{ act_place }}
     </div>
     <div class="ticket-wrapper">

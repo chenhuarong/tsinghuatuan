@@ -21,7 +21,7 @@ from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
-from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_protect,csrf_exempt
 
 #import database
 from urlhandler.models import Activity, Order, Ticket
@@ -38,13 +38,98 @@ def activity_list(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('adminpage.views.home'))
 
-    actmodels = Activity.objects.all()
+    actmodels = Activity.objects.order_by('-id').all()
     activities = []
     for act in actmodels:
         activities += [wrap_activity_dict(act)]
+    permission_num = 1 if request.user.is_superuser else 0
     return render_to_response('activity_list.html', {
         'activities': activities,
+        'permission': permission_num,
     })
+
+
+def activity_checkin(request, actid):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('adminpage.views.home'))
+    try:
+        activity = Activity.objects.get(id=actid)
+        if datetime.now() > activity.end_time:
+            raise 'Time out!'
+    except:
+        return HttpResponseRedirect(reverse('adminpage.views.activity_list'))
+
+    return render_to_response('activity_checkin.html', {
+        'activity': activity,
+    }, context_instance=RequestContext(request))
+
+
+def activity_checkin_post(request, actid):
+    if (not request.POST) or (not ('uid' in request.POST)):
+        raise Http404
+    try:
+        activity = Activity.objects.get(id=actid)
+    except:
+        return HttpResponse(json.dumps({'result': 'error', 'stuid': 'Unknown', 'msg': 'noact'}), content_type='application/json')
+
+    rtnJSON = {'result': 'error', 'stuid': 'Unknown', 'msg': 'rejected'}
+    flag = False
+    uid = request.POST['uid']
+    if len(uid) == 10:
+        if not uid.isdigit():
+            rtnJSON['result'] = 'error'
+            rtnJSON['stuid'] = 'Unknown'
+            rtnJSON['msg'] = 'rejected'
+            flag = True
+        if not flag:
+            rtnJSON['stuid'] = uid
+            try:
+                student = Booker.objects.get(stu_id=uid, status=1)
+            except Exception as e:
+                rtnJSON['msg'] = 'nouser'
+                flag = True
+            if not flag:
+                try:
+                    ticket = Ticket.objects.get(user=student, activity=activity)
+                    if ticket.status == 0:
+                        raise 'noticket'
+                    elif ticket.status == 2:
+                        rtnJSON['result'] = 'warning'
+                        rtnJSON['msg'] = 'used'
+                        flag = True
+                    elif ticket.status == 1:
+                        ticket.status = 2
+                        ticket.save()
+                        rtnJSON['msg'] = 'accepted'
+                        rtnJSON['result'] = 'success'
+                        flag = True
+                except:
+                    rtnJSON['msg'] = 'noticket'
+                    flag = True
+    elif len(uid) == 32:
+        try:
+            ticket = Ticket.objects.get(unique_id=uid, activity=activity)
+            if ticket.status == 0:
+                raise 'rejected'
+            elif ticket.status == 2:
+                rtnJSON['msg'] = 'used'
+                rtnJSON['stuid'] = ticket.user.stu_id
+                rtnJSON['result'] = 'warning'
+                flag = True
+            else:
+                ticket.status = 2
+                ticket.save()
+                rtnJSON['result'] = 'success'
+                rtnJSON['stuid'] = ticket.user.stu_id
+                rtnJSON['msg'] = 'accepted'
+                flag = True
+        except:
+            rtnJSON['result'] = 'error'
+            rtnJSON['stuid'] = 'Unknown'
+            rtnJSON['msg'] = 'rejected'
+            flag = True
+
+    return HttpResponse(json.dumps(rtnJSON), content_type='application/json')
 
 
 def login(request):
@@ -118,6 +203,21 @@ def activity_modify(activity):
     nowact.save()
     return nowact
 
+@csrf_exempt
+def activity_delete(request):
+    requestdata = request.POST
+    if not requestdata:
+        raise Http404
+    curact = Activity.objects.get(id= requestdata.get('activityId',''))
+    curact.delete()
+    #删除后刷新界面
+    actmodels = Activity.objects.all()
+    activities = []
+    for act in actmodels:
+        activities += [wrap_activity_dict(act)]
+    return render_to_response('activity_list.html', {
+        'activities': activities,
+    })
 
 def get_checked_tickets(activity):
     return Ticket.objects.filter(activity=activity, status=2).count()
@@ -180,6 +280,13 @@ def activity_post(request):
         if 'id' in post:
             activity = activity_modify(post)
         else:
+            iskey = Activity.objects.filter(key=post['key'])
+            if iskey:
+                now = datetime.now()
+                for keyact in iskey:
+                    if now < keyact.end_time:
+                        rtnJSON['error'] = "当前有活动正在使用该活动代码"
+                        return HttpResponse(json.dumps(rtnJSON, cls=DatetimeJsonEncoder), content_type='application/json')
             activity = activity_create(post)
             rtnJSON['updateUrl'] = reverse('adminpage.views.activity_detail', kwargs={'actid': activity.id})
         rtnJSON['activity'] = wrap_activity_dict(activity)

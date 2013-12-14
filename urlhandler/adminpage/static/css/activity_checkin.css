@@ -1,0 +1,57 @@
+
+
+#pause-button {
+    width: 256px;
+    height: 256px;
+    background: url("/static/img/pause.png");
+    cursor: pointer;
+}
+
+#pause-button:hover {
+    background: url("/static/img/arrow_right.png");
+}
+
+.full-div {
+    text-align: center;
+}
+
+#logo-img {
+    margin-top: 20px;
+}
+
+#checkin-screen {
+    margin-top: 20px;
+}
+
+#input-uid {
+    ime-mode: disabled;
+    -webkit-ime-mode: disabled;
+    -moz-ime-mode: disabled;
+    -ms-ime-mode: disabled;
+}
+
+.ticket-status-img {
+    width: 32px;
+    height: 32px;
+}
+
+.tickets-header {
+    text-align: center;
+}
+
+#tickets-table-header {
+    margin-bottom: 0;
+}
+
+.tickets-table {
+    font-size: 22px;
+}
+
+#tickets-table-body-holder {
+    height: 500px;
+    overflow: auto;
+}
+
+#activity-time {
+    font-size: 30px;
+}

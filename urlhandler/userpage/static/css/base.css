@@ -11,7 +11,7 @@ body
     font-family:"微软雅黑","黑体","宋体";
     font-size: 12px;
     line-height: 1.428571429;
-    background:url(../img/bg.png) repeat;
+    background:lightyellow;
     color: #423932;
 }
 hr {
@@ -28,7 +28,6 @@ footer,
 header {
   display: block;
 }
-
 .header-img{
     width: 100%;
 }

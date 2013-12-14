@@ -8,5 +8,22 @@
     padding-bottom: 5px;
 }
 img{
-    width: 85%;
+    width: 50%;
+}
+.status-size{
+    font-size: 18px;
+}
+.ticket-invalid{
+   color: red;
+}
+.ticket-valid{
+   color: green;
+}
+.ticket-used{
+    color: orangered;
+}
+footer{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
 }

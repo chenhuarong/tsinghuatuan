@@ -89,6 +89,16 @@ function getTd(para) {
     return $('<td class="td-' + para + '"></td>');
 }
 
+function expand_long_text(dom) {
+    var newhtml = '', par = $(dom).parent(), refdata = par.text();
+    dom = $(dom);
+    refdata = refdata.substring(0, refdata.length - 3);
+    newhtml = dom.attr('ref-data') + ' <a style="cursor:pointer;" ref-data="' + refdata + '" ref-hint="' + dom.text() + '" onclick="expand_long_text(this);">' + dom.attr('ref-hint') + '</a>';
+    par.html(newhtml);
+}
+
+var duringbook = new Array,beforeact = new Array, duringact = new Array;
+
 var tdMap = {
     'status': 'status',
     'name': 'text',
@@ -96,7 +106,19 @@ var tdMap = {
     'activity_time': 'time',
     'place': 'text',
     'book_time': 'time',
-    'detail_url': 'editlink'
+    'operations': 'operation_links',
+    'delete': 'deletelink'
+}, operationMap = {
+    'checkin': function(act) {
+        if (new Date() >= act.end_time) {
+            return false;
+        } else {
+            return true;
+        }
+    },
+    'detail': function(act) {
+        return true;
+    }
 }, tdActionMap = {
     'status': function(act, key) {
         return getSmartStatus(act);
@@ -107,15 +129,42 @@ var tdMap = {
     'longtext': function(act, key) {
         var str = act[key];
         if (str.length > 55) {
-            str = str.substr(0, 55) + '... <a href="' + act['detail_url'] + '">显示全部</a>';
+            str = str.substr(0, 55) + '... <a style="cursor:pointer;" ref-data="' + act[key] + '" ref-hint="收起" onclick="expand_long_text(this);">展开</a>';
         }
         return str;
     },
     'time': function(act, key) {
         return smartTimeMap[key](act);
     },
-    'editlink': function(act, key) {
-        return '<a href="' + act[key] + '"><span class="glyphicon glyphicon-pencil"></span> 详情</a>';
+    'operation_links': function(act, key) {
+        var links = act[key], result = [], i, len;
+        for (i in links) {
+            if (operationMap[i](act)) {
+                result.push('<a href="' + links[i] + '" target="' + operations_target[i] + '"><span class="glyphicon glyphicon-' + operations_icon[i] + '"></span> ' + operations_name[i] + '</a>');
+            }
+        }
+        return result.join('<br/>');
+    },
+    'deletelink':function(act, key) {
+        if (typeof act[key] == 'undefined') {
+            return;
+        }
+        var now = new Date();
+        if(now >= getDateByObj(act.book_start) && now < getDateByObj(act.book_end)){
+            duringbook.push(act[key]);
+            return '<span id="del'+act[key]+'" class="td-ban glyphicon glyphicon-ban-circle" ></span>';
+        }
+        else if(now >= getDateByObj(act.book_end) && now < getDateByObj(act.start_time)){
+            beforeact.push(act[key]);
+            return '<span id="del'+act[key]+'" class="td-ban glyphicon glyphicon-ban-circle" ></span>';
+        }
+        else if(now >= getDateByObj(act.start_time) && now < getDateByObj(act.end_time)){
+            duringact.push(act[key]);
+            return '<span id="del'+act[key]+'" class="td-ban glyphicon glyphicon-ban-circle" ></span>';
+        }
+        else{
+            return '<a href="#" id="'+act[key]+'" onclick="deleteact('+act[key]+')"><span class="glyphicon glyphicon-trash"></span></a>';
+        }
     }
 }, smartTimeMap = {
     'activity_time': function(act) {
@@ -126,8 +175,81 @@ var tdMap = {
     }
 };
 
+function getDateByObj(obj) {
+    return obj;
+}
+
+function deleteact(actid){
+    //alert(actid);
+    var i, len, curact;
+    for(i = 0, len = activities.length; i < len; ++i){
+        if(activities[i].delete == actid){
+            curact = activities[i];
+            break;
+        }
+    }
+    var content = '确认删除<span style="color:red">'+getSmartStatus(curact)+'</span>活动：<span style="color:red">'+curact.name+'</span>？';
+    $('#modalcontent').html(content);
+    $('#'+actid).css("background-color","#FFE4C4");
+    $('#deleteid').val(actid);
+    $('#delModal').modal({
+      keyboard: false,
+      backdrop:false
+    });
+    return;
+}
+
+function delConfirm(){
+    var delid = $('#deleteid').val();
+    //alert(delid);
+    var tmp  ="/adminpage/delete/";
+    $.post(tmp,{'activityId':delid}, function(ret) {
+        $('#'+delid).css("background-color","#FFF");
+        window.location.href="/adminpage/list/"
+    });
+}
+
+function delCancel(){
+    var delid = $('#deleteid').val();
+    $('#'+delid).css("background-color","#FFF");
+}
+
+function createtips(){
+    var id;
+    for(id in duringbook){
+        $('#del'+duringbook[id]).popover({
+            html: true,
+            placement: 'top',
+            title:'',
+            content: '<span style="color:red;">活动正在订票中，不能删除!</span>',
+            trigger: 'hover',
+            container: 'body'
+        });
+    }
+    for(id in beforeact){
+        $('#del'+beforeact[id]).popover({
+            html: true,
+            placement: 'top',
+            title:'',
+            content: '<span style="color:red;">活动已出票，不能删除!</span>',
+            trigger: 'hover',
+            container: 'body'
+        });
+    }
+    for(id in duringact){
+        $('#del'+duringact[id]).popover({
+            html: true,
+            placement: 'top',
+            title:'',
+            content: '<span style="color:red;">活动正在进行中，不能删除!</span>',
+            trigger: 'hover',
+            container: 'body'
+        });
+    }
+}
+
 function appendAct(act) {
-    var tr = $('<tr></tr>'), key;
+    var tr = $('<tr' + ((typeof act.delete != "undefined") ? (' id="'+act.delete+'"') : '') + '></tr>'), key;
     for (key in tdMap) {
         getTd(key).html(tdActionMap[tdMap[key]](act, key)).appendTo(tr);
     }
@@ -139,6 +261,7 @@ function initialActs() {
     for (i = 0, len = activities.length; i < len; ++i) {
         appendAct(activities[i]);
     }
+    createtips();
 }
 
 clearActs();

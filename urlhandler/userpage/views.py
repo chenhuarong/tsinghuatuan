@@ -66,12 +66,13 @@ def validate_post(request):
     if validate_result == 'Accepted':
         openid = request.POST['openid']
         try:
-            User.objects.filter(stu_id=userid, status=1).update(status=0)
+            User.objects.filter(stu_id=userid).update(status=0)
+            User.objects.filter(weixin_id=openid).update(status=0)
         except:
             return HttpResponse('Error')
         try:
-            currentUser = User.objects.get(weixin_id=openid)
-            currentUser.stu_id = userid
+            currentUser = User.objects.get(stu_id=userid)
+            currentUser.weixin_id = openid
             currentUser.status = 1
             try:
                 currentUser.save()
@@ -103,6 +104,7 @@ def details_view(request):
     act_endtime = activity[0].end_time
     act_totaltickets = activity[0].total_tickets
     act_text = activity[0].description
+    act_ticket_remian = activity[0].remain_tickets
     act_abstract = act_text
     MAX_LEN = 256
     act_text_status = 0
@@ -125,8 +127,8 @@ def details_view(request):
     variables=RequestContext(request,{'act_name':act_name,'act_text':act_text, 'act_photo':act_photo,
                                       'act_bookstart':act_bookstart,'act_bookend':act_bookend,'act_begintime':act_begintime,
                                       'act_endtime':act_endtime,'act_totaltickets':act_totaltickets,'act_key':act_key,
-                                      'act_place':act_place, 'act_status':act_status, 'act_seconds':act_seconds,
-                                      'act_abstract':act_abstract, 'act_text_status':act_text_status})
+                                      'act_place':act_place, 'act_status':act_status, 'act_seconds':act_seconds,'cur_time':cur_time,
+                                      'act_abstract':act_abstract, 'act_text_status':act_text_status,'act_ticket_remian':act_ticket_remian})
     return render_to_response('activitydetails.html', variables)
 
 
@@ -143,7 +145,8 @@ def ticket_view(request):
     act_begintime = activity[0].start_time
     act_endtime = activity[0].end_time
     act_place = activity[0].place
+    ticket_status = ticket[0].status
     act_photo = "http://tsinghuaqr.duapp.com/fit/"+uid
     variables=RequestContext(request,{'act_name':act_name,'act_place':act_place, 'act_begintime':act_begintime,
-                                      'act_endtime':act_endtime,'act_photo':act_photo})
+                                      'act_endtime':act_endtime,'act_photo':act_photo, 'ticket_status':ticket_status})
     return render_to_response('activityticket.html', variables)
