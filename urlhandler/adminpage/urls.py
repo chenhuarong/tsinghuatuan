@@ -13,6 +13,6 @@ urlpatterns = patterns('',
                        url(r'^logout/$', 'adminpage.views.logout'),
                        url(r'^order/$', 'adminpage.views.order_index'),
                        url(r'^order_login/$', 'adminpage.views.order_login'),
-                       url(r'^order_list/(?P<stuid>\d+)/$', 'adminpage.views.order_list'),
+                       url(r'^order_list/(?P<stuid>\d+)/(?P<pk>\S+)/$', 'adminpage.views.order_list'),
                        url(r'^print/(?P<unique_id>\d+)/$', 'adminpage.views.print_ticket'),
                        )
