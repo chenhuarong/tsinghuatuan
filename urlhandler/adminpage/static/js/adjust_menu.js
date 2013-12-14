@@ -57,7 +57,8 @@ var htmls = {
     'down-icon': '<span class="glyphicon glyphicon-circle-arrow-down"></span>',
     'minus-icon': '<span class="glyphicon glyphicon-minus"></span>',
     'plus-icon': '<span class="glyphicon glyphicon-plus"></span>',
-    'empty-icon': '<span class="glyphicon"></span>'
+    'empty-icon': '<span class="glyphicon"></span>',
+    'remove-icon': '<span class="glyphicon glyphicon-remove"></span>'
 }
 
 function upmenu(count) {
@@ -79,6 +80,11 @@ function downmenu(count) {
     }
 }
 
+function removemenu(count) {
+    menus.splice(count, 1);
+    update_menus(menus);
+}
+
 function wrap_menu_item_html(menu, i, len) {
     return '<li class="list-group-item">'
         + '<button class="btn btn-link"'
@@ -90,6 +96,9 @@ function wrap_menu_item_html(menu, i, len) {
         + (i < len - 1 ? ('onclick="downmenu(' + i + ')"') : 'disabled')
         + '>'
         + (i < len - 1 ? htmls['down-icon'] : htmls['empty-icon'])
+        + '</button>'
+        + '<button class="btn btn-link" onclick="removemenu(' + i + ');">'
+        + htmls['remove-icon']
         + '</button>'
         + menu.name
         + '</li>';

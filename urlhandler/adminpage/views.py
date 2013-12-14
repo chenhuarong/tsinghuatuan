@@ -449,3 +449,5 @@ def custom_menu_modify_post(request):
         }]
     current_menu[2]['sub_button'] = sub_button
     return HttpResponse(modify_custom_menu(json.dumps({'button':current_menu}, ensure_ascii=False).encode('utf8')), content_type='application/json')
+
+
