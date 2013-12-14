@@ -249,10 +249,18 @@ def book_ticket(msg, key):
                     return get_reply_text_xml(msg, u'该活动不存在')
                 else:
                     #如果有票，返回票的信息
-
+                    tmptics = Ticket.objects.filter(activity = old_activities[0], stu_id=user.stu_id, status=1)
+                    if tmptics.exists():
+                        item = '<item><Title><![CDATA[%s]]></Title><Description><![CDATA[%s]]></Description>' \
+                                '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
+                        description = u'活动时间：%s\r\n活动地点：%s\r\n回复“退票 %s”即可退票' %(tmptics[0].activity.start_time.strftime('%Y-%m-%d %H:%M'),
+                                                                           tmptics[0].activity.place, tmptics[0].activity.key)
+                        url =  'http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s' % tmptics[0].unique_id
+                        item = item % (tmptics[0].activity.name, description, QRCODE_URL + str(tmptics[0].unique_id), url)
+                        return get_reply_news_xml(msg, item, 1)
                     #如果没票，返回无票信息
-
-                    return get_reply_text_xml(msg, u'抢票时间已过，不能再抢票了,欢迎关注下次活动')
+                    else:
+                        return get_reply_text_xml(msg, u'很抱歉，您没有抢到该活动的票')
             else:
                 future_activity = future_activities[0]
                 start_time = u'%s年%s月%s日%s时%s分' % (future_activity.book_start.year, future_activity.book_start.month, future_activity.book_start.day, future_activity.book_start.hour, future_activity.book_start.minute)
