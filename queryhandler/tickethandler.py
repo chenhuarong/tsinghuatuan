@@ -118,7 +118,7 @@ def check_ticket_cmd(msg):
 #get list of tickets
 def get_tickets(msg):
     if is_authenticated(msg['FromUserName']):
-        user = User.objects.get(weixin_id=msg['FromUserName'])
+        user = User.objects.get(weixin_id=msg['FromUserName'], status = 1)
     else:
         return get_reply_text_xml(msg, u'对不起，尚未绑定账号，不能查票，<a href="http://tsinghuatuan.duapp.com/userpage/validate/?openid=%s">点此绑定信息'
                                        u'门户账号</a>' % msg['FromUserName'])
