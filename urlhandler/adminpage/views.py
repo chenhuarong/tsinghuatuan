@@ -417,7 +417,7 @@ def custom_menu_get(request):
     for button in custom_buttons:
         sbtns = button.get('sub_button', [])
         if len(sbtns) > 0:
-            if sbtns[0].startswith(WEIXIN_BOOK_HEADER):
+            if sbtns[0].get('key', '').startswith(WEIXIN_BOOK_HEADER):
                 current_menu = sbtns
                 break
     wrap_menu = []
