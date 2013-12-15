@@ -17,19 +17,25 @@ WEIXIN_CUSTOM_MENU_TEMPLATE = {
                 {
                     "type": "click",
                     "name": "活动",
-                    "key": "TSINGHUA_ACTIVITY",
+                    "key": "V1001_TODAT_ACTIVE",
                     "sub_button": []
                 },
                 {
                     "type": "click",
                     "name": "讲座",
-                    "key": "TSINGHUA_LECTURE",
+                    "key": "V1001_TODAT_LECTURE",
                     "sub_button": []
                 },
                 {
                     "type": "click",
                     "name": "新闻",
-                    "key": "TSINGHUA_NEWS",
+                    "key": "V1001_SCHOOL_NEWS",
+                    "sub_button": []
+                },
+                {
+                    "type": "click",
+                    "name": "协会",
+                    "key": "V1001_OGNIZATION",
                     "sub_button": []
                 },
                 {

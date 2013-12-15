@@ -6,7 +6,8 @@ import xml.etree.ElementTree as ET
 from django.utils.encoding import smart_str
 from queryhandler.settings import WEIXIN_TOKEN
 from urlhandler.models import *
-from .tickethandler import *
+from queryhandler.tickethandler import *
+from queryhandler.query_transfer import get_information_response
 
 functions = [
     {'check':check_bookable_activities, 'do':get_bookable_activities},
@@ -53,8 +54,7 @@ def handle_weixin_request(environ):
         except (TypeError, ValueError):
             request_body = None
 
-        request_body = unicode(request_body, "utf-8")
-        raw_str = smart_str(request_body)
+        raw_str = smart_str(unicode(request_body, "utf-8"))
         msg = parse_msg_xml(ET.fromstring(raw_str))
 
         #recognize type of message and return result
@@ -72,7 +72,7 @@ def handle_weixin_request(environ):
             for function in functions:
                 if function['check'](msg):
                     return function['do'](msg)
-        return get_help_response(msg)
+        return get_information_response(request_body)
 
 
 # check signature as the weixin API document provided

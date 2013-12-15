@@ -5,3 +5,5 @@ QRCODE_URL = 'http://tsinghuaqr.duapp.com/'
 
 SITE_DOMAIN = 'http://tuan.ssast.org'
 SITE_HTTP_PROTOCOL = 'http'
+
+INFORMATION_SITE_DOMAIN = 'unix:/tmp/uwsgi_tuantuan'
