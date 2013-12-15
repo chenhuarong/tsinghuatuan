@@ -89,11 +89,8 @@ def validate_post(request):
 
 ###################### Activity Detail ######################
 
-def details_view(request):
-    requestdata = request.GET
-    if (not requestdata) or (not 'activityid' in requestdata):
-        raise Http404
-    activity = Activity.objects.filter(id=requestdata.get('activityid', ''))
+def details_view(request, activityid):
+    activity = Activity.objects.filter(id=activityid)
     if not activity.exists():
         raise Http404  #current activity is invalid
     act_name = activity[0].name
@@ -133,11 +130,7 @@ def details_view(request):
     return render_to_response('activitydetails.html', variables)
 
 
-def ticket_view(request):
-    requestdata = request.GET
-    if (not requestdata) or (not 'uid' in requestdata):
-        raise Http404
-    uid  = requestdata.get('uid', '')
+def ticket_view(request, uid):
     ticket = Ticket.objects.filter(unique_id=uid)
     if not ticket.exists():
         raise Http404  #current activity is invalid
