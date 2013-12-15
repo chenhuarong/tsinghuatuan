@@ -180,11 +180,11 @@ def get_fetch_cmd_response(msg):
     if len(receive_msg) > 1:
         key = receive_msg[1]
     else:
-        key = ''
+        return get_reply_text_xml(msg, u'您好，格式不正确！请输入“取票 活动代称”，如：“取票 马兰花开”将向您返回马兰花开活动的电子票。')
     activities = Activity.objects.filter(status=1,end_time__gte=now, key=key)
 
     if not activities.exists():
-        return get_reply_text_xml(msg, u'活动代号不存在')
+        return get_reply_text_xml(msg, u'活动不存在，请重试:)')
     else:
         activity = activities[0]
 
@@ -220,7 +220,7 @@ def get_book_ticket_response(msg):
         if len(receive_msg) > 1:
             key = receive_msg[1]
         else:
-            key = ''
+            return get_reply_text_xml(msg, u'您好，格式不正确！请输入“抢票 活动代称”，如：“抢票 马兰花开”')
     else:
         cmd_list = msg['EventKey'].split('_')
         activity_id = int(cmd_list[2])
@@ -257,16 +257,18 @@ def book_ticket(msg, key):
             if not future_activities.exists():
                 old_activities = Activity.objects.filter(status=1, key=key)#已发布的，活动代码为key（可能有多张活动代码相同的活动）
                 if not old_activities.exists():
-                    return get_reply_text_xml(msg, u'该活动不存在')
+                    return get_reply_text_xml(msg, u'活动不存在，请重试:)')
                 else:
                     #如果有票，返回票的信息
                     if len(old_activities) == 1:#如果有一张票，直接返回电子票
                         tmptics = Ticket.objects.filter(activity = old_activities[0], stu_id=user.stu_id, status=1)
                         if tmptics.exists():
                             item = '<item><Title><![CDATA[%s]]></Title><Description><![CDATA[%s]]></Description>' \
-                                    '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
-                            description = u'活动时间：%s\n活动地点：%s\n回复“退票 %s”即可退票' %(tmptics[0].activity.start_time.strftime('%Y-%m-%d %H:%M'),
-                                                                               tmptics[0].activity.place, tmptics[0].activity.key)
+                                   '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
+                            description = u'活动时间：%s\n活动地点：%s' %(tmptics[0].activity.start_time.strftime('%Y-%m-%d %H:%M'),
+                                                                               tmptics[0].activity.place, )
+                            if now < tmptics[0].activity.book_end:
+                                description += u'\n回复“退票 %s”即可退票' % (tmptics[0].activity.key, )
                             url = s_reverse_ticket_detail(tmptics[0].unique_id)
                             item = item % (tmptics[0].activity.name, description, QRCODE_URL + str(tmptics[0].unique_id), url)
                             return get_reply_news_xml(msg, item, 1)
@@ -351,11 +353,11 @@ def return_tickets(msg):
     if len(receive_msg) > 1:
         key = receive_msg[1]
     else:
-        key = ''
+        return get_reply_text_xml(msg, u'您好，格式不正确！请输入“退票 活动代称”，如：“退票 马兰花开”会将退订马兰花开活动的票（该操作不可恢复，请谨慎回复！）')
     activities = Activity.objects.filter(status=1, end_time__gte=now, key=key)
 
     if not activities.exists():
-        return get_reply_text_xml(msg, u'活动代号不存在')
+        return get_reply_text_xml(msg, u'活动不存在，请重试:)')
     else:
         activity = activities[0]
 
@@ -450,6 +452,3 @@ def no_book_acts_response(msg):
     fromuser = msg['FromUserName']
     if is_authenticated(fromuser):
         return get_reply_text_xml(msg, u'您好，现在没有推荐的抢票活动哟~')
-    else:
-        return get_reply_text_xml(msg, u'您好，请先绑定信息门户账号~<a href="' + s_reverse_validate(fromuser) + '">'
-                                       u'点我绑定</a>')
