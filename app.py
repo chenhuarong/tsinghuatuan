@@ -13,9 +13,11 @@ django_WSGI = WSGIHandler()
 
 from queryhandler import handle_weixin_request
 from settings import LUCKY_URL
+from queryhandler.settings import SITE_DOMAIN, SITE_HTTP_PROTOCOL
 
 def app(environ, start_response):
-    if environ['PATH_INFO'] == LUCKY_URL:
+    update_site_domain(environ.get('HTTP_HOST', ''))
+    if environ.get('PATH_INFO', '') == LUCKY_URL:
         result = handle_weixin_request(environ)
         status = '200 OK'
         headers = [('Content-type', 'text/html')]
@@ -28,3 +30,11 @@ def app(environ, start_response):
         #return [environ['PATH_INFO']]
         return django_WSGI.__call__(environ, start_response)
 
+
+def update_site_domain(newdomain):
+    global SITE_DOMAIN
+    if newdomain.startswith('http://') or newdomain.startswith('https://'):
+        SITE_DOMAIN = newdomain
+    elif len(newdomain) < 4:
+        return
+    SITE_DOMAIN = SITE_HTTP_PROTOCOL + '://' + newdomain

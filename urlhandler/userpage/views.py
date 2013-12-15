@@ -14,17 +14,17 @@ def home(request):
 
 ###################### Validate ######################
 # request.GET['openid'] must be provided.
-def validate_view(request):
-    if (not request.GET) or (not 'openid' in request.GET):
-        raise Http404
-    requestdata = request.GET
-    if User.objects.filter(weixin_id=requestdata.get('openid', ''), status=1).exists():
+def validate_view(request, openid):
+    if User.objects.filter(weixin_id=openid, status=1).exists():
         isValidated = 1
     else:
         isValidated = 0
+    studentid = ''
+    if request.GET:
+        studentid = request.GET.get('studentid', '')
     return render_to_response('validation.html', {
-        'openid': requestdata.get('openid', ''),
-        'studentid': requestdata.get('studentid', ''),
+        'openid': openid,
+        'studentid': studentid,
         'isValidated': isValidated,
     }, context_instance=RequestContext(request))
 

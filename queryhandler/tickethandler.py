@@ -3,7 +3,8 @@ import random
 import string
 import time,datetime
 from urlhandler.models import *
-from queryhandler.settings import QRCODE_URL
+from queryhandler.settings import QRCODE_URL, SITE_DOMAIN
+from django.core.urlresolvers import reverse
 from django.db.models import F
 from django.db import transaction
 
@@ -37,7 +38,7 @@ def is_authenticated(username):
 def check_help(msg):
     if msg['MsgType'] == 'text' and (msg['Content'] == '帮助' or msg['Content'].lower() == 'help'):
         return 1
-    if msg['MsgType'] == 'event' and msg['Event']=='CLICK'and msg['EventKey'] == 'TSINGHUA_HELP':
+    if msg['MsgType'] == 'event' and msg['Event'] == 'CLICK'and msg['EventKey'] == 'TSINGHUA_HELP':
         return 1
     if msg['MsgType'] == 'event' and msg['Event'] == 'scan':
         return 1
@@ -48,9 +49,9 @@ def get_help_response(msg):
     if is_authenticated(msg['FromUserName']):
         reply_content = u''
     else:
-        reply_content = u'<a href="http://tsinghuatuan.duapp.com/userpage/validate/?openid=%s">' \
-                        u'点此绑定信息门户账号</a>\r\n' % msg['FromUserName']
-    reply_content += u'您好，回复以下关键字可以得到相应结果:\r\n抢啥 查票 帮助'
+        reply_content = u'<a href="' + SITE_DOMAIN + reverse('userpage.views.validate_view', kwargs={'openid': msg['FromUserName']},) + '">' \
+                        u'点此绑定信息门户账号</a>\n'
+    reply_content += u'您好，回复以下关键字可以得到相应结果:\n抢啥 查票 帮助'
     return get_reply_text_xml(msg, reply_content)
 
 
@@ -58,7 +59,7 @@ def get_help_response(msg):
 def check_bookable_activities(msg):
     if msg['MsgType'] == 'text' and msg['Content'] == '抢啥':
         return 1
-    if msg['MsgType'] == 'event' and msg['Event']=='CLICK' and msg['EventKey'] == 'TSINGHUA_BOOK_WHAT':
+    if msg['MsgType'] == 'event' and msg['Event'] == 'CLICK' and msg['EventKey'] == 'TSINGHUA_BOOK_WHAT':
         return 1
     return 0
 
