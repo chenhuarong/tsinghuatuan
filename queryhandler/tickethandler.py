@@ -284,7 +284,7 @@ def book_ticket(msg, key):
                                 reply_content += [item]
                         return get_reply_text_xml(msg, u'\n-----------------------\n'.join(reply_content) if not (len(reply_content) == 0) else u'您目前没有票')
                     else:#票的数目小于1
-                        return get_reply_text_xml(msg, u'该活动不存在')
+                        return get_reply_text_xml(msg, u'活动不存在，请重试:)')
             else:
                 future_activity = future_activities[0]
                 start_time = u'%s年%s月%s日%s时%s分' % (future_activity.book_start.year, future_activity.book_start.month, future_activity.book_start.day, future_activity.book_start.hour, future_activity.book_start.minute)
@@ -353,7 +353,7 @@ def return_tickets(msg):
     if len(receive_msg) > 1:
         key = receive_msg[1]
     else:
-        return get_reply_text_xml(msg, u'您好，格式不正确！请输入“退票 活动代称”。\n如：“退票 马兰花开”会将退订马兰花开活动的票（该操作不可恢复，请谨慎回复！）')
+        return get_reply_text_xml(msg, u'您好，格式不正确！请输入“退票 活动代称”。\n如：“退票 马兰花开”将退订马兰花开活动的票。\n（请注意，该操作不可恢复！）')
     activities = Activity.objects.filter(status=1, end_time__gte=now, key=key)
 
     if not activities.exists():
@@ -449,6 +449,4 @@ def check_no_book_acts_event(msg):
     return 0
 
 def no_book_acts_response(msg):
-    fromuser = msg['FromUserName']
-    if is_authenticated(fromuser):
-        return get_reply_text_xml(msg, u'您好，现在没有推荐的抢票活动哟~')
+    return get_reply_text_xml(msg, u'您好，现在没有推荐的抢票活动哟~')
