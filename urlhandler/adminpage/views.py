@@ -31,7 +31,7 @@ from urlhandler.models import User as Booker
 from django.contrib.sessions.models import Session
 
 from weixinlib.custom_menu import get_custom_menu, modify_custom_menu
-from weixinlib.settings import WEIXIN_CUSTOM_MENU_TEMPLATE
+from weixinlib.settings import WEIXIN_CUSTOM_MENU_TEMPLATE, WEIXIN_BOOK_HEADER
 
 
 @csrf_protect
@@ -412,7 +412,14 @@ def custom_menu_get(request):
         return HttpResponseRedirect(reverse('adminpage.views.home'))
     if not request.user.is_superuser:
         return HttpResponseRedirect(reverse('adminpage.views.activity_list'))
-    current_menu = get_custom_menu()[2]['sub_button']
+    custom_buttons = get_custom_menu()
+    current_menu = []
+    for button in custom_buttons:
+        sbtns = button.get('sub_button', [])
+        if len(sbtns) > 0:
+            if sbtns[0].startswith(WEIXIN_BOOK_HEADER):
+                current_menu = sbtns
+                break
     wrap_menu = []
     for menu in current_menu:
         wrap_menu += [{

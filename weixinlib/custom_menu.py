@@ -12,7 +12,7 @@ def get_custom_menu():
     url = WEIXIN_URLS['get_custom_menu'](access_token)
     res = http_get(url)
     rjson = json.loads(res)
-    return rjson['menu']['button']
+    return rjson.get('menu',{}).get('button', [])
 
 
 def modify_custom_menu(buttons):
