@@ -180,7 +180,7 @@ def get_fetch_cmd_response(msg):
     if len(receive_msg) > 1:
         key = receive_msg[1]
     else:
-        return get_reply_text_xml(msg, u'您好，格式不正确！请输入“取票 活动代称”，如：“取票 马兰花开”将向您返回马兰花开活动的电子票。')
+        return get_reply_text_xml(msg, u'您好，格式不正确！请输入“取票 活动代称”。\n如：“取票 马兰花开”将向您返回马兰花开活动的电子票。')
     activities = Activity.objects.filter(status=1,end_time__gte=now, key=key)
 
     if not activities.exists():
@@ -220,7 +220,7 @@ def get_book_ticket_response(msg):
         if len(receive_msg) > 1:
             key = receive_msg[1]
         else:
-            return get_reply_text_xml(msg, u'您好，格式不正确！请输入“抢票 活动代称”，如：“抢票 马兰花开”')
+            return get_reply_text_xml(msg, u'您好，格式不正确！请输入“抢票 活动代称”。\n如：“抢票 马兰花开”')
     else:
         cmd_list = msg['EventKey'].split('_')
         activity_id = int(cmd_list[2])
@@ -353,7 +353,7 @@ def return_tickets(msg):
     if len(receive_msg) > 1:
         key = receive_msg[1]
     else:
-        return get_reply_text_xml(msg, u'您好，格式不正确！请输入“退票 活动代称”，如：“退票 马兰花开”会将退订马兰花开活动的票（该操作不可恢复，请谨慎回复！）')
+        return get_reply_text_xml(msg, u'您好，格式不正确！请输入“退票 活动代称”。\n如：“退票 马兰花开”会将退订马兰花开活动的票（该操作不可恢复，请谨慎回复！）')
     activities = Activity.objects.filter(status=1, end_time__gte=now, key=key)
 
     if not activities.exists():

@@ -7,7 +7,7 @@
     <ignored path="src.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387113511596" ignored="false" />
-    <file path="/tickethandler.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387124828965" ignored="false" />
+    <file path="/tickethandler.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387125063120" ignored="false" />
     <file path="/Django Console" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387123743660" ignored="false" />
     <file path="/weixin_simulator.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386671745601" ignored="false" />
     <file path="/__init__.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387123328339" ignored="false" />
@@ -80,7 +80,7 @@
       <file leaf-file-name="tickethandler.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="271" column="79" selection-start="11216" selection-end="11216" vertical-scroll-proportion="0.8426966">
+            <state line="182" column="65" selection-start="6963" selection-end="6963" vertical-scroll-proportion="0.6934189">
               <folding>
                 <element signature="e#22#35#0" expanded="true" />
               </folding>
@@ -91,7 +91,7 @@
       <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="44" selection-start="531" selection-end="531" vertical-scroll-proportion="0.0">
+            <state line="21" column="49" selection-start="952" selection-end="952" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#54#67#0" expanded="true" />
               </folding>
@@ -965,7 +965,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="44" selection-start="531" selection-end="531" vertical-scroll-proportion="0.0">
+        <state line="21" column="49" selection-start="952" selection-end="952" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#54#67#0" expanded="true" />
           </folding>
@@ -974,7 +974,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="271" column="79" selection-start="11216" selection-end="11216" vertical-scroll-proportion="0.8426966">
+        <state line="182" column="65" selection-start="6963" selection-end="6963" vertical-scroll-proportion="0.6934189">
           <folding>
             <element signature="e#22#35#0" expanded="true" />
           </folding>
