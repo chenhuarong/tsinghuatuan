@@ -74,6 +74,17 @@ if 'SERVER_SOFTWARE' in os.environ:
     #                      db = "NYenZfWMVWuqtUGNuQsI")
    # con.ping(True)
    #cur = con.cursor()
+elif (os.environ.get('USER', '') == 'ssastadmin') or ('SSAST_DEPLOYMENT' in os.environ):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'tsinghuatuan',
+            'USER': 'tsinghuatuan',
+            'PASSWORD': 'MA4vXQSAdcWkoZfI',
+            'HOST': '',
+            'PORT': '',
+            }
+    }
 else:
     DATABASES = {
         'default': {
