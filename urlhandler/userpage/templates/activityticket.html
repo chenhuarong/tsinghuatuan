@@ -34,6 +34,8 @@
             <span class="status-size ticket-valid">有效</span>
         {% elif ticket_status == 2 %}
             <span class="status-size ticket-used">已使用</span>
+        {% elif ticket_status == 3 %}
+            <span class="status-size ticket-used">活动已结束</span>
         {% else %}
         {% endif %}
     </div>

@@ -6,6 +6,7 @@ from django.shortcuts import render_to_response
 from urlhandler.models import User, Activity, Ticket
 from urlhandler.settings import STATIC_URL
 import urllib, urllib2
+import datetime
 from django.utils import timezone
 
 def home(request):
@@ -146,6 +147,9 @@ def ticket_view(request):
     act_endtime = activity[0].end_time
     act_place = activity[0].place
     ticket_status = ticket[0].status
+    now = datetime.datetime.now()
+    if act_endtime < now:#表示活动已经结束
+        ticket_status = 3
     act_photo = "http://tsinghuaqr.duapp.com/fit/"+uid
     variables=RequestContext(request,{'act_name':act_name,'act_place':act_place, 'act_begintime':act_begintime,
                                       'act_endtime':act_endtime,'act_photo':act_photo, 'ticket_status':ticket_status})

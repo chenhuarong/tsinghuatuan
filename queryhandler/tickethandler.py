@@ -127,7 +127,6 @@ def get_tickets(msg):
     activities = Activity.objects.filter(status=1, end_time__gte=datetime.datetime.fromtimestamp(now))
     reply_content = []
     all_tickets = []
-    iCount = 0
     for activity in activities:
         tickets =  Ticket.objects.filter(stu_id=user.stu_id, activity=activity, status=1)
         if tickets.exists():
@@ -244,23 +243,34 @@ def book_ticket(msg, key):
         if activities.exists() == 0:
             future_activities = Activity.objects.filter(status=1, book_start__gte=now, key=key)
             if not future_activities.exists():
-                old_activities = Activity.objects.filter(status=1, key=key)
+                old_activities = Activity.objects.filter(status=1, key=key)#已发布的，活动代码为key（可能有多张活动代码相同的活动）
                 if not old_activities.exists():
                     return get_reply_text_xml(msg, u'该活动不存在')
                 else:
                     #如果有票，返回票的信息
-                    tmptics = Ticket.objects.filter(activity = old_activities[0], stu_id=user.stu_id, status=1)
-                    if tmptics.exists():
-                        item = '<item><Title><![CDATA[%s]]></Title><Description><![CDATA[%s]]></Description>' \
-                                '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
-                        description = u'活动时间：%s\r\n活动地点：%s\r\n回复“退票 %s”即可退票' %(tmptics[0].activity.start_time.strftime('%Y-%m-%d %H:%M'),
-                                                                           tmptics[0].activity.place, tmptics[0].activity.key)
-                        url =  'http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s' % tmptics[0].unique_id
-                        item = item % (tmptics[0].activity.name, description, QRCODE_URL + str(tmptics[0].unique_id), url)
-                        return get_reply_news_xml(msg, item, 1)
-                    #如果没票，返回无票信息
-                    else:
-                        return get_reply_text_xml(msg, u'很抱歉，您没有抢到该活动的票')
+                    if len(old_activities) == 1:#如果有一张票，直接返回电子票
+                        tmptics = Ticket.objects.filter(activity = old_activities[0], stu_id=user.stu_id, status=1)
+                        if tmptics.exists():
+                            item = '<item><Title><![CDATA[%s]]></Title><Description><![CDATA[%s]]></Description>' \
+                                    '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
+                            description = u'活动时间：%s\r\n活动地点：%s\r\n回复“退票 %s”即可退票' %(tmptics[0].activity.start_time.strftime('%Y-%m-%d %H:%M'),
+                                                                               tmptics[0].activity.place, tmptics[0].activity.key)
+                            url =  'http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s' % tmptics[0].unique_id
+                            item = item % (tmptics[0].activity.name, description, QRCODE_URL + str(tmptics[0].unique_id), url)
+                            return get_reply_news_xml(msg, item, 1)
+                        #如果没票，返回无票信息
+                        else:
+                            return get_reply_text_xml(msg, u'很抱歉，您没有抢到该活动的票')
+                    elif len(old_activities) > 1: #如果有多个活动，列表形式返回
+                        reply_content = []
+                        for old_activity in old_activities:
+                            old_tickets =  Ticket.objects.filter(stu_id=user.stu_id, activity=old_activity, status=1)
+                            if old_tickets.exists():
+                                item = u'“%s”<a href="http://tsinghuatuan.duapp.com/userpage/ticket/?uid=%s">电子票</a>' % (old_activity.name, old_tickets[0].unique_id)
+                                reply_content += [item]
+                        return get_reply_text_xml(msg, u'\n-----------------------\n'.join(reply_content) if not (len(reply_content) == 0) else u'您目前没有票')
+                    else:#票的数目小于1
+                        return get_reply_text_xml(msg, u'该活动不存在')
             else:
                 future_activity = future_activities[0]
                 start_time = u'%s年%s月%s日%s时%s分' % (future_activity.book_start.year, future_activity.book_start.month, future_activity.book_start.day, future_activity.book_start.hour, future_activity.book_start.minute)
