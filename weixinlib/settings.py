@@ -34,14 +34,14 @@ WEIXIN_CUSTOM_MENU_TEMPLATE = {
                 },
                 {
                     "type": "click",
-                    "name": "协会",
-                    "key": "V1001_OGNIZATION",
+                    "name": "人物",
+                    "key": "TSINGHUA_FIGURE",
                     "sub_button": []
                 },
                 {
                     "type": "click",
-                    "name": "人物",
-                    "key": "TSINGHUA_FIGURE",
+                    "name": "协会",
+                    "key": "V1001_OGNIZATION",
                     "sub_button": []
                 }
             ]
@@ -83,3 +83,14 @@ WEIXIN_CUSTOM_MENU_TEMPLATE = {
 }
 
 WEIXIN_BOOK_HEADER = 'TSINGHUA_BOOK_'
+
+def get_custom_menu_with_book_acts(actbtns):
+    tmpmenu = WEIXIN_CUSTOM_MENU_TEMPLATE.copy()
+    book_btn = tmpmenu['button'][2]
+    if len(actbtns) == 0:
+        book_btn['type'] = 'click'
+        book_btn['key'] = 'TSINGHUA_NO_BOOK_ACTS'
+    else:
+        book_btn['sub_button'] = actbtns
+    return tmpmenu
+
