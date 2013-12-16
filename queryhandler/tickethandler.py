@@ -322,7 +322,7 @@ def book_ticket(msg, key):
             Activity.objects.filter(status=1, book_end__gte=now, book_start__lte=now).update(remain_tickets=F('remain_tickets')-1)
             item = '<item><Title><![CDATA[%s]]></Title><Description><![CDATA[%s]]></Description>' \
                    '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
-            description = u'活动时间：%s\n活动地点：%s\n回复%s qx退票' %(ticket.activity.start_time.strftime('%Y-%m-%d %H:%M'),
+            description = u'活动时间：%s\n活动地点：%s\n回复“退票 %s”即可退票' %(ticket.activity.start_time.strftime('%Y-%m-%d %H:%M'),
                                                                ticket.activity.place, ticket.activity.key)
             url = s_reverse_ticket_detail(ticket.unique_id)
             item = item % (ticket.activity.name, description, QRCODE_URL + str(ticket.unique_id), url)
