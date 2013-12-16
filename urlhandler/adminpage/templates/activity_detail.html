@@ -65,9 +65,9 @@
 {% block nav-li-ext %}
     <li class="{% block activity-detail-active %}active{% endblock %}">
         <a href="{% if activity.id %}
-        {% url adminpage.views.activity_detail actid=activity.id %}
+        {% url "adminpage.views.activity_detail" actid=activity.id %}
         {% else %}
-        {% url adminpage.views.activity_add %}
+        {% url "adminpage.views.activity_add" %}
         {% endif %} ">{{ activity.name }}</a>
     </li>
 {% endblock %}
@@ -77,7 +77,7 @@
         <noscript>请开启JavaScript后重试。</noscript>
     </div>
     <div class="container" id="detail-form" style="display: none;">
-        <form class="form-horizontal" role="form" method="post" action="{% url adminpage.views.activity_post %}" id="activity-form">
+        <form class="form-horizontal" role="form" method="post" action="{% url "adminpage.views.activity_post" %}" id="activity-form">
             {% csrf_token %}
             <div class="form-group">
                 <label for="input-name" class="col-sm-2 control-label">活动名称</label>
@@ -336,7 +336,7 @@
         <h1>处理结果</h1>
         <pre id="resultHolder"></pre>
         <div class="col-sm-offset-2">
-            <a class="btn btn-success" href="{% url adminpage.views.activity_list %}">返回列表</a>
+            <a class="btn btn-success" href="{% url "adminpage.views.activity_list" %}">返回列表</a>
             <button class="btn btn-info" id="continueBtn">继续修改</button>
         </div>
     </div>

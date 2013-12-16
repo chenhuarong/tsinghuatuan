@@ -2,12 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="519d02f1-9909-43c4-95c4-b95f242a05f2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/configurations/init/tsinghuatuan.conf" afterPath="$PROJECT_DIR$/configurations/init/tsinghuatuan.conf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_checkin.html" afterPath="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_checkin.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_detail.html" afterPath="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_detail.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_list.html" afterPath="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/templates/adjust_menu.html" afterPath="$PROJECT_DIR$/urlhandler/adminpage/templates/adjust_menu.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/templates/login.html" afterPath="$PROJECT_DIR$/urlhandler/adminpage/templates/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/templates/order_list.html" afterPath="$PROJECT_DIR$/urlhandler/adminpage/templates/order_list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/templates/print_login.html" afterPath="$PROJECT_DIR$/urlhandler/adminpage/templates/print_login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/templates/print_ticket.html" afterPath="$PROJECT_DIR$/urlhandler/adminpage/templates/print_ticket.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/userpage/templates/validation.html" afterPath="$PROJECT_DIR$/urlhandler/userpage/templates/validation.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="src.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387176654931" ignored="false" />
+    <file path="/Dummy.txt" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387179107870" ignored="false" />
     <file path="/tickethandler.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387125553606" ignored="false" />
     <file path="/Django Console" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387123743660" ignored="false" />
     <file path="/weixin_simulator.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386671745601" ignored="false" />
@@ -56,6 +65,9 @@
     <file path="$PROJECT_DIR$/../TuanTuan/TuanTuan/TuanTuan/urls.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387128133594" ignored="false" />
     <file path="/weixin_lecture.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387120323102" ignored="false" />
     <file path="$PROJECT_DIR$/../TuanTuan/TuanTuan/TuanTuan/TuanTuanApp/views.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387128133593" ignored="false" />
+    <file path="/activitytext.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387178286501" ignored="false" />
+    <file path="/activityticket.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387178291465" ignored="false" />
+    <file path="/requirements.txt" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387178436418" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,19 +91,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="tsinghuatuan.conf" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/configurations/nginx/tsinghuatuan.conf">
+      <file leaf-file-name="requirements.txt" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="34" selection-start="44" selection-end="44" vertical-scroll-proportion="0.0">
+            <state line="0" column="13" selection-start="13" selection-end="13" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tsinghuatuan.conf" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/configurations/init/tsinghuatuan.conf">
+      <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="0" selection-start="623" selection-end="623" vertical-scroll-proportion="0.5980861">
+            <state line="13" column="45" selection-start="480" selection-end="480" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tickethandler.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="142" column="29" selection-start="5289" selection-end="5289" vertical-scroll-proportion="0.024077047">
               <folding />
             </state>
           </provider>
@@ -115,29 +136,29 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js" />
-        <option value="$PROJECT_DIR$/localwsgi.py" />
-        <option value="$PROJECT_DIR$/urlhandler/urlhandler/settings.py" />
-        <option value="$PROJECT_DIR$/weixinlib/custom_menu.py" />
-        <option value="$PROJECT_DIR$/urlhandler/userpage/urls.py" />
-        <option value="$PROJECT_DIR$/urlhandler/userpage/views.py" />
-        <option value="$PROJECT_DIR$/urlhandler/userpage/safe_reverse.py" />
-        <option value="$PROJECT_DIR$/app.py" />
-        <option value="$PROJECT_DIR$/queryhandler/query_transfer.py" />
-        <option value="$PROJECT_DIR$/queryhandler/settings.py" />
-        <option value="$PROJECT_DIR$/weixinlib/settings.py" />
-        <option value="$PROJECT_DIR$/urlhandler/adminpage/views.py" />
         <option value="$PROJECT_DIR$/queryhandler/__init__.py" />
         <option value="$PROJECT_DIR$/queryhandler/tickethandler.py" />
         <option value="$PROJECT_DIR$/configurations/nginx/tsinghuatuan.conf" />
         <option value="$PROJECT_DIR$/configurations/init/tsinghuatuan.conf" />
+        <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_checkin.html" />
+        <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_detail.html" />
+        <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_list.html" />
+        <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/adjust_menu.html" />
+        <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/login.html" />
+        <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/order_list.html" />
+        <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/print_login.html" />
+        <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/print_ticket.html" />
+        <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activitytext.html" />
+        <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html" />
+        <option value="$PROJECT_DIR$/urlhandler/userpage/templates/validation.html" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
     <option name="width" value="1440" />
-    <option name="height" value="775" />
+    <option name="height" value="784" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -437,14 +458,14 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PythonSdkConfigurable" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-    <property name="restartRequiresConfirmation" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../TuanTuan/TuanTuan" />
+    <property name="restartRequiresConfirmation" value="true" />
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -459,7 +480,7 @@
       <recent name="$PROJECT_DIR$/urlhandler/userpage/templates" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.weixin_simulator">
+  <component name="RunManager" selected="Python.local">
     <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -505,22 +526,6 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="Python.AppEngineServer" factoryName="App Engine server">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="src" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="launchJavascriptDebuger" value="false" />
-      <option name="browserUrl" value="" />
-      <option name="additionalOptions" value="" />
-      <method />
-    </configuration>
     <configuration default="true" type="tests" factoryName="Nosetests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -543,6 +548,22 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
+    <configuration default="true" type="Python.AppEngineServer" factoryName="App Engine server">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="src" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="browserUrl" value="" />
+      <option name="additionalOptions" value="" />
+      <method />
+    </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -558,29 +579,6 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="local.py" />
       <option name="PARAMETERS" value="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Unittests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="src" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
@@ -604,6 +602,29 @@
       <option name="runNoReload" value="false" />
       <option name="useCustomRunCommand" value="false" />
       <option name="customRunCommand" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="src" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -767,18 +788,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1440" height="775" extended-state="6" />
+    <frame x="0" y="22" width="1440" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32779455" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26398852" sideWeight="0.6762048" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2682927" sideWeight="0.6763359" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39465874" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20681265" sideWeight="0.28703704" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3281787" sideWeight="0.49468085" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32379517" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32366413" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985073" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936507" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -853,86 +874,88 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/weixin_simulator.py">
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/activity_list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="53" selection-start="406" selection-end="406" vertical-scroll-proportion="0.21634616" />
+        <state line="57" column="89" selection-start="2435" selection-end="2435" vertical-scroll-proportion="-8.56" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/adjust_menu.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="34" selection-start="650" selection-end="650" vertical-scroll-proportion="0.33251232" />
+        <state line="51" column="70" selection-start="1730" selection-end="1730" vertical-scroll-proportion="-5.54" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/urlhandler/urls.py">
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/base_with_nav.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="481" selection-end="481" vertical-scroll-proportion="0.51724136" />
+        <state line="24" column="50" selection-start="929" selection-end="931" vertical-scroll-proportion="-6.68" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/views.py">
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/validation.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="329" selection-end="329" vertical-scroll-proportion="-4.6493506" />
+        <state line="63" column="0" selection-start="2376" selection-end="2376" vertical-scroll-proportion="1.6666666" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/localwsgi.py">
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/mobile_base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="92" selection-end="92" vertical-scroll-proportion="0.15075377" />
+        <state line="4" column="80" selection-start="145" selection-end="146" vertical-scroll-proportion="0.10830325" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/urlhandler/settings.py">
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="248" selection-end="248" vertical-scroll-proportion="-4.201005" />
+        <state line="26" column="11" selection-start="487" selection-end="487" vertical-scroll-proportion="0.67241377" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/safe_reverse.py">
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activitytext.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="42" selection-start="285" selection-end="285" vertical-scroll-proportion="0.35629454" />
+        <state line="3" column="42" selection-start="97" selection-end="99" vertical-scroll-proportion="0.05199307" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/weixinlib/settings.py">
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activityphoto.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="34" selection-start="2450" selection-end="2450" vertical-scroll-proportion="0.5724466" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/views.py">
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activitydetails.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="449" column="25" selection-start="15013" selection-end="15013" vertical-scroll-proportion="0.7351525" />
+        <state line="22" column="8" selection-start="396" selection-end="397" vertical-scroll-proportion="0.57192373" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/query_transfer.py">
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/print_ticket.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="279" selection-end="279" vertical-scroll-proportion="0.28301886" />
+        <state line="15" column="49" selection-start="351" selection-end="351" vertical-scroll-proportion="0.34488735" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/settings.py">
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/print_login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="52" selection-start="237" selection-end="237" vertical-scroll-proportion="0.18867925" />
+        <state line="17" column="89" selection-start="413" selection-end="413" vertical-scroll-proportion="0.39688042" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/order_list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="1037" selection-end="1037" vertical-scroll-proportion="0.40669855" />
+        <state line="56" column="75" selection-start="1398" selection-end="1398" vertical-scroll-proportion="0.4540728" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="251" selection-end="251" vertical-scroll-proportion="0.26872963" />
+        <state line="18" column="83" selection-start="454" selection-end="454" vertical-scroll-proportion="0.42287695" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="3" selection-start="51" selection-end="51" vertical-scroll-proportion="0.07177033" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/configurations/nginx/tsinghuatuan.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="34" selection-start="44" selection-end="44" vertical-scroll-proportion="0.0">
+        <state line="0" column="13" selection-start="13" selection-end="13" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/configurations/init/tsinghuatuan.conf">
+    <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="0" selection-start="623" selection-end="623" vertical-scroll-proportion="0.5980861">
+        <state line="13" column="45" selection-start="480" selection-end="480" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="142" column="29" selection-start="5289" selection-end="5289" vertical-scroll-proportion="0.024077047">
           <folding />
         </state>
       </provider>

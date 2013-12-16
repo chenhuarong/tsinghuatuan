@@ -8,7 +8,7 @@
 
 {% block nav-li-ext %}
     <li class="{% block activity-menu-active %}active{% endblock %}">
-        <a href="{% url adminpage.views.adjust_menu_view %} ">抢票菜单</a>
+        <a href="{% url "adminpage.views.adjust_menu_view" %} ">抢票菜单</a>
     </li>
 {% endblock %}
 
@@ -26,7 +26,7 @@
     <script src="{% static "lib/jq/form/jquery.form.min.js" %}"></script>
     <script src="{% static "js/adjust_menu.js" %}"></script>
     <script>
-    document.ready = function() {get_custom_menu('{% url adminpage.views.custom_menu_get %}');};
+    document.ready = function() {get_custom_menu('{% url "adminpage.views.custom_menu_get" %}');};
     </script>
 {% endblock %}
 
@@ -49,7 +49,7 @@
                 抢票<span class="glyphicon glyphicon-chevron-up"></span>
             </div>
         </div>
-        <form action="{% url adminpage.views.custom_menu_modify_post %}" method="post" id="submit-weixin-menu-form">
+        <form action="{% url "adminpage.views.custom_menu_modify_post" %}" method="post" id="submit-weixin-menu-form">
             {% csrf_token %}
             <button class="btn btn-danger btn-lg" type="submit">提交</button>
         </form>

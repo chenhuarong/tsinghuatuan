@@ -27,7 +27,7 @@
 
 </div>
 <div id="checkin-screen" class="full-div" style="display: none;">
-    <form role="form" method="post" id="checkin-form" action="{% url adminpage.views.activity_checkin_post actid=activity.id %}">
+    <form role="form" method="post" id="checkin-form" action="{% url "adminpage.views.activity_checkin_post" actid=activity.id %}">
         {% csrf_token %}
         <div class="form-group col-xs-offset-2 col-xs-8">
             <input class="form-control input-lg" type="text" id="input-uid" name="uid" placeholder="扫描二维码或输入学号"

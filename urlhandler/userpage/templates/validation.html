@@ -30,7 +30,7 @@
 
 {% block content %}
     <div id="validationHolder">
-        <form class="form-horizontal" role="form" action="{% url userpage.views.validate_post %}" method="post" id="validationForm" onsubmit="return false;">
+        <form class="form-horizontal" role="form" action="{% url "userpage.views.validate_post" %}" method="post" id="validationForm" onsubmit="return false;">
             {% csrf_token %}
           <div class="form-group" id="usernameGroup">
             <label for="inputUsername" class="col-xs-3 control-label">学号</label>

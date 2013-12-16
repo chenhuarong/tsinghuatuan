@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block username %}
-    <a href={% url adminpage.views.order_logout %} >登出</a>
+    <a href={% url "adminpage.views.order_logout" %} >登出</a>
 {% endblock %}
 
 {% block content %}
@@ -54,7 +54,7 @@
                 <td>{{ item.valid }}</td>
                 <td>
                     <span>
-                        <form action="{% url adminpage.views.print_ticket unique_id=item.unique_id %}" method="post">
+                        <form action="{% url "adminpage.views.print_ticket" unique_id=item.unique_id %}" method="post">
                             {% csrf_token %}
                             <button value="打印" class="btn-default"><span class="glyphicon glyphicon-print"></span> 打印</button>
                         </form>

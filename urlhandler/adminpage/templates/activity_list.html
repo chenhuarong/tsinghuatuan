@@ -5,7 +5,7 @@
 {% block activity-title %}活动列表{% endblock %}
 
 {% block nav-li %}
-    <li class="{% block activity-list-active %}active{% endblock %}"><a class="btn-link" href="{% url adminpage.views.activity_list %}">活动列表</a></li>
+    <li class="{% block activity-list-active %}active{% endblock %}"><a class="btn-link" href="{% url "adminpage.views.activity_list" %}">活动列表</a></li>
     {% block nav-li-ext %}{% endblock %}
 {% endblock %}
 
@@ -25,7 +25,7 @@
                     'end_time': new Date('{{ activity.end_time|date:"r" }}'),
                     'place': '{{ activity.place|escapejs }}',
                 {% if permission %}'delete':{{ activity.id }},{% endif %}
-                    'operations': {{% if permission %}'detail':'{% url adminpage.views.activity_detail actid=activity.id %}',{% endif %}'checkin':'{% url adminpage.views.activity_checkin actid=activity.id %}'},
+                    'operations': {{% if permission %}'detail':'{% url "adminpage.views.activity_detail" actid=activity.id %}',{% endif %}'checkin':'{% url "adminpage.views.activity_checkin" actid=activity.id %}'},
                     'book_start': new Date('{{ activity.book_start|date:"r" }}'),
                     'book_end': new Date('{{ activity.book_end|date:"r" }}')
                 }{% if forloop.last %}{% else %},{% endif %}
@@ -39,7 +39,7 @@
 {% endblock %}
 
 {% block username %}
-    <a href={% url adminpage.views.logout %} >登出</a>
+    <a href={% url "adminpage.views.logout" %} >登出</a>
 
 {% endblock %}
 
@@ -54,8 +54,8 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             {% if permission %}
-                <a class="btn btn-default" href={% url adminpage.views.activity_add %}>新增活动</a>
-                <a class="btn btn-default" href={% url adminpage.views.adjust_menu_view %}>设置微信抢票菜单</a>
+                <a class="btn btn-default" href={% url "adminpage.views.activity_add" %}>新增活动</a>
+                <a class="btn btn-default" href={% url "adminpage.views.adjust_menu_view" %}>设置微信抢票菜单</a>
             {% endif %}
         </div>
 
