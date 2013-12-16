@@ -38,12 +38,12 @@ WEIXIN_CUSTOM_MENU_TEMPLATE = {
                 #    "key": "TSINGHUA_FIGURE",
                 #    "sub_button": []
                 #},
-                #{
-                #    "type": "click",
-                #    "name": "协会",
-                #    "key": "V1001_OGNIZATION",
-                #    "sub_button": []
-                #}
+                {
+                    "type": "click",
+                    "name": "协会",
+                    "key": "V1001_OGNIZATION",
+                    "sub_button": []
+                }
             ]
         },
         {
