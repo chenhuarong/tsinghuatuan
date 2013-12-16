@@ -46,7 +46,7 @@ def activity_list(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('adminpage.views.home'))
 
-    actmodels = Activity.objects.filter(status__gt=0).order_by('-id').all()
+    actmodels = Activity.objects.filter(status__gte=0).order_by('-id').all()
     activities = []
     for act in actmodels:
         activities += [wrap_activity_dict(act)]
