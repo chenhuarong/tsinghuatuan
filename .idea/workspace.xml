@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="519d02f1-9909-43c4-95c4-b95f242a05f2" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/queryhandler/tickethandler.py" afterPath="$PROJECT_DIR$/queryhandler/tickethandler.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/configurations/init/tsinghuatuan.conf" afterPath="$PROJECT_DIR$/configurations/init/tsinghuatuan.conf" />
     </list>
     <ignored path="src.iws" />
@@ -83,19 +84,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="tickethandler.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="tickethandler.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="142" column="29" selection-start="5289" selection-end="5289" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tsinghuatuan.conf" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/configurations/init/tsinghuatuan.conf">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="0" selection-start="624" selection-end="624" vertical-scroll-proportion="0.5896226">
+            <state line="148" column="55" selection-start="5773" selection-end="5773" vertical-scroll-proportion="0.48154092">
               <folding />
             </state>
           </provider>
@@ -120,7 +112,6 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/queryhandler/__init__.py" />
-        <option value="$PROJECT_DIR$/queryhandler/tickethandler.py" />
         <option value="$PROJECT_DIR$/configurations/nginx/tsinghuatuan.conf" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_checkin.html" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_detail.html" />
@@ -135,6 +126,7 @@
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/validation.html" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/configurations/init/tsinghuatuan.conf" />
+        <option value="$PROJECT_DIR$/queryhandler/tickethandler.py" />
       </list>
     </option>
   </component>
@@ -857,11 +849,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/adjust_menu.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="70" selection-start="1730" selection-end="1730" vertical-scroll-proportion="-5.54" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/base_with_nav.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="50" selection-start="929" selection-end="931" vertical-scroll-proportion="-6.68" />
@@ -931,16 +918,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
+    <entry file="file://$PROJECT_DIR$/urlhandler/urlhandler/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="142" column="29" selection-start="5289" selection-end="5289" vertical-scroll-proportion="0.0">
+        <state line="29" column="0" selection-start="947" selection-end="947" vertical-scroll-proportion="0.45754716">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/configurations/init/tsinghuatuan.conf">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="0" selection-start="624" selection-end="624" vertical-scroll-proportion="0.5896226">
+        <state line="21" column="16" selection-start="549" selection-end="549" vertical-scroll-proportion="0.495283">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="148" column="55" selection-start="5773" selection-end="5773" vertical-scroll-proportion="0.48154092">
           <folding />
         </state>
       </provider>
