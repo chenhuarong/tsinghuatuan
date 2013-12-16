@@ -32,18 +32,18 @@ WEIXIN_CUSTOM_MENU_TEMPLATE = {
                     "key": "V1001_SCHOOL_NEWS",
                     "sub_button": []
                 },
-                {
-                    "type": "click",
-                    "name": "人物",
-                    "key": "TSINGHUA_FIGURE",
-                    "sub_button": []
-                },
-                {
-                    "type": "click",
-                    "name": "协会",
-                    "key": "V1001_OGNIZATION",
-                    "sub_button": []
-                }
+                #{
+                #    "type": "click",
+                #    "name": "人物",
+                #    "key": "TSINGHUA_FIGURE",
+                #    "sub_button": []
+                #},
+                #{
+                #    "type": "click",
+                #    "name": "协会",
+                #    "key": "V1001_OGNIZATION",
+                #    "sub_button": []
+                #}
             ]
         },
         {
@@ -61,12 +61,12 @@ WEIXIN_CUSTOM_MENU_TEMPLATE = {
                     "key": "TSINGHUA_TICKET",
                     "sub_button": []
                 },
-                {
-                    "type": "click",
-                    "name": "指路",
-                    "key": "TSINGHUA_PATH",
-                    "sub_button": []
-                },
+                #{
+                #    "type": "click",
+                #    "name": "指路",
+                #    "key": "TSINGHUA_PATH",
+                #    "sub_button": []
+                #},
                 {
                     "type": "click",
                     "name": "绑定",

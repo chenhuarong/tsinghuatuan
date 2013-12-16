@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="519d02f1-9909-43c4-95c4-b95f242a05f2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html" afterPath="$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/weixinlib/settings.py" afterPath="$PROJECT_DIR$/weixinlib/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/configurations/init/tsinghuatuan.conf" afterPath="$PROJECT_DIR$/configurations/init/tsinghuatuan.conf" />
     </list>
     <ignored path="src.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,7 +27,7 @@
     <file path="/adjust_menu.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387037926770" ignored="false" />
     <file path="/adjust_menu.css" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386997099419" ignored="false" />
     <file path="/base_support.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387000430408" ignored="false" />
-    <file path="/settings.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387122985134" ignored="false" />
+    <file path="/settings.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387181910773" ignored="false" />
     <file path="/url_generators.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386999681402" ignored="false" />
     <file path="/custom_menu.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387096440574" ignored="false" />
     <file path="/Python Console" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387099740398" ignored="false" />
@@ -100,7 +101,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/queryhandler/__init__.py" />
         <option value="$PROJECT_DIR$/configurations/nginx/tsinghuatuan.conf" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_checkin.html" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_detail.html" />
@@ -113,9 +113,10 @@
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activitytext.html" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/validation.html" />
         <option value="$PROJECT_DIR$/requirements.txt" />
-        <option value="$PROJECT_DIR$/configurations/init/tsinghuatuan.conf" />
-        <option value="$PROJECT_DIR$/queryhandler/tickethandler.py" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html" />
+        <option value="$PROJECT_DIR$/configurations/init/tsinghuatuan.conf" />
+        <option value="$PROJECT_DIR$/weixinlib/settings.py" />
+        <option value="$PROJECT_DIR$/queryhandler/tickethandler.py" />
       </list>
     </option>
   </component>
@@ -838,23 +839,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activitytext.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="42" selection-start="97" selection-end="99" vertical-scroll-proportion="0.05199307" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activityphoto.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/print_ticket.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="49" selection-start="351" selection-end="351" vertical-scroll-proportion="0.34488735">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/print_login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="89" selection-start="413" selection-end="413" vertical-scroll-proportion="0.39688042">
@@ -886,13 +870,6 @@
     <entry file="file://$PROJECT_DIR$/urlhandler/urlhandler/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="0" selection-start="947" selection-end="947" vertical-scroll-proportion="0.45754716">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/configurations/init/tsinghuatuan.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="16" selection-start="549" selection-end="549" vertical-scroll-proportion="0.495283">
           <folding />
         </state>
       </provider>
@@ -932,16 +909,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
+    <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="328" column="51" selection-start="15125" selection-end="15125" vertical-scroll-proportion="0.5008026">
+        <state line="19" column="55" selection-start="838" selection-end="838" vertical-scroll-proportion="0.25943395">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
+    <entry file="file://$PROJECT_DIR$/queryhandler/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="55" selection-start="838" selection-end="838" vertical-scroll-proportion="0.25943395">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configurations/init/tsinghuatuan.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="14" selection-start="547" selection-end="547" vertical-scroll-proportion="0.495283">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configurations/nginx/tsinghuatuan.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="322" selection-end="322" vertical-scroll-proportion="0.3537736">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/weixinlib/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="17" selection-start="1939" selection-end="1939" vertical-scroll-proportion="1.6037736">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="0" selection-start="1483" selection-end="1483" vertical-scroll-proportion="0.6741573">
           <folding />
         </state>
       </provider>
