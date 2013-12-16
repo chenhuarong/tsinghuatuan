@@ -49,12 +49,21 @@ def check_help(msg):
 #get help information
 def get_help_response(msg):
     fromuser = msg['FromUserName']
-    if is_authenticated(fromuser):
-        reply_content = u''
-    else:
-        reply_content = u'<a href="' + s_reverse_validate(fromuser) + '">' \
+    reply_content = u'您好，回复以下关键字可以得到相应结果:\n' \
+                    u'【活动抢票】\n' \
+                    u'抢啥 查票 抢票\n' \
+                    u'取票 退票' \
+                    u'【资讯查询】\n' \
+                    u'活动 讲座 新闻\n' \
+                    u'社团 部门\n' \
+                    u'【帮助信息】\n' \
+                    u'帮助 绑定 解绑\n' \
+                    u'【模糊查询】\n' \
+                    u'您的其他任何回复都会进行模糊查询。\n'
+    if not is_authenticated(fromuser):
+        reply_content += u'<a href="' + s_reverse_validate(fromuser) + '">' \
                         u'点此绑定信息门户账号</a>\n'
-    reply_content += u'您好，回复以下关键字可以得到相应结果:\n抢啥 查票 帮助'
+
     return get_reply_text_xml(msg, reply_content)
 
 
@@ -403,9 +412,19 @@ def check_subscribe(msg):
 
 #handle subscribe event
 def get_subscibe_response(msg):
-    reply_content = u'您好，欢迎关注清小团公共平台，<a href="' + s_reverse_validate(msg['FromUserName']) + '">' \
-                    u'点此绑定信息门户账号</a>\n'
-    reply_content += u'回复以下关键字可以得到相应结果:\n抢啥 查票 帮助'
+    reply_content = u'您好，回复以下关键字可以得到相应结果:\n' \
+                    u'【活动抢票】\n' \
+                    u'抢啥 查票 抢票\n' \
+                    u'取票 退票' \
+                    u'【资讯查询】\n' \
+                    u'活动 讲座 新闻\n' \
+                    u'社团 部门\n' \
+                    u'【帮助信息】\n' \
+                    u'帮助 绑定 解绑\n' \
+                    u'【模糊查询】\n' \
+                    u'您的其他任何回复都会进行模糊查询。\n'
+    reply_content += u'<a href="' + s_reverse_validate(msg['FromUserName']) + '">' \
+                     u'点此绑定信息门户账号</a>\n'
     return get_reply_text_xml(msg, reply_content)
 
 
