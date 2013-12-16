@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="519d02f1-9909-43c4-95c4-b95f242a05f2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/queryhandler/tickethandler.py" afterPath="$PROJECT_DIR$/queryhandler/tickethandler.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html" afterPath="$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html" />
     </list>
     <ignored path="src.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -56,7 +56,7 @@
     <file path="/weixin_lecture.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387120323102" ignored="false" />
     <file path="$PROJECT_DIR$/../TuanTuan/TuanTuan/TuanTuan/TuanTuanApp/views.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387128133593" ignored="false" />
     <file path="/activitytext.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387178286501" ignored="false" />
-    <file path="/activityticket.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387178291465" ignored="false" />
+    <file path="/activityticket.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387181419601" ignored="false" />
     <file path="/requirements.txt" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387178436418" ignored="false" />
     <file path="/Library/Python/2.7/site-packages/django/db/models/manager.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387179840678" ignored="false" />
     <file path="/Library/Python/2.7/site-packages/django/db/models/options.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387179840678" ignored="false" />
@@ -82,26 +82,7 @@
     <favorites_list name="src" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="55" selection-start="838" selection-end="838" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tickethandler.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="328" column="51" selection-start="15125" selection-end="15125" vertical-scroll-proportion="0.5008026">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -130,11 +111,11 @@
         <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/print_login.html" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/print_ticket.html" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activitytext.html" />
-        <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/validation.html" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/configurations/init/tsinghuatuan.conf" />
         <option value="$PROJECT_DIR$/queryhandler/tickethandler.py" />
+        <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html" />
       </list>
     </option>
   </component>
@@ -772,13 +753,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="784" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32779455" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2682927" sideWeight="0.6763359" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2682927" sideWeight="0.6763359" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39465874" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20681265" sideWeight="0.28703704" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3281787" sideWeight="0.49468085" order="9" side_tool="true" content_ui="tabs" />
@@ -857,11 +838,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="11" selection-start="487" selection-end="487" vertical-scroll-proportion="0.67241377" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activitytext.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="42" selection-start="97" selection-end="99" vertical-scroll-proportion="0.05199307" />
@@ -872,29 +848,32 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activitydetails.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="8" selection-start="396" selection-end="397" vertical-scroll-proportion="0.57192373" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/print_ticket.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="49" selection-start="351" selection-end="351" vertical-scroll-proportion="0.34488735" />
+        <state line="15" column="49" selection-start="351" selection-end="351" vertical-scroll-proportion="0.34488735">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/print_login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="89" selection-start="413" selection-end="413" vertical-scroll-proportion="0.39688042" />
+        <state line="17" column="89" selection-start="413" selection-end="413" vertical-scroll-proportion="0.39688042">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/order_list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="75" selection-start="1398" selection-end="1398" vertical-scroll-proportion="0.4540728" />
+        <state line="56" column="75" selection-start="1398" selection-end="1398" vertical-scroll-proportion="0.4540728">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="83" selection-start="454" selection-end="454" vertical-scroll-proportion="0.42287695" />
+        <state line="18" column="83" selection-start="454" selection-end="454" vertical-scroll-proportion="0.42287695">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
@@ -925,13 +904,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="55" selection-start="838" selection-end="838" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/queryhandler/query_transfer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="0" selection-start="279" selection-end="279" vertical-scroll-proportion="0.25943395">
@@ -946,9 +918,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activitydetails.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="8" selection-start="396" selection-end="397" vertical-scroll-proportion="0.5392157">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="35" selection-start="606" selection-end="606" vertical-scroll-proportion="0.39215687">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="328" column="51" selection-start="15125" selection-end="15125" vertical-scroll-proportion="0.5008026">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="55" selection-start="838" selection-end="838" vertical-scroll-proportion="0.25943395">
           <folding />
         </state>
       </provider>
