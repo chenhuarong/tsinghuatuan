@@ -95,7 +95,7 @@
       <file leaf-file-name="tsinghuatuan.conf" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/configurations/init/tsinghuatuan.conf">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="15" selection-start="548" selection-end="548" vertical-scroll-proportion="0.495283">
+            <state line="25" column="0" selection-start="624" selection-end="624" vertical-scroll-proportion="0.5896226">
               <folding />
             </state>
           </provider>
@@ -940,7 +940,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/configurations/init/tsinghuatuan.conf">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="15" selection-start="548" selection-end="548" vertical-scroll-proportion="0.495283">
+        <state line="25" column="0" selection-start="624" selection-end="624" vertical-scroll-proportion="0.5896226">
           <folding />
         </state>
       </provider>
