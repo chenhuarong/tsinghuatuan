@@ -52,7 +52,7 @@ def get_help_response(msg):
     reply_content = u'您好，回复以下关键字可以得到相应结果:\n' \
                     u'【活动抢票】\n' \
                     u'抢啥 查票 抢票\n' \
-                    u'取票 退票' \
+                    u'取票 退票\n' \
                     u'【资讯查询】\n' \
                     u'活动 讲座 新闻\n' \
                     u'社团 部门\n' \
@@ -415,7 +415,7 @@ def get_subscibe_response(msg):
     reply_content = u'您好，回复以下关键字可以得到相应结果:\n' \
                     u'【活动抢票】\n' \
                     u'抢啥 查票 抢票\n' \
-                    u'取票 退票' \
+                    u'取票 退票\n' \
                     u'【资讯查询】\n' \
                     u'活动 讲座 新闻\n' \
                     u'社团 部门\n' \

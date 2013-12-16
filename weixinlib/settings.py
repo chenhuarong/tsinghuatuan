@@ -72,6 +72,12 @@ WEIXIN_CUSTOM_MENU_TEMPLATE = {
                     "name": "绑定",
                     "key": "TSINGHUA_BIND",
                     "sub_button": []
+                },
+                {
+                    "type": "click",
+                    "name": "帮助",
+                    "key": "TSINGHUA_HELP",
+                    "sub_button": []
                 }
             ]
         },
