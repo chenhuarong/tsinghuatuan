@@ -9,8 +9,10 @@ import urllib, urllib2
 import datetime
 from django.utils import timezone
 
+
 def home(request):
     return render_to_response('mobile_base.html')
+
 
 ###################### Validate ######################
 # request.GET['openid'] must be provided.
@@ -49,12 +51,17 @@ def validate_through_learn(userid, userpass):
     else:
         return 'Rejected'
 
+
 # METHOD 2 is not valid, because student.tsinghua has not linked to Internet
 # METHOD 2: student.tsinghua
 # url: http://student.tsinghua.edu.cn/checkUser.do?redirectURL=%2Fqingxiaotuan.do
 # form: { username:2011013236, password:encryptedString(***) }
 # success: response response is null / check response status code == 302
 # validate: username is number
+def validate_through_student(userid, userpass):
+    pass
+
+
 def validate_post(request):
     if (not request.POST) or (not 'openid' in request.POST) or \
             (not 'username' in request.POST) or (not 'password' in request.POST):

@@ -20,6 +20,7 @@ WEIXIN_EVENT_KEYS = {
     'help': 'TSINGHUA_HELP',
     'ticket_no_book_recommand': 'TSINGHUA_NO_BOOK_ACTS',
     'ticket_book_header': 'TSINGHUA_BOOK_',
+    'modern_figure': 'V1001_MODERN_FIGURE',
 }
 
 WEIXIN_CUSTOM_MENU_TEMPLATE = {
@@ -45,12 +46,12 @@ WEIXIN_CUSTOM_MENU_TEMPLATE = {
                     "key": "V1001_SCHOOL_NEWS",
                     "sub_button": []
                 },
-                #{
-                #    "type": "click",
-                #    "name": "人物",
-                #    "key": "TSINGHUA_FIGURE",
-                #    "sub_button": []
-                #},
+                {
+                    "type": "click",
+                    "name": "人物",
+                    "key": "V1001_MODERN_FIGURE",
+                    "sub_button": []
+                },
                 {
                     "type": "click",
                     "name": "协会",

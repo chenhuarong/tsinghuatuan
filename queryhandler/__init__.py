@@ -8,16 +8,16 @@ from queryhandler.tickethandler import *
 from queryhandler.query_transfer import get_information_response
 
 handler_list = [
-    {'check': check_bookable_activities, 'do': get_bookable_activities},
-    {'check': check_ticket_cmd, 'do': get_tickets},
-    {'check': check_book_cmd, 'do': get_book_ticket_response},
-    {'check': check_help_or_subscribe, 'do': get_help_or_subscribe_response},
-    {'check': check_unsubscribe, 'do': get_unsubscibe_response},
-    {'check': check_bind_account, 'do': bind_account},
-    {'check': check_book_event, 'do': get_book_ticket_response},
-    {'check': check_return_cmd, 'do': return_tickets},
-    {'check': check_fetch_cmd, 'do': get_fetch_cmd_response},
-    {'check': check_no_book_acts_event, 'do': no_book_acts_response},
+    {'check': check_bookable_activities,    'do': get_bookable_activities},
+    {'check': check_ticket_cmd,             'do': get_tickets},
+    {'check': check_book_cmd,               'do': get_book_ticket_response},
+    {'check': check_help_or_subscribe,      'do': get_help_or_subscribe_response},
+    {'check': check_unsubscribe,            'do': get_unsubscibe_response},
+    {'check': check_bind_account,           'do': bind_account},
+    {'check': check_book_event,             'do': get_book_ticket_response},
+    {'check': check_return_cmd,             'do': return_tickets},
+    {'check': check_fetch_cmd,              'do': get_fetch_cmd_response},
+    {'check': check_no_book_acts_event,     'do': no_book_acts_response},
 ]
 
 
