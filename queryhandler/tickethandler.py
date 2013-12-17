@@ -219,8 +219,8 @@ def book_ticket(msg, key):
     while Ticket.objects.filter(unique_id=random_string).exists():
         random_string = ''.join([random.choice(string.ascii_letters + string.digits) for n in xrange(32)])
 
-    with transaction.commit_on_success():
-    #with transaction.atomic():
+    #with transaction.commit_on_success():
+    with transaction.atomic():
         activities = Activity.objects.select_for_update().filter(status=1, book_end__gte=now, book_start__lte=now, key=key)
 
         if activities.exists() == 0:
