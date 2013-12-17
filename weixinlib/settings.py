@@ -9,6 +9,19 @@ WEIXIN_APPID = 'wxb2545ef150be8096'
 
 WEIXIN_SECRET = 'c0739f56c0f676c0e2850ef286d754bf'
 
+WEIXIN_EVENT_KEYS = {
+    'info_activity': 'V1001_TODAT_ACTIVE',
+    'info_lecture': 'V1001_TODAT_LECTURE',
+    'info_news': 'V1001_SCHOOL_NEWS',
+    'info_organization': 'V1001_OGNIZATION',
+    'ticket_book_what': 'TSINGHUA_BOOK_WHAT',
+    'ticket_get': 'TSINGHUA_TICKET',
+    'account_bind': 'TSINGHUA_BIND',
+    'help': 'TSINGHUA_HELP',
+    'ticket_no_book_recommand': 'TSINGHUA_NO_BOOK_ACTS',
+    'ticket_book_header': 'TSINGHUA_BOOK_',
+}
+
 WEIXIN_CUSTOM_MENU_TEMPLATE = {
     "button": [
         {
