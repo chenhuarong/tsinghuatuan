@@ -92,7 +92,7 @@
       <file leaf-file-name="tickethandler.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="241" column="53" selection-start="9325" selection-end="9343" vertical-scroll-proportion="21.23077">
+            <state line="290" column="32" selection-start="12292" selection-end="12292" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -101,7 +101,7 @@
       <file leaf-file-name="weixin_msg.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/queryhandler/weixin_msg.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="5" selection-start="538" selection-end="538" vertical-scroll-proportion="-13.846154">
+            <state line="24" column="5" selection-start="538" selection-end="538" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -110,7 +110,7 @@
       <file leaf-file-name="weixin_reply_templates.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/queryhandler/weixin_reply_templates.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="0" selection-start="527" selection-end="527" vertical-scroll-proportion="-7.5">
+            <state line="13" column="0" selection-start="527" selection-end="527" vertical-scroll-proportion="-0.30769232">
               <folding />
             </state>
           </provider>
@@ -119,7 +119,7 @@
       <file leaf-file-name="__init__.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="31" selection-start="1918" selection-end="1918" vertical-scroll-proportion="0.21293375">
+            <state line="53" column="8" selection-start="2395" selection-end="2395" vertical-scroll-proportion="0.9053628">
               <folding>
                 <element signature="e#22#35#0" expanded="true" />
               </folding>
@@ -1001,30 +1001,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="290" column="32" selection-start="12292" selection-end="12292" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/queryhandler/weixin_msg.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="5" selection-start="538" selection-end="538" vertical-scroll-proportion="-13.846154">
+        <state line="24" column="5" selection-start="538" selection-end="538" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/queryhandler/weixin_reply_templates.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="527" selection-end="527" vertical-scroll-proportion="-7.5">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="241" column="53" selection-start="9325" selection-end="9343" vertical-scroll-proportion="21.23077">
+        <state line="13" column="0" selection-start="527" selection-end="527" vertical-scroll-proportion="-0.30769232">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="31" selection-start="1918" selection-end="1918" vertical-scroll-proportion="0.21293375">
+        <state line="53" column="8" selection-start="2395" selection-end="2395" vertical-scroll-proportion="0.9053628">
           <folding>
             <element signature="e#22#35#0" expanded="true" />
           </folding>

@@ -239,12 +239,12 @@ def book_ticket(msg, key):
                             if now < tmptics[0].activity.book_end:
                                 description += u'\n回复“退票 %s”即可退票' % (tmptics[0].activity.key, )
                             url = s_reverse_ticket_detail(tmptics[0].unique_id)
-                            return get_reply_news_xml(msg, get_item_dict(
+                            return get_reply_news_xml(msg, [get_item_dict(
                                 title=tmptics[0].activity.name,
                                 description=description,
                                 pic_url=QRCODE_URL + str(tmptics[0].unique_id),
                                 url=url
-                            ))
+                            )])
                         #如果没票，返回无票信息
                         else:
                             return get_reply_text_xml(msg, u'很抱歉，您没有抢到该活动的票')
@@ -282,12 +282,12 @@ def book_ticket(msg, key):
             description = u'活动时间：%s\n活动地点：%s\n回复“退票 %s”即可退票' %(ticket.activity.start_time.strftime('%Y-%m-%d %H:%M'),
                                                                    ticket.activity.place, ticket.activity.key)
             url = s_reverse_ticket_detail(ticket.unique_id)
-            return get_reply_news_xml(msg, get_item_dict(
+            return get_reply_news_xml(msg, [get_item_dict(
                 title=ticket.activity.name,
                 description=description,
                 pic_url=QRCODE_URL + str(ticket.unique_id),
                 url=url
-            ))
+            )])
         elif tickets[0].status == 0:
             if activity.remain_tickets <= 0:
                 return get_reply_text_xml(msg, u'票已抢完，欢迎关注下次活动')
@@ -298,12 +298,12 @@ def book_ticket(msg, key):
             description = u'活动时间：%s\n活动地点：%s\n回复“退票 %s”即可退票' %(ticket.activity.start_time.strftime('%Y-%m-%d %H:%M'),
                                                                ticket.activity.place, ticket.activity.key)
             url = s_reverse_ticket_detail(ticket.unique_id)
-            return get_reply_news_xml(msg, get_item_dict(
+            return get_reply_news_xml(msg, [get_item_dict(
                 title=ticket.activity.name,
                 description=description,
                 pic_url=QRCODE_URL + str(ticket.unique_id),
                 url=url
-            ))
+            )])
         else:
             url = s_reverse_ticket_detail(tickets[0].unique_id)
             return get_reply_text_xml(msg, u'您已抢到%s的票，不能重复抢票，<a href="%s">查看电子票</a>' % (activity.name, url))
