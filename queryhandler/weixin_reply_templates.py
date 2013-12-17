@@ -10,7 +10,7 @@ def get_reply_template_xml(msg, msgtype, content):
 
 
 def get_reply_text_xml(msg, reply_content):
-    return get_reply_template_xml(msg, 'text', reply_content)
+    return get_reply_template_xml(msg, 'text', '<Content><![CDATA[%s]]></Content>' % reply_content)
 
 
 # get reply xml(reply news), using msg(source dict object) and reply_content(news, string)
