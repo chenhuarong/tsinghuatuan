@@ -31,23 +31,15 @@ def check_help_or_subscribe(msg):
 
 #get help information
 def get_help_or_subscribe_response(msg):
-    fromuser = get_msg_from(msg)
-    reply_content = u'您好，回复以下关键字可以得到相应结果:\n' \
-                    u'【活动抢票】\n' \
-                    u'抢啥 查票 抢票\n' \
-                    u'取票 退票\n' \
-                    u'【资讯查询】\n' \
-                    u'活动 讲座 新闻\n' \
-                    u'社团 部门\n' \
-                    u'【帮助信息】\n' \
-                    u'帮助 绑定 解绑\n' \
-                    u'【模糊查询】\n' \
-                    u'您的其他任何回复都会进行模糊查询。\n'
-    if not is_authenticated(fromuser):
-        reply_content += '<a href="' + s_reverse_validate(fromuser) + '">' \
-                         '点此绑定信息门户账号</a>\n'
-
-    return get_reply_text_xml(msg, reply_content)
+    title = u'清小团使用指南'
+    description = u'不想错过园子里精彩的资讯？又没时间没心情到处搜罗信息？想要参加高大上的活动却不想提前数小时排队？' \
+                  u'微信清小团帮您便捷解决这些问题！快来看看清小团怎么使用吧！'
+    return get_reply_news_xml(msg, [get_item_dict(
+        title=title,
+        description=description,
+        pic_url='',
+        url=s_reverse_help()
+    )])
 
 
 #check book command
