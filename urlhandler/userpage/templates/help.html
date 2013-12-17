@@ -1,0 +1,86 @@
+{% extends "mobile_base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+帮助 - 清小团
+{% endblock %}
+
+{% block css %}
+<link href="{% static "css/help.css" %}?_=3" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block theme %}
+    使用指南
+{% endblock %}
+
+{% block header %}
+<img class="header-img" src="{% static "img/logo.png" %}" />
+{% endblock %}
+
+{% block content %}
+    <div class="section">
+        <h7>咨询</h7>
+    </div>
+    <div class="artical">
+        &nbsp;&nbsp;&nbsp;&nbsp;不想错过园子里精彩的资讯？又没时间没心情到处搜罗信息？很简单！点我点我！不仅可以点击，还可以直接回复关键字查询哦！
+    </div>
+    <div>
+        <div>【活动】
+            高端接地气的活动资讯。
+        </div>
+    </div>
+    <div>
+        <div>【讲座】
+            大气上档次的讲座信息。
+        </div>
+    </div>
+    <div>
+        <div>【新闻】
+            低调有内涵的清华新闻。
+        </div>
+    </div>
+    <div>
+        <div>【协会】
+            炫酷有深度的协会介绍。
+        </div>
+    </div>
+
+    <hr/>
+    <div class="section">
+        <h7>服务</h7>
+    </div>
+
+    <div>
+        <div>【抢啥】
+            看看最近有什么活动可以抢票。
+        </div>
+    </div>
+    <div>
+        <div>【查票】
+            查询自己抢到的电子票。
+        </div>
+    </div>
+    <div>
+        <div>【绑定】
+                绑定info账号，轻松开启清小团所有功能！
+        </div>
+    </div>
+    <div>
+        <div>【帮助】
+                还不知道{{ name }}有哪些功能？快来学习一下吧！
+        </div>
+    </div>
+
+    <hr/>
+    <div class="section">
+        <h7>抢票</h7>
+    </div>
+    <div class="artical">-听说最近那啥啥要放票了，咱们明天起早去排队吧！</div>
+    <div class="artical">-OUT! 难道你还不知道{{ name }}可以一键抢票？</div>
+   <div class="artical">
+        <div>抢票正在进行中，点击子菜单中的项目进行抢票。</div>
+        <div>抢票活动已结束，点击子菜单中的项目进行查票。</div>
+        <div class="center">准备好了吗？倒计时3、2、1， 开始抢票吧！</div>
+   </div>
+{% endblock %}

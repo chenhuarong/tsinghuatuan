@@ -1,0 +1,17 @@
+.section{
+    padding-left: 10px;
+    padding-bottom: 3px;
+}
+.artical{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+}
+.artical .center{
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+h7{
+    font-weight: bold;
+}

@@ -16,3 +16,7 @@ def s_reverse_ticket_detail(uid):
     return SITE_DOMAIN + reverse('userpage.views.ticket_view', kwargs={'uid': uid})
 
 
+def s_reverse_help():
+    return SITE_DOMAIN + reverse('userpage.views.help_view')
+
+

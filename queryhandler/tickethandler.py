@@ -412,6 +412,7 @@ def check_subscribe(msg):
 
 #handle subscribe event
 def get_subscibe_response(msg):
+    '''
     reply_content = u'您好，回复以下关键字可以得到相应结果:\n' \
                     u'【活动抢票】\n' \
                     u'抢啥 查票 抢票\n' \
@@ -425,7 +426,15 @@ def get_subscibe_response(msg):
                     u'您的其他任何回复都会进行模糊查询。\n'
     reply_content += u'<a href="' + s_reverse_validate(msg['FromUserName']) + '">' \
                      u'点此绑定信息门户账号</a>\n'
-    return get_reply_text_xml(msg, reply_content)
+                     '''
+    reply_content = '<item><Title><![CDATA[%s]]></Title><Description><![CDATA[%s]]></Description>' \
+               '<PicUrl><![CDATA[%s]]></PicUrl><Url><![CDATA[%s]]></Url></item>'
+    title = u'清小团使用指南'
+    description = u'不想错过园子里精彩的资讯？又没时间没心情到处搜罗信息？想要参加高大上的活动却不想提前数小时排队？' \
+                  u'微信清小团帮您便捷解决这些问题！快来看看清小团怎么使用吧！'
+    pic_url = u''
+    reply_content = reply_content % (title, description, pic_url, s_reverse_help())
+    return get_reply_news_xml(msg, reply_content, 1)
 
 
 #check unsubscribe event
