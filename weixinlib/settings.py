@@ -5,9 +5,9 @@ __author__ = 'Epsirom'
 from queryhandler.settings import WEIXIN_TOKEN
 
 
-WEIXIN_APPID = 'wx92e46b77ae0a6834'
+WEIXIN_APPID = 'wxb2545ef150be8096'
 
-WEIXIN_SECRET = 'f16613ccbd29592e33ea9e3596aeaf4f'
+WEIXIN_SECRET = '8416b20564e9430bfe5a7c3fd88016f2'
 
 WEIXIN_EVENT_KEYS = {
     'info_activity': 'V1001_TODAT_ACTIVE',
@@ -30,7 +30,7 @@ WEIXIN_CUSTOM_MENU_TEMPLATE = {
             "sub_button": [
                 {
                     "type": "click",
-                    "name": "活动",
+                    "name": "文艺",
                     "key": "V1001_TODAT_ACTIVE",
                     "sub_button": []
                 },
@@ -54,7 +54,7 @@ WEIXIN_CUSTOM_MENU_TEMPLATE = {
                 },
                 {
                     "type": "click",
-                    "name": "协会",
+                    "name": "社团",
                     "key": "V1001_OGNIZATION",
                     "sub_button": []
                 }
