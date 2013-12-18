@@ -7,7 +7,7 @@ from queryhandler.settings import WEIXIN_TOKEN
 
 WEIXIN_APPID = 'wx92e46b77ae0a6834'
 
-WEIXIN_SECRET = 'a4fb3162fb38f3b385e444285245074b'
+WEIXIN_SECRET = 'f16613ccbd29592e33ea9e3596aeaf4f'
 
 WEIXIN_EVENT_KEYS = {
     'info_activity': 'V1001_TODAT_ACTIVE',
