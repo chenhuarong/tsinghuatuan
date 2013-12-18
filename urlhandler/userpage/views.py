@@ -156,5 +156,5 @@ def ticket_view(request, uid):
     return render_to_response('activityticket.html', variables)
 
 def help_view(request):
-    variables=RequestContext(request,{'name':u'清小团'})
+    variables=RequestContext(request,{'name':u'“紫荆之声”'})
     return render_to_response('help.html', variables)

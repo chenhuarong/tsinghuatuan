@@ -2,7 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="519d02f1-9909-43c4-95c4-b95f242a05f2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/weixinlib/settings.py" afterPath="$PROJECT_DIR$/weixinlib/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_base.html" afterPath="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_checkin.html" afterPath="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_checkin.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_detail.html" afterPath="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_detail.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/userpage/templates/activitydetails.html" afterPath="$PROJECT_DIR$/urlhandler/userpage/templates/activitydetails.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html" afterPath="$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/userpage/templates/help.html" afterPath="$PROJECT_DIR$/urlhandler/userpage/templates/help.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/templates/login.html" afterPath="$PROJECT_DIR$/urlhandler/adminpage/templates/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/userpage/templates/mobile_base.html" afterPath="$PROJECT_DIR$/urlhandler/userpage/templates/mobile_base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/templates/print_login.html" afterPath="$PROJECT_DIR$/urlhandler/adminpage/templates/print_login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/userpage/templates/validation.html" afterPath="$PROJECT_DIR$/urlhandler/userpage/templates/validation.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/userpage/views.py" afterPath="$PROJECT_DIR$/urlhandler/userpage/views.py" />
     </list>
     <ignored path="src.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -11,16 +21,16 @@
     <file path="/Django Console" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387288968744" ignored="false" />
     <file path="/weixin_simulator.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387288243909" ignored="false" />
     <file path="/__init__.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387294238131" ignored="false" />
-    <file path="/views.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387291014492" ignored="false" />
+    <file path="/views.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387375435980" ignored="false" />
     <file path="/urls.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387109142060" ignored="false" />
     <file path="/activity_list.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386991615753" ignored="false" />
     <file path="/activity_list.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386987043938" ignored="false" />
     <file path="/activity_list.css" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386752463515" ignored="false" />
-    <file path="/activity_checkin.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386832928623" ignored="false" />
+    <file path="/activity_checkin.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387375240043" ignored="false" />
     <file path="/activity_checkin.css" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386827567786" ignored="false" />
     <file path="/activity_checkin.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386832772066" ignored="false" />
     <file path="/models.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386985904919" ignored="false" />
-    <file path="/activity_detail.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386987195810" ignored="false" />
+    <file path="/activity_detail.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387375274840" ignored="false" />
     <file path="/activity_detail.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387041499839" ignored="false" />
     <file path="/adjust_menu.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387011370651" ignored="false" />
     <file path="/adjust_menu.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387037926770" ignored="false" />
@@ -31,7 +41,7 @@
     <file path="/custom_menu.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387096440574" ignored="false" />
     <file path="/Python Console" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387288041347" ignored="false" />
     <file path="/fragment.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387014288010" ignored="false" />
-    <file path="/validation.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387030818474" ignored="false" />
+    <file path="/validation.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387375454598" ignored="false" />
     <file path="/localwsgi.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387092846338" ignored="false" />
     <file path="/tsinghuatuan.conf" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387177098315" ignored="false" />
     <file path="/app.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387115995920" ignored="false" />
@@ -56,7 +66,7 @@
     <file path="/weixin_lecture.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387120323102" ignored="false" />
     <file path="$PROJECT_DIR$/../TuanTuan/TuanTuan/TuanTuan/TuanTuanApp/views.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387128133593" ignored="false" />
     <file path="/activitytext.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387178286501" ignored="false" />
-    <file path="/activityticket.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387181419601" ignored="false" />
+    <file path="/activityticket.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387375383937" ignored="false" />
     <file path="/requirements.txt" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387178436418" ignored="false" />
     <file path="/Library/Python/2.7/site-packages/django/db/models/manager.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387179840678" ignored="false" />
     <file path="/Library/Python/2.7/site-packages/django/db/models/options.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387179840678" ignored="false" />
@@ -65,6 +75,12 @@
     <file path="/weixin_reply_templates.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387289027809" ignored="false" />
     <file path="/weixin_msg.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387284844400" ignored="false" />
     <file path="/handler_check_templates.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387285227379" ignored="false" />
+    <file path="/mobile_base.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387375196560" ignored="false" />
+    <file path="/activity_base.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387375225671" ignored="false" />
+    <file path="/login.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387375331075" ignored="false" />
+    <file path="/print_login.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387375351526" ignored="false" />
+    <file path="/activitydetails.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387375366832" ignored="false" />
+    <file path="/help.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387375418960" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,22 +121,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/requirements.txt" />
-        <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html" />
-        <option value="$PROJECT_DIR$/configurations/init/tsinghuatuan.conf" />
-        <option value="$PROJECT_DIR$/urlhandler/adminpage/views.py" />
-        <option value="$PROJECT_DIR$/queryhandler/weixin_text_templates.py" />
-        <option value="$PROJECT_DIR$/queryhandler/weixin_msg.py" />
-        <option value="$PROJECT_DIR$/queryhandler/handler_check_templates.py" />
-        <option value="$PROJECT_DIR$/weixin_simulator.py" />
-        <option value="$PROJECT_DIR$/queryhandler/weixin_reply_templates.py" />
-        <option value="$PROJECT_DIR$/urlhandler/userpage/views.py" />
-        <option value="$PROJECT_DIR$/urlhandler/userpage/static/lib/RSA/BigInt.js" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/static/lib/RSA/RSA.js" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/static/lib/RSA/Barrett.js" />
         <option value="$PROJECT_DIR$/queryhandler/tickethandler.py" />
         <option value="$PROJECT_DIR$/queryhandler/__init__.py" />
         <option value="$PROJECT_DIR$/weixinlib/settings.py" />
+        <option value="$PROJECT_DIR$/urlhandler/userpage/templates/mobile_base.html" />
+        <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_base.html" />
+        <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_checkin.html" />
+        <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_detail.html" />
+        <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/login.html" />
+        <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/print_login.html" />
+        <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activitydetails.html" />
+        <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html" />
+        <option value="$PROJECT_DIR$/urlhandler/userpage/templates/help.html" />
+        <option value="$PROJECT_DIR$/urlhandler/userpage/views.py" />
+        <option value="$PROJECT_DIR$/urlhandler/userpage/templates/validation.html" />
       </list>
     </option>
   </component>
@@ -817,94 +833,114 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/activity_checkin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="33" selection-start="479" selection-end="479" vertical-scroll-proportion="0.30769232">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/activity_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="91" column="106" selection-start="3716" selection-end="3716" vertical-scroll-proportion="-5.6410255">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/activity_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.7179487">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/adjust_menu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/base_with_nav.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.4799331">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="31" selection-start="2213" selection-end="2213" vertical-scroll-proportion="0.82051283">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/order_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.974359">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/print_login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="35" selection-start="1961" selection-end="1961" vertical-scroll-proportion="1.7948718">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/print_ticket.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.55518395">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activityphoto.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activitydetails.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="6" selection-start="82" selection-end="82" vertical-scroll-proportion="0.12541807">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="13" selection-start="89" selection-end="89" vertical-scroll-proportion="-0.3043478">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/help.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="36" selection-start="1164" selection-end="1164" vertical-scroll-proportion="1.6666666">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="330" selection-end="330" vertical-scroll-proportion="0.096618354" />
+        <state line="158" column="52" selection-start="6311" selection-end="6311" vertical-scroll-proportion="0.82758623">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/validation.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/js/validation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="0" selection-start="1871" selection-end="1871" vertical-scroll-proportion="0.5741325" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/configurations/init/tsinghuatuan.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="0" selection-start="623" selection-end="623" vertical-scroll-proportion="0.59148264" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/weixin_text_templates.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="43" selection-start="1237" selection-end="1237" vertical-scroll-proportion="0.29022083" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/weixin_reply_templates.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="527" selection-end="527" vertical-scroll-proportion="0.013157895" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/weixin_msg.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="5" selection-start="538" selection-end="538" vertical-scroll-proportion="0.56782335" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="290" column="32" selection-start="12292" selection-end="12292" vertical-scroll-proportion="0.5056361" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="53" selection-start="238" selection-end="238" vertical-scroll-proportion="0.19292605">
+        <state line="60" column="23" selection-start="2343" selection-end="2343" vertical-scroll-proportion="1.5384616">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/weixinlib/custom_menu.py">
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activitytext.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="28" selection-start="520" selection-end="520" vertical-scroll-proportion="0.3376206">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/weixinlib/base_support.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="356" selection-end="356" vertical-scroll-proportion="0.31350482">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/weixinlib/weixin_urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="34" selection-start="118" selection-end="118" vertical-scroll-proportion="0.2170418">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/weixinlib/url_generators.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="4" selection-start="88" selection-end="88" vertical-scroll-proportion="0.098522164">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/weixinlib/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="132" selection-end="132" vertical-scroll-proportion="0.19292605">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-5.1282053">
           <folding />
         </state>
       </provider>
