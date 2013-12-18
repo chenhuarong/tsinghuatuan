@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="519d02f1-9909-43c4-95c4-b95f242a05f2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/queryhandler/__init__.py" afterPath="$PROJECT_DIR$/queryhandler/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/queryhandler/tickethandler.py" afterPath="$PROJECT_DIR$/queryhandler/tickethandler.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/weixinlib/settings.py" afterPath="$PROJECT_DIR$/weixinlib/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="src.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387286685126" ignored="false" />
+    <file path="/Dummy.txt" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387350820246" ignored="false" />
     <file path="/tickethandler.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387293754073" ignored="false" />
     <file path="/Django Console" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387288968744" ignored="false" />
     <file path="/weixin_simulator.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387288243909" ignored="false" />
@@ -44,14 +44,14 @@
     <file path="$PROJECT_DIR$/../TuanTuan/TuanTuan/TuanTuan/TuanTuanApp/templates/weixin_lecture.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387120323432" ignored="false" />
     <file path="$PROJECT_DIR$/../TuanTuan/TuanTuan/TuanTuan/TuanTuanApp/templates/weixin_login.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387114522308" ignored="false" />
     <file path="$PROJECT_DIR$/../TuanTuan/TuanTuan/TuanTuan/TuanTuanApp/templates/weixin_news.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387114530329" ignored="false" />
-    <file path="$PROJECT_DIR$/../TuanTuan/TuanTuan/TuanTuan/TuanTuanApp/handle.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387254258057" ignored="false" />
+    <file path="$PROJECT_DIR$/../TuanTuan/TuanTuan/TuanTuan/TuanTuanApp/handle.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387350820246" ignored="false" />
     <file path="$PROJECT_DIR$/../TuanTuan/TuanTuan/configurations/init/tuantuan.conf" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387117754690" ignored="false" />
     <file path="/tuantuan.conf" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387117754200" ignored="false" />
     <file path="$PROJECT_DIR$/../TuanTuan/TuanTuan/configurations/nginx/tuantuan.conf" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387115867073" ignored="false" />
     <file path="/query_transfer.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387116352594" ignored="false" />
     <file path="$PROJECT_DIR$/../TuanTuan/TuanTuan/TuanTuan/wsgi.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387117480969" ignored="false" />
     <file path="/wsgi.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387117356411" ignored="false" />
-    <file path="$PROJECT_DIR$/../TuanTuan/TuanTuan/TuanTuan/settings.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387119776147" ignored="false" />
+    <file path="$PROJECT_DIR$/../TuanTuan/TuanTuan/TuanTuan/settings.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387350820246" ignored="false" />
     <file path="$PROJECT_DIR$/../TuanTuan/TuanTuan/localwsgi.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387117772809" ignored="false" />
     <file path="$PROJECT_DIR$/../TuanTuan/TuanTuan/TuanTuan/urls.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387128133594" ignored="false" />
     <file path="/weixin_lecture.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387120323102" ignored="false" />
@@ -89,40 +89,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="tickethandler.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
+      <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/queryhandler/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="290" column="32" selection-start="12292" selection-end="12292" vertical-scroll-proportion="0.0">
+            <state line="2" column="48" selection-start="39" selection-end="71" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="weixin_msg.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/queryhandler/weixin_msg.py">
+      <file leaf-file-name="settings.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/weixinlib/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="5" selection-start="538" selection-end="538" vertical-scroll-proportion="0.0">
+            <state line="9" column="49" selection-start="182" selection-end="182" vertical-scroll-proportion="-1.7250804">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="weixin_reply_templates.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/queryhandler/weixin_reply_templates.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="0" selection-start="527" selection-end="527" vertical-scroll-proportion="-0.30769232">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="8" selection-start="2395" selection-end="2395" vertical-scroll-proportion="0.9053628">
-              <folding>
-                <element signature="e#22#35#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -158,16 +138,16 @@
         <option value="$PROJECT_DIR$/urlhandler/userpage/static/lib/RSA/BigInt.js" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/static/lib/RSA/RSA.js" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/static/lib/RSA/Barrett.js" />
-        <option value="$PROJECT_DIR$/weixinlib/settings.py" />
         <option value="$PROJECT_DIR$/queryhandler/tickethandler.py" />
         <option value="$PROJECT_DIR$/queryhandler/__init__.py" />
+        <option value="$PROJECT_DIR$/weixinlib/settings.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
     <option name="width" value="1440" />
-    <option name="height" value="780" />
+    <option name="height" value="770" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -195,6 +175,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -278,62 +259,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TsinghuaTuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="urlhandler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="userpage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RSA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TsinghuaTuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="urlhandler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="userpage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -491,7 +416,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -827,14 +751,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1440" height="780" extended-state="6" />
+    <frame x="0" y="22" width="1440" height="770" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32824427" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32671756" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31205165" sideWeight="0.6057402" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32209468" sideWeight="0.6057402" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3942598" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20681265" sideWeight="0.28703704" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3281787" sideWeight="0.49468085" order="9" side_tool="true" content_ui="tabs" />
@@ -913,121 +837,87 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/queryhandler/handler_check_templates.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="4" selection-start="97" selection-end="97" vertical-scroll-proportion="0.17184943">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="616" selection-end="616" vertical-scroll-proportion="0.40851736">
-          <folding />
-        </state>
+        <state line="20" column="0" selection-start="616" selection-end="616" vertical-scroll-proportion="0.40851736" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/lib/RSA/BigInt.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="293" selection-end="293" vertical-scroll-proportion="0.26025236">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
+        <state line="11" column="0" selection-start="293" selection-end="293" vertical-scroll-proportion="0.26025236" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/lib/RSA/RSA.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="0" selection-start="2375" selection-end="2375" vertical-scroll-proportion="1.8927444">
-          <folding />
-        </state>
+        <state line="93" column="0" selection-start="2375" selection-end="2375" vertical-scroll-proportion="1.8927444" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/lib/RSA/Barrett.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="0" selection-start="1738" selection-end="1738" vertical-scroll-proportion="1.7507887">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
+        <state line="74" column="0" selection-start="1738" selection-end="1738" vertical-scroll-proportion="1.7507887" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="330" selection-end="330" vertical-scroll-proportion="0.096618354">
-          <folding />
-        </state>
+        <state line="11" column="0" selection-start="330" selection-end="330" vertical-scroll-proportion="0.096618354" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/validation.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/js/validation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="0" selection-start="1871" selection-end="1871" vertical-scroll-proportion="0.5741325">
-          <folding />
-        </state>
+        <state line="69" column="0" selection-start="1871" selection-end="1871" vertical-scroll-proportion="0.5741325" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configurations/init/tsinghuatuan.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="0" selection-start="623" selection-end="623" vertical-scroll-proportion="0.59148264" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/queryhandler/weixin_text_templates.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="43" selection-start="1237" selection-end="1237" vertical-scroll-proportion="0.29022083" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/queryhandler/weixin_reply_templates.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="527" selection-end="527" vertical-scroll-proportion="0.013157895" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/queryhandler/weixin_msg.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="5" selection-start="538" selection-end="538" vertical-scroll-proportion="0.56782335" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="290" column="32" selection-start="12292" selection-end="12292" vertical-scroll-proportion="0.5056361" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/queryhandler/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="48" selection-start="39" selection-end="71" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/weixinlib/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="43" selection-start="669" selection-end="669" vertical-scroll-proportion="0.16561514">
+        <state line="9" column="49" selection-start="182" selection-end="182" vertical-scroll-proportion="-1.7250804">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/configurations/init/tsinghuatuan.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="0" selection-start="623" selection-end="623" vertical-scroll-proportion="0.59148264">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/weixin_text_templates.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="290" column="32" selection-start="12292" selection-end="12292" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/weixin_msg.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="5" selection-start="538" selection-end="538" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/weixin_reply_templates.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="527" selection-end="527" vertical-scroll-proportion="-0.30769232">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="8" selection-start="2395" selection-end="2395" vertical-scroll-proportion="0.9053628">
-          <folding>
-            <element signature="e#22#35#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

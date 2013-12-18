@@ -5,9 +5,9 @@ __author__ = 'Epsirom'
 from queryhandler.settings import WEIXIN_TOKEN
 
 
-WEIXIN_APPID = 'wxb2545ef150be8096'
+WEIXIN_APPID = 'wx92e46b77ae0a6834'
 
-WEIXIN_SECRET = 'c0739f56c0f676c0e2850ef286d754bf'
+WEIXIN_SECRET = 'a4fb3162fb38f3b385e444285245074b'
 
 WEIXIN_EVENT_KEYS = {
     'info_activity': 'V1001_TODAT_ACTIVE',
