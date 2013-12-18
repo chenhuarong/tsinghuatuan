@@ -31,9 +31,9 @@ def check_help_or_subscribe(msg):
 
 #get help information
 def get_help_or_subscribe_response(msg):
-    title = u'清小团使用指南'
+    title = u'“紫荆之声”使用指南'
     description = u'不想错过园子里精彩的资讯？又没时间没心情到处搜罗信息？想要参加高大上的活动却不想提前数小时排队？' \
-                  u'微信清小团帮您便捷解决这些问题！快来看看清小团怎么使用吧！'
+                  u'微信“紫荆之声”帮您便捷解决这些问题！快来看看“紫荆之声”怎么使用吧！'
     return get_reply_news_xml(msg, [get_item_dict(
         title=title,
         description=description,
