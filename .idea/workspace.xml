@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="519d02f1-9909-43c4-95c4-b95f242a05f2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/templates/adjust_menu.html" afterPath="$PROJECT_DIR$/urlhandler/adminpage/templates/adjust_menu.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/static/js/adjust_menu.js" afterPath="$PROJECT_DIR$/urlhandler/adminpage/static/js/adjust_menu.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/queryhandler/tickethandler.py" afterPath="$PROJECT_DIR$/queryhandler/tickethandler.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="src.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,7 +22,7 @@
     <file path="/models.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386985904919" ignored="false" />
     <file path="/activity_detail.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387375274840" ignored="false" />
     <file path="/activity_detail.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387041499839" ignored="false" />
-    <file path="/adjust_menu.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387414630604" ignored="false" />
+    <file path="/adjust_menu.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387415397411" ignored="false" />
     <file path="/adjust_menu.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387413884961" ignored="false" />
     <file path="/adjust_menu.css" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386997099419" ignored="false" />
     <file path="/base_support.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387000430408" ignored="false" />
@@ -97,10 +94,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="__init__.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="61" selection-start="362" selection-end="362" vertical-scroll-proportion="0.14184397">
+            <state line="10" column="61" selection-start="362" selection-end="362" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -109,16 +106,16 @@
       <file leaf-file-name="tickethandler.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="47" selection-start="1690" selection-end="1690" vertical-scroll-proportion="0.0">
+            <state line="74" column="30" selection-start="2448" selection-end="2448" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="adjust_menu.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="adjust_menu.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/adjust_menu.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="50" selection-start="2138" selection-end="2138" vertical-scroll-proportion="-8.5">
+            <state line="46" column="54" selection-start="1544" selection-end="1544" vertical-scroll-proportion="0.8120301">
               <folding />
             </state>
           </provider>
@@ -154,10 +151,10 @@
         <option value="$PROJECT_DIR$/urlhandler/userpage/views.py" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/validation.html" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_checkin.js" />
-        <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/adjust_menu.html" />
         <option value="$PROJECT_DIR$/configurations/init/tsinghuatuan.conf" />
         <option value="$PROJECT_DIR$/queryhandler/tickethandler.py" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/static/js/adjust_menu.js" />
+        <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/adjust_menu.html" />
       </list>
     </option>
   </component>
@@ -992,20 +989,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="47" selection-start="1690" selection-end="1690" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/adjust_menu.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="50" selection-start="2138" selection-end="2138" vertical-scroll-proportion="-8.5">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/static/js/adjust_menu.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="119" column="22" selection-start="3045" selection-end="3045" vertical-scroll-proportion="0.47560975">
@@ -1015,7 +998,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="61" selection-start="362" selection-end="362" vertical-scroll-proportion="0.14184397">
+        <state line="10" column="61" selection-start="362" selection-end="362" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="30" selection-start="2448" selection-end="2448" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/adjust_menu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="54" selection-start="1544" selection-end="1544" vertical-scroll-proportion="0.8120301">
           <folding />
         </state>
       </provider>
