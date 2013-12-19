@@ -9,7 +9,7 @@
     <file path="/Django Console" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387288968744" ignored="false" />
     <file path="/weixin_simulator.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387288243909" ignored="false" />
     <file path="/__init__.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387294238131" ignored="false" />
-    <file path="/views.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387375435980" ignored="false" />
+    <file path="/views.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387416251789" ignored="false" />
     <file path="/urls.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387109142060" ignored="false" />
     <file path="/activity_list.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386991615753" ignored="false" />
     <file path="/activity_list.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386987043938" ignored="false" />
@@ -54,7 +54,7 @@
     <file path="/weixin_lecture.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387120323102" ignored="false" />
     <file path="$PROJECT_DIR$/../TuanTuan/TuanTuan/TuanTuan/TuanTuanApp/views.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387128133593" ignored="false" />
     <file path="/activitytext.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387415698041" ignored="false" />
-    <file path="/activityticket.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387375383937" ignored="false" />
+    <file path="/activityticket.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387416218943" ignored="false" />
     <file path="/requirements.txt" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387178436418" ignored="false" />
     <file path="/Library/Python/2.7/site-packages/django/db/models/manager.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387179840678" ignored="false" />
     <file path="/Library/Python/2.7/site-packages/django/db/models/options.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387179840678" ignored="false" />
@@ -109,7 +109,7 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlhandler/userpage/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="117" column="49" selection-start="4073" selection-end="4179" vertical-scroll-proportion="0.0">
+            <state line="156" column="55" selection-start="6254" selection-end="6254" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -156,19 +156,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/css/base.css">
+      <file leaf-file-name="details.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/css/details.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="26" selection-start="717" selection-end="717" vertical-scroll-proportion="0.0">
+            <state line="152" column="22" selection-start="2705" selection-end="2705" vertical-scroll-proportion="-9.84">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="details.css" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/css/details.css">
+      <file leaf-file-name="activityticket.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="152" column="22" selection-start="2705" selection-end="2705" vertical-scroll-proportion="0.76397514">
+            <state line="51" column="27" selection-start="1369" selection-end="1369" vertical-scroll-proportion="0.8213166">
               <folding />
             </state>
           </provider>
@@ -217,8 +217,6 @@
         <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/login.html" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/print_login.html" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activitydetails.html" />
-        <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html" />
-        <option value="$PROJECT_DIR$/urlhandler/userpage/views.py" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/validation.html" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/static/css/base.css" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/help.html" />
@@ -226,6 +224,8 @@
         <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_detail.html" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activitytext.html" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/static/css/details.css" />
+        <option value="$PROJECT_DIR$/urlhandler/userpage/views.py" />
+        <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html" />
       </list>
     </option>
   </component>
@@ -832,7 +832,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3942598" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20681265" sideWeight="0.28703704" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3281787" sideWeight="0.49468085" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3207547" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3207547" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977098" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936507" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -917,11 +917,6 @@
         <state line="5" column="6" selection-start="82" selection-end="82" vertical-scroll-proportion="0.12541807" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="89" selection-end="89" vertical-scroll-proportion="-0.3043478" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/validation.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="60" column="23" selection-start="2343" selection-end="2343" vertical-scroll-proportion="1.5384616" />
@@ -976,13 +971,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="49" selection-start="4073" selection-end="4179" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="206" column="0" selection-start="7331" selection-end="7331" vertical-scroll-proportion="-9.44">
@@ -1011,7 +999,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/css/details.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="152" column="22" selection-start="2705" selection-end="2705" vertical-scroll-proportion="0.76397514">
+        <state line="152" column="22" selection-start="2705" selection-end="2705" vertical-scroll-proportion="-9.84">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="156" column="55" selection-start="6254" selection-end="6254" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="27" selection-start="1369" selection-end="1369" vertical-scroll-proportion="0.8213166">
           <folding />
         </state>
       </provider>
