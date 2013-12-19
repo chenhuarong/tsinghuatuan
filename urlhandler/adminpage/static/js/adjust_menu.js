@@ -182,15 +182,19 @@ function beforeSubmit(formData, jqForm, options) {
 }
 
 function submitResponse(data) {
-
+    if (data['errcode'] == 0) {
+        show_result('成功！')
+    } else {
+        show_result('出错了...\r\n错误码：' + data['errcode'] + '\r\n错误提示：' + data['errmsg']);
+    }
 }
 
 function submitError(xhr) {
-
+    show_result('出错了！\r\n返回状态：' + xhr.status + ' ' + xhr.statusText + '\r\n\r\n供调试：\r\n' + (xhr.responseText || '<null>'));
 }
 
 function submitComplete(xhr) {
-    show_result(xhr.responseText);
+    console.log('update ')
 }
 
 $('#submit-weixin-menu-form').submit(function() {

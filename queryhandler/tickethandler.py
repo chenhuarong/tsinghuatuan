@@ -49,13 +49,13 @@ def check_bookable_activities(msg):
 
 def time_chs_format(time):
     if time.days > 0:
-        result = time.days + u'天'
+        result = str(time.days) + u'天'
     elif time.seconds >= 3600:
         result = str(time.seconds / 3600) + u'小时'
     elif time.seconds >= 60:
         result = str(time.seconds / 60) + u'分钟'
     else:
-        result = time.seconds + u'秒'
+        result = str(time.seconds) + u'秒'
     return result
 
 
