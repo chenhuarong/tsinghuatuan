@@ -67,9 +67,12 @@ def get_bookable_activities(msg):
     activities_book_end = Activity.objects.filter(status=1, book_end__lt=now, end_time__gte=now)
     activities = list(activities_book_not_end) + list(activities_book_end)
     items = []
-    num = 0
+    MAX_LEN = 256
     for activity in activities:
         title = activity.name + '\n（%s）'
+        act_abstract = activity.description
+        if len(act_abstract) > MAX_LEN:
+            act_abstract = act_abstract[0:MAX_LEN]+u'...'
         if activity.book_start > now:
             delta = activity.book_start - now
             content = u'%s后开始抢票' % time_chs_format(delta)
@@ -80,7 +83,7 @@ def get_bookable_activities(msg):
             title = title % u'抢票已结束'
         items.append(get_item_dict(
             title=title,
-            description=activity.description,
+            description=act_abstract,
             pic_url=activity.pic_url,
             url=s_reverse_activity_detail(activity.id)
         ))

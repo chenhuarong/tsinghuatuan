@@ -104,7 +104,6 @@ span.space{
 }
 .timer-wrapper{
     padding-left: 10px;
-    padding-bottom: 3px;
 }
 .invalid-time{
     text-align: center;
@@ -143,10 +142,14 @@ span.space{
     border-radius: 10px;
     padding: 2px;
     text-align: center;
-    font-size: 14px;
+    font-size: 18px;
 }
 .clipcopy{
     float: right;
     margin-right: 10px;
     color: blue;
+}
+.highlight{
+    font-weight: bold;
+    color: red;
 }
