@@ -49,13 +49,13 @@ def check_bookable_activities(msg):
 
 def time_chs_format(time):
     if time.days > 0:
-        result = time.days + u'天'
+        result = str(time.days) + u'天'
     elif time.seconds >= 3600:
         result = str(time.seconds / 3600) + u'小时'
     elif time.seconds >= 60:
         result = str(time.seconds / 60) + u'分钟'
     else:
-        result = time.seconds + u'秒'
+        result = str(time.seconds) + u'秒'
     return result
 
 
@@ -67,7 +67,6 @@ def get_bookable_activities(msg):
     activities_book_end = Activity.objects.filter(status=1, book_end__lt=now, end_time__gte=now)
     activities = list(activities_book_not_end) + list(activities_book_end)
     items = []
-    num = 0
     for activity in activities:
         title = activity.name + '\n（%s）'
         if activity.book_start > now:

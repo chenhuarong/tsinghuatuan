@@ -194,7 +194,7 @@ function submitError(xhr) {
 }
 
 function submitComplete(xhr) {
-    console.log('update menu done.')
+    console.log('update ')
 }
 
 $('#submit-weixin-menu-form').submit(function() {
