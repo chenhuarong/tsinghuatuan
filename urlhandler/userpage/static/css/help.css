@@ -7,11 +7,17 @@
     padding-right: 10px;
     padding-bottom: 5px;
 }
-.artical .center{
-    padding: 10px;
-    text-align: center;
-    font-weight: bold;
-}
 h7{
     font-weight: bold;
+}
+.slidedown{
+    text-align: center;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+.slidedown a{
+    color:blue;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
 }

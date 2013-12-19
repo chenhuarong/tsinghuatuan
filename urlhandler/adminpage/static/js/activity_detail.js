@@ -114,7 +114,7 @@ function initializeForm(activity) {
         initialProgress(activity.checked_tickets, activity.ordered_tickets, activity.total_tickets);
     }
     curstatus = activity.status;
-    lockByStatus(curstatus, activity.book_start, activity.start_time);
+    lockByStatus(curstatus, activity.book_start, activity.start_time, activity.end_time);
 }
 
 function check_percent(p) {
@@ -233,7 +233,7 @@ function lockForm() {
     $('#resetBtn').hide();
 }
 
-function lockByStatus(status, book_start, start_time) {
+function lockByStatus(status, book_start, start_time, end_time) {
     // true means lock, that is true means disabled
     var statusLockMap = {
         // saved but not published
@@ -252,6 +252,12 @@ function lockByStatus(status, book_start, start_time) {
             },
             'total_tickets': function() {
                 return (new Date() >= getDateByObj(book_start));
+            },
+            'start_time': function() {
+                return (new Date() >= getDateByObj(end_time));
+            },
+            'end_time': function() {
+                return (new Date() >= getDateByObj(end_time));
             }
         }
     }, key;
@@ -268,7 +274,8 @@ function lockByStatus(status, book_start, start_time) {
     } else {
         $('#saveBtn').show();
     }
-    showPublishByStatus(status,start_time)
+    showPublishByStatus(status,start_time);
+    showPubTipsByStatus(status);
 }
 
 function showProgressByStatus(status, book_start) {
@@ -286,6 +293,12 @@ function showPublishByStatus(status, start_time) {
     } else {
         $('#resetBtn').show();
         $('#publishBtn').show();
+    }
+}
+
+function showPubTipsByStatus(status){
+    if(status < 1){
+        $('#publishBtn').tooltip({'title': '发布后不能修改“活动名称”、“活动代称”和“订票开始时间”'});
     }
 }
 

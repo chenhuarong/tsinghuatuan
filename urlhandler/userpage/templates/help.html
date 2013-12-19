@@ -10,6 +10,10 @@
 <link href="{% static "css/help.css" %}?_=3" rel="stylesheet" type="text/css" />
 {% endblock %}
 
+{% block js %}
+    <script src="{% static "js/help.js" %}"></script>
+{% endblock %}
+
 {% block theme %}
     使用指南
 {% endblock %}
@@ -19,6 +23,57 @@
 {% endblock %}
 
 {% block content %}
+
+    <div class="section">
+        <h7>抢票</h7>
+    </div>
+    <div class="artical">-听说最近那啥啥要放票了，咱们明天起早去排队吧！</div>
+    <div class="artical">-OUT! 难道你还不知道{{ name }}可以一键抢票？</div>
+   <div class="artical">
+        <div>抢票正在进行中，点击子菜单中的项目进行抢票。</div>
+        <div>抢票活动已结束，点击子菜单中的项目进行查票。</div>
+   </div>
+    <div class="slidedown" id="sd-ticket" onclick="sd_ticket()">
+        <a>
+            <span>
+                <img src="{% static "img/chevron-down.png" %}" />
+            </span>
+            <span>点击展开“抢票技巧”</span></a>
+    </div>
+    <div class="artical" id="querytickets" style="display: none;">
+        <div>输入“抢票 活动代称”进行抢票。</div>
+        <div>输入“查票 活动代称”进行查票。</div>
+        <div>输入“退票 活动代称”进行退票。</div>
+        <div>活动抢票时间结束后，通过点击抢票菜单的该活动名称，可查询该活动的电子票。</div>
+    </div>
+
+    <hr/>
+    <div class="section">
+        <h7>服务</h7>
+    </div>
+
+    <div>
+        <div>【抢啥】
+            看看最近有什么活动可以抢票。
+        </div>
+    </div>
+    <div>
+        <div>【查票】
+            查询自己抢到的电子票。
+        </div>
+    </div>
+    <div>
+        <div>【绑定】
+                绑定info账号，开启{{ name }}所有功能！
+        </div>
+    </div>
+    <div>
+        <div>【帮助】
+                快来学习一下{{ name }}的所有功能吧！
+        </div>
+    </div>
+
+    <hr/>
     <div class="section">
         <h7>咨询</h7>
     </div>
@@ -50,42 +105,29 @@
             炫酷有深度的社团介绍。
         </div>
     </div>
+    <div>
+    <div class="slidedown" id="sd-query" onclick="sd_query()">
+        <a>
+            <span>
+                <img src="{% static "img/chevron-down.png" %}" />
+            </span>
+            <span>点击展开“查询使用详解”</span></a>
+    </div>
+    </div>
+    <div class="artical" id="querydetails" style="display: none">
+    <div> 您可以输入：</div>
+    <div>“活动 xx”查询相关活动。</div>
+    <div>“讲座 xx”查询相关讲座。</div>
+    <div>“新闻 xx”查询相关新闻。</div>
+    <div>“社团 xx”查询相关社团。</div>
+    <div>“部门 xx”查询相关部门。</div>
+    <div>您还可以输入：</div>
+    <div>“标题 相关内容”查询标题中含有该内容资讯。</div>
+    <div>“时间 具体时间（段）”查询该时间段的资讯。</div>
+    <div>（例：12月15日18点，15日到18日，明天等时间）</div>
+    <div>“地点 具体地点”查询该地点举行的活动，讲座等。</div>
 
-    <hr/>
-    <div class="section">
-        <h7>服务</h7>
+    <div>您还可以任意输入进行模糊查询。</div>
+    <div>（例：12月的电影，大礼堂的讲座等，我们将为您返回综合内容，时间，地点查询的结果）</div>
     </div>
-
-    <div>
-        <div>【抢啥】
-            看看最近有什么活动可以抢票。
-        </div>
-    </div>
-    <div>
-        <div>【查票】
-            查询自己抢到的电子票。
-        </div>
-    </div>
-    <div>
-        <div>【绑定】
-                绑定info账号，轻松开启{{ name }}所有功能！
-        </div>
-    </div>
-    <div>
-        <div>【帮助】
-                快来学习一下{{ name }}的所有功能吧！
-        </div>
-    </div>
-
-    <hr/>
-    <div class="section">
-        <h7>抢票</h7>
-    </div>
-    <div class="artical">-听说最近那啥啥要放票了，咱们明天起早去排队吧！</div>
-    <div class="artical">-OUT! 难道你还不知道{{ name }}可以一键抢票？</div>
-   <div class="artical">
-        <div>抢票正在进行中，点击子菜单中的项目进行抢票。</div>
-        <div>抢票活动已结束，点击子菜单中的项目进行查票。</div>
-        <div class="center">准备好了吗？倒计时3、2、1， 开始抢票吧！</div>
-   </div>
 {% endblock %}

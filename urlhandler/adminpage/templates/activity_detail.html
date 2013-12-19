@@ -80,7 +80,7 @@
         <form class="form-horizontal" role="form" method="post" action="{% url "adminpage.views.activity_post" %}" id="activity-form">
             {% csrf_token %}
             <div class="form-group">
-                <label for="input-name" class="col-sm-2 control-label">活动名称</label>
+                <label for="input-name" class="col-sm-2 control-label" id="label-input-name">活动名称</label>
                 <div class="col-sm-10">
                     <input type="text" maxlength="26" name="name" class="form-control" id="input-name" placeholder="活动名称，如 马兰花开" autofocus>
                 </div>

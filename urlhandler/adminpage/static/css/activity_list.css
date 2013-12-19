@@ -3,6 +3,7 @@
 }
 .td-name {
     min-width: 90px;
+    word-break: break-all;
 }
 .td-description {
     word-break: break-all;
@@ -19,6 +20,7 @@
 }
 .td-operations {
     min-width: 62px;
+}
 .td-detail_url {
     min-width: 70px;
 }
