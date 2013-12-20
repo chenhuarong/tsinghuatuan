@@ -42,6 +42,7 @@ function get_custom_menu(url) {
         },
         dataType: 'json',
         error: function(xhr, errmsg, e) {
+            show_result('获取当前菜单失败，请重试！')
         },
         success: function(jsonData) {
             menus = jsonData;

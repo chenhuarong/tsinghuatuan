@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="519d02f1-9909-43c4-95c4-b95f242a05f2" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/templates/adjust_menu.html" afterPath="$PROJECT_DIR$/urlhandler/adminpage/templates/adjust_menu.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/static/js/adjust_menu.js" afterPath="$PROJECT_DIR$/urlhandler/adminpage/static/js/adjust_menu.js" />
     </list>
     <ignored path="src.iws" />
@@ -22,8 +23,8 @@
     <file path="/models.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386985904919" ignored="false" />
     <file path="/activity_detail.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387462736413" ignored="false" />
     <file path="/activity_detail.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387464384724" ignored="false" />
-    <file path="/adjust_menu.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387557957768" ignored="false" />
-    <file path="/adjust_menu.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387559564420" ignored="false" />
+    <file path="/adjust_menu.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387559990328" ignored="false" />
+    <file path="/adjust_menu.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387559849657" ignored="false" />
     <file path="/adjust_menu.css" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386997099419" ignored="false" />
     <file path="/base_support.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387000430408" ignored="false" />
     <file path="/settings.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387547180529" ignored="false" />
@@ -99,11 +100,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="adjust_menu.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="adjust_menu.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/static/js/adjust_menu.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="109" column="21" selection-start="2751" selection-end="2751" vertical-scroll-proportion="0.615942">
+            <state line="28" column="9" selection-start="487" selection-end="487" vertical-scroll-proportion="0.0">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="adjust_menu.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/adjust_menu.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="82" selection-start="1383" selection-end="1383" vertical-scroll-proportion="0.6923077">
+              <folding>
+                <element signature="e#1151#1173#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -136,12 +148,12 @@
         <option value="$PROJECT_DIR$/queryhandler/__init__.py" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/safe_reverse.py" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/safe_reverse.py" />
-        <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/adjust_menu.html" />
         <option value="$PROJECT_DIR$/weixinlib/custom_menu.py" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/views.py" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_list.html" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_list.js" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/static/js/adjust_menu.js" />
+        <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/adjust_menu.html" />
       </list>
     </option>
   </component>
@@ -883,13 +895,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/adjust_menu.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="67" selection-start="1497" selection-end="1497" vertical-scroll-proportion="0.61538464">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/weixinlib/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="101" column="0" selection-start="3015" selection-end="3015" vertical-scroll-proportion="0.33333334">
@@ -899,8 +904,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/static/js/adjust_menu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="109" column="21" selection-start="2751" selection-end="2751" vertical-scroll-proportion="0.615942">
+        <state line="28" column="9" selection-start="487" selection-end="487" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/adjust_menu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="82" selection-start="1383" selection-end="1383" vertical-scroll-proportion="0.6923077">
+          <folding>
+            <element signature="e#1151#1173#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
