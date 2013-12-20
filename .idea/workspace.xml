@@ -97,10 +97,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="help.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="help.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/help.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="39" selection-start="1162" selection-end="1162" vertical-scroll-proportion="0.234375">
+            <state line="45" column="39" selection-start="1162" selection-end="1162" vertical-scroll-proportion="-2.6785715">
               <folding>
                 <element signature="e#1032#1054#0" expanded="true" />
                 <element signature="e#2822#2843#0" expanded="true" />
@@ -145,10 +145,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="details.css" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="details.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/css/details.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="12" selection-start="174" selection-end="181" vertical-scroll-proportion="0.0">
+            <state line="148" column="17" selection-start="2655" selection-end="2655" vertical-scroll-proportion="0.8189655">
               <folding />
             </state>
           </provider>
@@ -220,10 +220,10 @@
         <option value="$PROJECT_DIR$/urlhandler/userpage/static/css/base.css" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activitytext.html" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/mobile_base.html" />
-        <option value="$PROJECT_DIR$/urlhandler/userpage/static/css/details.css" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activityphoto.html" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/static/css/help.css" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/help.html" />
+        <option value="$PROJECT_DIR$/urlhandler/userpage/static/css/details.css" />
       </list>
     </option>
   </component>
@@ -1047,13 +1047,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/css/details.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="12" selection-start="174" selection-end="181" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activitytext.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="186" column="18" selection-start="5875" selection-end="5875" vertical-scroll-proportion="0.0">
@@ -1084,11 +1077,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/help.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="39" selection-start="1162" selection-end="1162" vertical-scroll-proportion="0.234375">
+        <state line="45" column="39" selection-start="1162" selection-end="1162" vertical-scroll-proportion="-2.6785715">
           <folding>
             <element signature="e#1032#1054#0" expanded="true" />
             <element signature="e#2822#2843#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/css/details.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="148" column="17" selection-start="2655" selection-end="2655" vertical-scroll-proportion="0.8189655">
+          <folding />
         </state>
       </provider>
     </entry>
