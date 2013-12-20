@@ -28,6 +28,7 @@ def validate_view(request, openid):
         'openid': openid,
         'studentid': studentid,
         'isValidated': isValidated,
+        'now': datetime.datetime.now() + datetime.timedelta(seconds=-5),
     }, context_instance=RequestContext(request))
 
 
@@ -59,7 +60,7 @@ def validate_through_learn(userid, userpass):
 # success: response response is null / check response status code == 302
 # validate: username is number
 def validate_through_student(userid, userpass):
-    pass
+    return 'Error'
 
 
 def validate_post(request):

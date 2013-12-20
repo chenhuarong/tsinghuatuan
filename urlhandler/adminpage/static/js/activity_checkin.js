@@ -70,10 +70,10 @@ var ticket_result_img_map = {
     'used': '已使用',
     'accepted': '检票成功',
     'noticket': '没有票'
-};
+}, MAX_TICKET_COUNT = 5;
 
 function append_tickets_table(uid) {
-    if (tickets_count > 4) {
+    if (tickets_count >= MAX_TICKET_COUNT) {
         $('#tickets-table-body tr:last-child').remove();
     }
     ++tickets_count;
