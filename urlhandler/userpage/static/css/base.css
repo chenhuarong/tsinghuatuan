@@ -21,12 +21,6 @@ hr {
   width: 90%;
   border-top: 1px solid #CDCECF;
 }
-footer{
-    text-align: center;
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
-}
 footer,
 header {
   display: block;
@@ -49,4 +43,22 @@ h8{
 }
 h9{
     font-size: 11px;
+}
+
+html, body, #wrap {
+    height: 100%;
+}
+body > #wrap {
+    height: auto;
+    min-height: 100%;
+}
+#mainbody {
+    padding-bottom: 50px;/* the same height value with footer */
+}
+#footer {
+    position: relative;
+    margin-top: -50px; /* minus footer height */
+    height: 45px; /* a little smaller than 50 to avoid scroll*/
+    clear:both;
+    text-align: center;
 }

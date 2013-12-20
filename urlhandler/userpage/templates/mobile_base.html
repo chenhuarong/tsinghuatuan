@@ -3,24 +3,29 @@
 {% load staticfiles %}
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link href="{% static "css/base.css"%}" rel="stylesheet" type="text/css" />
+    <link href="{% static "css/base.css"%}?_=4" rel="stylesheet" type="text/css" />
     {% block css %}{% endblock %}
     <title>{% block title %}清华紫荆之声——最优秀的校园服务助手{% endblock %}</title>
 </head>
 <body>
+<div id="wrap">
     <header>{% block header %}{% endblock %}</header>
 
     <div class="theme">{% block theme %}{% endblock %}</div>
 
     <hr/>
-
+    <div id="mainbody">
     {% block content %}{% endblock %}
-    <footer id="footer">
-        <hr />
-        共青团清华大学委员会<br>
-        &copy; 2013
-    </footer>
-    <script src="{% static "js/weixin_lib.js" %}?_=3"></script>
+    </div>
+
+</div>
+<footer id="footer">
+    <hr />
+    共青团清华大学委员会<br>
+    &copy; 2013
+</footer>
+
+    <script src="{% static "js/weixin_lib.js" %}?_=4"></script>
     {% block js %}{% endblock %}
 </body>
 </html>
