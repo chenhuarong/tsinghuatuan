@@ -35,7 +35,7 @@ def get_help_or_subscribe_response(msg):
     description = u'不想错过园子里精彩的资讯？又没时间没心情到处搜罗信息？想要参加高大上的活动却不想提前数小时排队？' \
                   u'微信“紫荆之声”帮您便捷解决这些问题！快来看看“紫荆之声”怎么使用吧！'
     if not is_authenticated(get_msg_from(msg)):
-        description += u'\n您还没有绑定学号，可回复“绑定”进行相关操作:)'
+        description += u'\n您尚未绑定学号，回复“绑定”进行相关操作:)'
     return get_reply_news_xml(msg, [get_item_dict(
         title=title,
         description=description,
