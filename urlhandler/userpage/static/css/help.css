@@ -1,3 +1,11 @@
+ul{
+    padding: 3px 0px 3px 0px;
+    margin: 0px;
+}
+lli{
+    padding-left: 8px;
+    display: block;
+}
 .section{
     padding-left: 10px;
     padding-bottom: 3px;
