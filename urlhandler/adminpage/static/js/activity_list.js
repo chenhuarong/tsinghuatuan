@@ -43,7 +43,7 @@ function getChsDate(dt) {
 }
 
 function getChsMonthDay(dt) {
-    return (dt.getMonth() + 1) + '月' + getChsDate(dt);
+    return wrapTwoDigit(dt.getMonth() + 1) + '月' + getChsDate(dt);
 }
 
 function getChsFullDate(dt) {
@@ -110,7 +110,8 @@ var tdMap = {
     'delete': 'deletelink'
 }, operationMap = {
     'checkin': function(act) {
-        if (new Date() >= act.end_time) {
+        var now = new Date()
+        if ((now <= act.book_start) || (now >= act.end_time)) {
             return false;
         } else {
             return true;
