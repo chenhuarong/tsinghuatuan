@@ -62,6 +62,7 @@ def auto_clear_old_menus(buttons):
 def add_new_custom_menu(name, key):
     buttons = get_custom_menu()
     current_menu = []
+    flag = False
     for button in buttons:
         sbtns = button.get('sub_button', [])
         if len(sbtns) > 0:
@@ -69,12 +70,17 @@ def add_new_custom_menu(name, key):
             if (not tmpkey.startswith(WEIXIN_BOOK_HEADER + 'W')) and tmpkey.startswith(WEIXIN_BOOK_HEADER):
                 current_menu = sbtns
                 break
-    current_menu.append({
-        'type': 'click',
-        'name': name,
-        'key': key,
-        'sub_button': [],
-    })
+    for menu in current_menu:
+        if menu['key'] == key:
+            flag = True
+            break
+    if not flag:
+        current_menu.append({
+            'type': 'click',
+            'name': name,
+            'key': key,
+            'sub_button': [],
+        })
     auto_clear_old_menus(current_menu)
     return modify_custom_menu(json.dumps(get_custom_menu_with_book_acts(current_menu), ensure_ascii=False).encode('utf8'))
 
