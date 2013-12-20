@@ -3,7 +3,7 @@ import urllib
 import hashlib
 import xml.etree.ElementTree as ET
 from django.utils.encoding import smart_str
-from queryhandler.settings import WEIXIN_TOKEN
+from weixinlib.settings import WEIXIN_TOKEN
 from queryhandler.tickethandler import *
 from queryhandler.query_transfer import get_information_response
 

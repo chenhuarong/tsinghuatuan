@@ -1,5 +1,3 @@
-__author__ = 'Epsirom'
-
 from django.core.urlresolvers import reverse
 from queryhandler.settings import SITE_DOMAIN
 

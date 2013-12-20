@@ -1,9 +1,6 @@
 #-*- coding:utf-8 -*-
 
-__author__ = 'Epsirom'
-
-from queryhandler.settings import WEIXIN_TOKEN
-
+WEIXIN_TOKEN = 'F8ZFW1Cyzr5z6nNoJ5uZhA8iXEbe1hvX'
 
 WEIXIN_APPID = 'wxb2545ef150be8096'
 
@@ -31,31 +28,31 @@ WEIXIN_CUSTOM_MENU_TEMPLATE = {
                 {
                     "type": "click",
                     "name": "文艺",
-                    "key": "V1001_TODAT_ACTIVE",
+                    "key": WEIXIN_EVENT_KEYS['info_activity'],
                     "sub_button": []
                 },
                 {
                     "type": "click",
                     "name": "讲座",
-                    "key": "V1001_TODAT_LECTURE",
+                    "key": WEIXIN_EVENT_KEYS['info_lecture'],
                     "sub_button": []
                 },
                 {
                     "type": "click",
                     "name": "新闻",
-                    "key": "V1001_SCHOOL_NEWS",
+                    "key": WEIXIN_EVENT_KEYS['info_news'],
                     "sub_button": []
                 },
                 {
                     "type": "click",
                     "name": "人物",
-                    "key": "V1001_MODERN_FIGURE",
+                    "key": WEIXIN_EVENT_KEYS['modern_figure'],
                     "sub_button": []
                 },
                 {
                     "type": "click",
                     "name": "社团",
-                    "key": "V1001_OGNIZATION",
+                    "key": WEIXIN_EVENT_KEYS['info_organization'],
                     "sub_button": []
                 }
             ]
@@ -66,13 +63,13 @@ WEIXIN_CUSTOM_MENU_TEMPLATE = {
                 {
                     "type": "click",
                     "name": "抢啥",
-                    "key": "TSINGHUA_BOOK_WHAT",
+                    "key": WEIXIN_EVENT_KEYS['ticket_book_what'],
                     "sub_button": []
                 },
                 {
                     "type": "click",
                     "name": "查票",
-                    "key": "TSINGHUA_TICKET",
+                    "key": WEIXIN_EVENT_KEYS['ticket_get'],
                     "sub_button": []
                 },
                 #{
@@ -84,13 +81,13 @@ WEIXIN_CUSTOM_MENU_TEMPLATE = {
                 {
                     "type": "click",
                     "name": "绑定",
-                    "key": "TSINGHUA_BIND",
+                    "key": WEIXIN_EVENT_KEYS['account_bind'],
                     "sub_button": []
                 },
                 {
                     "type": "click",
                     "name": "帮助",
-                    "key": "TSINGHUA_HELP",
+                    "key": WEIXIN_EVENT_KEYS['help'],
                     "sub_button": []
                 }
             ]
@@ -104,12 +101,13 @@ WEIXIN_CUSTOM_MENU_TEMPLATE = {
 
 WEIXIN_BOOK_HEADER = 'TSINGHUA_BOOK_'
 
+
 def get_custom_menu_with_book_acts(actbtns):
     tmpmenu = WEIXIN_CUSTOM_MENU_TEMPLATE.copy()
     book_btn = tmpmenu['button'][2]
     if len(actbtns) == 0:
         book_btn['type'] = 'click'
-        book_btn['key'] = 'TSINGHUA_NO_BOOK_ACTS'
+        book_btn['key'] = WEIXIN_EVENT_KEYS['ticket_no_book_recommand']
     else:
         book_btn['sub_button'] = actbtns
     return tmpmenu

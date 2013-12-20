@@ -2,36 +2,21 @@
 
 from django.http import HttpResponse, Http404
 from django.template import RequestContext
-from django.core.urlresolvers import reverse
 from django.forms.models import model_to_dict
-
 from datetime import datetime
 import json
-
 from django.http import HttpResponseRedirect
-from django import template
-
-from django.shortcuts import redirect
-from django.shortcuts import render
 from django.shortcuts import render_to_response
-
-from django.contrib.auth import authenticate
-from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.contrib import auth
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
-
 import urllib
 import urllib2
-
 from urlhandler.models import Activity, Ticket
 from urlhandler.models import User as Booker
-from django.contrib.sessions.models import Session
-
-from weixinlib.custom_menu import get_custom_menu, modify_custom_menu
+from weixinlib.custom_menu import get_custom_menu, modify_custom_menu, add_new_custom_menu, auto_clear_old_menus
 from weixinlib.settings import get_custom_menu_with_book_acts, WEIXIN_BOOK_HEADER
+from adminpage.safe_reverse import *
 
 
 @csrf_protect
@@ -39,12 +24,12 @@ def home(request):
     if not request.user.is_authenticated():
         return render_to_response('login.html', context_instance=RequestContext(request))
     else:
-        return HttpResponseRedirect(reverse('adminpage.views.activity_list'))
+        return HttpResponseRedirect(s_reverse_activity_list())
 
 
 def activity_list(request):
     if not request.user.is_authenticated():
-        return HttpResponseRedirect(reverse('adminpage.views.home'))
+        return HttpResponseRedirect(s_reverse_admin_home())
 
     actmodels = Activity.objects.filter(status__gte=0).order_by('-id').all()
     activities = []
@@ -59,13 +44,13 @@ def activity_list(request):
 
 def activity_checkin(request, actid):
     if not request.user.is_authenticated():
-        return HttpResponseRedirect(reverse('adminpage.views.home'))
+        return HttpResponseRedirect(s_reverse_admin_home())
     try:
         activity = Activity.objects.get(id=actid)
         if datetime.now() > activity.end_time:
             raise 'Time out!'
     except:
-        return HttpResponseRedirect(reverse('adminpage.views.activity_list'))
+        return HttpResponseRedirect(s_reverse_activity_list())
 
     return render_to_response('activity_checkin.html', {
         'activity': activity,
@@ -154,7 +139,7 @@ def login(request):
     if user is not None and user.is_active:
         auth.login(request, user)
         rtnJSON['message'] = 'success'
-        rtnJSON['next'] = reverse('adminpage.views.activity_list')
+        rtnJSON['next'] = s_reverse_activity_list()
     else:
         rtnJSON['message'] = 'failed'
         if User.objects.filter(username=username, is_active=True):
@@ -167,7 +152,7 @@ def login(request):
 
 def logout(request):
     auth.logout(request)
-    return HttpResponseRedirect(reverse('adminpage.views.home'))
+    return HttpResponseRedirect(s_reverse_admin_home())
 
 
 def str_to_datetime(str):
@@ -240,7 +225,7 @@ def wrap_activity_dict(activity):
 
 def activity_add(request):
     if not request.user.is_authenticated():
-        return HttpResponseRedirect(reverse('adminpage.views.home'))
+        return HttpResponseRedirect(s_reverse_admin_home())
 
     return render_to_response('activity_detail.html', {
         'activity': {
@@ -251,7 +236,7 @@ def activity_add(request):
 
 def activity_detail(request, actid):
     if not request.user.is_authenticated():
-        return HttpResponseRedirect(reverse('adminpage.views.home'))
+        return HttpResponseRedirect(s_reverse_admin_home())
 
     try:
         activity = Activity.objects.get(id=actid)
@@ -275,7 +260,7 @@ class DatetimeJsonEncoder(json.JSONEncoder):
 
 def activity_post(request):
     if not request.user.is_authenticated():
-        return HttpResponseRedirect(reverse('adminpage.views.home'))
+        return HttpResponseRedirect(s_reverse_admin_home())
 
     if not request.POST:
         raise Http404
@@ -290,12 +275,15 @@ def activity_post(request):
                 now = datetime.now()
                 for keyact in iskey:
                     if now < keyact.end_time:
-                        rtnJSON['error'] = u"当前有活动正在使用该活动代码"
+                        rtnJSON['error'] = u"当前有活动正在使用该活动代称"
                         return HttpResponse(json.dumps(rtnJSON, cls=DatetimeJsonEncoder),
                                             content_type='application/json')
             activity = activity_create(post)
-            rtnJSON['updateUrl'] = reverse('adminpage.views.activity_detail', kwargs={'actid': activity.id})
+            rtnJSON['updateUrl'] = s_reverse_activity_detail(activity.id)
         rtnJSON['activity'] = wrap_activity_dict(activity)
+        updateErr = json.loads(add_new_custom_menu(name=activity.key, key=WEIXIN_BOOK_HEADER + str(activity.id))).get('errcode', 'err')
+        if updateErr != 0:
+            rtnJSON['error'] = u'活动创建成功，但更新微信菜单失败，请手动更新:(  \r\n错误代码：%s' % updateErr
     except Exception as e:
         rtnJSON['error'] = str(e)
     return HttpResponse(json.dumps(rtnJSON, cls=DatetimeJsonEncoder), content_type='application/json')
@@ -334,7 +322,7 @@ def order_login(request):
         request.session['stuid'] = username
         request.session.set_expiry(0)
         rtnJSON['message'] = 'success'
-        rtnJSON['next'] = reverse('adminpage.views.order_list')
+        rtnJSON['next'] = s_reverse_order_list()
     else:
         rtnJSON['message'] = 'failed'
 
@@ -342,12 +330,13 @@ def order_login(request):
 
 
 def order_logout(request):
-    return HttpResponseRedirect(reverse('adminpage.views.order_index'))
+    return HttpResponseRedirect(s_reverse_order_index())
+
 
 def order_list(request):
 
     if not 'stuid' in request.session:
-        return HttpResponseRedirect(reverse('adminpage.views.order_index'))
+        return HttpResponseRedirect(s_reverse_order_index())
 
     stuid = request.session['stuid']
 
@@ -379,7 +368,7 @@ def order_list(request):
 def print_ticket(request, unique_id):
 
     if not 'stuid' in request.session:
-        return HttpResponseRedirect(reverse('adminpage.views.order_index'))
+        return HttpResponseRedirect(s_reverse_order_index())
 
     try:
         ticket = Ticket.objects.get(unique_id = unique_id)
@@ -392,15 +381,14 @@ def print_ticket(request, unique_id):
         'qr_addr': qr_addr,
         'activity': activity,
         'stu_id':ticket.stu_id
-    },context_instance=RequestContext(request))
-
+    }, context_instance=RequestContext(request))
 
 
 def adjust_menu_view(request):
     if not request.user.is_authenticated():
-        return HttpResponseRedirect(reverse('adminpage.views.home'))
+        return HttpResponseRedirect(s_reverse_admin_home())
     if not request.user.is_superuser:
-        return HttpResponseRedirect(reverse('adminpage.views.activity_list'))
+        return HttpResponseRedirect(s_reverse_activity_list())
     activities = Activity.objects.filter(end_time__gt=datetime.now())
     return render_to_response('adjust_menu.html', {
         'activities': activities,
@@ -409,9 +397,9 @@ def adjust_menu_view(request):
 
 def custom_menu_get(request):
     if not request.user.is_authenticated():
-        return HttpResponseRedirect(reverse('adminpage.views.home'))
+        return HttpResponseRedirect(s_reverse_admin_home())
     if not request.user.is_superuser:
-        return HttpResponseRedirect(reverse('adminpage.views.activity_list'))
+        return HttpResponseRedirect(s_reverse_activity_list())
     custom_buttons = get_custom_menu()
     current_menu = []
     for button in custom_buttons:
@@ -421,6 +409,8 @@ def custom_menu_get(request):
             if (not tmpkey.startswith(WEIXIN_BOOK_HEADER + 'W')) and tmpkey.startswith(WEIXIN_BOOK_HEADER):
                 current_menu = sbtns
                 break
+    if auto_clear_old_menus(current_menu):
+        modify_custom_menu(json.dumps(get_custom_menu_with_book_acts(current_menu), ensure_ascii=False).encode('utf8'))
     wrap_menu = []
     for menu in current_menu:
         wrap_menu += [{
