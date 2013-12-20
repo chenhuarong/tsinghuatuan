@@ -69,7 +69,7 @@
     <file path="/print_login.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387375351526" ignored="false" />
     <file path="/activitydetails.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387375366832" ignored="false" />
     <file path="/help.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387476073122" ignored="false" />
-    <file path="/help.css" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387474882531" ignored="false" />
+    <file path="/help.css" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387517513342" ignored="false" />
     <file path="/help.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387475548029" ignored="false" />
     <file path="/base.css" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387515744259" ignored="false" />
     <file path="/activityphoto.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387517149071" ignored="false" />
@@ -133,10 +133,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activityphoto.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="activityphoto.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activityphoto.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="23" selection-start="169" selection-end="169" vertical-scroll-proportion="0.296875">
+            <state line="5" column="23" selection-start="169" selection-end="169" vertical-scroll-proportion="-3.392857">
               <folding />
             </state>
           </provider>
@@ -180,10 +180,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="help.css" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="help.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/css/help.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="15" selection-start="290" selection-end="290" vertical-scroll-proportion="0.0">
+            <state line="11" column="19" selection-start="193" selection-end="193" vertical-scroll-proportion="0.545977">
               <folding />
             </state>
           </provider>
@@ -214,7 +214,6 @@
         <option value="$PROJECT_DIR$/urlhandler/adminpage/static/css/activity_list.css" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/activity_detail.html" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js" />
-        <option value="$PROJECT_DIR$/urlhandler/userpage/static/css/help.css" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/static/js/help.js" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/help.html" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/static/js/weixin_lib.js" />
@@ -223,6 +222,7 @@
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/mobile_base.html" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/static/css/details.css" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activityphoto.html" />
+        <option value="$PROJECT_DIR$/urlhandler/userpage/static/css/help.css" />
       </list>
     </option>
   </component>
@@ -1052,13 +1052,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/css/help.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="15" selection-start="290" selection-end="290" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/css/base.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="61" column="15" selection-start="1048" selection-end="1048" vertical-scroll-proportion="0.0">
@@ -1089,7 +1082,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activityphoto.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="23" selection-start="169" selection-end="169" vertical-scroll-proportion="0.296875">
+        <state line="5" column="23" selection-start="169" selection-end="169" vertical-scroll-proportion="-3.392857">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/css/help.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="19" selection-start="193" selection-end="193" vertical-scroll-proportion="0.545977">
           <folding />
         </state>
       </provider>
