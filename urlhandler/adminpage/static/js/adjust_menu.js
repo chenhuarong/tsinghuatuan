@@ -107,7 +107,7 @@ function wrap_alter_item_html(alter, i) {
     var isFull = (menus == null ? false : (menus.length == 5));
     return '<li class="list-group-item">'
         + '<button class="btn btn-link"'
-        + ((isFull && alters[i].inmenu) ? 'disabled' : 'onclick="change_alter(' + i + ')"')
+        + ((isFull && !(alters[i].inmenu)) ? 'disabled' : 'onclick="change_alter(' + i + ')"')
         + '>'
         + (alters[i].inmenu ? htmls['minus-icon'] : htmls['plus-icon'])
         + '</button>'
