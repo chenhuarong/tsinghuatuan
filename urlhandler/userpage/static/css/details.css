@@ -9,6 +9,10 @@
 .img-wrapper{
     padding-top: 10px;
 }
+.img-caption{
+    text-align: center;
+    padding-top: 3px;
+}
 .details-wrapper .img-inner{
     padding-top: 6px;
     background: #fff;
