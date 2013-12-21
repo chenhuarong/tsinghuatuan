@@ -45,3 +45,7 @@ def get_reply_news_xml(msg, articles):
                                                % (len(tenarticles), ''.join(tmpxml)))
 
 
+def get_reply_single_news_xml(msg, article):
+    return get_reply_news_xml(msg, [article])
+
+

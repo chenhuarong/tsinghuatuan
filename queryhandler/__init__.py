@@ -8,16 +8,16 @@ from queryhandler.tickethandler import *
 from queryhandler.query_transfer import get_information_response
 
 handler_list = [
-    {'check': check_bookable_activities,    'do': get_bookable_activities},
-    {'check': check_ticket_cmd,             'do': get_tickets},
-    {'check': check_book_cmd,               'do': get_book_ticket_response},
-    {'check': check_help_or_subscribe,      'do': get_help_or_subscribe_response},
-    {'check': check_unsubscribe,            'do': get_unsubscibe_response},
-    {'check': check_bind_account,           'do': bind_account},
-    {'check': check_book_event,             'do': get_book_ticket_response},
-    {'check': check_return_cmd,             'do': return_tickets},
-    {'check': check_fetch_cmd,              'do': get_fetch_cmd_response},
-    {'check': check_no_book_acts_event,     'do': no_book_acts_response},
+    {'check': check_bookable_activities,    'response': response_bookable_activities},
+    {'check': check_ticket_cmd,             'response': get_tickets},
+    {'check': check_book_cmd,               'response': get_book_ticket_response},
+    {'check': check_help_or_subscribe,      'response': response_help_or_subscribe_response},
+    {'check': check_unsubscribe,            'response': get_unsubscibe_response},
+    {'check': check_bind_account,           'response': bind_account},
+    {'check': check_book_event,             'response': get_book_ticket_response},
+    {'check': check_return_cmd,             'response': return_tickets},
+    {'check': check_fetch_cmd,              'response': get_fetch_cmd_response},
+    {'check': check_no_book_acts_event,     'response': no_book_acts_response},
 ]
 
 
@@ -37,20 +37,20 @@ def handle_weixin_request(environ):
         msg = parse_msg_xml(ET.fromstring(raw_str))
         try:
             #recognize type of message and return result
-            if msg['MsgType'] == 'image':
-                return get_reply_text_xml(msg, u'对不起，暂不支持图片消息')
-            elif msg['MsgType'] == 'voice':
-                return get_reply_text_xml(msg, u'对不起，暂不支持音频消息')
-            elif msg['MsgType'] == 'video':
-                return get_reply_text_xml(msg, u'对不起，暂不支持视频消息')
-            elif msg['MsgType'] == 'location':
-                return get_reply_text_xml(msg, u'对不起，暂不支持位置消息')
-            elif msg['MsgType'] == 'link':
-                return get_reply_text_xml(msg, u'对不起，暂不支持链接消息')
-            else:
-                for handler in handler_list:
-                    if handler['check'](msg):
-                        return handler['do'](msg)
+            # if msg['MsgType'] == 'image':
+            #     return get_reply_text_xml(msg, u'对不起，暂不支持图片消息')
+            # elif msg['MsgType'] == 'voice':
+            #     return get_reply_text_xml(msg, u'对不起，暂不支持音频消息')
+            # elif msg['MsgType'] == 'video':
+            #     return get_reply_text_xml(msg, u'对不起，暂不支持视频消息')
+            # elif msg['MsgType'] == 'location':
+            #     return get_reply_text_xml(msg, u'对不起，暂不支持位置消息')
+            # elif msg['MsgType'] == 'link':
+            #     return get_reply_text_xml(msg, u'对不起，暂不支持链接消息')
+            # else:
+            for handler in handler_list:
+                if handler['check'](msg):
+                    return handler['response'](msg)
         except Exception as e:
             print 'Error occured!!!!!!' + str(e)
             return get_reply_text_xml(msg, u'对不起，没有找到您需要的信息 T T')

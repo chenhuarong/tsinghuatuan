@@ -9,6 +9,7 @@ from django.db import transaction
 
 from userpage.safe_reverse import *
 from queryhandler.weixin_reply_templates import *
+from queryhandler.weixin_text_templates import *
 from queryhandler.handler_check_templates import *
 from queryhandler.weixin_msg import *
 from weixinlib.settings import WEIXIN_EVENT_KEYS
@@ -30,18 +31,12 @@ def check_help_or_subscribe(msg):
 
 
 #get help information
-def get_help_or_subscribe_response(msg):
-    title = u'“紫荆之声”使用指南'
-    description = u'不想错过园子里精彩的资讯？又没时间没心情到处搜罗信息？想要参加高大上的活动却不想提前数小时排队？' \
-                  u'微信“紫荆之声”帮您便捷解决这些问题！快来看看“紫荆之声”怎么使用吧！'
-    if not is_authenticated(get_msg_from(msg)):
-        description += u'\n您尚未绑定学号，回复“绑定”进行相关操作:)'
-    return get_reply_news_xml(msg, [get_item_dict(
-        title=title,
-        description=description,
-        pic_url='',
+def response_help_or_subscribe_response(msg):
+    return get_reply_single_news_xml(msg, get_item_dict(
+        title=get_text_help_title(),
+        description=get_text_help_description(is_authenticated(get_msg_from(msg))),
         url=s_reverse_help()
-    )])
+    ))
 
 
 #check book command
@@ -49,43 +44,24 @@ def check_bookable_activities(msg):
     return handler_check_text(msg, ['抢啥']) or handler_check_event_click(msg, [WEIXIN_EVENT_KEYS['ticket_book_what']])
 
 
-def time_chs_format(time):
-    if time.days > 0:
-        result = str(time.days) + u'天'
-    elif time.seconds >= 3600:
-        result = str(time.seconds / 3600) + u'小时'
-    elif time.seconds >= 60:
-        result = str(time.seconds / 60) + u'分钟'
-    else:
-        result = str(time.seconds) + u'秒'
-    return result
-
-
 #get bookable activities
-def get_bookable_activities(msg):
-    now = string.atof(msg['CreateTime'])
-    now = datetime.datetime.fromtimestamp(now)
+def response_bookable_activities(msg):
+    now = datetime.datetime.fromtimestamp(get_msg_create_time(msg))
     activities_book_not_end = Activity.objects.filter(status=1, book_end__gte=now).order_by('book_start')
     activities_book_end = Activity.objects.filter(status=1, book_end__lt=now, end_time__gte=now)
     activities = list(activities_book_not_end) + list(activities_book_end)
+    if len(activities) == 1:
+        activity = activities[0]
+        return get_reply_single_news_xml(msg, get_item_dict(
+            title=get_text_activity_title_with_status(activity, now),
+            description=get_text_activity_description(activity, 100),
+            pic_url=activity.pic_url,
+            url=s_reverse_activity_detail(activity.id)
+        ))
     items = []
-    MAX_LEN = 100
     for activity in activities:
-        title = activity.name + '\n（%s）'
-        act_abstract = activity.description
-        if len(act_abstract) > MAX_LEN:
-            act_abstract = act_abstract[0:MAX_LEN]+u'...'
-        if activity.book_start > now:
-            delta = activity.book_start - now
-            content = u'%s后开始抢票' % time_chs_format(delta)
-            title = title % content
-        elif activity.book_end > now:
-            title = title % u'抢票进行中'
-        else:
-            title = title % u'抢票已结束'
         items.append(get_item_dict(
-            title=title,
-            description=act_abstract,
+            title=get_text_activity_title_with_status(activity, now),
             pic_url=activity.pic_url,
             url=s_reverse_activity_detail(activity.id)
         ))
@@ -94,7 +70,7 @@ def get_bookable_activities(msg):
     if len(items) != 0:
         return get_reply_news_xml(msg, items)
     else:
-        return get_reply_text_xml(msg, '您好，目前没有抢票活动')
+        return get_reply_text_xml(msg, get_text_no_bookable_activity())
 
 
 #check ticket command
@@ -161,7 +137,7 @@ def get_fetch_cmd_response(msg):
     activities = Activity.objects.filter(status=1, end_time__gte=now, key=key)
 
     if not activities.exists():
-        return get_reply_text_xml(msg, u'活动不存在，请重试:)')
+        return get_reply_text_xml(msg, u'活动不存在或已结束，请重试:)')
     else:
         activity = activities[0]
 
@@ -233,7 +209,7 @@ def book_ticket(msg, key):
             if not future_activities.exists():
                 old_activities = Activity.objects.filter(status=1, key=key)#已发布的，活动代码为key（可能有多张活动代码相同的活动）
                 if not old_activities.exists():
-                    return get_reply_text_xml(msg, u'活动不存在，请重试:)')
+                    return get_reply_text_xml(msg, u'活动不存在或已结束，请重试:)')
                 else:
                     #如果有票，返回票的信息
                     if len(old_activities) == 1:#如果有一张票，直接返回电子票
@@ -262,7 +238,7 @@ def book_ticket(msg, key):
                                 reply_content += [item]
                         return get_reply_text_xml(msg, u'\n-----------------------\n'.join(reply_content) if not (len(reply_content) == 0) else u'您目前没有票')
                     else:#票的数目小于1
-                        return get_reply_text_xml(msg, u'活动不存在，请重试:)')
+                        return get_reply_text_xml(msg, u'活动不存在或已结束，请重试:)')
             else:
                 future_activity = future_activities[0]
                 start_time = u'%s年%s月%s日%s时%s分' % (future_activity.book_start.year, future_activity.book_start.month, future_activity.book_start.day, future_activity.book_start.hour, future_activity.book_start.minute)
@@ -333,7 +309,7 @@ def return_tickets(msg):
     activities = Activity.objects.filter(status=1, end_time__gte=now, key=key)
 
     if not activities.exists():
-        return get_reply_text_xml(msg, u'活动不存在，请重试:)')
+        return get_reply_text_xml(msg, u'活动不存在或已结束，请重试:)')
     else:
         activity = activities[0]
 

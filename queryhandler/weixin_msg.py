@@ -16,6 +16,10 @@ def get_msg_from(msg):
     return msg['FromUserName']
 
 
+def get_msg_create_time(msg):
+    return int(msg['CreateTime'])
+
+
 def get_item_dict(title='', description='', pic_url='', url=''):
     return {
         'title': title,
@@ -23,3 +27,5 @@ def get_item_dict(title='', description='', pic_url='', url=''):
         'pic_url': pic_url,
         'url': url,
     }
+
+
