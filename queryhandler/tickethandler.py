@@ -288,6 +288,8 @@ def response_book_event(msg):
     tickets = Ticket.objects.filter(stu_id=user.stu_id, activity=activity, status__gt=0)
     if tickets.exists():
         return get_reply_single_ticket(msg, tickets[0], now)
+    if activity.book_end < now:
+        return get_reply_text_xml(msg, get_text_timeout_book_event())
     ticket = book_ticket(user, activity.key, now)
     if ticket is None:
         return get_reply_text_xml(msg, get_text_fail_book_ticket(activities[0], now))

@@ -190,3 +190,8 @@ def get_text_to_bind_account(openid):
 
 def get_text_hint_no_book_acts():
     return '您好，现在没有推荐的抢票活动哟~'
+
+
+def get_text_timeout_book_event():
+    return '该活动已过抢票时间，您没有抢到票:('
+
