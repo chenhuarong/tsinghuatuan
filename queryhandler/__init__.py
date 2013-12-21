@@ -10,11 +10,11 @@ from queryhandler.query_transfer import get_information_response
 handler_list = [
     {'check': check_bookable_activities,    'response': response_bookable_activities},
     {'check': check_exam_tickets,           'response': response_exam_tickets},
-    {'check': check_book_cmd,               'response': get_book_ticket_response},
+    {'check': check_book_ticket,            'response': response_book_ticket},
     {'check': check_help_or_subscribe,      'response': response_help_or_subscribe_response},
     {'check': check_unsubscribe,            'response': get_unsubscibe_response},
     {'check': check_bind_account,           'response': bind_account},
-    {'check': check_book_event,             'response': get_book_ticket_response},
+    {'check': check_book_event,             'response': response_book_event},
     {'check': check_return_cmd,             'response': return_tickets},
     {'check': check_fetch_ticket,           'response': response_fetch_ticket},
     {'check': check_no_book_acts_event,     'response': no_book_acts_response},

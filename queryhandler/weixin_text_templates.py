@@ -116,3 +116,31 @@ def get_text_no_ticket_in_act(activity, now):
         tmp += '\n该活动距离抢票结束还有' + time_chs_format(bkend - now) + '，快回复“抢票 ' + activity.key + '”试试运气吧！'
     return tmp
 
+
+def get_text_unbinded_book_ticket(openid):
+    return get_text_unbinded_template('抢票', openid)
+
+
+def get_text_usage_book_ticket():
+    return '您好，格式不正确！请输入“抢票 活动代称”。\n如：“抢票 马兰花开”'
+
+
+def get_text_fail_book_ticket(activity, now):
+    return '很抱歉，已经没有余票了，过一段时间再来试试吧:)\n该活动距离抢票结束还有' + time_chs_format(activity.book_end - now)
+
+
+def get_text_success_book_ticket():
+    return '恭喜您，抢票成功！'
+
+
+def get_text_book_ticket_future(activity, now):
+    bkstart = activity.book_start
+    return '您好，该活动尚未开始抢票。' + get_text_link(s_reverse_activity_detail(activity.id), '详情') \
+           + '\n抢票开始时间：' + get_text_time_standard(bkstart) \
+           + '\n（还剩' + time_chs_format(bkstart - now) + '）'
+
+
+def get_text_existed_book_ticket(ticket):
+    return '您已抢到该活动的票，不能重复抢票。\n' + get_text_link(s_reverse_ticket_detail(ticket.unique_id), '查看电子票')
+
+
