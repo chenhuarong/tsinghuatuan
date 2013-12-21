@@ -55,11 +55,11 @@ def get_text_activity_title_with_status(activity, now):
     title = activity.name
     if activity.book_start > now:
         delta = activity.book_start - now
-        title += ('%s后开始抢票' % time_chs_format(delta))
+        title += ('\n（%s后开始抢票）' % time_chs_format(delta))
     elif activity.book_end > now:
-        title += '抢票进行中'
+        title += '\n（抢票进行中）'
     else:
-        title += '抢票已结束'
+        title += '\n（抢票已结束）'
     return title
 
 
@@ -124,7 +124,8 @@ def get_text_no_ticket_in_act(activity, now):
     tmp = '您好，没有找到您的票:('
     bkend = activity.book_end
     if bkend > now:
-        tmp += '\n该活动距离抢票结束还有' + time_chs_format(bkend - now) + '，快回复“抢票 ' + activity.key + '”试试运气吧！'
+        tmp += '\n该活动距离抢票结束还有' + time_chs_format(bkend - now) + '，快回复“抢票 ' + activity.key + '”试试运气吧！'\
+               + get_text_link(s_reverse_activity_detail(activity.id), '详情')
     return tmp
 
 
@@ -175,3 +176,17 @@ def get_text_timeout_cancel_ticket():
     return '该活动的抢票时间已过，不能退票，您可以将票转让给他人（直接转发电子票即可）'
 
 
+def get_text_unbind_success(openid):
+    return '学号绑定已经解除\n' + get_text_link(s_reverse_validate(openid), '重新绑定')
+
+
+def get_text_binded_account(stuid):
+    return '您已经绑定了学号' + stuid + '，若要解绑请回复“解绑”'
+
+
+def get_text_to_bind_account(openid):
+    return '抢票等功能必须绑定学号后才能使用。\n' + get_text_link(s_reverse_validate(openid), '点此绑定学号')
+
+
+def get_text_hint_no_book_acts():
+    return '您好，现在没有推荐的抢票活动哟~'

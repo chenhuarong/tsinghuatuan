@@ -387,16 +387,15 @@ def book_ticket_old(msg, key):
 
 
 #check unsubscribe event
-def check_unsubscribe(msg):
+def check_unsubscribe_or_unbind(msg):
     return handler_check_text(msg, ['解绑']) or handler_check_events(msg, ['unsubscribe'])
 
 
 #handle unsubscribe event
-def get_unsubscibe_response(msg):
+def response_unsubscribe_or_unbind(msg):
     fromuser = get_msg_from(msg)
-    if is_authenticated(fromuser):
-        user = User.objects.filter(weixin_id=fromuser, status=1).update(status=0)
-    return get_reply_text_xml(msg, u'账号绑定已经解除')
+    User.objects.filter(weixin_id=fromuser, status=1).update(status=0)
+    return get_reply_text_xml(msg, get_text_unbind_success(fromuser))
 
 
 #check bind event
@@ -405,18 +404,19 @@ def check_bind_account(msg):
 
 
 #handle bind event
-def bind_account(msg):
+def response_bind_account(msg):
     fromuser = get_msg_from(msg)
-    if is_authenticated(fromuser):
-        return get_reply_text_xml(msg, u'若要解绑请回复“解绑”')
+    user = get_user(fromuser)
+    if user is None:
+        return get_reply_text_xml(msg, get_text_to_bind_account(fromuser))
     else:
-        return get_reply_text_xml(msg, u'<a href="' + s_reverse_validate(fromuser) + '">'
-                                       u'点此绑定信息门户账号</a>')
+        return get_reply_text_xml(msg, get_text_binded_account(user.stu_id))
 
 
 def check_no_book_acts_event(msg):
     return handler_check_event_click(msg, [WEIXIN_EVENT_KEYS['ticket_no_book_recommand']])
 
 
-def no_book_acts_response(msg):
-    return get_reply_text_xml(msg, u'您好，现在没有推荐的抢票活动哟~')
+def response_no_book_acts(msg):
+    return get_reply_text_xml(msg, get_text_hint_no_book_acts())
+

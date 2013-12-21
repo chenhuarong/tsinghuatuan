@@ -12,12 +12,12 @@ handler_list = [
     {'check': check_exam_tickets,           'response': response_exam_tickets},
     {'check': check_book_ticket,            'response': response_book_ticket},
     {'check': check_help_or_subscribe,      'response': response_help_or_subscribe_response},
-    {'check': check_unsubscribe,            'response': get_unsubscibe_response},
-    {'check': check_bind_account,           'response': bind_account},
+    {'check': check_unsubscribe_or_unbind,  'response': response_unsubscribe_or_unbind},
+    {'check': check_bind_account,           'response': response_bind_account},
     {'check': check_book_event,             'response': response_book_event},
     {'check': check_cancel_ticket,          'response': response_cancel_ticket},
     {'check': check_fetch_ticket,           'response': response_fetch_ticket},
-    {'check': check_no_book_acts_event,     'response': no_book_acts_response},
+    {'check': check_no_book_acts_event,     'response': response_no_book_acts},
 ]
 
 
