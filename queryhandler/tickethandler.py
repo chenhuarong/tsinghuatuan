@@ -145,7 +145,7 @@ def fetch_ticket(msg, user, activity, now):
         ticket = tickets[0]
         return get_reply_single_ticket(msg, ticket, now)
     else:
-        return get_reply_text_xml(msg, get_text_no_ticket_in_act(activity))
+        return get_reply_text_xml(msg, get_text_no_ticket_in_act(activity, now))
 
 
 #check book command message

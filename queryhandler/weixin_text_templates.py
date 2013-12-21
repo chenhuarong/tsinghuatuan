@@ -109,7 +109,10 @@ def get_text_no_such_activity():
     return '活动不存在或已结束，请重试:)'
 
 
-def get_text_no_ticket_in_act(activity):
-    return '您没有 ' + activity.name + ' 的票:('
-
+def get_text_no_ticket_in_act(activity, now):
+    tmp = '您好，没有找到您的票:('
+    bkend = activity.book_end
+    if bkend > now:
+        tmp += '\n该活动距离抢票结束还有' + time_chs_format(bkend - now) + '，快回复“抢票 ' + activity.key + '”试试运气吧！'
+    return tmp
 
