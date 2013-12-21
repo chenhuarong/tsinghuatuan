@@ -165,7 +165,7 @@ def response_book_ticket(msg):
         return get_reply_text_xml(msg, get_text_usage_book_ticket())
 
     now = datetime.datetime.fromtimestamp(get_msg_create_time(msg))
-    activities = Activity.objects.filter(status=1, book_end__gte=now, key=key)
+    activities = Activity.objects.filter(status=1, book_end__gte=now, book_start__lte=now, key=key)
     if not activities.exists():
         future_activities = Activity.objects.filter(status=1, book_start__gt=now, key=key)
         if future_activities.exists():
@@ -184,7 +184,7 @@ def response_book_ticket(msg):
 
 def book_ticket(user, key, now):
     with transaction.atomic():
-        activities = Activity.objects.select_for_update().filter(status=1, book_end__gte=now, key=key)
+        activities = Activity.objects.select_for_update().filter(status=1, book_end__gte=now, book_start__lte=now, key=key)
 
         if not activities.exists():
             return None
