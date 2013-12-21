@@ -131,7 +131,7 @@ def response_fetch_ticket(msg):
         return get_reply_text_xml(msg, get_text_usage_fetch_ticket())
 
     now = datetime.datetime.fromtimestamp(get_msg_create_time(msg))
-    activities = Activity.objects.filter(status=1, end_time__gt=now, book_start_lt=now, key=key)
+    activities = Activity.objects.filter(status=1, end_time__gt=now, book_start__lt=now, key=key)
     if not activities.exists():
         return get_reply_text_xml(msg, get_text_no_such_activity('取票'))
     else:
