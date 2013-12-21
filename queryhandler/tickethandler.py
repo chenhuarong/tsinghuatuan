@@ -237,7 +237,7 @@ def response_cancel_ticket(msg):
         return get_reply_text_xml(msg, get_text_usage_cancel_ticket())
 
     now = datetime.datetime.fromtimestamp(get_msg_create_time(msg))
-    activities = Activity.objects.filter(status=1, end_time__gt=now, book_start__lt=now, key=key)
+    activities = Activity.objects.select_for_update().filter(status=1, end_time__gt=now, book_start__lt=now, key=key)
     if not activities.exists():
         return get_reply_text_xml(msg, get_text_no_such_activity('退票'))
     else:
@@ -287,7 +287,7 @@ def response_book_event(msg):
 
     tickets = Ticket.objects.filter(stu_id=user.stu_id, activity=activity, status__gt=0)
     if tickets.exists():
-        return get_reply_single_ticket(msg, tickets[0], now)
+        return get_reply_single_ticket(msg, tickets[0], now, get_text_existed_book_event())
     if activity.book_end < now:
         return get_reply_text_xml(msg, get_text_timeout_book_event())
     ticket = book_ticket(user, activity.key, now)

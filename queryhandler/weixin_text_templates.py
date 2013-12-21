@@ -195,3 +195,7 @@ def get_text_hint_no_book_acts():
 def get_text_timeout_book_event():
     return '该活动已过抢票时间，您没有抢到票:('
 
+
+def get_text_existed_book_event():
+    return '您已有票，自动切换为查票。'
+
