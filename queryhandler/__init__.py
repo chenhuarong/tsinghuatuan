@@ -16,7 +16,7 @@ handler_list = [
     {'check': check_bind_account,           'response': bind_account},
     {'check': check_book_event,             'response': get_book_ticket_response},
     {'check': check_return_cmd,             'response': return_tickets},
-    {'check': check_fetch_cmd,              'response': get_fetch_cmd_response},
+    {'check': check_fetch_ticket,           'response': response_fetch_ticket},
     {'check': check_no_book_acts_event,     'response': no_book_acts_response},
 ]
 

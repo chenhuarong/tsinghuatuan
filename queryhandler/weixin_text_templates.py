@@ -29,6 +29,10 @@ def get_text_link(href, title):
     return '<a href="' + href + '">' + title + '</a>'
 
 
+def get_text_unbinded_template(actname, openid):
+    return '对不起，尚未绑定学号，不能' + actname + '。\n' + get_text_link(s_reverse_validate(openid), '点此绑定学号')
+
+
 def get_text_help_title():
     return '“紫荆之声”使用指南'
 
@@ -64,7 +68,7 @@ def get_text_no_bookable_activity():
 
 
 def get_text_unbinded_exam_ticket(openid):
-    return '对不起，尚未绑定学号，不能查票。\n' + get_text_link(s_reverse_validate(openid), '点此绑定学号')
+    return get_text_unbinded_template('查票', openid)
 
 
 def get_text_one_ticket_title(ticket, now):
@@ -79,7 +83,7 @@ def get_text_one_ticket_description(ticket, now):
 
 
 def get_text_no_ticket():
-    return '您好，您目前没有可用的票'
+    return '您好，您目前没有可用票'
 
 
 def get_text_exam_tickets(tickets, now):
@@ -88,8 +92,24 @@ def get_text_exam_tickets(tickets, now):
         tmp = ticket.activity.name + ' ' + get_text_link(s_reverse_ticket_detail(ticket.unique_id), '电子票')
         bkend = ticket.activity.book_end
         if bkend > now:
-            tmp += ('\n' + time_chs_format(bkend - now) + '内可退票')
+            tmp += ('\n（' + time_chs_format(bkend - now) + '内可退票）')
         reply_content.append(tmp)
     return '\n-----------------------\n'.join(reply_content)
+
+
+def get_text_unbinded_fetch_ticket(openid):
+    return get_text_unbinded_template('取票', openid)
+
+
+def get_text_usage_fetch_ticket():
+    return '您好，格式不正确！请输入“取票 活动代称”。\n如：“取票 马兰花开”将向您返回马兰花开活动的电子票。'
+
+
+def get_text_no_such_activity():
+    return '活动不存在或已结束，请重试:)'
+
+
+def get_text_no_ticket_in_act(activity):
+    return '您没有 ' + activity.name + ' 的票:('
 
 

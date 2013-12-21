@@ -22,6 +22,15 @@ def get_user(openid):
         return None
 
 
+def get_reply_single_ticket(msg, ticket, now):
+    return get_reply_single_news_xml(msg, get_item_dict(
+        title=get_text_one_ticket_title(ticket, now),
+        description=get_text_one_ticket_description(ticket, now),
+        pic_url=get_text_ticket_pic(ticket),
+        url=s_reverse_ticket_detail(ticket.unique_id)
+    ))
+
+
 #check user is authenticated or not
 def is_authenticated(openid):
     return get_user(openid) is not None
@@ -97,61 +106,46 @@ def response_exam_tickets(msg):
 
     if len(all_tickets) == 1:
         ticket = all_tickets[0]
-        return get_reply_single_news_xml(msg, get_item_dict(
-            title=get_text_one_ticket_title(ticket, now),
-            description=get_text_one_ticket_description(ticket, now),
-            pic_url=get_text_ticket_pic(ticket),
-            url=s_reverse_ticket_detail(ticket.unique_id)
-        ))
+        return get_reply_single_ticket(msg, ticket, now)
     elif len(all_tickets) == 0:
         return get_reply_text_xml(msg, get_text_no_ticket())
     else:
         return get_reply_text_xml(msg, get_text_exam_tickets(all_tickets, now))
 
 
-#check fetch command message
-def check_fetch_cmd(msg):
+def check_fetch_ticket(msg):
     return handler_check_text_header(msg, ['取票'])
 
 
 #handle order message
-def get_fetch_cmd_response(msg):
+def response_fetch_ticket(msg):
     fromuser = get_msg_from(msg)
-    if is_authenticated(fromuser):
-        user = User.objects.get(weixin_id=fromuser, status=1)
-    else:
-        return get_reply_text_xml(msg, u'对不起，尚未绑定账号，不能取票，<a href="' + s_reverse_validate(fromuser) + '">'
-                                       u'点此绑定信息门户账号</a>')
+    user = get_user(fromuser)
+    if user is None:
+        return get_text_unbinded_fetch_ticket(fromuser)
 
-    now = string.atof(msg['CreateTime'])
-    now = datetime.datetime.fromtimestamp(now)
-    receive_msg = msg['Content']
-    receive_msg = receive_msg.split()
-    if len(receive_msg) > 1:
-        key = receive_msg[1]
+    received_msg = get_msg_content(msg).split()
+    if len(received_msg) > 1:
+        key = received_msg[1]
     else:
-        return get_reply_text_xml(msg, u'您好，格式不正确！请输入“取票 活动代称”。\n如：“取票 马兰花开”将向您返回马兰花开活动的电子票。')
-    activities = Activity.objects.filter(status=1, end_time__gte=now, key=key)
+        return get_reply_text_xml(msg, get_text_usage_fetch_ticket())
 
+    now = datetime.datetime.fromtimestamp(get_msg_create_time(msg))
+    activities = Activity.objects.filter(status=1, end_time__gt=now, key=key)
     if not activities.exists():
-        return get_reply_text_xml(msg, u'活动不存在或已结束，请重试:)')
+        return get_reply_text_xml(msg, get_text_no_such_activity())
     else:
         activity = activities[0]
+    return fetch_ticket(msg, user, activity, now)
 
-    tickets =  Ticket.objects.filter(stu_id=user.stu_id, activity=activity, status=1)
+
+def fetch_ticket(msg, user, activity, now):
+    tickets = Ticket.objects.filter(stu_id=user.stu_id, activity=activity, status=1)
     if tickets.exists():
         ticket = tickets[0]
-        description = u'活动时间：%s\n活动地点：%s\n回复“退票 %s”即可退票' % (ticket.activity.start_time.strftime('%Y-%m-%d %H:%M'),
-                                                                         ticket.activity.place, ticket.activity.key)
-        url = s_reverse_ticket_detail(ticket.unique_id)
-        return get_reply_news_xml(msg, [get_item_dict(
-            title=ticket.activity.name,
-            description=description,
-            pic_url=QRCODE_URL + str(ticket.unique_id),
-            url=url
-        )])
+        return get_reply_single_ticket(msg, ticket, now)
     else:
-        return get_reply_text_xml(msg, u'没有%s的票' % activity.name)
+        return get_reply_text_xml(msg, get_text_no_ticket_in_act(activity))
 
 
 #check book command message
