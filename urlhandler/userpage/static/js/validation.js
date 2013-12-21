@@ -84,7 +84,8 @@ function readyStateChanged() {
                     return;
 
                 case 'Rejected':
-                    showError('passwordGroup', 'helpPassword', '密码错误！请输入info登录密码');
+                    showError('usernameGroup', 'helpUsername', '');
+                    showError('passwordGroup', 'helpPassword', '学号或密码错误！请输入登录info的学号和密码');
                     break;
 
                 case 'Error':

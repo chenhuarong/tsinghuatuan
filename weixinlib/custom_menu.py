@@ -1,5 +1,3 @@
-__author__ = 'Epsirom'
-
 from weixinlib.weixin_urls import WEIXIN_URLS
 from weixinlib.base_support import get_access_token
 from weixinlib import http_get, http_post
