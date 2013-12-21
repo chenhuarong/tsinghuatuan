@@ -197,5 +197,5 @@ def get_text_timeout_book_event():
 
 
 def get_text_existed_book_event():
-    return '您已有票，自动切换为查票。'
+    return '您已有票，自动切换为查票。\n'
 
