@@ -18,7 +18,7 @@ def time_chs_format(time):
 def get_text_time_standard(dt):
     weekdays = ['一', '二', '三', '四', '五', '六', '日']
     return str(dt.year) + '年' + str(dt.month) + '月' + str(dt.day) + '日 周' + weekdays[dt.isoweekday() - 1] + ' ' \
-        + dt.hour + ':' + dt.minute
+        + str(dt.hour) + ':' + str(dt.minute)
 
 
 def get_text_ticket_pic(ticket):
@@ -105,8 +105,11 @@ def get_text_usage_fetch_ticket():
     return '您好，格式不正确！请输入“取票 活动代称”。\n如：“取票 马兰花开”将向您返回马兰花开活动的电子票。'
 
 
-def get_text_no_such_activity():
-    return '活动不存在或已结束，请重试:)'
+def get_text_no_such_activity(actname=''):
+    if actname == '':
+        return '活动不存在或已结束，请重试:)'
+    else:
+        return '活动不存在或不在' + actname + '时间范围内，请重试:)'
 
 
 def get_text_no_ticket_in_act(activity, now):
