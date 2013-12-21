@@ -106,7 +106,7 @@
       <file leaf-file-name="tickethandler.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="277" column="18" selection-start="10094" selection-end="10094" vertical-scroll-proportion="0.5652174">
+            <state line="276" column="48" selection-start="10078" selection-end="10078" vertical-scroll-proportion="0.5289855">
               <folding>
                 <element signature="e#22#35#0" expanded="true" />
               </folding>
@@ -1056,7 +1056,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="277" column="18" selection-start="10094" selection-end="10094" vertical-scroll-proportion="0.5652174">
+        <state line="276" column="48" selection-start="10078" selection-end="10078" vertical-scroll-proportion="0.5289855">
           <folding>
             <element signature="e#22#35#0" expanded="true" />
           </folding>
