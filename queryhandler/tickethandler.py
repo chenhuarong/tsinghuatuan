@@ -237,24 +237,23 @@ def response_cancel_ticket(msg):
         return get_reply_text_xml(msg, get_text_usage_cancel_ticket())
 
     now = datetime.datetime.fromtimestamp(get_msg_create_time(msg))
-    with transaction.atomic():
-        activities = Activity.objects.select_for_update().filter(status=1, end_time__gt=now, book_start__lt=now, key=key)
-        if not activities.exists():
-            return get_reply_text_xml(msg, get_text_no_such_activity('退票'))
-        else:
-            activity = activities[0]
-            if activity.book_end >= now:
-                tickets = Ticket.objects.filter(stu_id=user.stu_id, activity=activity, status=1)
-                if tickets.exists():   # user has already booked the activity
-                    ticket = tickets[0]
-                    ticket.status = 0
-                    ticket.save()
-                    Activity.objects.filter(id=activity.id).update(remain_tickets=F('remain_tickets')+1)
-                    return get_reply_text_xml(msg, get_text_success_cancel_ticket())
-                else:
-                    return get_reply_text_xml(msg, get_text_fail_cancel_ticket())
+    activities = Activity.objects.filter(status=1, end_time__gt=now, book_start__lt=now, key=key)
+    if not activities.exists():
+        return get_reply_text_xml(msg, get_text_no_such_activity('退票'))
+    else:
+        activity = activities[0]
+        if activity.book_end >= now:
+            tickets = Ticket.objects.filter(stu_id=user.stu_id, activity=activity, status=1)
+            if tickets.exists():   # user has already booked the activity
+                ticket = tickets[0]
+                ticket.status = 0
+                ticket.save()
+                Activity.objects.filter(id=activity.id).update(remain_tickets=F('remain_tickets')+1)
+                return get_reply_text_xml(msg, get_text_success_cancel_ticket())
             else:
-                return get_reply_text_xml(msg, get_text_timeout_cancel_ticket())
+                return get_reply_text_xml(msg, get_text_fail_cancel_ticket())
+        else:
+            return get_reply_text_xml(msg, get_text_timeout_cancel_ticket())
 
 
 #check book event
