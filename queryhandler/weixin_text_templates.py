@@ -15,10 +15,18 @@ def time_chs_format(time):
     return result
 
 
+def get_text_two_digit(num):
+    if num < 10:
+        return '0' + str(num)
+    else:
+        return str(num)
+
+
 def get_text_time_standard(dt):
     weekdays = ['一', '二', '三', '四', '五', '六', '日']
-    return str(dt.year) + '年' + str(dt.month) + '月' + str(dt.day) + '日 周' + weekdays[dt.isoweekday() - 1] + ' ' \
-        + str(dt.hour) + ':' + str(dt.minute)
+    return str(dt.year) + '年' + get_text_two_digit(dt.month) + '月' \
+        + get_text_two_digit(dt.day) + '日 周' + weekdays[dt.isoweekday() - 1] + ' ' \
+        + get_text_two_digit(dt.hour) + ':' + get_text_two_digit(dt.minute)
 
 
 def get_text_ticket_pic(ticket):
@@ -133,7 +141,7 @@ def get_text_fail_book_ticket(activity, now):
 
 
 def get_text_success_book_ticket():
-    return '恭喜您，抢票成功！'
+    return '恭喜您，抢票成功！\n'
 
 
 def get_text_book_ticket_future(activity, now):
@@ -145,5 +153,25 @@ def get_text_book_ticket_future(activity, now):
 
 def get_text_existed_book_ticket(ticket):
     return '您已抢到该活动的票，不能重复抢票。\n' + get_text_link(s_reverse_ticket_detail(ticket.unique_id), '查看电子票')
+
+
+def get_text_unbinded_cancel_ticket(openid):
+    return get_text_unbinded_template('退票', openid)
+
+
+def get_text_usage_cancel_ticket():
+    return '您好，格式不正确！请输入“退票 活动代称”。\n如：“退票 马兰花开”将退订马兰花开活动的票。\n（请注意，该操作不可恢复！）'
+
+
+def get_text_success_cancel_ticket():
+    return '退票成功，欢迎关注下次活动'
+
+
+def get_text_fail_cancel_ticket():
+    return '未找到您的抢票记录，退票失败'
+
+
+def get_text_timeout_cancel_ticket():
+    return '该活动的抢票时间已过，不能退票，您可以将票转让给他人（直接转发电子票即可）'
 
 
