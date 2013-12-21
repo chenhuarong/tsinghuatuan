@@ -4,7 +4,7 @@ from queryhandler.settings import QRCODE_URL
 
 
 def time_chs_format(time):
-    if time.days > 0:
+    if time.days != 0:
         result = str(time.days) + u'天'
     elif time.seconds >= 3600:
         result = str(time.seconds / 3600) + u'小时'
