@@ -24,6 +24,10 @@ def get_msg_content(msg):
     return msg['Content']
 
 
+def get_msg_event_key(msg):
+    return msg['EventKey']
+
+
 def get_item_dict(title='', description='', pic_url='', url=''):
     return {
         'title': title,

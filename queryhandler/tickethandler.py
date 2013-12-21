@@ -214,7 +214,6 @@ def book_ticket(user, key, now):
             Activity.objects.filter(id=activity.id).update(remain_tickets=F('remain_tickets')-1)
             ticket = tickets[0]
             ticket.status = 1
-            ticket.unique_id = random_string
             ticket.save()
             return ticket
         else:
@@ -268,122 +267,32 @@ def check_book_event(msg):
 
 
 def response_book_event(msg):
-    cmd_list = msg['EventKey'].split('_')
-    activity_id = int(cmd_list[2])
-    activity = Activity.objects.filter(id = activity_id)
-    if activity.exists():
-        activity = activity[0]
-        key = activity.key
-    else:
-        key = 'INVALID_KEY'
-    return book_ticket_old(msg, key)
-
-
-def book_ticket_old(msg, key):
     fromuser = get_msg_from(msg)
-    if is_authenticated(fromuser):
-        user = User.objects.get(weixin_id=fromuser, status=1)
+    user = get_user(fromuser)
+    if user is None:
+        return get_text_unbinded_book_ticket(fromuser)
+
+    now = datetime.datetime.fromtimestamp(get_msg_create_time(msg))
+
+    cmd_list = get_msg_event_key(msg).split()
+    activity_id = int(cmd_list[2])
+    activities = Activity.objects.filter(id=activity_id, status=1, end_time__gt=now)
+    if activities.exists():
+        activity = activities[0]
     else:
-        return get_reply_text_xml(msg, u'对不起，尚未绑定账号，不能抢票，<a href="' + s_reverse_validate(fromuser) + '">'
-                                       u'点此绑定信息门户账号</a>')
+        return get_reply_text_xml(msg, get_text_no_such_activity())
 
-    #get cmd content
-    now = string.atof(msg['CreateTime'])
-    now = datetime.datetime.fromtimestamp(now)
+    if activity.book_start > now:
+        return get_reply_text_xml(msg, get_text_book_ticket_future(activity, now))
 
-    #generate random string for ticket
-    random_string = ''.join([random.choice(string.ascii_letters + string.digits) for n in xrange(32)])
-    while Ticket.objects.filter(unique_id=random_string).exists():
-        random_string = ''.join([random.choice(string.ascii_letters + string.digits) for n in xrange(32)])
-
-    #with transaction.commit_on_success():
-    with transaction.atomic():
-        activities = Activity.objects.select_for_update().filter(status=1, book_end__gte=now, book_start__lte=now, key=key)
-
-        if activities.exists() == 0:
-            future_activities = Activity.objects.filter(status=1, book_start__gte=now, key=key)
-            if not future_activities.exists():
-                old_activities = Activity.objects.filter(status=1, key=key)#已发布的，活动代码为key（可能有多张活动代码相同的活动）
-                if not old_activities.exists():
-                    return get_reply_text_xml(msg, u'活动不存在或已结束，请重试:)')
-                else:
-                    #如果有票，返回票的信息
-                    if len(old_activities) == 1:#如果有一张票，直接返回电子票
-                        tmptics = Ticket.objects.filter(activity = old_activities[0], stu_id=user.stu_id, status=1)
-                        if tmptics.exists():
-                            description = u'活动时间：%s\n活动地点：%s' % (tmptics[0].activity.start_time.strftime('%Y-%m-%d %H:%M'),
-                                                                        tmptics[0].activity.place, )
-                            if now < tmptics[0].activity.book_end:
-                                description += u'\n回复“退票 %s”即可退票' % (tmptics[0].activity.key, )
-                            url = s_reverse_ticket_detail(tmptics[0].unique_id)
-                            return get_reply_news_xml(msg, [get_item_dict(
-                                title=tmptics[0].activity.name,
-                                description=description,
-                                pic_url=QRCODE_URL + str(tmptics[0].unique_id),
-                                url=url
-                            )])
-                        #如果没票，返回无票信息
-                        else:
-                            return get_reply_text_xml(msg, u'很抱歉，您没有抢到该活动的票')
-                    elif len(old_activities) > 1: #如果有多个活动，列表形式返回
-                        reply_content = []
-                        for old_activity in old_activities:
-                            old_tickets = Ticket.objects.filter(stu_id=user.stu_id, activity=old_activity, status=1)
-                            if old_tickets.exists():
-                                item = (u'“%s”<a href="' + s_reverse_ticket_detail(old_tickets[0].unique_id) + '">电子票</a>') % (old_activity.name, )
-                                reply_content += [item]
-                        return get_reply_text_xml(msg, u'\n-----------------------\n'.join(reply_content) if not (len(reply_content) == 0) else u'您目前没有票')
-                    else:#票的数目小于1
-                        return get_reply_text_xml(msg, u'活动不存在或已结束，请重试:)')
-            else:
-                future_activity = future_activities[0]
-                start_time = u'%s年%s月%s日%s时%s分' % (future_activity.book_start.year, future_activity.book_start.month, future_activity.book_start.day, future_activity.book_start.hour, future_activity.book_start.minute)
-                return get_reply_text_xml(msg, u'%s%s开始抢票，<a href="%s">详情</a>' % (future_activity.name, start_time, s_reverse_activity_detail(future_activity.id)))
-        else:
-            activity = activities[0]
-
-        tickets = Ticket.objects.select_for_update().filter(stu_id=user.stu_id, activity=activity)
-
-        if tickets.exists() == 0:
-            if activity.remain_tickets <= 0:
-                return  get_reply_text_xml(msg, u'票已抢完，欢迎关注下次活动')
-            ticket = Ticket(
-                stu_id = user.stu_id,
-                activity = activity,
-                unique_id = random_string,
-                status = 1,
-                seat = ''
-            )
-            ticket.save()
-            Activity.objects.filter(status=1, book_end__gte=now, book_start__lte=now, key=key).update(remain_tickets=F('remain_tickets')-1)
-            description = u'活动时间：%s\n活动地点：%s\n回复“退票 %s”即可退票' %(ticket.activity.start_time.strftime('%Y-%m-%d %H:%M'),
-                                                                   ticket.activity.place, ticket.activity.key)
-            url = s_reverse_ticket_detail(ticket.unique_id)
-            return get_reply_news_xml(msg, [get_item_dict(
-                title=ticket.activity.name,
-                description=description,
-                pic_url=QRCODE_URL + str(ticket.unique_id),
-                url=url
-            )])
-        elif tickets[0].status == 0:
-            if activity.remain_tickets <= 0:
-                return get_reply_text_xml(msg, u'票已抢完，欢迎关注下次活动')
-            ticket = tickets[0]
-            ticket.status = 1
-            ticket.save()
-            Activity.objects.filter(status=1, book_end__gte=now, book_start__lte=now, key=key).update(remain_tickets=F('remain_tickets')-1)
-            description = u'活动时间：%s\n活动地点：%s\n回复“退票 %s”即可退票' %(ticket.activity.start_time.strftime('%Y-%m-%d %H:%M'),
-                                                               ticket.activity.place, ticket.activity.key)
-            url = s_reverse_ticket_detail(ticket.unique_id)
-            return get_reply_news_xml(msg, [get_item_dict(
-                title=ticket.activity.name,
-                description=description,
-                pic_url=QRCODE_URL + str(ticket.unique_id),
-                url=url
-            )])
-        else:
-            url = s_reverse_ticket_detail(tickets[0].unique_id)
-            return get_reply_text_xml(msg, u'您已抢到%s的票，不能重复抢票，<a href="%s">查看电子票</a>' % (activity.name, url))
+    tickets = Ticket.objects.filter(stu_id=user.stu_id, activity=activity, status__gt=0)
+    if tickets.exists():
+        return get_reply_single_ticket(msg, tickets[0], now)
+    ticket = book_ticket(user, activity.key, now)
+    if ticket is None:
+        return get_reply_text_xml(msg, get_text_fail_book_ticket(activities[0], now))
+    else:
+        return get_reply_single_ticket(msg, ticket, now, get_text_success_book_ticket())
 
 
 #check unsubscribe event

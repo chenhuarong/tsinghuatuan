@@ -155,8 +155,8 @@ def logout(request):
     return HttpResponseRedirect(s_reverse_admin_home())
 
 
-def str_to_datetime(str):
-    return datetime.strptime(str, '%Y-%m-%d %H:%M:%S')
+def str_to_datetime(strg):
+    return datetime.strptime(strg, '%Y-%m-%d %H:%M:%S')
 
 
 def activity_create(activity):
