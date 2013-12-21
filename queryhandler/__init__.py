@@ -9,7 +9,7 @@ from queryhandler.query_transfer import get_information_response
 
 handler_list = [
     {'check': check_bookable_activities,    'response': response_bookable_activities},
-    {'check': check_ticket_cmd,             'response': get_tickets},
+    {'check': check_exam_tickets,           'response': response_exam_tickets},
     {'check': check_book_cmd,               'response': get_book_ticket_response},
     {'check': check_help_or_subscribe,      'response': response_help_or_subscribe_response},
     {'check': check_unsubscribe,            'response': get_unsubscibe_response},

@@ -1,4 +1,6 @@
 #-*- coding:utf-8 -*-
+from userpage.safe_reverse import *
+from queryhandler.settings import QRCODE_URL
 
 
 def time_chs_format(time):
@@ -11,6 +13,18 @@ def time_chs_format(time):
     else:
         result = str(time.seconds) + u'秒'
     return result
+
+
+def get_text_time_standard(dt):
+    return dt.strftime('%Y-%m-%d %H:%M')
+
+
+def get_text_ticket_pic(ticket):
+    return QRCODE_URL + str(ticket.unique_id)
+
+
+def get_text_link(href, title):
+    return '<a href="' + href + '">' + title + '</a>'
 
 
 def get_text_help_title():
@@ -45,5 +59,35 @@ def get_text_activity_description(activity, MAX_LEN):
 
 def get_text_no_bookable_activity():
     return '您好，目前没有抢票活动'
+
+
+def get_text_unbinded_exam_ticket(openid):
+    return '对不起，尚未绑定学号，不能查票。\n' + get_text_link(s_reverse_validate(openid), '点此绑定学号')
+
+
+def get_text_one_ticket_title(ticket, now):
+    return ticket.activity.name
+
+
+def get_text_one_ticket_description(ticket, now):
+    tmp = '活动时间：' + get_text_time_standard(ticket.activity.start_time) + '\n活动地点：' + ticket.activity.place
+    if ticket.activity.book_end > now:
+        tmp += ('\n回复“退票 ' + ticket.activity.key + '”即可退票')
+    return tmp
+
+
+def get_text_no_ticket():
+    return '您好，您目前没有票'
+
+
+def get_text_exam_tickets(tickets, now):
+    reply_content = []
+    for ticket in tickets:
+        tmp = ticket.activity.name + ' ' + get_text_link(s_reverse_ticket_detail(ticket.unique_id), '电子票')
+        bkend = ticket.activity.book_end
+        if bkend > now:
+            tmp += ('\n' + time_chs_format(bkend - now) + '内可退票')
+        reply_content.append(tmp)
+    return '\n-----------------------\n'.join(reply_content)
 
 
