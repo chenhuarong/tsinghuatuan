@@ -275,6 +275,7 @@ def response_book_event(msg):
     now = datetime.datetime.fromtimestamp(get_msg_create_time(msg))
 
     cmd_list = get_msg_event_key(msg).split()
+    print cmd_list
     activity_id = int(cmd_list[2])
     activities = Activity.objects.filter(id=activity_id, status=1, end_time__gt=now)
     if activities.exists():
