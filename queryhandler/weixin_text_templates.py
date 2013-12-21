@@ -16,7 +16,9 @@ def time_chs_format(time):
 
 
 def get_text_time_standard(dt):
-    return dt.strftime('%Y-%m-%d %H:%M')
+    weekdays = ['一', '二', '三', '四', '五', '六', '日']
+    return str(dt.year) + '年' + str(dt.month) + '月' + str(dt.day) + '日 周' + weekdays[dt.isoweekday() - 1] + ' ' \
+        + dt.hour + ':' + dt.minute
 
 
 def get_text_ticket_pic(ticket):
@@ -34,7 +36,7 @@ def get_text_help_title():
 def get_text_help_description(isvalidated):
     return '不想错过园子里精彩的资讯？又没时间没心情到处搜罗信息？想要参加高大上的活动却不想提前数小时排队？' \
            '微信“紫荆之声”帮您便捷解决这些问题！快来看看“紫荆之声”怎么使用吧！'\
-           + ('\n您尚未绑定学号，回复“绑定”进行相关操作:)' if isvalidated else '')
+           + ('\n您尚未绑定学号，回复“绑定”进行相关操作:)' if not isvalidated else '')
 
 
 def get_text_activity_title_with_status(activity, now):
@@ -77,7 +79,7 @@ def get_text_one_ticket_description(ticket, now):
 
 
 def get_text_no_ticket():
-    return '您好，您目前没有票'
+    return '您好，您目前没有可用的票'
 
 
 def get_text_exam_tickets(tickets, now):
