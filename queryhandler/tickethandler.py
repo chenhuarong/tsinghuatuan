@@ -199,6 +199,17 @@ def book_ticket(user, key, now):
             random_string = ''.join([random.choice(string.ascii_letters + string.digits) for n in xrange(32)])
 
         tickets = Ticket.objects.select_for_update().filter(stu_id=user.stu_id, activity=activity)
+        if tickets.exists() and tickets[0].status != 0:
+            return None
+
+        next_seat = ''
+        if activity.seat_status == 1:
+            b_count = Ticket.objects.filter(activity=activity, seat='B', status__gt=0).count()
+            c_count = Ticket.objects.filter(activity=activity, seat='C', status__gt=0).count()
+            if b_count <= c_count:
+                next_seat = 'B'
+            else:
+                next_seat = 'C'
 
         if not tickets.exists():
             Activity.objects.filter(id=activity.id).update(remain_tickets=F('remain_tickets')-1)
@@ -207,13 +218,14 @@ def book_ticket(user, key, now):
                 activity=activity,
                 unique_id=random_string,
                 status=1,
-                seat=''
+                seat=next_seat
             )
             return ticket
         elif tickets[0].status == 0:
             Activity.objects.filter(id=activity.id).update(remain_tickets=F('remain_tickets')-1)
             ticket = tickets[0]
             ticket.status = 1
+            ticket.seat = next_seat
             ticket.save()
             return ticket
         else:
