@@ -65,7 +65,8 @@ var dateInterfaceMap = {
     'book_start': 'time',
     'book_end': 'time',
     'pic_url': 'value',
-    'total_tickets': 'value'
+    'total_tickets': 'value',
+    'seat_status': 'value'
 }, lockMap = {
     'value': function(dom, lock) {
         dom.prop('disabled', lock);
@@ -258,6 +259,9 @@ function lockByStatus(status, book_start, start_time, end_time) {
             },
             'end_time': function() {
                 return (new Date() >= getDateByObj(end_time));
+            },
+            'seat_status': function() {
+                return (new Date() >= getDateByObj(book_start));
             }
         }
     }, key;
@@ -342,7 +346,8 @@ function beforeSubmit(formData, jqForm, options) {
         'total_tickets': '活动总票数',
         'pic_url': '活动配图',
         'book_start': '订票开始时间',
-        'book_end': '订票结束时间'
+        'book_end': '订票结束时间',
+        'seat_status': '座位分配设置'
     }, lackArray = [], dateArray = [
         'start_time', 'end_time', 'book_start', 'book_end'
     ];

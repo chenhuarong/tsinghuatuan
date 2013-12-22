@@ -162,7 +162,7 @@ def str_to_datetime(strg):
 
 def activity_create(activity):
     preDict = dict()
-    for k in ['name', 'key', 'description', 'place', 'pic_url', 'total_tickets']:
+    for k in ['name', 'key', 'description', 'place', 'pic_url', 'seat_status', 'total_tickets']:
         preDict[k] = activity[k]
     for k in ['start_time', 'end_time', 'book_start', 'book_end']:
         preDict[k] = str_to_datetime(activity[k])
@@ -176,7 +176,7 @@ def activity_modify(activity):
     nowact = Activity.objects.get(id=activity['id'])
     now = datetime.now()
     if nowact.status == 0:
-        keylist = ['name', 'key', 'description', 'place', 'pic_url', 'total_tickets']
+        keylist = ['name', 'key', 'description', 'place', 'pic_url', 'seat_status', 'total_tickets']
         timelist = ['start_time', 'end_time', 'book_start', 'book_end']
     elif nowact.status == 1:
         if now >= nowact.start_time:
@@ -186,8 +186,11 @@ def activity_modify(activity):
             keylist = ['description', 'place', 'pic_url']
             timelist = ['start_time', 'end_time', 'book_end']
         else:
-            keylist = ['description', 'place', 'pic_url', 'total_tickets']
+            keylist = ['description', 'place', 'pic_url', 'seat_status', 'total_tickets']
             timelist = ['start_time', 'end_time', 'book_end']
+    else:
+        keylist = []
+        timelist = []
     for key in keylist:
         if key == 'total_tickets':
             setattr(nowact, 'remain_tickets', activity[key])
@@ -217,7 +220,6 @@ def get_checked_tickets(activity):
 
 
 def wrap_activity_dict(activity):
-    global activity_remain_tickets
     dt = model_to_dict(activity)
     if (dt['status'] >= 1) and (datetime.now() >= dt['book_start']):
         dt['tickets_ready'] = 1

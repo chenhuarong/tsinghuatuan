@@ -143,6 +143,7 @@ def ticket_view(request, uid):
     if not ticket.exists():
         raise Http404  #current activity is invalid
     activity = Activity.objects.filter(id=ticket[0].activity_id)
+    act_id = activity[0].id
     act_name = activity[0].name
     act_key = activity[0].key
     act_begintime = activity[0].start_time
@@ -152,9 +153,11 @@ def ticket_view(request, uid):
     now = datetime.datetime.now()
     if act_endtime < now:#表示活动已经结束
         ticket_status = 3
+    ticket_seat = ticket[0].seat
     act_photo = "http://tsinghuaqr.duapp.com/fit/"+uid
-    variables=RequestContext(request,{'act_name':act_name,'act_place':act_place, 'act_begintime':act_begintime,
+    variables=RequestContext(request,{'act_id':act_id, 'act_name':act_name,'act_place':act_place, 'act_begintime':act_begintime,
                                       'act_endtime':act_endtime,'act_photo':act_photo, 'ticket_status':ticket_status,
+                                      'ticket_seat':ticket_seat,
                                       'act_key':act_key})
     return render_to_response('activityticket.html', variables)
 

@@ -18,7 +18,7 @@ class Activity(models.Model):
     place = models.CharField(max_length=255)
     book_start = models.DateTimeField()
     book_end = models.DateTimeField()
-    max_tickets_per_order = models.IntegerField(default=2)
+    seat_status = models.IntegerField(default=0)
     total_tickets = models.IntegerField()
     status = models.IntegerField()
     pic_url = models.CharField(max_length=255)
@@ -27,6 +27,9 @@ class Activity(models.Model):
     # -1: deleted
     # 0: saved but not published
     # 1: published
+    # Something about seat_status:
+    # 0: no seat
+    # 1: seat B and seat C
 
 class Ticket(models.Model):
     stu_id = models.CharField(max_length=255)

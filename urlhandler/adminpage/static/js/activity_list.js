@@ -203,10 +203,10 @@ function deleteact(actid){
 function delConfirm(){
     var delid = $('#deleteid').val();
     //alert(delid);
-    var tmp  ="/adminpage/delete/";
+    var tmp  ="/delete/";
     $.post(tmp,{'activityId':delid}, function(ret) {
         $('#'+delid).css("background-color","#FFF");
-        window.location.href="/adminpage/list/"
+        window.location.href="/list/"
     });
 }
 
