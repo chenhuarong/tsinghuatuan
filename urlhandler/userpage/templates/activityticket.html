@@ -62,8 +62,10 @@
     <div class="ticket-wrapper">
         <a href="{% url "userpage.views.details_view" activityid=act_id %}">活动详情</a>
     </div>
+    {% if ticket_status == 1 %}
     <div class="ticket-wrapper">
         <b>回复“退票 {{ act_key }}”即可退票</b>
     </div>
+    {% endif %}
 
 {% endblock %}

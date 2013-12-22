@@ -95,7 +95,7 @@ def get_text_seat_desc_BC(seat):
 def get_text_one_ticket_description(ticket, now):
     tmp = '活动时间：' + get_text_time_standard(ticket.activity.start_time) + '\n活动地点：' + ticket.activity.place
     if ticket.activity.seat_status == 1:
-        tmp += get_text_seat_desc_BC(ticket.seat)
+        tmp += ('\n' + get_text_seat_desc_BC(ticket.seat))
     if ticket.activity.book_end > now:
         tmp += ('\n回复“退票 ' + ticket.activity.key + '”即可退票。\n（退票不可恢复，请谨慎操作！）')
     return tmp

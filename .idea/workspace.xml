@@ -57,7 +57,7 @@
     <file path="/weixin_lecture.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387120323102" ignored="false" />
     <file path="$PROJECT_DIR$/../TuanTuan/TuanTuan/TuanTuan/TuanTuanApp/views.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387128133593" ignored="false" />
     <file path="/activitytext.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387515856805" ignored="false" />
-    <file path="/activityticket.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387733061431" ignored="false" />
+    <file path="/activityticket.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387733250799" ignored="false" />
     <file path="/requirements.txt" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387178436418" ignored="false" />
     <file path="/Library/Python/2.7/site-packages/django/db/models/manager.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387179840678" ignored="false" />
     <file path="/Library/Python/2.7/site-packages/django/db/models/options.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387179840678" ignored="false" />
@@ -80,7 +80,7 @@
     <file path="/validation_student.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387561059954" ignored="false" />
     <file path="/validation_student.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387561935435" ignored="false" />
     <file path="/ticket.css" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387634948617" ignored="false" />
-    <file path="/weixin_text_templates.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387733157467" ignored="false" />
+    <file path="/weixin_text_templates.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387733285492" ignored="false" />
     <file path="/tsinghuatuan_crons.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387657977009" ignored="false" />
     <file path="/validation.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387658115130" ignored="false" />
     <file path="$PROJECT_DIR$/../TuanTuan/TuanTuan/TsinghuaSpider-master/TuanTuanSpider/main.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387683778555" ignored="false" />
@@ -121,16 +121,7 @@
       <file leaf-file-name="weixin_text_templates.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/queryhandler/weixin_text_templates.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="97" column="49" selection-start="2673" selection-end="2673" vertical-scroll-proportion="0.7707317">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activityticket.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="74" selection-start="1457" selection-end="1472" vertical-scroll-proportion="-11.458333">
+            <state line="97" column="58" selection-start="2682" selection-end="2682" vertical-scroll-proportion="0.47804877">
               <folding />
             </state>
           </provider>
@@ -1051,14 +1042,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="74" selection-start="1457" selection-end="1472" vertical-scroll-proportion="-11.458333">
+        <state line="64" column="27" selection-start="1897" selection-end="1897" vertical-scroll-proportion="0.53367877">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/queryhandler/weixin_text_templates.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="49" selection-start="2673" selection-end="2673" vertical-scroll-proportion="0.7707317">
+        <state line="97" column="58" selection-start="2682" selection-end="2682" vertical-scroll-proportion="0.47804877">
           <folding />
         </state>
       </provider>
