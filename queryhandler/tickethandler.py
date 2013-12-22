@@ -343,3 +343,38 @@ def check_no_book_acts_event(msg):
 def response_no_book_acts(msg):
     return get_reply_text_xml(msg, get_text_hint_no_book_acts())
 
+
+def check_get_activity_menu(msg):
+    return handler_check_text_header(msg, ['节目单'])
+
+
+def response_get_activity_menu(msg):
+    received_msg = get_msg_content(msg).split()
+    if len(received_msg) > 1:
+        key = received_msg[1]
+    else:
+        return get_reply_text_xml(msg, get_text_usage_get_activity_menu())
+
+    now = datetime.datetime.fromtimestamp(get_msg_create_time(msg))
+    activities = Activity.objects.filter(status=1, end_time__gt=now, book_start__lt=now, key=key)
+    if not activities.exists():
+        return get_reply_text_xml(msg, get_text_no_such_activity())
+    else:
+        activity = activities[0]
+    if not activity.menu_url:
+        return get_reply_text_xml(msg, get_text_no_activity_menu())
+    if activity.start_time > now:
+        return get_text_fail_get_activity_menu(activity, now)
+    return get_reply_single_news_xml(msg, get_item_dict(
+        title=get_text_title_activity_menu(activity),
+        description=get_text_desc_activity_menu(activity),
+        url=s_reverse_activity_menu(activity.id)
+    ))
+
+
+def check_xnlhwh(msg):
+    return handler_check_text(msg, ['xnlhwh'])
+
+
+def response_xnlhwh(msg):
+    return get_reply_text_xml(msg, '建设中...')

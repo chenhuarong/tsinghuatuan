@@ -164,3 +164,10 @@ def ticket_view(request, uid):
 def help_view(request):
     variables=RequestContext(request,{'name':u'“紫荆之声”'})
     return render_to_response('help.html', variables)
+
+
+def activity_menu_view(request, actid):
+    activity = Activity.objects.get(id=actid)
+    return render_to_response('activitymenu.html', {'activity': activity})
+
+

@@ -6,5 +6,6 @@ urlpatterns = patterns('',
                        url(r'^validate/(?P<openid>\S+)/$', 'userpage.views.validate_view'),
                        url(r'^activity/(?P<activityid>\d+)/$','userpage.views.details_view'),
                        url(r'^ticket/(?P<uid>\S+)/$','userpage.views.ticket_view'),
-                        url(r'^help/$','userpage.views.help_view')
+                       url(r'^help/$','userpage.views.help_view'),
+                       url(r'^activity/(?P<actid>\d+)/menu/$', 'userpage.views.activity_menu_view'),
                        )

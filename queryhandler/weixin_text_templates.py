@@ -97,7 +97,7 @@ def get_text_one_ticket_description(ticket, now):
     if ticket.activity.seat_status == 1:
         tmp += ('\n' + get_text_seat_desc_BC(ticket.seat))
     if ticket.activity.book_end > now:
-        tmp += ('\n回复“退票 ' + ticket.activity.key + '”即可退票。\n（退票不可恢复，请谨慎操作！）')
+        tmp += ('\n回复“退票 ' + ticket.activity.key + '”即可退票。')
     return tmp
 
 
@@ -210,4 +210,29 @@ def get_text_timeout_book_event():
 def get_text_existed_book_event():
     return ''
     #return '您已有票，自动切换为取票。\n'
+
+
+def get_text_usage_get_activity_menu():
+    return '您好，格式不正确！请输入“节目单 活动代称”。\n如：“节目单 新年联欢晚会”将向您返回新年联欢晚会的节目单。'
+
+
+def get_text_fail_get_activity_menu(activity, now):
+    sst = activity.start_time
+    return '您好，该活动尚未开始，不能查看节目单。' + get_text_link(s_reverse_activity_detail(activity.id), '详情') \
+           + '\n活动开始时间：' + get_text_time_standard(sst) \
+           + '\n（还剩' + time_chs_format(sst - now) + '）'
+
+
+def get_text_title_activity_menu(activity):
+    return activity.name + ' - 节目单'
+
+
+def get_text_desc_activity_menu(activity):
+    return '活动开始时间：' + get_text_time_standard(activity.start_time) \
+           + '\n活动结束时间：' + get_text_time_standard(activity.end_time)
+
+
+def get_text_no_activity_menu():
+    return '您好，该活动未提供节目单。'
+
 

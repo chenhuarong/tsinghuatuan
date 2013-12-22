@@ -8,16 +8,18 @@ from queryhandler.tickethandler import *
 from queryhandler.query_transfer import get_information_response
 
 handler_list = [
+    {'check': check_book_event,             'response': response_book_event},
+    {'check': check_book_ticket,            'response': response_book_ticket},
+    {'check': check_cancel_ticket,          'response': response_cancel_ticket},
     {'check': check_bookable_activities,    'response': response_bookable_activities},
     {'check': check_exam_tickets,           'response': response_exam_tickets},
-    {'check': check_book_ticket,            'response': response_book_ticket},
     {'check': check_help_or_subscribe,      'response': response_help_or_subscribe_response},
     {'check': check_unsubscribe_or_unbind,  'response': response_unsubscribe_or_unbind},
     {'check': check_bind_account,           'response': response_bind_account},
-    {'check': check_book_event,             'response': response_book_event},
-    {'check': check_cancel_ticket,          'response': response_cancel_ticket},
     {'check': check_fetch_ticket,           'response': response_fetch_ticket},
     {'check': check_no_book_acts_event,     'response': response_no_book_acts},
+    {'check': check_get_activity_menu,      'response': response_get_activity_menu},
+    {'check': check_xnlhwh,                 'response': response_xnlhwh},
 ]
 
 

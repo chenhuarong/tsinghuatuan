@@ -18,3 +18,7 @@ def s_reverse_help():
     return SITE_DOMAIN + reverse('userpage.views.help_view')
 
 
+def s_reverse_activity_menu(actid):
+    return SITE_DOMAIN + reverse('userpage.views.activity_menu_view', kwargs={'actid': actid})
+
+

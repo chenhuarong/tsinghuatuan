@@ -23,6 +23,7 @@ class Activity(models.Model):
     status = models.IntegerField()
     pic_url = models.CharField(max_length=255)
     remain_tickets = models.IntegerField()
+    menu_url = models.CharField(max_length=255, null=True)
     # Something about status:
     # -1: deleted
     # 0: saved but not published

@@ -45,11 +45,11 @@
     {% if ticket_status > 0 %}
         {% if ticket_seat == 'B' %}
             <div class="ticket-wrapper">
-                关于入场：<span class="status-size ticket-used">您的座位在B区，请从东南口进入</span>
+                说明：<span class="status-size ticket-used">您的座位在B区，请从东南口进入</span>
             </div>
         {% elif ticket_seat == 'C' %}
             <div class="ticket-wrapper">
-                关于入场：<span class="status-size ticket-used">您的座位在C区，请从西北口进入</span>
+                说明：<span class="status-size ticket-used">您的座位在C区，请从西北口进入</span>
             </div>
         {% endif %}
     {% endif %}
@@ -58,9 +58,6 @@
     </div>
     <div class="ticket-wrapper">
         活动结束时间：<b>{{ act_endtime|date:"Y年m月d日H时i分" }}</b>
-    </div>
-    <div class="ticket-wrapper">
-        <a href="{% url "userpage.views.details_view" activityid=act_id %}">活动详情</a>
     </div>
     {% if ticket_status == 1 %}
     <div class="ticket-wrapper">
