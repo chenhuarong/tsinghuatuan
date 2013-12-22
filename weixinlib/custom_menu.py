@@ -16,6 +16,7 @@ def get_custom_menu():
 
 
 def modify_custom_menu(buttons):
+    print buttons
     access_token = get_access_token()
     url = WEIXIN_URLS['modify_custom_menu'](access_token)
     res = http_post(url, buttons)
