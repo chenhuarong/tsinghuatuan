@@ -274,7 +274,7 @@ function lockByStatus(status, book_start, start_time, end_time) {
     } else {
         $('#saveBtn').show();
     }
-    showPublishByStatus(status,start_time);
+    showPublishByStatus(status, end_time);
     showPubTipsByStatus(status);
 }
 
@@ -286,8 +286,8 @@ function showProgressByStatus(status, book_start) {
     }
 }
 
-function showPublishByStatus(status, start_time) {
-    if ((status >= 1) && (new Date() >= getDateByObj(start_time))) {
+function showPublishByStatus(status, linetime) {
+    if ((status >= 1) && (new Date() >= getDateByObj(linetime))) {
         $('#publishBtn').hide();
         $('#resetBtn').hide();
     } else {
@@ -409,7 +409,7 @@ function submitResponse(data) {
         appendResult('错误：' + data.error);
     }
     if (data.warning) {
-        appendresult('警告：' + data.warning);
+        appendResult('警告：' + data.warning);
     }
     if (data.updateUrl) {
         $('#continueBtn').click(function() {
@@ -436,9 +436,9 @@ function submitComplete(xhr) {
 
 
 function publishActivity() {
-    if(!checktime())
-        return false;
     if(!$('#activity-form')[0].checkValidity || $('#activity-form')[0].checkValidity()){
+        if(!checktime())
+            return false;
         showProcessing();
         setResult('');
         var options = {

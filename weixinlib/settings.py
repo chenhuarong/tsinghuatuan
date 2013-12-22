@@ -108,7 +108,6 @@ def get_custom_menu_with_book_acts(actbtns):
     if len(actbtns) == 0:
         book_btn['type'] = 'click'
         book_btn['key'] = WEIXIN_EVENT_KEYS['ticket_no_book_recommand']
-    else:
-        book_btn['sub_button'] = actbtns
+    book_btn['sub_button'] = actbtns
     return tmpmenu
 

@@ -10,6 +10,7 @@ from django.shortcuts import render_to_response
 from django.contrib import auth
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
+from django.db.models import F
 import urllib
 import urllib2
 from urlhandler.models import Activity, Ticket
@@ -188,6 +189,8 @@ def activity_modify(activity):
             keylist = ['description', 'place', 'pic_url', 'total_tickets']
             timelist = ['start_time', 'end_time', 'book_end']
     for key in keylist:
+        if key == 'total_tickets':
+            setattr(nowact, 'remain_tickets', activity[key])
         setattr(nowact, key, activity[key])
     for key in timelist:
         setattr(nowact, key, str_to_datetime(activity[key]))
@@ -281,9 +284,10 @@ def activity_post(request):
             activity = activity_create(post)
             rtnJSON['updateUrl'] = s_reverse_activity_detail(activity.id)
         rtnJSON['activity'] = wrap_activity_dict(activity)
-        updateErr = json.loads(add_new_custom_menu(name=activity.key, key=WEIXIN_BOOK_HEADER + str(activity.id))).get('errcode', 'err')
-        if updateErr != 0:
-            rtnJSON['error'] = u'活动创建成功，但更新微信菜单失败，请手动更新:(  \r\n错误代码：%s' % updateErr
+        if 'publish' in post:
+            updateErr = json.loads(add_new_custom_menu(name=activity.key, key=WEIXIN_BOOK_HEADER + str(activity.id))).get('errcode', 'err')
+            if updateErr != 0:
+                rtnJSON['error'] = u'活动创建成功，但更新微信菜单失败，请手动更新:(  \r\n错误代码：%s' % updateErr
     except Exception as e:
         rtnJSON['error'] = str(e)
     return HttpResponse(json.dumps(rtnJSON, cls=DatetimeJsonEncoder), content_type='application/json')
