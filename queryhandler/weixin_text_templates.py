@@ -83,10 +83,21 @@ def get_text_one_ticket_title(ticket, now):
     return ticket.activity.name
 
 
+def get_text_seat_desc_BC(seat):
+    if seat == 'B':
+        return '您的座位在B区，请从东南口进入。'
+    elif seat == 'C':
+        return '您的座位在C区，请从西北口进入。'
+    else:
+        return '您的座位信息无效'
+
+
 def get_text_one_ticket_description(ticket, now):
     tmp = '活动时间：' + get_text_time_standard(ticket.activity.start_time) + '\n活动地点：' + ticket.activity.place
+    if ticket.activity.seat_status == 1:
+        tmp += get_text_seat_desc_BC(ticket.seat)
     if ticket.activity.book_end > now:
-        tmp += ('\n回复“退票 ' + ticket.activity.key + '”即可退票')
+        tmp += ('\n回复“退票 ' + ticket.activity.key + '”即可退票。\n（退票不可恢复，请谨慎操作！）')
     return tmp
 
 
