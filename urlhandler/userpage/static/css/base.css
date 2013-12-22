@@ -57,8 +57,8 @@ body > #wrap {
 }
 #footer {
     position: relative;
-    margin-top: -50px; /* minus footer height */
-    height: 45px; /* a little smaller than 50 to avoid scroll*/
+    margin-top: -60px; /* minus footer height */
+    height: 37px; /* a little smaller than 50 to avoid scroll*/
     clear:both;
     text-align: center;
 }
