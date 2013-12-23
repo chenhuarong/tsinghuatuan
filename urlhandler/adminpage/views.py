@@ -5,6 +5,7 @@ from django.template import RequestContext
 from django.forms.models import model_to_dict
 from datetime import datetime
 import json
+import time
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.contrib import auth
@@ -142,6 +143,7 @@ def login(request):
         rtnJSON['message'] = 'success'
         rtnJSON['next'] = s_reverse_activity_list()
     else:
+        time.sleep(2)
         rtnJSON['message'] = 'failed'
         if User.objects.filter(username=username, is_active=True):
             rtnJSON['error'] = 'wrong'

@@ -110,11 +110,6 @@ function initializeForm(activity) {
     }
     if (!activity.id) {
         $('#input-name').val('');
-    }
-    if (typeof activity.checked_tickets !== 'undefined') {
-        initialProgress(activity.checked_tickets, activity.ordered_tickets, activity.total_tickets);
-    }
-    else{
         //新增活动，自动生成年份
         var curyear = new Date().getFullYear();
         var curmonth = new Date().getMonth() + 1;
@@ -131,6 +126,9 @@ function initializeForm(activity) {
         $('#input-book-start-minute').val(0);
         $('#input-book-end-minute').val(0);
         $('#input-seat_status').val(0);
+    }
+    if (typeof activity.checked_tickets !== 'undefined') {
+        initialProgress(activity.checked_tickets, activity.ordered_tickets, activity.total_tickets);
     }
     curstatus = activity.status;
     lockByStatus(curstatus, activity.book_start, activity.start_time, activity.end_time);
@@ -151,7 +149,7 @@ function checktime(){
     var bookend = new Date($('#input-book-end-year').val(), $('#input-book-end-month').val()-1, $('#input-book-end-day').val(), $('#input-book-end-hour').val(), $('#input-book-end-minute').val());
     var now = new Date();
     if(curstatus == 0){
-        if(bookstart <= now){
+        if(bookstart < now){
             $('#input-book-start-year').popover({
                     html: true,
                     placement: 'top',
@@ -164,7 +162,7 @@ function checktime(){
             return false;
         }
 
-        if(bookend <= bookstart){
+        if(bookend < bookstart){
             $('#input-book-end-year').popover({
                 html: true,
                 placement: 'top',
@@ -177,7 +175,7 @@ function checktime(){
             return false;
         }
     }
-    if(actstart <= bookend){
+    if(actstart < bookend){
         $('#input-start-year').popover({
                 html: true,
                 placement: 'top',
@@ -189,7 +187,7 @@ function checktime(){
          $('#input-start-year').focus();
         return false;
     }
-    if(actend <= actstart){
+    if(actend < actstart){
         $('#input-end-year').popover({
             html: true,
             placement: 'top',
@@ -500,4 +498,4 @@ $('#activity-form').submit(function() {
     return false;
 });
 
-$('.form-control').on('click', function() {$(this).select();});
+$('.form-control').on('focus', function() {$(this).select();});

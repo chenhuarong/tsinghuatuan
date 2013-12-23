@@ -32,7 +32,7 @@
                 <input type="checkbox" value="Remember me">记住我
             </label>
             -->
-            <input id="" type="submit" class="btn btn-block btn-primary" value="登录">
+            <input id="loginnow" type="submit" class="btn btn-block btn-primary" value="登录">
         </form>
     </div>
 
@@ -63,10 +63,12 @@
         }
     }
     $('#login').submit(function() {
+        $('#loginnow').prop('disabled', true);
         var data = {
             dataType: 'json',
             beforeSubmit: function(){return true},
-            success: response
+            success: response,
+            complete: function(){$('#loginnow').prop('disabled', false);}
         }
         $(this).ajaxSubmit(data);
         return false;

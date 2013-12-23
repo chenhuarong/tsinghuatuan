@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="519d02f1-9909-43c4-95c4-b95f242a05f2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/userpage/templates/activitytext.html" afterPath="$PROJECT_DIR$/urlhandler/userpage/templates/activitytext.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js" afterPath="$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/templates/login.html" afterPath="$PROJECT_DIR$/urlhandler/adminpage/templates/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/views.py" afterPath="$PROJECT_DIR$/urlhandler/adminpage/views.py" />
     </list>
     <ignored path="src.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -11,7 +13,7 @@
     <file path="/Django Console" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387646755020" ignored="false" />
     <file path="/weixin_simulator.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387288243909" ignored="false" />
     <file path="/__init__.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387815643715" ignored="false" />
-    <file path="/views.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387800209533" ignored="false" />
+    <file path="/views.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387816710403" ignored="false" />
     <file path="/urls.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387800260193" ignored="false" />
     <file path="/activity_list.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386991615753" ignored="false" />
     <file path="/activity_list.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387559430394" ignored="false" />
@@ -29,7 +31,7 @@
     <file path="/settings.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387683955666" ignored="false" />
     <file path="/url_generators.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386999681402" ignored="false" />
     <file path="/custom_menu.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387725663810" ignored="false" />
-    <file path="/Python Console" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387678630138" ignored="false" />
+    <file path="/Python Console" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387816703922" ignored="false" />
     <file path="/fragment.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387014288010" ignored="false" />
     <file path="/validation.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387727961846" ignored="false" />
     <file path="/localwsgi.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387092846338" ignored="false" />
@@ -67,7 +69,7 @@
     <file path="/handler_check_templates.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387285227379" ignored="false" />
     <file path="/mobile_base.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387768421592" ignored="false" />
     <file path="/activity_base.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387375225671" ignored="false" />
-    <file path="/login.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387375331075" ignored="false" />
+    <file path="/login.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387816815526" ignored="false" />
     <file path="/print_login.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387375351526" ignored="false" />
     <file path="/activitydetails.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387728006049" ignored="false" />
     <file path="/help.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387799023174" ignored="false" />
@@ -110,35 +112,7 @@
     <favorites_list name="src" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="12" selection-start="1546" selection-end="1546" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activitydetails.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activitydetails.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activitytext.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activitytext.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="179" column="44" selection-start="5686" selection-end="5686" vertical-scroll-proportion="-0.64179105">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -156,8 +130,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/urlhandler/userpage/templates/mobile_base.html" />
-        <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activitydetails.html" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activityphoto.html" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/validation.html" />
         <option value="$PROJECT_DIR$/queryhandler/weixin_text_templates.py" />
@@ -168,10 +140,12 @@
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/help_activity.html" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/help_lecture.html" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/help_club.html" />
-        <option value="$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js" />
         <option value="$PROJECT_DIR$/queryhandler/tickethandler.py" />
         <option value="$PROJECT_DIR$/queryhandler/__init__.py" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activitytext.html" />
+        <option value="$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js" />
+        <option value="$PROJECT_DIR$/urlhandler/adminpage/views.py" />
+        <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/login.html" />
       </list>
     </option>
   </component>
@@ -323,6 +297,94 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TsinghuaTuan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="urlhandler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adminpage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TsinghuaTuan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="urlhandler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adminpage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TsinghuaTuan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="urlhandler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adminpage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TsinghuaTuan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="urlhandler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adminpage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -680,17 +742,17 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="775" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32761577" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32608697" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27044475" sideWeight="0.60720414" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27044475" sideWeight="0.62900764" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39137134" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20681265" sideWeight="0.28703704" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3281787" sideWeight="0.49468085" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37221268" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37099236" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977098" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936507" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -765,42 +827,14 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/urlhandler/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/js/details.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="347" column="19" selection-start="11111" selection-end="11111" vertical-scroll-proportion="0.15177065">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activitymenu.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="6" selection-start="294" selection-end="294" vertical-scroll-proportion="0.29752067">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/activity_detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="312" column="51" selection-start="16820" selection-end="16837" vertical-scroll-proportion="0.025337838">
           <folding />
         </state>
       </provider>
@@ -854,9 +888,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="12" selection-start="1546" selection-end="1546" vertical-scroll-proportion="0.0">
+        <state line="128" column="5" selection-start="3650" selection-end="3650" vertical-scroll-proportion="3.004886">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="35" selection-start="1938" selection-end="1938" vertical-scroll-proportion="0.45273632">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="170" column="59" selection-start="5904" selection-end="5904" vertical-scroll-proportion="0.85504884">
+          <folding>
+            <element signature="e#23#68#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/templates/activity_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="312" column="51" selection-start="16820" selection-end="16837" vertical-scroll-proportion="7.9322033">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activitytext.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="179" column="44" selection-start="5686" selection-end="5686" vertical-scroll-proportion="-0.64179105">
           <folding />
         </state>
       </provider>
@@ -868,9 +932,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activitytext.html">
+    <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="179" column="44" selection-start="5686" selection-end="5686" vertical-scroll-proportion="-0.64179105">
+        <state line="31" column="12" selection-start="1546" selection-end="1546" vertical-scroll-proportion="0.35885167">
           <folding />
         </state>
       </provider>
