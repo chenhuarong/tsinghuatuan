@@ -93,7 +93,7 @@ def get_text_seat_desc_BC(seat):
 
 
 def get_text_one_ticket_description(ticket, now):
-    tmp = '活动时间：' + get_text_time_standard(ticket.activity.start_time) + '\n活动地点：' + ticket.activity.place
+    tmp = '活动开始前30分钟凭本电子票入场。\n活动时间：' + get_text_time_standard(ticket.activity.start_time) + '\n活动地点：' + ticket.activity.place
     if ticket.activity.seat_status == 1:
         tmp += ('\n' + get_text_seat_desc_BC(ticket.seat))
     if ticket.activity.book_end > now:
