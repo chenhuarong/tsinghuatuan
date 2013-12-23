@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="519d02f1-9909-43c4-95c4-b95f242a05f2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/queryhandler/__init__.py" afterPath="$PROJECT_DIR$/queryhandler/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html" afterPath="$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/queryhandler/tickethandler.py" afterPath="$PROJECT_DIR$/queryhandler/tickethandler.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/queryhandler/weixin_text_templates.py" afterPath="$PROJECT_DIR$/queryhandler/weixin_text_templates.py" />
     </list>
     <ignored path="src.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387764015108" ignored="false" />
-    <file path="/tickethandler.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387767769300" ignored="false" />
+    <file path="/tickethandler.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387767990731" ignored="false" />
     <file path="/Django Console" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387646755020" ignored="false" />
     <file path="/weixin_simulator.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387288243909" ignored="false" />
     <file path="/__init__.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387737119579" ignored="false" />
@@ -81,7 +80,7 @@
     <file path="/validation_student.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387561059954" ignored="false" />
     <file path="/validation_student.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387561935435" ignored="false" />
     <file path="/ticket.css" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387634948617" ignored="false" />
-    <file path="/weixin_text_templates.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387737017181" ignored="false" />
+    <file path="/weixin_text_templates.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387768117294" ignored="false" />
     <file path="/tsinghuatuan_crons.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387657977009" ignored="false" />
     <file path="/validation.js" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387658115130" ignored="false" />
     <file path="$PROJECT_DIR$/../TuanTuan/TuanTuan/TsinghuaSpider-master/TuanTuanSpider/main.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387683778555" ignored="false" />
@@ -112,6 +111,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="weixin_text_templates.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/queryhandler/weixin_text_templates.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="104" column="23" selection-start="2849" selection-end="2849" vertical-scroll-proportion="-2.3413463">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="activityticket.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -121,10 +129,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tickethandler.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="tickethandler.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="366" column="86" selection-start="13448" selection-end="13448" vertical-scroll-proportion="0.71153843">
+            <state line="374" column="22" selection-start="13699" selection-end="13699" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -177,11 +185,11 @@
         <option value="$PROJECT_DIR$/urlhandler/userpage/views.py" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/safe_reverse.py" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/urls.py" />
-        <option value="$PROJECT_DIR$/queryhandler/weixin_text_templates.py" />
         <option value="$PROJECT_DIR$/tsinghuatuan_crons.py" />
         <option value="$PROJECT_DIR$/queryhandler/__init__.py" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html" />
         <option value="$PROJECT_DIR$/queryhandler/tickethandler.py" />
+        <option value="$PROJECT_DIR$/queryhandler/weixin_text_templates.py" />
       </list>
     </option>
   </component>
@@ -1031,13 +1039,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/weixin_text_templates.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="224" column="0" selection-start="6173" selection-end="6173" vertical-scroll-proportion="5.360577">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="40" column="56" selection-start="1937" selection-end="1937" vertical-scroll-proportion="-0.3221154">
@@ -1068,7 +1069,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="366" column="86" selection-start="13448" selection-end="13448" vertical-scroll-proportion="0.71153843">
+        <state line="374" column="22" selection-start="13699" selection-end="13699" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/queryhandler/weixin_text_templates.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="104" column="23" selection-start="2849" selection-end="2849" vertical-scroll-proportion="-2.3413463">
           <folding />
         </state>
       </provider>

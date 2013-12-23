@@ -158,7 +158,7 @@ def get_text_success_book_ticket():
 
 def get_text_book_ticket_future(activity, now):
     bkstart = activity.book_start
-    return '您好，该活动尚未开始抢票。' + get_text_link(s_reverse_activity_detail(activity.id), '详情') \
+    return '您好，该活动还没开始抢票哟~' + get_text_link(s_reverse_activity_detail(activity.id), '详情') \
            + '\n抢票开始时间：' + get_text_time_standard(bkstart) \
            + '\n（还剩' + time_chs_format(bkstart - now) + '）'
 
@@ -218,8 +218,7 @@ def get_text_usage_get_activity_menu():
 
 def get_text_fail_get_activity_menu(activity, now):
     sst = activity.start_time
-    return '您好，该活动尚未开始，不能查看节目单。' + get_text_link(s_reverse_activity_detail(activity.id), '详情') \
-           + '\n活动开始时间：' + get_text_time_standard(sst) \
+    return '您好，活动开始后才可以查看节目单哟~\n活动开始时间：' + get_text_time_standard(sst) \
            + '\n（还剩' + time_chs_format(sst - now) + '）'
 
 

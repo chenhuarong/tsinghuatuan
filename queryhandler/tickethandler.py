@@ -377,4 +377,6 @@ def check_xnlhwh(msg):
 
 
 def response_xnlhwh(msg):
-    return get_reply_text_xml(msg, '建设中...')
+    msg['Content'] = '节目单 新年联欢晚会'
+    return response_get_activity_menu(msg)
+
