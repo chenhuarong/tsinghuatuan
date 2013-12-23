@@ -114,6 +114,24 @@ function initializeForm(activity) {
     if (typeof activity.checked_tickets !== 'undefined') {
         initialProgress(activity.checked_tickets, activity.ordered_tickets, activity.total_tickets);
     }
+    else{
+        //新增活动，自动生成年份
+        var curyear = new Date().getFullYear();
+        var curmonth = new Date().getMonth() + 1;
+        $('#input-start-year').val(curyear);
+        $('#input-end-year').val(curyear);
+        $('#input-book-start-year').val(curyear);
+        $('#input-book-end-year').val(curyear);
+        $('#input-start-month').val(curmonth);
+        $('#input-end-month').val(curmonth);
+        $('#input-book-start-month').val(curmonth);
+        $('#input-book-end-month').val(curmonth);
+        $('#input-start-minute').val(0);
+        $('#input-end-minute').val(0);
+        $('#input-book-start-minute').val(0);
+        $('#input-book-end-minute').val(0);
+        $('#input-seat_status').val(0);
+    }
     curstatus = activity.status;
     lockByStatus(curstatus, activity.book_start, activity.start_time, activity.end_time);
 }
@@ -303,6 +321,7 @@ function showPublishByStatus(status, linetime) {
 function showPubTipsByStatus(status){
     if(status < 1){
         $('#publishBtn').tooltip({'title': '发布后不能修改“活动名称”、“活动代称”和“订票开始时间”'});
+        $('#saveBtn').tooltip({'title': '暂存后可以“继续修改”'});
     }
 }
 
