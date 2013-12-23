@@ -55,7 +55,7 @@ def get_text_activity_title_with_status(activity, now):
     title = activity.name
     if activity.book_start > now:
         delta = activity.book_start - now
-        title += ('\n（%s后开始抢票）' % time_chs_format(delta))
+        title += ('\n（%s内开始抢票）' % time_chs_format(delta))
     elif activity.book_end > now:
         title += '\n（抢票进行中）'
     else:
