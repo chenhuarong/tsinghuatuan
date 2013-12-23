@@ -162,7 +162,7 @@
         <div class="text-inner">
             {% include 'activityphoto.html' %}
             <div class="trigger">
-                <span>{{ act_abstract }}</span>
+                <span>{{ act_abstract|linebreaks }}</span>
             </div>
             {% if act_text_status == 1 %}
             <div id="slidedown" class="abstract-wrapper" onclick="slidedown()">
@@ -177,7 +177,7 @@
         <div class="text-inner">
             {% include 'activityphoto.html' %}
             <div class="trigger">
-                <span>{{ act_text }}</span>
+                <span>{{ act_text|linebreaks }}</span>
             </div>
             <!--
             <div id="slideup" class="abstract-wrapper" onclick="slideup()">
