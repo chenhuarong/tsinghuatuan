@@ -364,7 +364,7 @@ def response_get_activity_menu(msg):
     if not activity.menu_url:
         return get_reply_text_xml(msg, get_text_no_activity_menu())
     if activity.start_time > now:
-        return get_text_fail_get_activity_menu(activity, now)
+        return get_reply_text_xml(msg, get_text_fail_get_activity_menu(activity, now))
     return get_reply_single_news_xml(msg, get_item_dict(
         title=get_text_title_activity_menu(activity),
         description=get_text_desc_activity_menu(activity),

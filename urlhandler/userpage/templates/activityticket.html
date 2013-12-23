@@ -56,6 +56,11 @@
     <div class="ticket-wrapper">
         活动开始时间：<b>{{ act_begintime|date:"Y年m月d日H时i分" }}</b>
     </div>
+    {% if ticket_status == 1 %}
+    <div class="ticket-wrapper">
+        <span class="status-size ticket-valid">活动开始前30分钟凭本电子票入场</span>
+    </div>
+    {% endif %}
     <div class="ticket-wrapper">
         活动结束时间：<b>{{ act_endtime|date:"Y年m月d日H时i分" }}</b>
     </div>

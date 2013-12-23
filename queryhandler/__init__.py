@@ -39,17 +39,6 @@ def handle_weixin_request(environ):
         msg = parse_msg_xml(ET.fromstring(raw_str))
         try:
             #recognize type of message and return result
-            # if msg['MsgType'] == 'image':
-            #     return get_reply_text_xml(msg, u'对不起，暂不支持图片消息')
-            # elif msg['MsgType'] == 'voice':
-            #     return get_reply_text_xml(msg, u'对不起，暂不支持音频消息')
-            # elif msg['MsgType'] == 'video':
-            #     return get_reply_text_xml(msg, u'对不起，暂不支持视频消息')
-            # elif msg['MsgType'] == 'location':
-            #     return get_reply_text_xml(msg, u'对不起，暂不支持位置消息')
-            # elif msg['MsgType'] == 'link':
-            #     return get_reply_text_xml(msg, u'对不起，暂不支持链接消息')
-            # else:
             for handler in handler_list:
                 if handler['check'](msg):
                     return handler['response'](msg)
