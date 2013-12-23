@@ -1,0 +1,58 @@
+{% extends "mobile_base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+帮助 - 清华紫荆之声
+{% endblock %}
+
+{% block css %}
+<link href="{% static "css/help.css" %}?_=3" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block js %}
+    <script src="{% static "js/help.js" %}"></script>
+{% endblock %}
+
+{% block theme %}
+    使用指南
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="section">
+        <h7>活动查询</h7>
+    </div>
+    <br>
+    <div class="artical">-想了解最新最热门的校园精彩活动吗？</div>
+    <div class="artical">-想知道热映的电影，激烈的比赛吗？</div>
+    <div class="artical">-快使用我们的活动查询吧~</div>
+    <br>
+    <div class="artical">-您可以点击菜单栏【资讯】【活动】查询最新活动</div>
+    <br>
+    <div class="artical">-您可以进行输入【活动 xx】查询活动信息</div>
+    <div class="artical">
+        <div>-输入【活动 内容】进行标题的查询</div>
+        <div>  如：【活动 音乐会】，搜索与音乐会有关的活动</div>
+        <div>  如：【活动 电影】，搜索最近热映的电影</div>
+        <br>
+    </div>
+
+    <div class="artical">
+        <div>-输入【活动 时间】查询该时间段的活动</div>
+        <div>  如：【活动 明天】，搜索明天的精彩活动</div>
+        <div>  如：【活动 12月20日】，搜索12月20日的精彩活动</div>
+        <div>  如：【活动 从20日到25日】也是支持的哟~</div>
+        <br>
+    </div>    
+    <div class="artical">
+        <div>-输入【活动 地点】查询在这个地点举行的活动信息</div>
+        <div>  如：【活动 大礼堂】，查询在大礼堂举行的活动</div>
+        <br>
+    </div>
+    <div class="artical">-您也可以进行自由地输入(如内容，时间，地点等）</div>
+    <div class="artical">--不过我们可能额外为您返回符合该查询的其他结果</div>
+    <p style = "text-align:center;">O(∩_∩)O~ 谢谢您的使用</p>
+    <br>
+{% endblock %}

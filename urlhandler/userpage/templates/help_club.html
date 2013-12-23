@@ -1,0 +1,41 @@
+{% extends "mobile_base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+帮助 - 清华紫荆之声
+{% endblock %}
+
+{% block css %}
+<link href="{% static "css/help.css" %}?_=3" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block js %}
+    <script src="{% static "js/help.js" %}"></script>
+{% endblock %}
+
+{% block theme %}
+    使用指南
+{% endblock %}
+
+{% block content %}
+
+    <div class="section">
+        <h7>社团帮助</h7>
+    </div>
+    <br>
+    <div class="artical">-在这里您可以接触到您所期待的社团</div>
+    <div class="artical">-百团大战，从这里开始</div>
+    <div class="artical">-现在开始我们的社团查询吧</div>
+    <br>
+    <div class="artical">-您可以点击菜单栏【资讯】【社团】了解清华“百团”</div>
+    <br>
+    <div class="artical">-您可以输入【社团 xx】进行精确的社团查询
+        <div>  如：“社团 舞蹈”，您将看到与舞蹈相关的社团信息</div>
+        <br>
+    </div>
+    <div class="artical">-此外，您也可以进行自由地输入(如“舞蹈社”）</div>
+    <div class="artical">-不过我们可能额外为您返回符合该查询的其他结果</div>
+    <p style = "text-align:center;">O(∩_∩)O~ 谢谢您的使用</p>
+    <br>
+{% endblock %}

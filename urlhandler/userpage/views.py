@@ -170,4 +170,14 @@ def activity_menu_view(request, actid):
     activity = Activity.objects.get(id=actid)
     return render_to_response('activitymenu.html', {'activity': activity})
 
+def helpact_view(request):
+    variables=RequestContext(request,{})
+    return render_to_response('help_activity.html', variables)
 
+def helpclub_view(request):
+    variables=RequestContext(request,{})
+    return render_to_response('help_club.html', variables)
+
+def helplecture_view(request):
+    variables=RequestContext(request,{})
+    return render_to_response('help_lecture.html', variables)

@@ -1,0 +1,59 @@
+{% extends "mobile_base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+帮助 - 清华紫荆之声
+{% endblock %}
+
+{% block css %}
+<link href="{% static "css/help.css" %}?_=3" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block js %}
+    <script src="{% static "js/help.js" %}"></script>
+{% endblock %}
+
+{% block theme %}
+    使用指南
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="section">
+        <h7>讲座帮助</h7>
+    </div>
+    <br>
+    <div class="artical">-想了解最新的文化素质讲座资讯吗？</div>
+    <div class="artical">-一次不漏，四年八次妥妥的</div>
+    <div class="artical">-快使用我们的讲座查询吧</div>
+    <br>
+    <div class="artical">-您可以点击菜单栏【资讯】【讲座】查询最新讲座</div>
+    <br>
+    <div class="artical">-您可以输入【讲座 xx】进行精确查询</div>
+    <div class="artical">
+        <div>-输入【讲座 内容】进行内容查询</div>
+        <div>  如：“讲座 文化素质”，查询文化素质讲座的内容</div>
+        <div>  如：“讲座 化学”，查询化学相关的讲座</div>
+        <br>
+    </div>
+    <div class="artical">
+        <div>-输入【讲座 时间】查询一个时间段的讲座信息</div>
+        <div>  如：“讲座 12月”，查询12月的讲座信息</div>
+        <div>  如：“讲座 12月25日”，查询12月25日的讲座信息</div>
+        <div>  如：“讲座 1月1日至1月31日” 也是支持的哟~</div>
+        <div> O(∩_∩)O~您可以自由地输入更多您所期待的时间哟</div>
+        <br>
+    </div>  
+    <div class="artical">
+        <div>-输入【讲座 地点】查询在某个地点的讲座信息</div>
+        <div>  如：“讲座 大礼堂”，查询在大礼堂举行的近期讲座</div>
+        <div>  如：“讲座 六教”，查询在六教举行的近期讲座</div>
+        <br>
+    </div>    
+    <div class="artical">-您也可以进行自由地输入(如内容，时间，地点等）</div>
+    <div class="artical">-不过我们可能额外为您返回符合该查询的其他结果</div>
+    <p style = "text-align:center;">O(∩_∩)O~ 谢谢您的使用</p>
+    <br>
+{% endblock %}
