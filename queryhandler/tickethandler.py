@@ -356,7 +356,7 @@ def response_get_activity_menu(msg):
         return get_reply_text_xml(msg, get_text_usage_get_activity_menu())
 
     now = datetime.datetime.fromtimestamp(get_msg_create_time(msg))
-    activities = Activity.objects.filter(status=1, end_time__gt=now, book_start__lt=now, key=key)
+    activities = Activity.objects.filter(status=1, end_time__gt=now, key=key)
     if not activities.exists():
         return get_reply_text_xml(msg, get_text_no_such_activity())
     else:

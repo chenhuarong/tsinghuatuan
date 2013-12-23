@@ -61,11 +61,11 @@
             </div>
             {% elif act_bookstart.month != act_bookend.month %}
             <div class="trigger">
-                <h9>{{ act_bookstart|date:"Y年m月d日 H:i" }} 至 {{ act_bookend|date:"m月d日H:i" }}</h9>
+                <h9>{{ act_bookstart|date:"Y年m月d日 H:i" }} 至 {{ act_bookend|date:"m月d日 H:i" }}</h9>
             </div>
             {% elif act_bookstart.day != act_bookend.day %}
             <div class="trigger">
-                <h8>{{ act_bookstart|date:"Y年m月d日 H:i" }} 至 {{ act_bookend|date:"d日H:i" }}</h8>
+                <h8>{{ act_bookstart|date:"Y年m月d日 H:i" }} 至 {{ act_bookend|date:"d日 H:i" }}</h8>
             </div>
             {% else %}
             <div class="trigger">
@@ -143,7 +143,7 @@
     <h7>活动代称：</h7><!--<div class="clipcopy" id="copykey">点此复制</div>-->
     </div>
     <div class="timer-wrapper">
-    <h9>(回复“抢票/取票/退票 活动代称”可进行相应操作)</h9>
+    <h9>(回复“抢票/取票/退票/节目单 活动代称”可进行相应操作)</h9>
     </div>
     <div class="details-wrapper">
         <div class="text-inner">
@@ -162,7 +162,7 @@
         <div class="text-inner">
             {% include 'activityphoto.html' %}
             <div class="trigger">
-                <a>{{ act_abstract }}</a>
+                <span>{{ act_abstract }}</span>
             </div>
             {% if act_text_status == 1 %}
             <div id="slidedown" class="abstract-wrapper" onclick="slidedown()">
@@ -177,7 +177,7 @@
         <div class="text-inner">
             {% include 'activityphoto.html' %}
             <div class="trigger">
-                <a>{{ act_text }}</a>
+                <span>{{ act_text }}</span>
             </div>
             <!--
             <div id="slideup" class="abstract-wrapper" onclick="slideup()">

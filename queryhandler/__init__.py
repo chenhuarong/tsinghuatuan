@@ -25,10 +25,12 @@ handler_list = [
 
 # entry of weixin handler
 def handle_weixin_request(environ):
+    data = urldecode(environ['QUERY_STRING'])
     if environ['REQUEST_METHOD'] == 'GET':
-        data = urldecode(environ['QUERY_STRING'])
         return check_weixin_signature(data)
     elif environ['REQUEST_METHOD'] == 'POST':
+        if check_weixin_signature(data) is None:
+            return None
         try:
             request_body_size = int(environ['CONTENT_LENGTH'])
             request_body = environ['wsgi.input'].read(request_body_size)
