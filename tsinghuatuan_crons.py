@@ -5,6 +5,7 @@ import sys
 path = os.path.dirname(os.path.abspath(__file__)).replace('\\','/') + '/urlhandler'
 if path not in sys.path:
     sys.path.insert(1, path)
+os.environ.setdefault('SSAST_DEPLOYMENT', 'tsinghuatuan')
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "urlhandler.settings")
 
 from weixinlib.custom_menu import *
