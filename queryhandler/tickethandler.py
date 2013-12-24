@@ -122,7 +122,7 @@ def response_fetch_ticket(msg):
     fromuser = get_msg_from(msg)
     user = get_user(fromuser)
     if user is None:
-        return get_text_unbinded_fetch_ticket(fromuser)
+        return get_reply_text_xml(msg, get_text_unbinded_fetch_ticket(fromuser))
 
     received_msg = get_msg_content(msg).split()
     if len(received_msg) > 1:
@@ -156,7 +156,7 @@ def response_book_ticket(msg):
     fromuser = get_msg_from(msg)
     user = get_user(fromuser)
     if user is None:
-        return get_text_unbinded_book_ticket(fromuser)
+        return get_reply_text_xml(msg, get_text_unbinded_book_ticket(fromuser))
 
     received_msg = get_msg_content(msg).split()
     if len(received_msg) > 1:
@@ -240,7 +240,7 @@ def response_cancel_ticket(msg):
     fromuser = get_msg_from(msg)
     user = get_user(fromuser)
     if user is None:
-        return get_text_unbinded_cancel_ticket(fromuser)
+        return get_reply_text_xml(msg, get_text_unbinded_cancel_ticket(fromuser))
 
     received_msg = get_msg_content(msg).split()
     if len(received_msg) > 1:
@@ -282,7 +282,7 @@ def response_book_event(msg):
     fromuser = get_msg_from(msg)
     user = get_user(fromuser)
     if user is None:
-        return get_text_unbinded_book_ticket(fromuser)
+        return get_reply_text_xml(msg, get_text_unbinded_book_ticket(fromuser))
 
     now = datetime.datetime.fromtimestamp(get_msg_create_time(msg))
 
