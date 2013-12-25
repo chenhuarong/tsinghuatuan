@@ -498,4 +498,4 @@ $('#activity-form').submit(function() {
     return false;
 });
 
-$('.form-control').on('focus', function() {setInterval(function(){$(this).select();})});
+$('.form-control').on('focus', function() {var me = $(this); setInterval(function(){me.select();})});
