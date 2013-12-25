@@ -169,7 +169,7 @@ def response_book_ticket(msg):
     if not activities.exists():
         future_activities = Activity.objects.filter(status=1, book_start__gt=now, key=key)
         if future_activities.exists():
-            return get_reply_text_xml(msg, get_text_book_ticket_future(future_activities[0], now))
+            return get_reply_text_xml(msg, get_text_book_ticket_future_with_hint(future_activities[0], now))
         return get_reply_text_xml(msg, get_text_no_such_activity('抢票'))
     else:
         tickets = Ticket.objects.filter(stu_id=user.stu_id, activity=activities[0], status__gt=0)

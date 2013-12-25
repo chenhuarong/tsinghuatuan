@@ -163,6 +163,10 @@ def get_text_book_ticket_future(activity, now):
            + '\n（还剩' + time_chs_format(bkstart - now) + '）'
 
 
+def get_text_book_ticket_future_with_hint(activity, now):
+    return get_text_book_ticket_future(activity, now) + '\n提示：通过微信菜单抢票更方便噢！'
+
+
 def get_text_existed_book_ticket(ticket):
     return '您已抢到该活动的票，不能重复抢票。\n' + get_text_link(s_reverse_ticket_detail(ticket.unique_id), '查看电子票')
 
