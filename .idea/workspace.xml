@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="519d02f1-9909-43c4-95c4-b95f242a05f2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js" afterPath="$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html" afterPath="$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html" />
     </list>
     <ignored path="src.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -111,19 +111,7 @@
     <favorites_list name="src" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="activity_detail.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="500" column="101" selection-start="15102" selection-end="15102" vertical-scroll-proportion="0.7637795">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -142,7 +130,6 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/validation.html" />
-        <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/help.html" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/views.py" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/urls.py" />
@@ -157,6 +144,7 @@
         <option value="$PROJECT_DIR$/queryhandler/tickethandler.py" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/static/css/ticket.css" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js" />
+        <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html" />
       </list>
     </option>
   </component>
@@ -803,13 +791,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="788" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32761577" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32608697" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30487806" sideWeight="0.62985075" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30487806" sideWeight="0.62985075" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39137134" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20681265" sideWeight="0.28703704" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3281787" sideWeight="0.49468085" order="9" side_tool="true" content_ui="tabs" />
@@ -960,19 +948,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="500" column="101" selection-start="15102" selection-end="15102" vertical-scroll-proportion="0.7637795">
+        <state line="488" column="19" selection-start="14751" selection-end="14751" vertical-scroll-proportion="0.2913386">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="45" selection-start="167" selection-end="167" vertical-scroll-proportion="0.36486486">
+          <folding />
         </state>
       </provider>
     </entry>
