@@ -25,9 +25,11 @@ handler_list = [
 
 # entry of weixin handler
 def handle_weixin_request(environ):
+    data = urldecode(environ['QUERY_STRING'])
+    if not check_weixin_signature(data):
+        return None
     if environ['REQUEST_METHOD'] == 'GET':
-        data = urldecode(environ['QUERY_STRING'])
-        return check_weixin_signature(data)
+        return data['echostr']
     elif environ['REQUEST_METHOD'] == 'POST':
         try:
             request_body_size = int(environ['CONTENT_LENGTH'])
@@ -57,7 +59,6 @@ def check_weixin_signature(data):
     signature = data['signature']
     timestamp = data['timestamp']
     nonce = data['nonce']
-    echostr = data['echostr']
     token = WEIXIN_TOKEN
 
     tmp_list = [token, timestamp, nonce]
@@ -65,9 +66,9 @@ def check_weixin_signature(data):
     tmpstr = '%s%s%s' % tuple(tmp_list)
     tmpstr = hashlib.sha1(tmpstr).hexdigest()
     if tmpstr == signature:
-        return echostr
+        return True
     else:
-        return None
+        return False
 
 
 # convert string 'a=1&b=2&c=3' to dict {'a':1,'b':2,'c':3}

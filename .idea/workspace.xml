@@ -2,15 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="519d02f1-9909-43c4-95c4-b95f242a05f2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html" afterPath="$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/queryhandler/__init__.py" afterPath="$PROJECT_DIR$/queryhandler/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="src.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387985613407" ignored="false" />
+    <file path="/Dummy.txt" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1388050846868" ignored="false" />
     <file path="/tickethandler.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387985563665" ignored="false" />
     <file path="/Django Console" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387646755020" ignored="false" />
     <file path="/weixin_simulator.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387288243909" ignored="false" />
-    <file path="/__init__.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387815643715" ignored="false" />
+    <file path="/__init__.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1388050957431" ignored="false" />
     <file path="/views.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387816710403" ignored="false" />
     <file path="/urls.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387800260193" ignored="false" />
     <file path="/activity_list.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386991615753" ignored="false" />
@@ -111,7 +112,26 @@
     <favorites_list name="src" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="tickethandler.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="362" column="32" selection-start="13319" selection-end="13319" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="45" selection-start="1577" selection-end="1577" vertical-scroll-proportion="0.14826499">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -135,7 +155,6 @@
         <option value="$PROJECT_DIR$/urlhandler/userpage/urls.py" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/help_lecture.html" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/help_club.html" />
-        <option value="$PROJECT_DIR$/queryhandler/__init__.py" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activitytext.html" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/views.py" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/templates/login.html" />
@@ -145,13 +164,14 @@
         <option value="$PROJECT_DIR$/urlhandler/userpage/static/css/ticket.css" />
         <option value="$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js" />
         <option value="$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html" />
+        <option value="$PROJECT_DIR$/queryhandler/__init__.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
     <option name="width" value="1440" />
-    <option name="height" value="788" />
+    <option name="height" value="780" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -790,18 +810,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1440" height="788" extended-state="0" />
-    <editor active="false" />
+    <frame x="0" y="22" width="1440" height="780" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32761577" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32608697" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30487806" sideWeight="0.62985075" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31492108" sideWeight="0.62985075" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39137134" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20681265" sideWeight="0.28703704" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3281787" sideWeight="0.49468085" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37014925" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37014925" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977098" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936507" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -916,19 +936,9 @@
         <state line="13" column="24" selection-start="909" selection-end="909" vertical-scroll-proportion="0.30757096" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="12" selection-start="1546" selection-end="1546" vertical-scroll-proportion="0.59148264" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="172" column="71" selection-start="6178" selection-end="6178" vertical-scroll-proportion="0.43925235" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/queryhandler/settings.py">
@@ -943,23 +953,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/css/ticket.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="15" selection-start="181" selection-end="181" vertical-scroll-proportion="0.38071066">
-          <folding />
-        </state>
+        <state line="10" column="15" selection-start="181" selection-end="181" vertical-scroll-proportion="0.38071066" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/adminpage/static/js/activity_detail.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="488" column="19" selection-start="14751" selection-end="14751" vertical-scroll-proportion="0.2913386">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
+        <state line="488" column="19" selection-start="14751" selection-end="14751" vertical-scroll-proportion="0.2913386" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/templates/activityticket.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="45" selection-start="167" selection-end="167" vertical-scroll-proportion="0.36486486">
+        <state line="9" column="45" selection-start="167" selection-end="167" vertical-scroll-proportion="0.36486486" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="362" column="32" selection-start="13319" selection-end="13319" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="45" selection-start="1577" selection-end="1577" vertical-scroll-proportion="0.14826499">
           <folding />
         </state>
       </provider>
