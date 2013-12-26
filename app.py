@@ -22,7 +22,7 @@ def app(environ, start_response):
         status = '200 OK'
         headers = [('Content-type', 'text/html')]
         start_response(status, headers)
-        print result
+        #print result
         return [result.encode('utf8')]
     else:
         #status = '200 OK'

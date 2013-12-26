@@ -34,7 +34,7 @@
     <file path="/validation.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387727961846" ignored="false" />
     <file path="/localwsgi.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387092846338" ignored="false" />
     <file path="/tsinghuatuan.conf" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387177098315" ignored="false" />
-    <file path="/app.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1388064341831" ignored="false" />
+    <file path="/app.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1388064765899" ignored="false" />
     <file path="/safe_reverse.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387735812250" ignored="false" />
     <file path="$PROJECT_DIR$/../TuanTuan/TuanTuan/TuanTuan/TuanTuanApp/templates/weixin_activity.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387114477250" ignored="false" />
     <file path="/weixin_activity.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387114477250" ignored="false" />
@@ -115,7 +115,7 @@
       <file leaf-file-name="tickethandler.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="194" column="23" selection-start="7037" selection-end="7037" vertical-scroll-proportion="0.0">
+            <state line="279" column="0" selection-start="10367" selection-end="10367" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -135,7 +135,7 @@
       <file leaf-file-name="app.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="25" selection-start="689" selection-end="689" vertical-scroll-proportion="0.4731861">
+            <state line="24" column="9" selection-start="789" selection-end="789" vertical-scroll-proportion="0.54416406">
               <folding />
             </state>
           </provider>
@@ -989,13 +989,6 @@
         <state line="166" column="76" selection-start="4798" selection-end="4798" vertical-scroll-proportion="3.1400967" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="194" column="23" selection-start="7037" selection-end="7037" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="4" selection-start="1319" selection-end="1319" vertical-scroll-proportion="0.0">
@@ -1005,9 +998,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/queryhandler/tickethandler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="279" column="0" selection-start="10367" selection-end="10367" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="25" selection-start="689" selection-end="689" vertical-scroll-proportion="0.4731861">
+        <state line="24" column="9" selection-start="789" selection-end="789" vertical-scroll-proportion="0.54416406">
           <folding />
         </state>
       </provider>
