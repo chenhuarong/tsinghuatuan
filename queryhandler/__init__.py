@@ -55,7 +55,8 @@ def handle_weixin_request(environ):
             return get_reply_text_xml(msg, u'对不起，没有找到您需要的信息:(')
 
 
-last_timestamp = int(datetime.datetime.now().strftime('%s'))
+#last_timestamp = int(datetime.datetime.now().strftime('%s'))
+last_timestamp = 1388052828
 
 
 # check signature as the weixin API document provided
