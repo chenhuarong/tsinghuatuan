@@ -85,9 +85,9 @@ def get_text_one_ticket_title(ticket, now):
 
 def get_text_seat_desc_BC(seat):
     if seat == 'B':
-        return '您的座位在B区，请从东南口进入。'
+        return '您的座位在B区，请从综体二楼北侧进入。'
     elif seat == 'C':
-        return '您的座位在C区，请从西北口进入。'
+        return '您的座位在C区，请从综体二楼南侧进入。'
     else:
         return '您的座位信息无效'
 
