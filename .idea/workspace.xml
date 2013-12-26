@@ -7,11 +7,11 @@
     </list>
     <ignored path="src.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1388053129886" ignored="false" />
+    <file path="/Dummy.txt" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1388061973670" ignored="false" />
     <file path="/tickethandler.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387985563665" ignored="false" />
     <file path="/Django Console" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1388052231330" ignored="false" />
     <file path="/weixin_simulator.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387288243909" ignored="false" />
-    <file path="/__init__.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1388053854659" ignored="false" />
+    <file path="/__init__.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1388062179483" ignored="false" />
     <file path="/views.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387816710403" ignored="false" />
     <file path="/urls.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387800260193" ignored="false" />
     <file path="/activity_list.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386991615753" ignored="false" />
@@ -30,7 +30,7 @@
     <file path="/settings.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1388052221024" ignored="false" />
     <file path="/url_generators.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386999681402" ignored="false" />
     <file path="/custom_menu.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387725663810" ignored="false" />
-    <file path="/Python Console" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1388053882174" ignored="false" />
+    <file path="/Python Console" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1388054525505" ignored="false" />
     <file path="/fragment.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387014288010" ignored="false" />
     <file path="/validation.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387727961846" ignored="false" />
     <file path="/localwsgi.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387092846338" ignored="false" />
@@ -116,7 +116,7 @@
       <file leaf-file-name="__init__.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="41" selection-start="2892" selection-end="2892" vertical-scroll-proportion="0.4731861">
+            <state line="75" column="27" selection-start="3146" selection-end="3146" vertical-scroll-proportion="0.73974764">
               <folding>
                 <element signature="e#22#35#0" expanded="true" />
               </folding>
@@ -824,7 +824,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32608697" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31994262" sideWeight="0.62990934" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32998565" sideWeight="0.62990934" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39137134" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20681265" sideWeight="0.28703704" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3281787" sideWeight="0.49468085" order="9" side_tool="true" content_ui="tabs" />
@@ -933,11 +933,6 @@
         <state line="13" column="24" selection-start="909" selection-end="909" vertical-scroll-proportion="0.30757096" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/queryhandler/weixin_text_templates.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="166" column="76" selection-start="4798" selection-end="4798" vertical-scroll-proportion="0.52305245" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urlhandler/userpage/static/css/ticket.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="15" selection-start="181" selection-end="181" vertical-scroll-proportion="0.38071066" />
@@ -982,9 +977,14 @@
         <state line="362" column="32" selection-start="13319" selection-end="13319" vertical-scroll-proportion="0.37198067" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/queryhandler/weixin_text_templates.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="166" column="76" selection-start="4798" selection-end="4798" vertical-scroll-proportion="3.1400967" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="41" selection-start="2892" selection-end="2892" vertical-scroll-proportion="0.4731861">
+        <state line="75" column="27" selection-start="3146" selection-end="3146" vertical-scroll-proportion="0.73974764">
           <folding>
             <element signature="e#22#35#0" expanded="true" />
           </folding>
