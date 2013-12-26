@@ -55,10 +55,17 @@ def handle_weixin_request(environ):
             return get_reply_text_xml(msg, u'对不起，没有找到您需要的信息:(')
 
 
+last_timestamp = int(datetime.datetime.now().strftime('%s'))
+
+
 # check signature as the weixin API document provided
 def check_weixin_signature(data):
+    global last_timestamp
     signature = data['signature']
     timestamp = data['timestamp']
+    timestamp_int = int(timestamp)
+    if timestamp_int <= last_timestamp:
+        return False
     nonce = data['nonce']
     token = WEIXIN_TOKEN
 
@@ -67,6 +74,7 @@ def check_weixin_signature(data):
     tmpstr = '%s%s%s' % tuple(tmp_list)
     tmpstr = hashlib.sha1(tmpstr).hexdigest()
     if tmpstr == signature:
+        last_timestamp = timestamp_int
         return True
     else:
         return False
