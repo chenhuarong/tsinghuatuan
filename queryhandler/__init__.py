@@ -27,6 +27,7 @@ handler_list = [
 def handle_weixin_request(environ):
     data = urldecode(environ['QUERY_STRING'])
     if not check_weixin_signature(data):
+        print '!!!!! Check weixin signature failed !!!!!'
         return ''
     if environ['REQUEST_METHOD'] == 'GET':
         return data['echostr']
