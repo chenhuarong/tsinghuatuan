@@ -10,7 +10,7 @@
     <file path="/tickethandler.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387985563665" ignored="false" />
     <file path="/Django Console" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1388052231330" ignored="false" />
     <file path="/weixin_simulator.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387288243909" ignored="false" />
-    <file path="/__init__.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1388053714350" ignored="false" />
+    <file path="/__init__.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1388053854659" ignored="false" />
     <file path="/views.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387816710403" ignored="false" />
     <file path="/urls.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387800260193" ignored="false" />
     <file path="/activity_list.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386991615753" ignored="false" />
@@ -29,7 +29,7 @@
     <file path="/settings.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1388052221024" ignored="false" />
     <file path="/url_generators.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1386999681402" ignored="false" />
     <file path="/custom_menu.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387725663810" ignored="false" />
-    <file path="/Python Console" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1388053476624" ignored="false" />
+    <file path="/Python Console" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1388053882174" ignored="false" />
     <file path="/fragment.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387014288010" ignored="false" />
     <file path="/validation.html" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387727961846" ignored="false" />
     <file path="/localwsgi.py" changelist="519d02f1-9909-43c4-95c4-b95f242a05f2" time="1387092846338" ignored="false" />
@@ -115,7 +115,7 @@
       <file leaf-file-name="__init__.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="0" selection-start="2626" selection-end="2626" vertical-scroll-proportion="0.26992288">
+            <state line="58" column="0" selection-start="2632" selection-end="2632" vertical-scroll-proportion="0.16561514">
               <folding>
                 <element signature="e#22#35#0" expanded="true" />
               </folding>
@@ -827,7 +827,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39137134" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20681265" sideWeight="0.28703704" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3281787" sideWeight="0.49468085" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37009063" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37009063" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977098" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936507" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -983,7 +983,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="0" selection-start="2626" selection-end="2626" vertical-scroll-proportion="0.26992288">
+        <state line="58" column="0" selection-start="2632" selection-end="2632" vertical-scroll-proportion="0.16561514">
           <folding>
             <element signature="e#22#35#0" expanded="true" />
           </folding>
