@@ -64,7 +64,7 @@ def check_weixin_signature(data):
     signature = data['signature']
     timestamp = data['timestamp']
     timestamp_int = int(timestamp)
-    if timestamp_int <= last_timestamp:
+    if timestamp_int < last_timestamp:
         return False
     nonce = data['nonce']
     token = WEIXIN_TOKEN

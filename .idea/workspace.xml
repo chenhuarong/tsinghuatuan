@@ -115,7 +115,7 @@
       <file leaf-file-name="__init__.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="0" selection-start="2632" selection-end="2632" vertical-scroll-proportion="0.16561514">
+            <state line="66" column="22" selection-start="2873" selection-end="2873" vertical-scroll-proportion="0.4731861">
               <folding>
                 <element signature="e#22#35#0" expanded="true" />
               </folding>
@@ -983,7 +983,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/queryhandler/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="0" selection-start="2632" selection-end="2632" vertical-scroll-proportion="0.16561514">
+        <state line="66" column="22" selection-start="2873" selection-end="2873" vertical-scroll-proportion="0.4731861">
           <folding>
             <element signature="e#22#35#0" expanded="true" />
           </folding>
