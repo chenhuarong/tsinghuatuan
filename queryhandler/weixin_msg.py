@@ -1,4 +1,4 @@
-#-*- coding:utf-8 -*-
+w#-*- coding:utf-8 -*-
 
 from django.utils.encoding import smart_str
 

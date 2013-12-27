@@ -1,9 +1,8 @@
 #-*- coding:utf-8 -*-
 import urllib
-import hashlib
 import xml.etree.ElementTree as ET
 from django.utils.encoding import smart_str
-from weixinlib.settings import WEIXIN_TOKEN
+from weixinlib.base_support import check_weixin_signature
 from queryhandler.tickethandler import *
 from queryhandler.query_transfer import get_information_response
 
@@ -26,7 +25,7 @@ handler_list = [
 # entry of weixin handler
 def handle_weixin_request(environ):
     data = urldecode(environ['QUERY_STRING'])
-    if not check_weixin_signature(data):
+    if not check_weixin_signature(data['signature'], data['timestamp'], data['nonce']):
         print '!!!!! Check weixin signature failed !!!!!'
         return ''
     if environ['REQUEST_METHOD'] == 'GET':
@@ -53,31 +52,6 @@ def handle_weixin_request(environ):
         except Exception as e:
             print 'Error occured!!!!!!' + str(e)
             return get_reply_text_xml(msg, u'对不起，没有找到您需要的信息:(')
-
-
-#last_timestamp = int((datetime.datetime.now() + datetime.timedelta(seconds=-5)).strftime('%s'))
-
-
-# check signature as the weixin API document provided
-def check_weixin_signature(data):
-    #global last_timestamp
-    signature = data['signature']
-    timestamp = data['timestamp']
-    #timestamp_int = int(timestamp)
-    #if timestamp_int < last_timestamp - 5:
-    #    return False
-    nonce = data['nonce']
-    token = WEIXIN_TOKEN
-
-    tmp_list = [token, timestamp, nonce]
-    tmp_list.sort()
-    tmpstr = '%s%s%s' % tuple(tmp_list)
-    tmpstr = hashlib.sha1(tmpstr).hexdigest()
-    if tmpstr == signature:
-        #last_timestamp = timestamp_int
-        return True
-    else:
-        return False
 
 
 # convert string 'a=1&b=2&c=3' to dict {'a':1,'b':2,'c':3}
