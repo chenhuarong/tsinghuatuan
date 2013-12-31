@@ -368,6 +368,7 @@ def response_get_activity_menu(msg):
     return get_reply_single_news_xml(msg, get_item_dict(
         title=get_text_title_activity_menu(activity),
         description=get_text_desc_activity_menu(activity),
+        pic_url=activity.pic_url,
         url=s_reverse_activity_menu(activity.id)
     ))
 

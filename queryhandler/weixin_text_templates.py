@@ -231,8 +231,8 @@ def get_text_title_activity_menu(activity):
 
 
 def get_text_desc_activity_menu(activity):
-    return '活动开始时间：' + get_text_time_standard(activity.start_time) \
-           + '\n活动结束时间：' + get_text_time_standard(activity.end_time)
+    return '开始时间：' + get_text_time_standard(activity.start_time) \
+           + '\n结束时间：' + get_text_time_standard(activity.end_time)
 
 
 def get_text_no_activity_menu():
