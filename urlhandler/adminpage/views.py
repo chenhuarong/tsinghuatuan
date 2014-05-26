@@ -20,6 +20,12 @@ from weixinlib.custom_menu import get_custom_menu, modify_custom_menu, add_new_c
 from weixinlib.settings import get_custom_menu_with_book_acts, WEIXIN_BOOK_HEADER
 from adminpage.safe_reverse import *
 
+import xlwt
+import re
+from django.utils.http import urlquote
+from django.utils.encoding import smart_str
+
+
 
 @csrf_protect
 def home(request):
@@ -450,3 +456,37 @@ def custom_menu_modify_post(request):
                         content_type='application/json')
 
 
+def activity_export_stunum(request, actid):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect(s_reverse_admin_home())
+    try:
+        activity = Activity.objects.get(id=actid)
+    except:
+        raise Http404
+
+    tickets = Ticket.objects.filter(activity=activity)
+    wb = xlwt.Workbook()
+
+    def write_row(ws, row, data):
+        for index, cell in enumerate(data):
+            ws.write(row, index, cell)
+
+    ws = wb.add_sheet(activity.name)
+    row = 1
+    write_row(ws, 0, [u'学号', u'状态', u'座位'])
+    statusMap = [u'已取消', u'未入场', u'已入场']
+    for ticket in tickets:
+        write_row(ws, row, [ticket.stu_id, statusMap[ticket.status], ticket.seat])
+        row = row + 1
+##########################################定义Content-Disposition，让浏览器能识别，弹出下载框
+    fname = 'activity' + actid + '.xls'
+    agent=request.META.get('HTTP_USER_AGENT')
+    if agent and re.search('MSIE',agent):
+        response = HttpResponse(content_type="application/vnd.ms-excel")  # 解决ie不能下载的问题
+        response['Content-Disposition'] = 'attachment; filename=%s' % urlquote(fname)  # 解决文件名乱码/不显示的问题
+    else:
+        response = HttpResponse(content_type="application/ms-excel")  # 解决ie不能下载的问题
+        response['Content-Disposition'] = 'attachment; filename=%s' % smart_str(fname)  # 解决文件名乱码/不显示的问题
+    ##########################################保存
+    wb.save(response)
+    return response

@@ -117,6 +117,9 @@ var tdMap = {
             return true;
         }
     },
+    'export': function(act) {
+        return true;
+    },
     'detail': function(act) {
         return true;
     }
@@ -164,7 +167,7 @@ var tdMap = {
             return '<span id="del'+act[key]+'" class="td-ban glyphicon glyphicon-ban-circle" ></span>';
         }
         else{
-            return '<a href="#" id="'+act[key]+'" onclick="deleteact('+act[key]+')"><span class="glyphicon glyphicon-trash"></span></a>';
+            return '<a href="javascript:void(0);" id="'+act[key]+'" onclick="deleteact('+act[key]+')"><span class="glyphicon glyphicon-trash"></span></a>';
         }
     }
 }, smartTimeMap = {

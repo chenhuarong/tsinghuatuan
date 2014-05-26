@@ -25,15 +25,15 @@
                     'end_time': new Date('{{ activity.end_time|date:"r" }}'),
                     'place': '{{ activity.place|escapejs }}',
                 {% if permission %}'delete':{{ activity.id }},{% endif %}
-                    'operations': {{% if permission %}'detail':'{% url "adminpage.views.activity_detail" actid=activity.id %}',{% endif %}'checkin':'{% url "adminpage.views.activity_checkin" actid=activity.id %}'},
+                    'operations': {{% if permission %}'detail':'{% url "adminpage.views.activity_detail" actid=activity.id %}','export':'{% url "adminpage.views.activity_export_stunum" actid=activity.id %}', {% endif %}'checkin':'{% url "adminpage.views.activity_checkin" actid=activity.id %}'},
                     'book_start': new Date('{{ activity.book_start|date:"r" }}'),
                     'book_end': new Date('{{ activity.book_end|date:"r" }}')
                 }{% if forloop.last %}{% else %},{% endif %}
             {% endfor %}
         ];
-        var operations_name = {{% if permission %}'detail':'详情',{% endif %}'checkin':'检票'};
-        var operations_icon = {{% if permission %}'detail':'pencil',{% endif %}'checkin':'check'};
-        var operations_target = {{% if permission %}'detail':'',{% endif %}'checkin':'_blank'};
+        var operations_name = {{% if permission %}'detail':'详情', 'export':'导出', {% endif %}'checkin':'检票'};
+        var operations_icon = {{% if permission %}'detail':'pencil', 'export':'export', {% endif %}'checkin':'check'};
+        var operations_target = {{% if permission %}'detail':'', 'export':'_blank', {% endif %}'checkin':'_blank'};
     </script>
     <script src="{% static "js/activity_list.js" %}"></script>
 {% endblock %}
